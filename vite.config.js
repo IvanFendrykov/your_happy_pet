@@ -10,5 +10,5 @@ export default defineConfig({
       components: '/src/components',
     },
   },
-  base: '/https://ivanfendrykov.github.io/your_happy_pet/',
+  base: 'https://ivanfendrykov.github.io/your_happy_pet',
 });
