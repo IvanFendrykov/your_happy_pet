@@ -1,17 +1,28 @@
-// sell
-// lost/found
-// in good hands
-// favorite ads
-// my ads
-
 const NoticesCategoriesNav = () => {
   return (
-    <div>
-      <div>sell</div>
-      <div>lost/found</div>
-      <div>in good hands</div>
-      <div>favorite ads</div>
-      <div>my ads</div>
-    </div>
+    <form>
+      <label>
+        <input type="radio" name="noticesCategoriesNavItem" />
+        sell
+      </label>
+      <label>
+        <input type="radio" name="noticesCategoriesNavItem" />
+        lost/found
+      </label>
+      <label>
+        <input type="radio" name="noticesCategoriesNavItem" />
+        in good hands
+      </label>
+      <label>
+        <input type="radio" name="noticesCategoriesNavItem" />
+        favorite ads
+      </label>
+      <label>
+        <input type="radio" name="noticesCategoriesNavItem" />
+        my ads
+      </label>
+    </form>
   );
 };
+
+export { NoticesCategoriesNav };
