@@ -2,6 +2,7 @@ import { NoticesSearch } from '../../components/NoticesSearch/NoticesSearch';
 import { NoticesCategoriesNav } from '../../components/NoticesCategoriesNav';
 import {} from '../../components';
 import {} from '../../components';
+import {} from '../../components';
 
 const NoticesPage = () => {
   return (
