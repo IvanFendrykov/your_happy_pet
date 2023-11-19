@@ -5,6 +5,10 @@ import { Formik } from 'formik';
 
 import { ReactComponent as OpenEye } from '../../images/icons/eye-open.svg';
 import { ReactComponent as CloseEye } from '../../images/icons/eye-closed.svg';
+import { ReactComponent as Checkgood} from '../../images/icons/check-good.svg';
+import {ReactComponent as Crosssmal} from '../../images/icons/cross-smal.svg';
+
+import {register} from '../../redus/auth/operations';
 
 import {
  RegistrationForm,
@@ -67,14 +71,12 @@ const initialValue = {
   };
 
 
-
-
   const UserRegisterForm = () => {
     const dispatch = useDispatch();
 
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-    // const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(false);
     const [availableEmail, setAvailableEmail] = useState(true);
   
     const navigate = useNavigate();
@@ -89,12 +91,17 @@ const initialValue = {
   
     const handleSubmit = async (values, { setSubmitting, resetForm }) => {
       
+      if (loading) {
+        return;
+      }
+
+      setLoading(true);
       const credentials = {
         email: values.email,
         password: values.password,
         username: values.username,
       };
-  
+
       try {
         const response = await dispatch(register(credentials));
         if (response.error) {
@@ -107,6 +114,7 @@ const initialValue = {
         console.error(error);
       } finally {
         setSubmitting(false);
+
       }
     };
 
@@ -154,7 +162,7 @@ const initialValue = {
                 value={values.username}
                 onChange={handleFieldChange}
                 onBlur={handleBlur}
-                disabled={loading}
+                // disabled={loading}
               />
               {errors.username && touched.username && values.username && (
                 <IconError
@@ -162,7 +170,6 @@ const initialValue = {
                     resetForm({ values: { ...values, username: '' } });
                   }}
                 >
-                  <CrossIcon />
                 </IconError>
               )}
             </UsernameInputContainer>
@@ -186,7 +193,7 @@ const initialValue = {
                 value={values.email}
                 onChange={handleFieldChange}
                 onBlur={handleBlur}
-                disabled={loading}
+                // disabled={loading}
               />
               {errors.email && touched.email && values.email && (
                 <IconError
@@ -194,7 +201,6 @@ const initialValue = {
                     resetForm({ values: { ...values, email: '' } });
                   }}
                 >
-                  <CrossIcon />
                 </IconError>
               )}
             </EmailInputContainer>
@@ -206,11 +212,11 @@ const initialValue = {
 
           <PasswordContainer
             error={errors.password && touched.password}
-            secure={isPasswordValid}
+            // secure={isPasswordValid}
           >
             <PasswordInputContainer
               error={errors.password && touched.password}
-              secure={isPasswordValid}
+              // secure={isPasswordValid}
               style={{
                 borderColor:
                   errors.password && touched.password
@@ -227,19 +233,18 @@ const initialValue = {
                 value={values.password}
                 onChange={handleFieldChange}
                 onBlur={handleBlur}
-                disabled={loading}
+                // disabled={loading}
               />
               <IconPassword>
                 <EyeIcon
                   onClick={toggleVisiblePassword}
                   error={errors.password && touched.password}
-                  secure={isPasswordValid}
+                  // secure={isPasswordValid}
                 >
                   {showPassword ? <OpenEye /> : <CloseEye />}
                 </EyeIcon>
                 {isPasswordValid && (
                   <CheckIcon>
-                    <CheckIcon />
                   </CheckIcon>
                 )}
                 {errors.password && touched.password && values.password && (
@@ -283,15 +288,19 @@ const initialValue = {
                 value={values.confirmPassword}
                 onChange={handleFieldChange}
                 onBlur={handleBlur}
-                disabled={loading}
+                // disabled={loading}
               />
               <IconPassword>
                 <EyeIcon
-                  onClick={toggleConfirmPasswordVisibility}
+                  onClick={toggleVisibleConfirmPassword}
                   error={errors.confirmPassword && touched.confirmPassword}
                 >
                   {showConfirmPassword ? <OpenEye /> : <CloseEye />}
                 </EyeIcon>
+                {isPasswordValid && (
+                  <CheckIcon>
+                  </CheckIcon>
+                )}
                 {errors.confirmPassword &&
                   touched.confirmPassword &&
                   values.confirmPassword && (
@@ -313,7 +322,7 @@ const initialValue = {
             )}
           </PasswordContainer>
 
-          {!emailAvailable && (
+          {!availableEmail && (
             <RegistrationErrorMessage>
               This email is already in use. Please, try with another email or
               log in!
