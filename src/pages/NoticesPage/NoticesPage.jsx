@@ -11,6 +11,8 @@ const NoticesPage = () => {
       <h2>Find your favorite pet</h2>
       <NoticesSearch />
       <NoticesCategoriesNav />
+
+      <Link to="">Add pet</Link>
     </div>
   );
 };
