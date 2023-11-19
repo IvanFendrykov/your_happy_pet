@@ -1,7 +1,7 @@
 import { NoticesSearch } from '../../components/NoticesSearch/NoticesSearch';
-import {} from '..';
-import {} from '..';
-import {} from '..';
+import {} from '../../components';
+import {} from '../../components';
+import {} from '../../components';
 
 const NoticesPage = () => {
   return (
