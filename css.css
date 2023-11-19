@@ -1,8 +1,9 @@
 body {
     margin: 0 auto;
-
+    position: relative;
     display: flex;
     flex-grow: 1;
+    flex-direction: row-reverse;
     justify-content: space-between;
     width: 70px;
     margin-bottom: 20px;

@@ -1,5 +1,20 @@
 import styled from 'styled-components';
 
+export const Wrapper = styled.div`
+    margin-left: auto;
+    margin-right: auto;
+    width: 320px;
+
+    @media (min-width: 768px) {
+      width: 768px;
+    }
+
+    @media (min-width: 1280px) {
+      display: flex;
+      width: 1280px;
+    }
+`
+
 export const Section = styled.section`
 padding-right: 20px;
 padding-left: 20px;
@@ -14,13 +29,27 @@ export const H2 = styled.h2`
 `;
 
 export const UserCardWrapper = styled.div`
+position: relative;
 border-radius: 20px;
 background: #FFF;
 box-shadow: 3px 8px 14px 0px rgba(136, 198, 253, 0.19);
 padding: 20px 8px 25px 8px;
 width: 280px;
-height: 517px;
 flex-shrink: 0;
+  @media (min-width: 768px) {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    width: 704px;
+    padding-right: 76px;
+    padding-bottom: 58px
+  }
+
+    @media (min-width: 1280px) {
+      display: block;
+      width: 395px;
+    }
+
 `
 
 export const UserProfileImage = styled.div`
@@ -30,18 +59,32 @@ flex-shrink: 0;
 background-color: grey;
 margin-left: auto;
 margin-right: auto;
-margin-bottom: 60px
+margin-bottom: 60px;
+  @media (min-width: 768px) {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  @media (min-width: 1280px) {
+    margin-left: auto;
+    margin-right: auto;
+  }
 `
 
 export const StyledList = styled.ul`
 list-style-type: none;
 padding: 0;
+  @media (min-width: 768px) {
+width: 320px
+  }
 `
 
 export const ListItem = styled.li`
   display: flex;
   gap: 4px;
   margin-bottom: 20px;
+  &:last-child {
+  margin-bottom: 0; 
+  }
 `
 
 export const Label = styled.span`
@@ -60,4 +103,22 @@ width: 100%;
 border-radius: 20px;
 border: 1px solid var(--unnamed, #54ADFF);
 padding: 4px 10px;
+`
+
+export const LogoutButton = styled.button`
+position: absolute;
+left: 10px;
+bottom: 14px;
+  @media (min-width: 768px) {
+    left: 20px;
+  }
+`
+
+export const EditProfileButton = styled.button`
+position: absolute;
+right: 10px;
+top: 14px;
+  @media (min-width: 768px) {
+    right: 20px;
+  }
 `
