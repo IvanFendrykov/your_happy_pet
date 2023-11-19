@@ -1,4 +1,4 @@
-import { NoticesSearch } from '../NoticesSearch/NoticesSearch';
+import { NoticesSearch } from '../../components/NoticesSearch/NoticesSearch';
 import {} from '..';
 import {} from '..';
 import {} from '..';
