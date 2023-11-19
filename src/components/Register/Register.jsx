@@ -63,7 +63,6 @@ const ValidationInput = values => {
     errors.confirmPassword = 'Passwords do not match';
   }
 
-
   return errors;
 };
 
