@@ -1,9 +1,9 @@
-import { NoticesCategoriesItem } from './NoticesCategoriesItem';
+import { NoticesCategoriesItem } from '../../components/NoticeCategoryItem/NoticesCategoriesItem';
 
 const NoticesCategoriesList = ({ items }) => {
   return (
     <div>
-      {items.map(item => (
+      {items.map((item) => (
         <NoticesCategoriesItem
           description={item.description}
           category={item.category}
