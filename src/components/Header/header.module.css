@@ -1,0 +1,60 @@
+.container {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  position: relative;
+  /* justify-content: space-between; */
+  justify-content: space-evenly;
+
+  margin: 0 auto;
+  padding: 20px 0;
+
+  background-color: #fef9f9;
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    padding: 24px 0;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .container {
+    max-width: 1280px;
+  }
+}
+
+.myСomponent.dark .container {
+  background-color: #165158;
+}
+
+.lightTheme,
+.darkTheme {
+  border: none;
+  border-radius: 50px;
+  background-color: transparent;
+  text-align: center;
+  padding: 0;
+
+  margin-left: auto;
+
+  cursor: pointer;
+}
+
+@media screen and (min-width: 1280px) {
+  .lightTheme,
+  .darkTheme {
+    margin-left: 38px;
+  }
+}
+
+.themeIcon {
+  padding-top: 5px;
+}
+
+.themeIcon {
+  color: #ffc107;
+}
+
+.themeIcon:hover {
+  color: #5090cb;
+}
