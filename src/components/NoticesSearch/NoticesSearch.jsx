@@ -8,3 +8,5 @@ const NoticesSearch = () => {
     </form>
   );
 };
+
+export { NoticesSearch };
