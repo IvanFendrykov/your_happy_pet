@@ -22,10 +22,7 @@ import Layout from './components/Layout/Layout';
 // );
 // const NotFoundPage = lazy(() => import('./pages/NotFoundPage/NotFoundPage'));
 
-
-
 export const App = () => {
-  
   return (
     <>
       <Suspense fallback={<Loader />}>
@@ -54,7 +51,7 @@ export const App = () => {
             <Route path="*" element={<NotFoundPage />} /> */}
           </Route>
         </Routes>
-        </Suspense>
+      </Suspense>
     </>
   );
 };

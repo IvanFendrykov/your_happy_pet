@@ -58,7 +58,7 @@ export const MenuBackground = styled.div`
 
 export const MenuNavBtn = styled.div`
   display: flex;
-  flex-direction: ${props => (props.user ? 'row' : 'column')};
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 12px;
@@ -69,6 +69,7 @@ export const NavContainer = styled.nav`
   flex-direction: column;
   align-items: center;
   gap: 20px;
+  width: 100%;
 `;
 
 export const Middle = styled.div`

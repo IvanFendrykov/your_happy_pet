@@ -4,7 +4,7 @@ import { LiaTimesSolid } from 'react-icons/lia';
 
 export const Backdrop = ({ children, closeModal }) => {
   useEffect(() => {
-    const onPessKeyDown = e => {
+    const onPessKeyDown = (e) => {
       if (e.code === 'Escape') {
         closeModal();
       }
@@ -15,7 +15,7 @@ export const Backdrop = ({ children, closeModal }) => {
     return () => window.removeEventListener('keydown', onPessKeyDown);
   }, [closeModal]);
 
-  const onModalOpen = event => {
+  const onModalOpen = (event) => {
     if (event.target === event.currentTarget) {
       closeModal();
     }

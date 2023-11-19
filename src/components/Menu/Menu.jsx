@@ -1,4 +1,4 @@
-import Logo from 'components/Logo/Logo';
+import Logo from '../Logo/Logo';
 import { LiaTimesSolid } from 'react-icons/lia';
 import { RxHamburgerMenu } from 'react-icons/rx';
 import {
@@ -8,18 +8,18 @@ import {
   MenuBackground,
   LogoutBtn,
 } from './Menu.styled';
-import Nav from 'components/Nav/Nav';
+import Nav from '../Nav/Nav';
 import { useLocation } from 'react-router-dom';
 import { CiLogout } from 'react-icons/ci';
-import Backdrop from 'components/Backdrop/Backdrop';
-import ModalApproveAction from 'components/ModalApproveAction/ModalApproveAction';
+import Backdrop from '../Backdrop/Backdrop';
+import ModalApproveAction from '../ModalApproveAction/ModalApproveAction';
 import useModal from '../../hooks/useModal';
 import { useCallback, useEffect, useState } from 'react';
 import { MobileMenu } from './MobileMenu';
 
 export const Menu = ({ size }) => {
   const [openMenu, setOpenMenu] = useState(false);
-    const { toggleModal, showModal } = useModal(false);
+  const { toggleModal, showModal } = useModal(false);
 
   let url = useLocation();
 
@@ -44,29 +44,21 @@ export const Menu = ({ size }) => {
               <div
                 style={{ display: 'flex', alignItems: 'center', gap: '24px' }}
               >
-                {size[0] >= 768 && isLoggedIn && (
+                {/* {size[0] >= 768 && isLoggedIn && (
                   <LogoutBtn onClick={() => toggleModal()}>
                     Log Out
                     <CiLogout />
                   </LogoutBtn>
-                )}
+                )} */}
                 <CloseBurger onClick={closeMenu}>
                   <LiaTimesSolid />
                 </CloseBurger>
               </div>
             </Top>
-            {size[0] < 768 ? (
-              <MobileMenu
-                isLoggedIn={isLoggedIn}
-                user={user}
-                toggleModal={toggleModal}
-              />
-            ) : (
-              <Nav />
-            )}
+            {size[0] < 768 ? <MobileMenu toggleModal={toggleModal} /> : <Nav />}
 
             {size >= 768 && <Nav />}
-            {showModal && isLoggedIn && (
+            {showModal && (
               <Backdrop closeModal={toggleModal}>
                 <ModalApproveAction closeModal={toggleModal} />
               </Backdrop>

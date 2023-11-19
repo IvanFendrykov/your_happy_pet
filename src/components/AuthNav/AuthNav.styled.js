@@ -16,36 +16,28 @@ export const AuthBtn = styled(Link)`
   align-items: center;
   gap: 8px;
   border-radius: 40px;
-  border: 2px solid var(--header-items-color);
-  background-color: ${props =>
-    props.login ? 'var(  --header-items-color)' : 'var(--label-active-color)'};
+  border: 2px solid #ffc107;
+  background-color: #ffc107;
   text-decoration: none;
 
-  color: ${props =>
-    props.login ? 'var(--label-active-color)' : 'var(  --header-items-color)'};
+  color: #fef9f9;
   font-family: inherit;
   font-size: 16px;
   font-weight: 700;
   line-height: normal;
   letter-spacing: 0.64px;
-  transition: all var(--duration) var(--cubic);
+  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
   svg {
-    fill: var(--label-active-color);
+    fill: #fef9f9;
   }
 
   &:hover {
-    background-color: ${props =>
-      props.login
-        ? 'var(--label-active-color)'
-        : 'var(  --header-items-color)'};
-    color: ${props =>
-      props.login
-        ? 'var(  --header-items-color)'
-        : 'var(--label-active-color)'};
+    background-color: #fef9f9;
+    color: #ffc107;
 
     svg {
-      fill: var(--header-items-color);
+      fill: #ffc107;
     }
   }
 `;
