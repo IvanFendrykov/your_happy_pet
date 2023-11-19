@@ -1,5 +1,5 @@
 import { NoticesSearch } from '../../components/NoticesSearch/NoticesSearch';
-import {} from '../../components';
+import { NoticesCategoriesNav } from '../../components/NoticesCategoriesNav';
 import {} from '../../components';
 import {} from '../../components';
 
@@ -8,6 +8,7 @@ const NoticesPage = () => {
     <div>
       <h2>Find your favorite pet</h2>
       <NoticesSearch />
+      <NoticesCategoriesNav />
     </div>
   );
 };
