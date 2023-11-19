@@ -16,15 +16,17 @@ const NoticesFilters = () => {
               <label>up to 2 years</label>
               <label>from 2 years</label>
             </form>
-          )
+          ),
         )(<button>By gender</button>)(
           isByGenderOpen && (
             <form>
               <label>female</label>
               <label>male</label>
             </form>
-          )
+          ),
         )}
     </div>
   );
 };
+
+export { NoticesFilters };

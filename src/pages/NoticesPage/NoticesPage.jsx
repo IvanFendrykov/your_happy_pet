@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
 import { NoticesSearch } from '../../components/NoticesSearch/NoticesSearch';
 import { NoticesCategoriesNav } from '../../components/NoticesCategoriesNav';
-import {} from '../../components';
-import {} from '../../components';
+import {} from '../../components/NoticesFilters/NoticesFilters';
+import {} from '../../components/NoticesCategoriesList/NoticesCategoriesList';
 import {} from '../../components';
 
 const NoticesPage = () => {
