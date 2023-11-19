@@ -9,10 +9,11 @@ const NoticesPage = () => {
     <div>
       <h2>Find your favorite pet</h2>
       <NoticesSearch />
-      <NoticesCategoriesNav />
-
-      <Link to="">Add pet</Link>
-      <NoticesFilters />
+      <div>
+        <NoticesCategoriesNav />
+        <NoticesFilters />
+        <Link to="">Add pet</Link>
+      </div>
       <NoticesCategoriesList />
     </div>
   );
