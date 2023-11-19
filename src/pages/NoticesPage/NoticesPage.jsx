@@ -17,3 +17,5 @@ const NoticesPage = () => {
     </div>
   );
 };
+
+export { NoticesPage };
