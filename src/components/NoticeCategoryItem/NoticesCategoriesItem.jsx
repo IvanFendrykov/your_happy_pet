@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 const NoticesCategoriesItem = ({
+  onAddToFavourite,
+  onDelete,
   description,
   category,
   place,
