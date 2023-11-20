@@ -9,6 +9,15 @@
     background-repeat: no-repeat;
 }
 
+@media screen and (min-device-pixel-ratio: 2),
+(min-resolution: 192dpi),
+(min-resolution: 2dppx) {
+    .main-page {
+        background-image: url('../../assets/img/main-page/right-animals@2x.png');
+    }
+}
+
+
 .main-page h1 {
     display: block;
     color: #111;
