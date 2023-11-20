@@ -102,6 +102,7 @@ const initialValue = {
         username: values.username,
       };
 
+
       try {
         const response = await dispatch(register(credentials));
         if (response.error) {
@@ -146,10 +147,10 @@ const initialValue = {
         <RegistrationForm onSubmit={handleSubmit}>
           <RegistrationTitle>Registration</RegistrationTitle>
           <UsernameContainer
-            error={errors.username && touched.username}
+            valider={errors.username && touched.username}
           >
             <UsernameInputContainer
-              error={errors.username && touched.username}
+              valider={errors.username && touched.username}
               style={{
                 borderColor:
                   errors.username && touched.username ? '#F43F5E' : '#54ADFF',
@@ -180,7 +181,7 @@ const initialValue = {
 
           <EmailContainer error={errors.email && touched.email}>
             <EmailInputContainer
-              error={errors.email && touched.email}
+              valider={errors.email && touched.email}
               style={{
                 borderColor:
                   errors.email && touched.email ? '#F43F5E' : '#54ADFF',
@@ -211,17 +212,17 @@ const initialValue = {
           </EmailContainer>
 
           <PasswordContainer
-            error={errors.password && touched.password}
+            valider={errors.password && touched.password}
             // secure={isPasswordValid}
           >
             <PasswordInputContainer
-              error={errors.password && touched.password}
+               valider={errors.password && touched.password}
               // secure={isPasswordValid}
               style={{
                 borderColor:
                   errors.password && touched.password
                     ? '#F43F5E'
-                    : isPasswordValid
+                    :  isPasswordValid
                     ? '#00C3AD'
                     : '#54ADFF',
               }}
@@ -238,13 +239,14 @@ const initialValue = {
               <IconPassword>
                 <EyeIcon
                   onClick={toggleVisiblePassword}
-                  error={errors.password && touched.password}
+                  valider={errors.password && touched.password}
                   // secure={isPasswordValid}
                 >
                   {showPassword ? <OpenEye /> : <CloseEye />}
                 </EyeIcon>
                 {isPasswordValid && (
                   <CheckIcon>
+                    <Checkgood/>
                   </CheckIcon>
                 )}
                 {errors.password && touched.password && values.password && (
@@ -253,7 +255,7 @@ const initialValue = {
                       resetForm({ values: { ...values, password: '' } });
                     }}
                   >
-                    <CrossIcon />
+                    <Crosssmal />
                   </IconError>
                 )}
               </IconPassword>
@@ -263,17 +265,18 @@ const initialValue = {
               <MessageError>{errors.password}</MessageError>
             )}
             {isPasswordValid && (
-              <InfoMessage valid={isPasswordValid}>
-                Password is secure
-              </InfoMessage>
+              //  <InfoMessage valid={isPasswordValid}>
+                // Password is secure
+              // </InfoMessage>
+              <InfoMessage>Password is secure</InfoMessage>
             )}
           </PasswordContainer>
 
           <PasswordContainer
-            error={errors.confirmPassword && touched.confirmPassword}
+             valider={errors.confirmPassword && touched.confirmPassword}
           >
             <PasswordInputContainer
-              error={errors.confirmPassword && touched.confirmPassword}
+              valider={errors.confirmPassword && touched.confirmPassword}
               style={{
                 borderColor:
                   errors.confirmPassword && touched.confirmPassword
@@ -293,17 +296,11 @@ const initialValue = {
               <IconPassword>
                 <EyeIcon
                   onClick={toggleVisibleConfirmPassword}
-                  error={errors.confirmPassword && touched.confirmPassword}
+                  valider={errors.confirmPassword && touched.confirmPassword}
                 >
                   {showConfirmPassword ? <OpenEye /> : <CloseEye />}
                 </EyeIcon>
-                {isPasswordValid && (
-                  <CheckIcon>
-                  </CheckIcon>
-                )}
-                {errors.confirmPassword &&
-                  touched.confirmPassword &&
-                  values.confirmPassword && (
+                {errors.confirmPassword && touched.confirmPassword && values.confirmPassword && (
                     <IconError
                       onClick={() => {
                         resetForm({
@@ -311,13 +308,13 @@ const initialValue = {
                         });
                       }}
                     >
-                      <CrossIcon />
+                      <Crosssmal />
                     </IconError>
                   )}
               </IconPassword>
             </PasswordInputContainer>
 
-            {errors.confirmPassword && touched.confirmPassword && (
+             {errors.confirmPassword && touched.confirmPassword && ( 
               <MessageError>{errors.confirmPassword}</MessageError>
             )}
           </PasswordContainer>
