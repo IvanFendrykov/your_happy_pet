@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const NoticesCategoriesItem = ({
   onAddToFavourite,
-  onDelete,
+  onDeleteFromFavourite,
   description,
   category,
   place,
@@ -15,8 +15,8 @@ const NoticesCategoriesItem = ({
       <div>
         <img src="" alt="" />
         <div>{category}</div>
-        <button></button>
-        <button></button>
+        <button onClick={onAddToFavourite}></button>
+        <button onClick={onDeleteFromFavourite}></button>
         <div>
           <div>{place}</div>
           <div>{age}</div>
