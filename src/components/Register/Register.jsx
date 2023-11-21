@@ -8,7 +8,7 @@ import { ReactComponent as CloseEye } from '../../images/icons/eye-closed.svg';
 import { ReactComponent as Checkgood} from '../../images/icons/check-good.svg';
 import {ReactComponent as Crosssmal} from '../../images/icons/cross-smal.svg';
 
-import {register} from '../../redus/auth/operations';
+import {register} from '../../redus/auth/operation';
 
 import {
  RegistrationForm,
