@@ -8,7 +8,7 @@ import { NoticesFilters } from '../../components/NoticesFilters/NoticesFilters';
 import { NoticesCategoriesList } from '../../components/NoticesCategoriesList/NoticesCategoriesList';
 
 const pets = [
-  {category:"in good hands", place: "Ivano - Frankivsk", age: "1 year", gender: "female"},
+  {category:"in good hands", place: "Ivano - Frankivsk", age: "1 year", gender: "female", description: "Сute dog looking for a home"},
   {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}];
 
 const NoticesPage = () => {
