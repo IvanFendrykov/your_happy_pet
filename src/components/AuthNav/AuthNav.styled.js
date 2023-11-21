@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import {props} from '../Header/Header'
 
 export const AuthContainer = styled.div`
   display: flex;
@@ -16,28 +17,36 @@ export const AuthBtn = styled(Link)`
   align-items: center;
   gap: 8px;
   border-radius: 40px;
-  border: 2px solid #ffc107;
-  background-color: #ffc107;
+  border: 2px solid var(--header-items-color);
+  background-color: ${props =>
+    props.login ? 'var(  --header-items-color)' : 'var(--label-active-color)'};
   text-decoration: none;
 
-  color: #fef9f9;
+  color: ${props =>
+    props.login ? 'var(--label-active-color)' : 'var(  --header-items-color)'};
   font-family: inherit;
   font-size: 16px;
   font-weight: 700;
   line-height: normal;
   letter-spacing: 0.64px;
-  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all var(--duration) var(--cubic);
 
   svg {
-    fill: #fef9f9;
+    fill: var(--label-active-color);
   }
 
   &:hover {
-    background-color: #fef9f9;
-    color: #ffc107;
+    background-color: ${props =>
+      props.login
+        ? 'var(--label-active-color)'
+        : 'var(  --header-items-color)'};
+    color: ${props =>
+      props.login
+        ? 'var(  --header-items-color)'
+        : 'var(--label-active-color)'};
 
     svg {
-      fill: #ffc107;
+      fill: var(--header-items-color);
     }
   }
 `;

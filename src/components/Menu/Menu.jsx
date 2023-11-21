@@ -17,7 +17,11 @@ import useModal from '../../hooks/useModal';
 import { useCallback, useEffect, useState } from 'react';
 import { MobileMenu } from './MobileMenu';
 
+
 export const Menu = ({ size }) => {
+  const isLoggedIn =false;
+const user = true;
+
   const [openMenu, setOpenMenu] = useState(false);
   const { toggleModal, showModal } = useModal(false);
 
@@ -30,6 +34,8 @@ export const Menu = ({ size }) => {
   useEffect(() => {
     closeMenu();
   }, [url, closeMenu]);
+
+ 
 
   return (
     <>
@@ -44,21 +50,29 @@ export const Menu = ({ size }) => {
               <div
                 style={{ display: 'flex', alignItems: 'center', gap: '24px' }}
               >
-                {/* {size[0] >= 768 && isLoggedIn && (
+                {size[0] >= 768 && isLoggedIn && (
                   <LogoutBtn onClick={() => toggleModal()}>
                     Log Out
                     <CiLogout />
                   </LogoutBtn>
-                )} */}
+                )}
                 <CloseBurger onClick={closeMenu}>
                   <LiaTimesSolid />
                 </CloseBurger>
               </div>
             </Top>
-            {size[0] < 768 ? <MobileMenu toggleModal={toggleModal} /> : <Nav />}
+            {size[0] < 768 ? (
+              <MobileMenu
+                isLoggedIn={isLoggedIn}
+                user={user}
+                toggleModal={toggleModal}
+              />
+            ) : (
+              <Nav />
+            )}
 
             {size >= 768 && <Nav />}
-            {showModal && (
+            {showModal && isLoggedIn && (
               <Backdrop closeModal={toggleModal}>
                 <ModalApproveAction closeModal={toggleModal} />
               </Backdrop>
