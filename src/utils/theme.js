@@ -12,10 +12,14 @@ export const theme = {
   },
   space: [0, 2, 4, 8, 16, 32, 64, 128, 256],
   fonts: {
-    body: 'system-ui, sans-serif',
-    heading: 'system-ui, sans-serif',
-    monospace: 'Menlo, monospace',
-  },
+      light: 'Manrope-Light', //200
+      extraLight: 'Manrope-ExtraLight', //300
+      regular: 'Manrope-Regular', //400
+      medium: 'Manrope-Medium', //500
+      semiBold: 'Manrope-SemiBold', //600
+      bold: 'Manrope-Bold', //700
+      extraBold: 'Manrope-ExtraBold', //800
+    },
   fontSizes: {
     xs: '12px',
     s: '14px',
