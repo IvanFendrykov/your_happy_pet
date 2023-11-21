@@ -12,14 +12,14 @@ const pets = [
   {category:"lost/found", place: "Lviv", age: "1 year", gender: "female", description: "Сute dog looking for a home"},
   {category:"favorite ads", place: "Khmelnytskyi", age: "1 year", gender: "female", description: "Сute dog looking for a home"},
   {category:"my ads", place: "Ivano - Frankivsk", age: "1 year", gender: "female", description: "Сute dog looking for a home"},
-  {category:"sell", place: "Ivano - Frankivsk", age: "1 year", gender: "female", description: "Сute dog looking for a home"},
+  {category:"sell", place: "Ivano - Frankivsk", age: "1 year", gender: "male", description: "Сute dog looking for a home"},
   {category:"in good hands", place: "Ivano - Frankivsk", age: "1 year", gender: "female", description: "Сute dog looking for a home"},
+  {category:"lost/found", place: "Ivano - Frankivsk", age: "1 year", gender: "female", description: "Сute dog looking for a home"},
+  {category:"my ads", place: "Ivano - Frankivsk", age: "2 years", gender: "male", description: "Сute dog looking for a home"},
   {category:"in good hands", place: "Ivano - Frankivsk", age: "1 year", gender: "female", description: "Сute dog looking for a home"},
-  {category:"in good hands", place: "Ivano - Frankivsk", age: "2 years", gender: "female", description: "Сute dog looking for a home"},
+  {category:"favorite ads", place: "Ivano - Frankivsk", age: "5 years", gender: "male", description: "Сute dog looking for a home"},
   {category:"in good hands", place: "Ivano - Frankivsk", age: "1 year", gender: "female", description: "Сute dog looking for a home"},
-  {category:"in good hands", place: "Ivano - Frankivsk", age: "5 years", gender: "female", description: "Сute dog looking for a home"},
-  {category:"in good hands", place: "Ivano - Frankivsk", age: "1 year", gender: "female", description: "Сute dog looking for a home"},
-  {category:"in good hands", place: "Ivano - Frankivsk", age: "4 year", gender: "female", description: "Сute dog looking for a home"}
+  {category:"lost/found", place: "Ivano - Frankivsk", age: "4 year", gender: "male", description: "Сute dog looking for a home"}
 ];
 
 const NoticesPage = () => {
