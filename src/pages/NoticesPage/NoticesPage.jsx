@@ -7,7 +7,7 @@ import { NoticesCategoriesNav } from '../../components/NoticesCategoriesNav/Noti
 import { NoticesFilters } from '../../components/NoticesFilters/NoticesFilters';
 import { NoticesCategoriesList } from '../../components/NoticesCategoriesList/NoticesCategoriesList';
 
-const pets = [
+const petsData = [
   {imageLink: "https://fastly.picsum.photos/id/237/200/300.jpg?hmac=TmmQSbShHz9CdQm0NkEjx1Dyh_Y984R9LpNrpvH2D_U", category:"in good hands", place: "Ivano - Frankivsk", age: "1 year", gender: "female", description: "Сute dog looking for a home"},
   {imageLink: "https://fastly.picsum.photos/id/237/200/300.jpg?hmac=TmmQSbShHz9CdQm0NkEjx1Dyh_Y984R9LpNrpvH2D_U", category:"lost/found", place: "Lviv", age: "2 years", gender: "female", description: "Сute dog looking for a home"},
   {imageLink: "https://fastly.picsum.photos/id/237/200/300.jpg?hmac=TmmQSbShHz9CdQm0NkEjx1Dyh_Y984R9LpNrpvH2D_U", category:"favorite ads", place: "Khmelnytskyi", age: "1 year", gender: "female", description: "Сute dog looking for a home"},
