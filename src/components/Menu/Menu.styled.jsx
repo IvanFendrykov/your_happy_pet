@@ -46,14 +46,21 @@ export const MenuBackground = styled.div`
   top: 0;
   left: 0;
   z-index: 5;
-  width: calc(100% - 40px);
-  height: calc(100% - 44px);
+  width: 100%;
+  height: 100%;
   background-color: #fff;
   padding: 22px 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
   scroll: no-scroll;
+`;
+
+export const MenuNavBtnUser = styled.div`
+  display: flex;
+    justify-content: center;
+  align-items: center;
+  gap: 12px;
 `;
 
 export const MenuNavBtn = styled.div`

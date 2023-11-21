@@ -15,7 +15,7 @@ export const user = {
 };
 
 export const props = {
-  login: false,
+  login: true,
 };
 
 const Header = ({ handleClick }) => {

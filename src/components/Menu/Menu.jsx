@@ -7,6 +7,7 @@ import {
   CloseBurger,
   MenuBackground,
   LogoutBtn,
+  MenuNavBtnUser,
 } from './Menu.styled';
 import Nav from '../Nav/Nav';
 import { useLocation } from 'react-router-dom';
@@ -16,10 +17,11 @@ import ModalApproveAction from '../ModalApproveAction/ModalApproveAction';
 import useModal from '../../hooks/useModal';
 import { useCallback, useEffect, useState } from 'react';
 import { MobileMenu } from './MobileMenu';
-
+import { isLoggedIn } from '../Header/Header';
+import AuthNav from '../../components/AuthNav/AuthNav';
 
 export const Menu = ({ size }) => {
-  const isLoggedIn =false;
+  
 const user = true;
 
   const [openMenu, setOpenMenu] = useState(false);
@@ -56,6 +58,11 @@ const user = true;
                     <CiLogout />
                   </LogoutBtn>
                 )}
+                {size[0] >= 768 && !isLoggedIn && (
+                 <MenuNavBtnUser>
+                 <AuthNav />
+               </MenuNavBtnUser>
+                )}
                 <CloseBurger onClick={closeMenu}>
                   <LiaTimesSolid />
                 </CloseBurger>
@@ -71,7 +78,7 @@ const user = true;
               <Nav />
             )}
 
-            {size >= 768 && <Nav />}
+            {/* {size[0] >= 768 && <Nav />} */}
             {showModal && isLoggedIn && (
               <Backdrop closeModal={toggleModal}>
                 <ModalApproveAction closeModal={toggleModal} />

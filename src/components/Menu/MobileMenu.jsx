@@ -5,6 +5,7 @@ import icon from '../../assets/images/user/user.png';
 import {
   NavContainer,
   MenuNavBtn,
+  MenuNavBtnUser,
   Middle,
   User,
   LogoutBtn,
@@ -19,12 +20,12 @@ export const MobileMenu = ({   toggleModal }) => {
     <>
       <Middle>
         {isLoggedIn ? (
-          <MenuNavBtn user="true">
+          <MenuNavBtnUser user="true">
             <Link to="/user">
               <img src={icon} alt="icon" />
             </Link>
             <User>{user.name}</User>
-          </MenuNavBtn>
+          </MenuNavBtnUser>
         ) : (
           <MenuNavBtn>
             <AuthNav />
