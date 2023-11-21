@@ -36,3 +36,7 @@ img {
 button {
   cursor: pointer;
 }
+
+samp {
+padding: 0;
+};
