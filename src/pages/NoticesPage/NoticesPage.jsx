@@ -7,6 +7,8 @@ import { NoticesCategoriesNav } from '../../components/NoticesCategoriesNav/Noti
 import { NoticesFilters } from '../../components/NoticesFilters/NoticesFilters';
 import { NoticesCategoriesList } from '../../components/NoticesCategoriesList/NoticesCategoriesList';
 
+const pets = [];
+
 const NoticesPage = () => {
   return (
     <div>
