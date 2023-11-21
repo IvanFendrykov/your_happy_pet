@@ -9,7 +9,7 @@ import { NoticesCategoriesList } from '../../components/NoticesCategoriesList/No
 
 const pets = [
   {category:"in good hands", place: "Ivano - Frankivsk", age: "1 year", gender: "female", description: "Сute dog looking for a home"},
-  {category:"lost/found", place: "Lviv", age: "1 year", gender: "female", description: "Сute dog looking for a home"},
+  {category:"lost/found", place: "Lviv", age: "2 years", gender: "female", description: "Сute dog looking for a home"},
   {category:"favorite ads", place: "Khmelnytskyi", age: "1 year", gender: "female", description: "Сute dog looking for a home"},
   {category:"my ads", place: "Lviv", age: "2 years", gender: "female", description: "Сute dog looking for a home"},
   {category:"sell", place: "Ivano - Frankivsk", age: "1 year", gender: "male", description: "Сute dog looking for a home"},
