@@ -32,7 +32,7 @@ const NoticesPage = () => {
         <NoticesFilters />
         <Link to="">Add pet</Link>
       </div>
-      <NoticesCategoriesList />
+      <NoticesCategoriesList data={petsData} />
     </div>
   );
 };
