@@ -28,6 +28,10 @@ export const App = () => {
       <Suspense fallback={<Loader />}>
         <Routes>
           <Route path="/" element={<Layout />}>
+            <Route
+              path="/user"
+              element={<PrivateRoute redirectTo="/login" component={<User />} />}
+            />
             {/* <Route index element={<MainPage />} />
             <Route path="main" element={<MainPage />} />
             <Route path="news" element={<NewsPage />} />
