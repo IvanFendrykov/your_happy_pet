@@ -9,7 +9,7 @@ import { useWindowSize } from '../../hooks/useResize';
 
 import { Menu } from '../Menu/Menu';
 
-export let isLoggedIn = false; 
+export let isLoggedIn = true; 
 export const user = {
   name: 'test',
 };
