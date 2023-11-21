@@ -9,6 +9,7 @@ import { NoticesCategoriesList } from '../../components/NoticesCategoriesList/No
 
 const pets = [
   {category:"in good hands", place: "Ivano - Frankivsk", age: "1 year", gender: "female", description: "Сute dog looking for a home"},
+  {category:"lost/found", place: "Lviv", age: "1 year", gender: "female", description: "Сute dog looking for a home"},
   {category:"in good hands", place: "Ivano - Frankivsk", age: "1 year", gender: "female", description: "Сute dog looking for a home"},
   {category:"in good hands", place: "Ivano - Frankivsk", age: "1 year", gender: "female", description: "Сute dog looking for a home"},
   {category:"in good hands", place: "Ivano - Frankivsk", age: "1 year", gender: "female", description: "Сute dog looking for a home"},
@@ -18,8 +19,8 @@ const pets = [
   {category:"in good hands", place: "Ivano - Frankivsk", age: "1 year", gender: "female", description: "Сute dog looking for a home"},
   {category:"in good hands", place: "Ivano - Frankivsk", age: "1 year", gender: "female", description: "Сute dog looking for a home"},
   {category:"in good hands", place: "Ivano - Frankivsk", age: "1 year", gender: "female", description: "Сute dog looking for a home"},
-  {category:"in good hands", place: "Ivano - Frankivsk", age: "1 year", gender: "female", description: "Сute dog looking for a home"},
-  {category:"in good hands", place: "Ivano - Frankivsk", age: "1 year", gender: "female", description: "Сute dog looking for a home"}];
+  {category:"in good hands", place: "Ivano - Frankivsk", age: "1 year", gender: "female", description: "Сute dog looking for a home"}
+];
 
 const NoticesPage = () => {
   return (
