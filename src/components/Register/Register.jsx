@@ -104,7 +104,7 @@ const initialValue = {
 
 
       try {
-        const response = await dispatch(register(credentials));
+        const response = dispatch(register(credentials));
         if (response.error) {
           setAvailableEmail(false);
         } else {
