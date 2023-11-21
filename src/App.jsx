@@ -7,10 +7,6 @@ import PrivateRoute from './PrivateRoute/PrivateRoute';
 
 import Loader from './components/Loader/Loader';
 
-import Layout from './components/Layout/Layout';
-// import NoticesCategoriesList from './components/NoticesCategoriesList/NoticesCategoriesList';
-// import AddPetPage from './pages/AddPetPage/AddPetPage';
-
 // const MainPage = lazy(() => import('./pages/MainPage/MainPage'));
 // const RegisterPage = lazy(() => import('./pages/RegisterPage/RegisterPage'));
 // const LoginPage = lazy(() => import('./pages/LoginPage/LoginPage'));
