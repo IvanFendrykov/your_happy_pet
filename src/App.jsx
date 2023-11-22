@@ -4,7 +4,6 @@ import { Route, Routes } from 'react-router-dom';
 
 // import PublicRoute from './PublicRoute/PublicRoute';
 // import PrivateRoute from './PrivateRoute/PrivateRoute';
- import Layout from './components/Layout/Layout';
 import Loader from './components/Loader/Loader';
 
 import Layout from './components/Layout/Layout';
@@ -21,7 +20,6 @@ const OurFriendsPage = lazy(() =>
   import('./pages/OurFriendsPage/OurFriendsPage')
 );
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage/NotFoundPage.jsx'));
-=======
 // import {NoticesCategoriesList} from  './components/NoticesCategoriesList/NoticesCategoriesList';
 // import AddPetPage from './pages/AddPetPage/AddPetPage'
 // const MainPage = lazy(() => import('./pages/MainPage/MainPage'));
