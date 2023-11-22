@@ -3,13 +3,14 @@ import axios from 'axios';
 axios.defaults.baseURL = 'https://happy-pets-rest-api.onrender.com/';
 
 const setAuthHeader = token => {
-    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-  };
+  axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+};
 
 const clearAuthHeader = () => {
-    axios.defaults.headers.common.Authorization = '';
-  };
-  
+  axios.defaults.headers.common.Authorization = '';
+};
+
+
 
 
 export const register = createAsyncThunk(
@@ -30,5 +31,26 @@ export const register = createAsyncThunk(
       return rejectWithValue(error.message);
     }
   },
+);
+
+export const login = createAsyncThunk(
+  'auth/login',
+  async (credentials, { rejectWithValue }) => {
+    try {
+      const response = await axios.post('http://localhost:3001/api/auth/login', credentials);
+      setAuthHeader(response.data.accessToken);
+      localStorage.setItem('refreshToken', response.data.refreshToken);
+      
+      if (response.status === 200) {
+        console.groupCollapsed('Login successful');
+        console.log('Login successful:', response);
+        console.groupEnd();
+      }
+      
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
 );
 
