@@ -40,9 +40,37 @@ function UserPage() {
     const [currentCity, setCurrentCity] = useState(currentUser.city)
 
     const toggleForm = (e) => {
-e.preventDefault()
+        e.preventDefault()
         setClicked(!clicked)
         console.log(clicked);
+    }
+      const onUserNameChange = (e) => {
+        setCurrentName(e.target.value)
+    }
+    const onUserEmailChange = (e) => {
+        setCurrentEmail(e.target.value)
+    }
+    const onUserBdayChange = (e) => {
+        setCurrentBday(e.target.value)
+    }
+    const onUserPhoneChange = (e) => {
+        setCurrentPhone(e.target.value)
+    }
+    const onUserCityChange = (e) => {
+        setCurrentCity(e.target.value)
+    }
+    const submitForm = (e) => {
+        e.preventDefault()
+        const editedUser = {
+            name: currentName,
+            email: currentEmail,
+            bday: currentBday,
+            phone: currentPhone,
+            city: currentCity
+        }
+        console.log(editedUser);
+        setCurrentUser(editedUser)
+        setClicked(false)
     }
     return (
         <>
@@ -54,26 +82,26 @@ e.preventDefault()
                         <StyledList>
                             <ListItem>
                                 <Label>Name:</Label>
-                                <Span type="text" name="name" placeholder={currentUser.name} disabled={!clicked}></Span>
+                                <Span type="text" name="name" value={currentName} disabled={!clicked} onChange={onUserNameChange}></Span>
                             </ListItem>
                             <ListItem>
                                 <Label>Email:</Label>
-                                <Span type="email" name="email" placeholder={currentUser.email} disabled={!clicked}></Span>
+                                <Span type="email" name="email" value={currentEmail} disabled={!clicked} onChange={onUserEmailChange}></Span>
                             </ListItem>
                             <ListItem>
                                 <Label>Birthday:</Label>
-                                <Span type="text" name="birthday" placeholder={currentUser.bday} disabled={!clicked}></Span>
+                                <Span type="text" name="birthday" value={currentBday} disabled={!clicked} onChange={onUserBdayChange}></Span>
                             </ListItem>
                             <ListItem>
                                 <Label>Phone:</Label>
-                                <Span type="text" name="phone" placeholder={currentUser.phone} disabled={!clicked}></Span>
+                                <Span type="text" name="phone" value={currentPhone} disabled={!clicked} onChange={onUserPhoneChange}></Span>
                             </ListItem>
                             <ListItem>
                                 <Label>City:</Label>
-                                <Span type="text" name="city" placeholder={currentUser.city} disabled={!clicked}></Span>
+                                <Span type="text" name="city" value={currentCity} disabled={!clicked} onChange={onUserCityChange}></Span>
                             </ListItem>
                         </StyledList>
-                        {clicked ? <SaveButton>save</SaveButton> : <LogoutButton>logout</LogoutButton>}
+                        {clicked ? <SaveButton onClick={submitForm}>save</SaveButton> : <LogoutButton>logout</LogoutButton>}
                         <EditProfileButton onClick={toggleForm}>Edit</EditProfileButton>
                     </UserCardWrapper>
                 </Section>
