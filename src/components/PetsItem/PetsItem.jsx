@@ -3,7 +3,7 @@ import { DeleteButton, Label, PetContainer, PetImage, PetInfo, PetInfoWrapper } 
 
 function PetsItem({ pet }) {
     const onDelete = (id) => {
-        //do delete request to delete it from list
+        //do delete request by pet id to delete it from list
         console.log(pet);
     }
     return (

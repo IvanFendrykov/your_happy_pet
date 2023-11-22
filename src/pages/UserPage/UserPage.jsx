@@ -68,6 +68,7 @@ function UserPage() {
             phone: currentPhone,
             city: currentCity
         }
+      
         console.log(editedUser);
         setCurrentUser(editedUser)
         setClicked(false)
