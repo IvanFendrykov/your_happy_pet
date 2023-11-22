@@ -31,7 +31,7 @@ const pets = [{
 
 
 function UserPage() {
-    const [clicked, setClicked] = useState(false)
+    const [clicked, setClicked] = useState(false) //it is temporary, need to send this obj on back
     const [currentUser, setCurrentUser] = useState(user)
     const [currentName, setCurrentName] = useState(currentUser.name)
     const [currentEmail, setCurrentEmail] = useState(currentUser.email)
