@@ -28,7 +28,7 @@ export const H2 = styled.h2`
   margin-bottom: 24px;
 `;
 
-export const UserCardWrapper = styled.div`
+export const UserCardWrapper = styled.form`
 position: relative;
 border-radius: 20px;
 background: #FFF;
@@ -95,7 +95,7 @@ width: 100px;
 padding: 4px;
 `
 
-export const Span = styled.div`
+export const Span = styled.input`
 display: flex;
 font-size: 12px;
 letter-spacing: 0.48px;
@@ -120,5 +120,14 @@ right: 10px;
 top: 14px;
   @media (min-width: 768px) {
     right: 20px;
+  }
+`
+
+export const SaveButton = styled.button`
+position: absolute;
+left: 10px;
+bottom: 14px;
+  @media (min-width: 768px) {
+    left: 20px;
   }
 `

@@ -1,5 +1,6 @@
+import { useState } from 'react'
 import PetsList from '../../components/PetsList/PetsList'
-import { EditProfileButton, H2, Label, ListItem, LogoutButton, Section, Span, StyledList, UserCardWrapper, UserProfileImage, Wrapper } from './UserPage.styled'
+import { SaveButton, EditProfileButton, H2, Label, ListItem, LogoutButton, Section, Span, StyledList, UserCardWrapper, UserProfileImage, Wrapper } from './UserPage.styled'
 
 const user = {
     name: "fakeName",
@@ -30,6 +31,19 @@ const pets = [{
 
 
 function UserPage() {
+    const [clicked, setClicked] = useState(false)
+    const [currentUser, setCurrentUser] = useState(user)
+    const [currentName, setCurrentName] = useState(currentUser.name)
+    const [currentEmail, setCurrentEmail] = useState(currentUser.email)
+    const [currentBday, setCurrentBday] = useState(currentUser.bday)
+    const [currentPhone, setCurrentPhone] = useState(currentUser.phone)
+    const [currentCity, setCurrentCity] = useState(currentUser.city)
+
+    const toggleForm = (e) => {
+e.preventDefault()
+        setClicked(!clicked)
+        console.log(clicked);
+    }
     return (
         <>
             <Wrapper>
@@ -40,27 +54,27 @@ function UserPage() {
                         <StyledList>
                             <ListItem>
                                 <Label>Name:</Label>
-                                <Span>{user.name}</Span>
+                                <Span type="text" name="name" placeholder={currentUser.name} disabled={!clicked}></Span>
                             </ListItem>
                             <ListItem>
                                 <Label>Email:</Label>
-                                <Span>{user.email}</Span>
+                                <Span type="email" name="email" placeholder={currentUser.email} disabled={!clicked}></Span>
                             </ListItem>
                             <ListItem>
                                 <Label>Birthday:</Label>
-                                <Span>{user.bday}</Span>
+                                <Span type="text" name="birthday" placeholder={currentUser.bday} disabled={!clicked}></Span>
                             </ListItem>
                             <ListItem>
                                 <Label>Phone:</Label>
-                                <Span>{user.phone}</Span>
+                                <Span type="text" name="phone" placeholder={currentUser.phone} disabled={!clicked}></Span>
                             </ListItem>
                             <ListItem>
                                 <Label>City:</Label>
-                                <Span>{user.city}</Span>
+                                <Span type="text" name="city" placeholder={currentUser.city} disabled={!clicked}></Span>
                             </ListItem>
                         </StyledList>
-                        <LogoutButton>logout</LogoutButton>
-                        <EditProfileButton>Edit</EditProfileButton>
+                        {clicked ? <SaveButton>save</SaveButton> : <LogoutButton>logout</LogoutButton>}
+                        <EditProfileButton onClick={toggleForm}>Edit</EditProfileButton>
                     </UserCardWrapper>
                 </Section>
                 <Section>
