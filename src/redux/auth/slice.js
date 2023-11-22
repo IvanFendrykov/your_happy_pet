@@ -1,3 +1,4 @@
+
 import { createSlice } from '@reduxjs/toolkit';
 import { register } from './operation';
 
@@ -21,3 +22,4 @@ const authSlice = createSlice({
 });
 
 export const authReducer = authSlice.reducer;
+

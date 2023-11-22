@@ -13,6 +13,7 @@ const clearAuthHeader = () => {
 
 
 export const register = createAsyncThunk(
+
   'auth/register',
   async (credentials, { rejectWithValue }) => {
     try {
