@@ -2,9 +2,13 @@
 import { DeleteButton, Label, PetContainer, PetImage, PetInfo, PetInfoWrapper } from './PetsItem.styled'
 
 function PetsItem({ pet }) {
+    const onDelete = (id) => {
+        //do delete request to delete it from list
+        console.log(pet);
+    }
     return (
         <PetContainer >
-            <DeleteButton>Delete</DeleteButton>
+            <DeleteButton onClick={() => onDelete(pet.id)}>Delete</DeleteButton>
             <PetImage src={pet.imageUrl} alt={pet.name} />
             <PetInfoWrapper>
                 <PetInfo><Label>Name:</Label> {pet.name}</PetInfo>

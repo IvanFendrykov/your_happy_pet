@@ -19,7 +19,7 @@ const pets = [{
     comments: 'A cute and fluffy kitty.',
 }, {
     id: 1,
-    imageUrl: 'https://placekitten.com/200/200',
+    imageUrl: 'https://placekitten.com/200/210',
     name: 'Fluffy',
     dateOfBirth: '2020-01-01',
     type: 'Cat',
@@ -31,8 +31,8 @@ const pets = [{
 
 
 function UserPage() {
-    const [clicked, setClicked] = useState(false) //it is temporary, need to send this obj on back
-    const [currentUser, setCurrentUser] = useState(user)
+    const [clicked, setClicked] = useState(false) 
+    const [currentUser, setCurrentUser] = useState(user)//it is temporary, need to send this obj on back
     const [currentName, setCurrentName] = useState(currentUser.name)
     const [currentEmail, setCurrentEmail] = useState(currentUser.email)
     const [currentBday, setCurrentBday] = useState(currentUser.bday)

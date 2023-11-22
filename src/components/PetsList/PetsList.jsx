@@ -1,3 +1,4 @@
+
 import PetsItem from '../PetsItem/PetsItem';
 
 function PetsList({ pets }) {
