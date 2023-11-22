@@ -1,6 +1,6 @@
 import { FiTrash2 } from 'react-icons/fi';
 import { useDispatch } from 'react-redux';
-import { closeModal } from 'redus/modal/modalReducer';
+import { closeModal } from 'redux/modal/modalReducer';
 // import { removeNotice } from 'redus/notices/noticesOperations';
 
 import {

@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { CgClose } from 'react-icons/cg';
 import { useDispatch } from 'react-redux';
-import { closeModal } from 'redus/modal/modalReducer';
+import { closeModal } from 'redux/modal/modalReducer';
 import { Backdrop, Content, BtnClose } from './ModalNotice.styled';
 
 const modalRoot = document.querySelector('#modal-root');

@@ -1,9 +1,9 @@
 import { toast } from 'react-hot-toast';
 import { VscHeart } from 'react-icons/vsc';
 import { useDispatch, useSelector } from 'react-redux';
-// import { selectAuth, selectIsLoggedIn } from 'redus/auth/authSelectors';
-import { closeModal } from 'redus/modal/modalReducer';
-// import { favoriteNotice } from 'redus/notices/noticesOperations';
+// import { selectAuth, selectIsLoggedIn } from 'redux/auth/authSelectors';
+import { closeModal } from 'redux/modal/modalReducer';
+// import { favoriteNotice } from 'redux/notices/noticesOperations';
 // import { makeCategory } from '../NoticeCategoryItem/NoticeCategoryItem';
 import {
   Image,
