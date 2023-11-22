@@ -1,7 +1,13 @@
 import { useEffect, useState } from 'react';
 import { fetchOurFriendsApi } from '../../servises/fetchOurFriendApi';
 
+import { Container, Title, List, ListElement, Link, Image, CartTitle, ElementContainer, CartList, H } from "./OurFriendsPage.styled";
+
 const OurFriendsPage = () => {
+
+    const reserveImg = 'https://i.seadn.io/gae/2hDpuTi-0AMKvoZJGd-yKWvK4tKdQr_kLIpB_qSeMau2TNGCNidAosMEvrEXFO9G6tmlFlPQplpwiqirgrIPWnCKMvElaYgI-HiVvXc?auto=format&dpr=1&w=1000'
+
+    const reserveMessage = 'Check details on website';
 
     const [ourFriends, setOurFriends] = useState([]);
 
@@ -19,37 +25,39 @@ const OurFriendsPage = () => {
     }, []);
 
     return (
-        <div>
-            <h1>Our friends</h1>
-            <ul>
+        <Container>
+            <Title>Our friends</Title>
+            <List>
                 {ourFriends.map(ourFriend => (
-                    <li key={ourFriend.title}>
-                        <h2>{ourFriend.title}</h2>
-                        <div>
-                            <img src={ourFriend.img} alt={ourFriend.title} />
-                            <ul>
-                                <li>
-                                    <h3>Time:</h3>
-                                    <span>{ourFriend.time}</span>
-                                </li>
-                                <li>
-                                    <h3>Adress:</h3>
-                                    <span>{ourFriend.adress}</span>
-                                </li>
-                                <li>
-                                    <h3>Email:</h3>
-                                    <span>{ourFriend.email}</span>
-                                </li>
-                                <li>
-                                    <h3>Phone:</h3>
-                                    <span>{ourFriend.phone}</span>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
+                    <ListElement key={ourFriend._id}>
+                        <Link href={ourFriend.url}>
+                            <CartTitle>{ourFriend.title}</CartTitle>
+                            <ElementContainer>
+                                <Image src={ourFriend.imageUrl ? ourFriend.imageUrl : reserveImg} alt={ourFriend.title} />
+                                <CartList>
+                                    <li>
+                                        <H>Time:</H>
+                                        <span>{ourFriend.time ? ourFriend.time : reserveMessage}</span>
+                                    </li>
+                                    <li>
+                                        <H>Adress:</H>
+                                        <span>{ourFriend.address ? ourFriend.address : reserveMessage}</span>
+                                    </li>
+                                    <li>
+                                        <H>Email:</H>
+                                        <span>{ourFriend.email ? ourFriend.email : reserveMessage}</span>
+                                    </li>
+                                    <li>
+                                        <H>Phone:</H>
+                                        <span>{ourFriend.phone ? ourFriend.phone : reserveMessage}</span>
+                                    </li>
+                                </CartList>
+                            </ElementContainer>
+                        </Link>
+                    </ListElement>
                 ))}
-            </ul>
-        </div>
+            </List>
+        </Container>
     );
 }
 
