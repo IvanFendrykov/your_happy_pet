@@ -1,12 +1,13 @@
 import { Suspense } from 'react';
-import { lazy } from 'react';
+// import { lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
-import PublicRoute from './PublicRoute/PublicRoute';
-import PrivateRoute from './PrivateRoute/PrivateRoute';
-
+// import PublicRoute from './PublicRoute/PublicRoute';
+// import PrivateRoute from './PrivateRoute/PrivateRoute';
+ import Layout from './components/Layout/Layout';
 import Loader from './components/Loader/Loader';
-
+// import {NoticesCategoriesList} from  './components/NoticesCategoriesList/NoticesCategoriesList';
+// import AddPetPage from './pages/AddPetPage/AddPetPage'
 // const MainPage = lazy(() => import('./pages/MainPage/MainPage'));
 // const RegisterPage = lazy(() => import('./pages/RegisterPage/RegisterPage'));
 // const LoginPage = lazy(() => import('./pages/LoginPage/LoginPage'));
@@ -16,6 +17,7 @@ import Loader from './components/Loader/Loader';
 // const OurFriendsPage = lazy(() =>
 //   import('./pages/OurFriendsPage/OurFriendsPage')
 // );
+
 // const NotFoundPage = lazy(() => import('./pages/NotFoundPage/NotFoundPage'));
 
 export const App = () => {
@@ -41,10 +43,10 @@ export const App = () => {
               <Route path="login" element={<LoginPage />} />
             </Route>
             <Route element={<PrivateRoute />}>
-              <Route path="user" element={<UserPage />} />
-              <Route path="add-pet" element={<AddPetPage />} />
-            </Route>
-            <Route path="*" element={<NotFoundPage />} /> */}
+              <Route path="user" element={<UserPage />} /> */}
+              {/* <Route path="add-pet" element={<AddPetPage />} /> */}
+            {/* </Route> */}
+            {/* <Route path="*" element={<NotFoundPage />} /> */}
           </Route>
         </Routes>
       </Suspense>
