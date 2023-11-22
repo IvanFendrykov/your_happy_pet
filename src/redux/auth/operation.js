@@ -13,22 +13,22 @@ const clearAuthHeader = () => {
 
 
 export const register = createAsyncThunk(
-    'auth/register',
-    async (credentials, { rejectWithValue }) => {
-      try {
-        const response = await axios.post('api/auth/register', credentials);
-        // setAuthHeader(response.data.accessToken);
-        // localStorage.setItem('refreshToken', response.data.refreshToken);
-        return response.data;
-      } catch (error) {
-        const {code} = error.response.data;
-        if(code === 11000) 
-          return rejectWithValue({
-            message: 'User with this email already exist',
-          });
-          return rejectWithValue(error.message);
-        } 
-        
-      }
 
-  );
+  'auth/register',
+  async (credentials, { rejectWithValue }) => {
+    try {
+      const response = await axios.post('api/auth/register', credentials);
+      // setAuthHeader(response.data.accessToken);
+      // localStorage.setItem('refreshToken', response.data.refreshToken);
+      return response.data;
+    } catch (error) {
+      const { code } = error.response.data;
+      if (code === 11000)
+        return rejectWithValue({
+          message: 'User with this email already exist',
+        });
+      return rejectWithValue(error.message);
+    }
+  },
+);
+

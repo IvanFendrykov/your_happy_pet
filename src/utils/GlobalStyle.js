@@ -9,14 +9,54 @@ export const GlobalStyle = createGlobalStyle`
       sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    font-size: ${props => props.theme.fontSizes.s};
-    font-weight: ${props => props.theme.fontWeights.normal}
+    font-size: ${(props) => props.theme.fontSizes.s};
+    font-weight: ${(props) => props.theme.fontWeights.normal}
   }
   code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
       monospace;
   }
 
+@font-face {
+  font-family: 'Manrope-Regular';
+  src: local('Manrope-Regular'),
+    url('./fonts/Manrope-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Manrope-Medium';
+  src: local('Manrope-Medium'),
+    url('./fonts/Manrope-Medium.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Manrope-SemiBold';
+  src: local('Manrope-SemiBold'),
+    url('./fonts/Manrope-SemiBold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Manrope-Bold';
+  src: local('Manrope-Bold'),
+    url('./fonts/Manrope-Bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Manrope-ExtraBold';
+  src: local('Manrope-ExtraBold'),
+    url('./fonts/Manrope-ExtraBold.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Manrope-ExtraLight';
+  src: local('Manrope-ExtraBold'),
+    url('./fonts/Manrope-ExtraLight.ttf') format('truetype');
+    }
+
+@font-face {
+  font-family: 'Manrope-Light';
+  src: local('Manrope-ExtraBold'),
+    url('./fonts/Manrope-Light.ttf') format('truetype');
+}
 h1,
 h2,
 h3,
