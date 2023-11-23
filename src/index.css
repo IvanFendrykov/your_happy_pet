@@ -72,5 +72,7 @@ button {
 }
 
 samp {
-padding: 0;
+background-color: #ffffff;
+border: none;
+cursor: pointer;
 };
