@@ -1,5 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import {toast} from 'react-hot-toast';
 axios.defaults.baseURL = 'https://happy-pets-rest-api.onrender.com/';
 
 const setAuthHeader = token => {
@@ -28,6 +29,7 @@ export const register = createAsyncThunk(
         return rejectWithValue({
           message: 'User with this email already exist',
         });
+        toast.error('Email Already Exist! Plase enter unique email')
       return rejectWithValue(error.message);
     }
   },
