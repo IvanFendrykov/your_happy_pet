@@ -1,0 +1,1 @@
+import{j as s,H as a}from"./index-41c1c916.js";const r=()=>s.jsxs(s.Fragment,{children:[s.jsx(a,{}),s.jsx("div",{className:"main-page",children:s.jsxs("h1",{children:["Take good care ",s.jsx("br",{className:"br-desktop"}),"of",s.jsx("br",{className:"br-tablet"})," your small",s.jsx("br",{className:"br-desktop"})," pets"]})})]});export{r as default};
