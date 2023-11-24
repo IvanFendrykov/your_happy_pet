@@ -5,7 +5,6 @@ import { Toaster } from 'react-hot-toast';
 import VortexLoader from './components/VortexLoader/VortexLoader';
 import PublicRoute from './PublicRoute/PublicRoute';
 import PrivateRoute from './PrivateRoute/PrivateRoute';
-import Loader from './components/Loader/Loader';
 
  import Layout from './components/Layout/Layout';
 // import {NoticesPage} from './pages/NoticesPage/NoticesPage'
@@ -29,9 +28,9 @@ export const App = () => {
       <Suspense fallback={<VortexLoader />}>
         <Routes>
            <Route path="/" element={<Layout />}>
-            {/* <Route index element={<MainPage />} />
+            <Route index element={<MainPage />} />
             <Route path="main" element={<MainPage />} />
-            <Route path="news" element={<NewsPage />} />  */}
+            {/* <Route path="news" element={<NewsPage />} />  */}
              <Route path="notices" element={<NoticesPage />}>
               <Route index element={<NoticesCategoriesList />} />
               <Route path="sell" element={<NoticesCategoriesList />} />
