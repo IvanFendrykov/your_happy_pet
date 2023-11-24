@@ -7,6 +7,7 @@ const breakpoints = {
 };
 
 export const Container = styled.div`
+  margin-top: 44px;
   text-align: center;
   width: 280px;
   padding-left: 20px;
@@ -15,6 +16,7 @@ export const Container = styled.div`
   margin-right: auto;
 
   @media (min-width: ${breakpoints.tablet}) {
+    margin-top: 80px;
     width: 704px;
     padding-left: 32px;
     padding-right: 32px;
