@@ -1,7 +1,7 @@
-  import { Suspense } from 'react';
-  import { lazy } from 'react';
-  import { Route, Routes } from 'react-router-dom';
-  import {Toaster} from 'react-hot-toast';
+import { Suspense } from 'react';
+import { lazy } from 'react';
+import { Route, Routes } from 'react-router-dom';
+import { Toaster } from 'react-hot-toast';
 import VortexLoader from './components/VortexLoader/VortexLoader';
 import PublicRoute from './PublicRoute/PublicRoute';
 import PrivateRoute from './PrivateRoute/PrivateRoute';
@@ -26,7 +26,7 @@ const NoticesPage = lazy(() => import('./pages/NoticesPage/NoticesPage'));
 export const App = () => {
   return (
     <>
-        <Suspense fallback={<VortexLoader />}>
+      <Suspense fallback={<VortexLoader />}>
         <Routes>
            <Route path="/" element={<Layout />}>
             {/* <Route index element={<MainPage />} />
@@ -51,14 +51,13 @@ export const App = () => {
               {/* <Route path="add-pet" element={<AddPetPage />} />  */}
                </Route>
             <Route path="*" element={<NotFoundPage />} />
-
-             </Route>
+          </Route>
         </Routes>
       </Suspense>
-       <Toaster
-          toastOptions={{
+      <Toaster
+        toastOptions={{
           duration: 3000,
-          }}
+        }}
       />
     </>
   );
