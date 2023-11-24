@@ -1,4 +1,5 @@
-import{s,r as c,j as e}from"./index-544d5150.js";const j="https://happy-pets-rest-api.onrender.com";async function y(){const p=`${j}/api/ourfriends/`;try{const a=await fetch(p);if(!a.ok)throw new Error(`Status code: ${a.status}. Status message: ${a.statusText}`);return await a.json()}catch(a){throw new Error(a.message)}}const i={mobile:"320px",tablet:"768px",desktop:"1280px"},b=s.div`
+import{s,r as c,j as e}from"./index-3086081e.js";const j="https://happy-pets-rest-api.onrender.com";async function y(){const d=`${j}/api/ourfriends/`;try{const a=await fetch(d);if(!a.ok)throw new Error(`Status code: ${a.status}. Status message: ${a.statusText}`);return await a.json()}catch(a){throw new Error(a.message)}}const i={mobile:"320px",tablet:"768px",desktop:"1280px"},b=s.div`
+  margin-top: 44px;
   text-align: center;
   width: 280px;
   padding-left: 20px;
@@ -7,6 +8,7 @@ import{s,r as c,j as e}from"./index-544d5150.js";const j="https://happy-pets-res
   margin-right: auto;
 
   @media (min-width: ${i.tablet}) {
+    margin-top: 80px;
     width: 704px;
     padding-left: 32px;
     padding-right: 32px;
@@ -104,7 +106,7 @@ margin-top: 24px;
   padding: 0;
   display: flex;
   flex-direction: column;
-`;const d=s.h3`
+`;const p=s.h3`
   margin: 0;
 `,x=s.a`
     color: #111;
@@ -130,4 +132,4 @@ transition: background-color 0.3s ease;
     &:focus {
         background-color: orange;
     }
-`,L=()=>{const p="https://i.seadn.io/gae/2hDpuTi-0AMKvoZJGd-yKWvK4tKdQr_kLIpB_qSeMau2TNGCNidAosMEvrEXFO9G6tmlFlPQplpwiqirgrIPWnCKMvElaYgI-HiVvXc?auto=format&dpr=1&w=1000",a=["MN","TU","WE","TH","FR","SA","SU"],o="Check details on website",[h,g]=c.useState([]);c.useEffect(()=>{(async()=>{try{const n=await y();g(n)}catch(n){console.error("Error fetching data:",n)}})()},[]);const[f,w]=c.useState(h.map(()=>!1)),u=t=>{w(n=>{const l=[...n];return l[t]=!l[t],l})};return e.jsxs(b,{children:[e.jsx(k,{children:"Our friends"}),e.jsx(E,{children:h.map((t,n)=>e.jsx($,{children:e.jsxs(v,{href:t.url,children:[e.jsx(O,{children:t.title}),e.jsxs(C,{children:[e.jsx(S,{src:t.imageUrl?t.imageUrl:p,alt:t.title}),e.jsxs(M,{children:[e.jsxs("li",{children:[e.jsx(d,{children:"Time:"}),e.jsx(A,{onClick:()=>u(n),children:f[n]?"Hide":"Show"}),f[n]?e.jsx(T,{children:Array.isArray(t.workDays)?a.map((l,m)=>{const r=t.workDays[m];return r&&r.isOpen!==void 0&&r.from&&r.to?e.jsxs("li",{children:[e.jsxs("strong",{children:[l,": "]}),r.isOpen?e.jsxs("span",{children:["Open from ",r.from," to ",r.to]}):e.jsx("span",{children:"Closed"})]},m):null}):e.jsx("li",{children:o})}):null]}),e.jsxs("li",{children:[e.jsx(d,{children:"Adress:"}),e.jsx(x,{href:t.addressUrl?t.addressUrl:t.url,children:t.address?t.address:o})]}),e.jsxs("li",{children:[e.jsx(d,{children:"Email:"}),e.jsx(x,{href:`mailto:${t.email?t.email:t.url}`,target:"_blank",rel:"noopener noreferrer",children:t.email?t.email:o})]}),e.jsxs("li",{children:[e.jsx(d,{children:"Phone:"}),e.jsx(x,{href:`tel:${t.phone?t.phone:t.url}`,target:"_blank",rel:"noopener noreferrer",children:t.phone?t.phone:o})]})]})]})]})},t._id))})]})};export{L as default};
+`,L=()=>{const d="https://i.seadn.io/gae/2hDpuTi-0AMKvoZJGd-yKWvK4tKdQr_kLIpB_qSeMau2TNGCNidAosMEvrEXFO9G6tmlFlPQplpwiqirgrIPWnCKMvElaYgI-HiVvXc?auto=format&dpr=1&w=1000",a=["MN","TU","WE","TH","FR","SA","SU"],o="Check details on website",[h,g]=c.useState([]);c.useEffect(()=>{(async()=>{try{const n=await y();g(n)}catch(n){console.error("Error fetching data:",n)}})()},[]);const[m,w]=c.useState(h.map(()=>!1)),u=t=>{w(n=>{const l=[...n];return l[t]=!l[t],l})};return e.jsxs(b,{children:[e.jsx(k,{children:"Our friends"}),e.jsx(E,{children:h.map((t,n)=>e.jsx($,{children:e.jsxs(v,{href:t.url,children:[e.jsx(O,{children:t.title}),e.jsxs(C,{children:[e.jsx(S,{src:t.imageUrl?t.imageUrl:d,alt:t.title}),e.jsxs(M,{children:[e.jsxs("li",{children:[e.jsx(p,{children:"Time:"}),e.jsx(A,{onClick:()=>u(n),children:m[n]?"Hide":"Show"}),m[n]?e.jsx(T,{children:Array.isArray(t.workDays)?a.map((l,f)=>{const r=t.workDays[f];return r&&r.isOpen!==void 0&&r.from&&r.to?e.jsxs("li",{children:[e.jsxs("strong",{children:[l,": "]}),r.isOpen?e.jsxs("span",{children:["Open from ",r.from," to ",r.to]}):e.jsx("span",{children:"Closed"})]},f):null}):e.jsx("li",{children:o})}):null]}),e.jsxs("li",{children:[e.jsx(p,{children:"Adress:"}),e.jsx(x,{href:t.addressUrl?t.addressUrl:t.url,children:t.address?t.address:o})]}),e.jsxs("li",{children:[e.jsx(p,{children:"Email:"}),e.jsx(x,{href:`mailto:${t.email?t.email:t.url}`,target:"_blank",rel:"noopener noreferrer",children:t.email?t.email:o})]}),e.jsxs("li",{children:[e.jsx(p,{children:"Phone:"}),e.jsx(x,{href:`tel:${t.phone?t.phone:t.url}`,target:"_blank",rel:"noopener noreferrer",children:t.phone?t.phone:o})]})]})]})]})},t._id))})]})};export{L as default};
