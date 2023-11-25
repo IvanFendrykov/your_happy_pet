@@ -13,6 +13,7 @@ export async function fetchOurFriendsApi() {
     }
 
     const data = await response.json();
+    // console.log(data);
     return data;
   } catch (error) {
     throw new Error(error.message);

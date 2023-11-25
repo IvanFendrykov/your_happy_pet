@@ -25,7 +25,7 @@ const ModalApproveAction = ({ closeModal }) => {
         <BtnCancel type="button" onClick={closeModal}>
           Cancel
         </BtnCancel>
-        <BtnYes to="/notices/sell" onClick={handleLogout}>
+        <BtnYes to="/main" onClick={handleLogout}>
           Yes
           <LogoutIcon />
         </BtnYes>
