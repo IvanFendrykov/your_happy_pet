@@ -5,7 +5,6 @@ import { Toaster } from 'react-hot-toast';
 import VortexLoader from './components/VortexLoader/VortexLoader';
 import PublicRoute from './PublicRoute/PublicRoute';
 import PrivateRoute from './PrivateRoute/PrivateRoute';
-import Loader from './components/Loader/Loader';
 
  import Layout from './components/Layout/Layout';
 // import {NoticesPage} from './pages/NoticesPage/NoticesPage'
