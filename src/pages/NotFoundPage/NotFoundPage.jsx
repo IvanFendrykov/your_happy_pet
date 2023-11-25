@@ -32,7 +32,7 @@ function NotFoundPage() {
       <BottomWrapper>
         <Btn type="button" onClick={() => navigate('/')}>
           To main page
-          <Pawprint1 fill="#54adff" />
+          <Pawprint1 />
         </Btn>
       </BottomWrapper>
     </Container>
