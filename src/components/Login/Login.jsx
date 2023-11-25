@@ -79,7 +79,7 @@ const handleSubmit = async (values, { setSubmitting }) => {
 
     if (response.status === 200) {
       // Navigate to '/userpage' upon successful login
-      navigate('/userpage');
+      navigate('/user');
     }
   } catch (error) {
     console.error('Error caught:', error);

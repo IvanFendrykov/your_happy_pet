@@ -39,7 +39,7 @@ export const login = createAsyncThunk(
   'auth/login',
   async (credentials, { rejectWithValue }) => {
     try {
-      const response = await axios.post('http://localhost:3001/api/auth/login', credentials);
+      const response = await axios.post('api/auth/login', credentials);
       setAuthHeader(response.data.accessToken);
       localStorage.setItem('refreshToken', response.data.refreshToken);
       
