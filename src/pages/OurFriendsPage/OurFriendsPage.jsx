@@ -57,7 +57,7 @@ const OurFriendsPage = () => {
                 {ourFriends.map((ourFriend, index) => (
                     <ListElement key={ourFriend._id}>
                         <Link href={ourFriend.url}>
-                            <CartTitle>{ourFriend.title}</CartTitle>
+                            <CartTitle href={ourFriend.url}>{ourFriend.title}</CartTitle>
                             <ElementContainer>
                                 <Image src={ourFriend.imageUrl ? ourFriend.imageUrl : reserveImg} alt={ourFriend.title} />
                                 <CartList>
@@ -95,11 +95,11 @@ const OurFriendsPage = () => {
                                     </li>
                                     <li>
                                         <H>Email:</H>
-                                        <Url href={`mailto:${ourFriend.email ? ourFriend.email : ourFriend.url}`} target="_blank" rel="noopener noreferrer">{ourFriend.email ? ourFriend.email : reserveMessage}</Url>
+                                        <Url href={ourFriend.email ? `mailto:${ourFriend.email}` : ourFriend.url} target="_blank" rel="noopener noreferrer">{ourFriend.email ? ourFriend.email : reserveMessage}</Url>
                                     </li>
                                     <li>
                                         <H>Phone:</H>
-                                        <Url href={`tel:${ourFriend.phone ? ourFriend.phone : ourFriend.url}`} target="_blank" rel="noopener noreferrer">{ourFriend.phone ? ourFriend.phone : reserveMessage}</Url>
+                                        <Url href={ourFriend.phone ? `tel:${ourFriend.phone}` : ourFriend.url} target="_blank" rel="noopener noreferrer">{ourFriend.phone ? ourFriend.phone : reserveMessage}</Url>
                                     </li>
                                 </CartList>
                             </ElementContainer>

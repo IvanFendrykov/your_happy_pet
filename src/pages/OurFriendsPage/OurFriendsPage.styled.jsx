@@ -71,6 +71,7 @@ export const ListElement = styled.li`
 
   @media (min-width: ${breakpoints.desktop}) {
     width: 380px;
+    height: 287px;
   }
 `;
 
@@ -90,7 +91,12 @@ export const Image = styled.img`
   }
 `;
 
-export const CartTitle = styled.h2`
+export const CartTitle = styled.a`
+text-decoration: none;
+display: block;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
   margin: 0;
   padding-top: 16px;
   padding-right: 16px;
@@ -101,9 +107,9 @@ export const CartTitle = styled.h2`
 `;
 
 export const ElementContainer = styled.div`
+  position: relative;
   display: flex;
   align-items: flex-start;
-  justify-content: space-between;
   gap: 12px;
   padding-right: 12px;
   padding-left: 12px;
@@ -153,10 +159,27 @@ export const TimeList = styled.ul`
 display: flex;
 flex-direction: column;
 gap: 6px;
+border-radius: 8px;
+border: 1px solid #54ADFF;
+padding: 12px;
+
+@media (min-width: ${breakpoints.tablet}) {
+    width: 120px;
+    background-color: white;
+    top: 1px;
+    position: absolute;
+    right: 140px;
+  }
+
+@media (min-width: ${breakpoints.desktop}) {
+
+    right: 240px;
+  }
 `
 
 export const BTN = styled.button`
 background-color: tomato;
+border-radius: 10px;
 padding: 5px;
 border: none;
 cursor: pointer;
