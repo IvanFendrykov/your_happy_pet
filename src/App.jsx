@@ -1,5 +1,3 @@
-
-import { Route, Routes } from 'react-router-dom';
 import AddPetPage from './pages/AddPetPage/AddPetPage';
 
 import { Suspense } from 'react';
@@ -49,7 +47,7 @@ export const App = () => {
                 <Route path="register" element={<RegisterPage />} />
               <Route path="login" element={<LoginPage />} />
             </Route>
-            <Route element={<PrivateRoute />}> */}
+            <Route element={<PrivateRoute />}> 
               <Route path="user" element={<UserPage />} />
               {/* <Route path="add-pet" element={<AddPetPage />} />  */}
                </Route>
