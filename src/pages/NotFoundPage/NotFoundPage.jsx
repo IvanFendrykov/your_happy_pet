@@ -11,7 +11,7 @@ import {
   Btn,
 } from './NotFoundPage.styled';
 import { useNavigate } from 'react-router-dom';
-// import { PawPrintIcon } from 'shared/utils/icons';
+import { ArrowLeft } from '../../utils/icon.js';
 
 function NotFoundPage() {
   const navigate = useNavigate();
@@ -28,12 +28,15 @@ function NotFoundPage() {
         <Image alt="not found" />
       </ImageContainer>
       <BottomWrapper>
-        <Btn type="button" onClick={() => navigate('/')}>
+        <Btn
+          type="button"
+          onClick={() => navigate('/')}
+        >
           To main page
-          <svg width="24" fill="#FEF9F9" height="24">
-            <use xlinkHref="#pawprint-1" />
-          </svg>
+          
         </Btn>
+        <div><ArrowLeft fill="white" /></div>
+
       </BottomWrapper>
     </Container>
   );

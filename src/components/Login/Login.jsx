@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { login } from '../../redux/auth/operations';
+import { useNavigate } from 'react-router-dom';
+import { login } from '../../redux/auth/operation.js';
 import { Formik } from 'formik';
 import {
   LoginForm,
@@ -11,20 +12,23 @@ import {
   PasswordForm,
   PasswordContainer,
   PasswordInput,
+  IconContainerRight,
+  IconContainerLeft,
   MessageError,
   LoginErrMessage,
   LoginBtn,
   RegLink,
   EyeIcon,
-  IconError,
   InfoMessage,
   RegTitle,
-  IconPassword,
+  IconDelete,
 } from './Login.styled';
+
 
 import { ReactComponent as OpenEye } from '../../images/icons/eye-open.svg';
 import { ReactComponent as CloseEye } from '../../images/icons/eye-closed.svg';
-
+import { ReactComponent as Correct } from '../../images/icons/check-good.svg';
+import { ReactComponent as IconError } from '../../images/icons/cross-smal.svg';
 
 const validate = values => {
   const errors = {};
@@ -51,13 +55,11 @@ const initialValues = {
 
 const Login = () => {
   const dispatch = useDispatch();
-  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
-  const [availableEmail] = useState(false);
-  const [emailCheckDone, setEmailCheckDone] = useState(false);
+  const [emailCheckDone] = useState(false);
 
-
-  const toggleVisiblePassword = () => {
+const toggleVisiblePassword = () => {
     setShowPassword(prevState => !prevState);
   };
 
@@ -66,27 +68,26 @@ const Login = () => {
     setValues({ ...values, [name]: value });
   };
 
-  const handleSubmit = async (values, { setSubmitting, setValues }) => {
-    if (loading) {
-      return;
+const handleSubmit = async (values, { setSubmitting }) => {
+  try {
+    const credentials = {
+      email: values.email,
+      password: values.password,
+    };
+
+    const response = await dispatch(login(credentials));
+
+    if (response.status === 200) {
+      // Navigate to '/userpage' upon successful login
+      navigate('/user');
     }
+  } catch (error) {
+    console.error('Error caught:', error);
+  } finally {
+    setSubmitting(false);
+  }
+};
 
-    setLoading(true);
-
-    try {
-      const credentials = {
-        email: values.email,
-        password: values.password,
-      };
-
-      await dispatch(login(credentials));
-    } catch (error) {
-      console.error('Error caught:', error);
-    } finally {
-      setLoading(false);
-      setSubmitting(false);
-    }
-  };
 
   return (
     <Formik
@@ -121,15 +122,19 @@ const Login = () => {
                 onChange={(e) => handleFieldChange(e, setValues, values)}
                 onBlur={handleBlur}
                 error={errors.email && touched.email}
+                style={{ color: '#888' }}
               />
-              {errors.email && touched.email && values.email && (
+              {/* Іконка  */}
+              <IconDelete>
+                {errors.email && touched.email && values.email && (
                 <IconError
                   onClick={() => {
                     resetForm({ values: { ...values, email: '' } });
                   }}
                 >
                 </IconError>
-              )}
+               )}
+              </IconDelete> 
             </EmailForm>
             {errors.email && touched.email && (
               <MessageError name="email">{errors.email}</MessageError>
@@ -156,16 +161,33 @@ const Login = () => {
                     ((!errors.password && touched.password && values.isPasswordValid) ? '#00C3AD' : '#54ADFF'),
                 }}
               />
-              <IconPassword>
-                <EyeIcon
-                  onClick={toggleVisiblePassword}
-                  error={errors.password && touched.password}
-                >
-                  {showPassword ? <OpenEye /> : <CloseEye />}
-                </EyeIcon>
-              </IconPassword>
-            </PasswordForm>
-
+                <IconContainerLeft>
+                  {/* Іконка Correct */}
+                  <Correct
+                    data-ispasswordvalid={
+                      !errors.password && touched.password && values.password.length >= 8 && values.isPasswordValid
+                    }
+                    style={{
+                      stroke: !errors.password && touched.password && values.password.length >= 8 && values.isPasswordValid
+                        ? '#00C3AD'
+                        : '#888',
+                      display: !errors.password && touched.password && values.password.length >= 8 && values.isPasswordValid
+                        ? 'block'
+                        : 'none',
+                    }}
+                  />
+                </IconContainerLeft>
+                <IconContainerRight>
+                  {/* Іконка Eye */}
+                  <EyeIcon
+                    onClick={toggleVisiblePassword}
+                    error={errors.password && touched.password}
+                    style={{ stroke: showPassword ? '#54ADFF' : '#888' }}
+                  >
+                    {showPassword ? <OpenEye style={{ cursor: 'pointer' }} /> : <CloseEye style={{ cursor: 'pointer' }} />}
+                  </EyeIcon>
+                </IconContainerRight>
+                          </PasswordForm>
             {errors.password && touched.password && (
               <MessageError>{errors.password}</MessageError>
             )}

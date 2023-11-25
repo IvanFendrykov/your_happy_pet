@@ -1,82 +1,67 @@
-// import { Suspense } from 'react';
-// import { lazy } from 'react';
+
 import { Route, Routes } from 'react-router-dom';
 import AddPetPage from './pages/AddPetPage/AddPetPage';
+
+import { Suspense } from 'react';
+import { lazy } from 'react';
+import { Route, Routes } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
+import VortexLoader from './components/VortexLoader/VortexLoader';
+import PublicRoute from './PublicRoute/PublicRoute';
+import PrivateRoute from './PrivateRoute/PrivateRoute';
 
-// import PublicRoute from './PublicRoute/PublicRoute';
-// import PrivateRoute from './PrivateRoute/PrivateRoute';
-// import Layout from './components/Layout/Layout';
-// import Loader from './components/Loader/Loader';
+ import Layout from './components/Layout/Layout';
+// import {NoticesPage} from './pages/NoticesPage/NoticesPage'
 
-// import Layout from './components/Layout/Layout';
-// import {NoticesCategoriesList} from './components/NoticesCategoriesList/NoticesCategoriesList';
-// import {AddPetPage} from './pages/AddPetPage/AddPetPage';
-
-// const MainPage = lazy(() => import('./pages/MainPage/MainPage'));
-// const RegisterPage = lazy(() => import('./components/Register/Register.jsx'));
-// const LoginPage = lazy(() => import('./pages/LoginPage/LoginPage'));
-// const UserPage = lazy(() => import('./pages/UserPage/UserPage'));
-// const NewsPage = lazy(() => import('./pages/NewsPage/NewsPage'));
-// const NoticesPage = lazy(() => import('./pages/NoticesPage/NoticesPage'));
-// const OurFriendsPage = lazy(() =>
-//   import('./pages/OurFriendsPage/OurFriendsPage')
-// );
-// const NotFoundPage = lazy(() => import('./pages/NotFoundPage/NotFoundPage.jsx'));
-
-// import {NoticesCategoriesList} from  './components/NoticesCategoriesList/NoticesCategoriesList';
-// const MainPage = lazy(() => import('./pages/MainPage/MainPage'));
-// const RegisterPage = lazy(() => import('./pages/RegisterPage/RegisterPage'));
-// const LoginPage = lazy(() => import('./pages/LoginPage/LoginPage'));
-// const UserPage = lazy(() => import('./pages/UserPage/UserPage'));
-// const NewsPage = lazy(() => import('./pages/NewsPage/NewsPage'));
-// const NoticesPage = lazy(() => import('./pages/NoticesPage/NoticesPage'));
-// const OurFriendsPage = lazy(() =>
-//   import('./pages/OurFriendsPage/OurFriendsPage')
-// );
+const NotFoundPage = lazy(() => import('./pages/NotFoundPage/NotFoundPage.jsx'));
+import {NoticesCategoriesList} from  './components/NoticesCategoriesList/NoticesCategoriesList';
+// import AddPetPage from './pages/AddPetPage/AddPetPage'
+const MainPage = lazy(() => import('./pages/MainPage/MainPage'));
+const RegisterPage = lazy(() => import('./pages/RegisterPage/RegisterPage'));
+const LoginPage = lazy(() => import('./pages/LoginPage/LoginPage'));
+const UserPage = lazy(() => import('./pages/UserPage/UserPage'));
+const NewsPage = lazy(() => import('./pages/NewsPage/NewsPage'));
+const NoticesPage = lazy(() => import('./pages/NoticesPage/NoticesPage'));
+ const OurFriendsPage = lazy(() =>
+   import('./pages/OurFriendsPage/OurFriendsPage')
+ );
 
 export const App = () => {
   return (
     <>
-      <Routes>
-        <Route path="add-pet" element={<AddPetPage />} />
-      </Routes>
-      <Toaster
-        toastOptions={{
-          duration: 3000,
-        }}
-      />
-      {/* <Suspense fallback={<Loader />}> */}
-
-      {/* <Routes>
-          <Route path="/" element={<Layout />}>
+      <Suspense fallback={<VortexLoader />}>
+        <Routes>
+           <Route path="/" element={<Layout />}>
             <Route index element={<MainPage />} />
             <Route path="main" element={<MainPage />} />
-            <Route path="news" element={<NewsPage />} /> */}
-      {/*  */}
-      {/* <Route path="notices" element={<NoticesPage />}>
+            {/* <Route path="news" element={<NewsPage />} />  */}
+             <Route path="notices" element={<NoticesPage />}>
+
               <Route index element={<NoticesCategoriesList />} />
               <Route path="sell" element={<NoticesCategoriesList />} />
               <Route path="lost-found" element={<NoticesCategoriesList />} />
               <Route path="for-free" element={<NoticesCategoriesList />} />
               <Route path="favorite" element={<NoticesCategoriesList />} />
               <Route path="own" element={<NoticesCategoriesList />} />
-            </Route> */}
-      {/* <Route path="friends" element={<OurFriendsPage />} />
+            </Route> 
+             <Route path="friends" element={<OurFriendsPage />} />
             <Route element={<PublicRoute />}>
-              <Route path="register" element={<RegisterPage />} />
+                <Route path="register" element={<RegisterPage />} />
               <Route path="login" element={<LoginPage />} />
             </Route>
             <Route element={<PrivateRoute />}> */}
-
-      {/* <Route path="user" element={<UserPage />} /> */}
-
-      {/* </Route>
-            <Route path="*" element={<NotFoundPage />} /> */}
-
-      {/* </Route>
+              <Route path="user" element={<UserPage />} />
+              {/* <Route path="add-pet" element={<AddPetPage />} />  */}
+               </Route>
+            <Route path="*" element={<NotFoundPage />} />
+          </Route>
         </Routes>
-      </Suspense> */}
+      </Suspense>
+      <Toaster
+        toastOptions={{
+          duration: 3000,
+        }}
+      />
     </>
   );
 };

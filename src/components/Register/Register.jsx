@@ -8,7 +8,10 @@ import { ReactComponent as CloseEye } from '../../images/icons/eye-closed.svg';
 import { ReactComponent as Checkgood} from '../../images/icons/check-good.svg';
 import {ReactComponent as Crosssmal} from '../../images/icons/cross-smal.svg';
 
-import {register} from '../../redus/auth/operation';
+import {register} from '../../redux/auth/operation';
+
+import { toast } from 'react-hot-toast';
+
 
 import {
  RegistrationForm,
@@ -51,6 +54,7 @@ const initialValue = {
       errors.email = 'This field is required';
     } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
       errors.email = 'Enter a valid Email';
+      toast.error('Email must contain the "@" symbol')
     }
   
     if (!values.password) {
@@ -65,6 +69,7 @@ const initialValue = {
       errors.confirmPassword = 'Password must be at least 8 characters long';
     } else if (values.password !== values.confirmPassword) {
       errors.confirmPassword = 'Passwords do not match';
+      toast.error('Please, enter correct password')
     }
   
     return errors;
@@ -105,17 +110,18 @@ const initialValue = {
 
       try {
         const response = dispatch(register(credentials));
-        if (response.error) {
-          setAvailableEmail(false);
-        } else {
+         if (response.error) {
+            setAvailableEmail(false);
+       } else {
           setAvailableEmail(true);
           navigate('/user');
         }
       } catch (error) {
         console.error(error);
-      } finally {
+      } finally { 
+        setLoading(false);
         setSubmitting(false);
-
+        
       }
     };
 
@@ -140,7 +146,7 @@ const initialValue = {
         const isPasswordValid = values.password && values.password.length >= 8;
         const handleFieldChange = e => {
         const { name } = e.target;
-        setErrors({ ...errors, [name]: '' }); // Clear the error for the specific field
+        setErrors({ ...errors, [name]: '' });
         handleChange(e);
       };
       return (
@@ -320,12 +326,12 @@ const initialValue = {
           </PasswordContainer>
 
           {!availableEmail && (
-            <RegistrationErrorMessage>
-              This email is already in use. Please, try with another email or
-              log in!
-            </RegistrationErrorMessage>
+             <RegistrationErrorMessage>
+               This email is already in use. Please, try with another email or
+               log in!
+             </RegistrationErrorMessage>
           )}
-
+          
           <RegistrationBtn type="submit" disabled={isSubmitting}>
             Registration
           </RegistrationBtn>

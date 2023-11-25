@@ -7,6 +7,7 @@ const breakpoints = {
 };
 
 export const Container = styled.div`
+  margin-top: 44px;
   text-align: center;
   width: 280px;
   padding-left: 20px;
@@ -15,6 +16,7 @@ export const Container = styled.div`
   margin-right: auto;
 
   @media (min-width: ${breakpoints.tablet}) {
+    margin-top: 80px;
     width: 704px;
     padding-left: 32px;
     padding-right: 32px;
@@ -38,6 +40,7 @@ export const Title = styled.h1`
 `;
 
 export const List = styled.ul`
+margin-top: 24px;
   padding: 0;
   display: flex;
   list-style-type: none;
@@ -48,6 +51,15 @@ export const List = styled.ul`
     flex-direction: unset;
     flex-wrap: wrap;
     gap: 32px;
+    margin-top: 40px;
+        justify-content: space-between;
+  }
+
+  @media (min-width: ${breakpoints.desktop}) {
+    flex-direction: unset;
+    flex-wrap: wrap;
+    gap: 32px;
+    margin-top: 60px;
   }
 `;
 
@@ -62,7 +74,7 @@ export const ListElement = styled.li`
   }
 `;
 
-export const Link = styled.a`
+export const Link = styled.div`
   text-decoration: none;
 `;
 
@@ -125,3 +137,33 @@ export const CartListElement = styled.li`
 export const H = styled.h3`
   margin: 0;
 `;
+
+export const Url = styled.a`
+    color: #111;
+    text-decoration: none;
+    transition: color 0.3s ease;
+
+    &:hover,
+    &:focus {
+        color: #54ADFF;
+    }
+`;
+
+export const TimeList = styled.ul`
+display: flex;
+flex-direction: column;
+gap: 6px;
+`
+
+export const BTN = styled.button`
+background-color: tomato;
+padding: 5px;
+border: none;
+cursor: pointer;
+transition: background-color 0.3s ease;
+
+&:hover,
+    &:focus {
+        background-color: orange;
+    }
+`

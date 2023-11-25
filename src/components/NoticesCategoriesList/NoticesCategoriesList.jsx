@@ -1,15 +1,17 @@
 import { NoticesCategoriesItem } from '../../components/NoticeCategoryItem/NoticesCategoriesItem';
 
-const NoticesCategoriesList = ({ items }) => {
+const NoticesCategoriesList = ({ petsData }) => {
   return (
     <div>
-      {items.map((item) => (
+      {petsData.map(petData => (
         <NoticesCategoriesItem
-          description={item.description}
-          category={item.category}
-          place={item.place}
-          age={item.age}
-          gender={item.gender}
+          id={petData._id}
+          title={petData.title}
+          category={petData.category}
+          avatar={petData.avatar}
+          location={petData.location}
+          age={petData.age}
+          sex={petData.sex}
         />
       ))}
     </div>

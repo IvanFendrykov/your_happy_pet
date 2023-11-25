@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import {props} from '../Header/Header'
+
 
 export const AuthContainer = styled.div`
   display: flex;
