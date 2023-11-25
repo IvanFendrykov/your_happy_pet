@@ -11,7 +11,9 @@ import {
   Btn,
 } from './NotFoundPage.styled';
 import { useNavigate } from 'react-router-dom';
-import { ArrowLeft } from '../../utils/icon.js';
+import {Pawprint1} from '../../images/svg/svgIcons.js';
+
+
 
 function NotFoundPage() {
   const navigate = useNavigate();
@@ -28,15 +30,10 @@ function NotFoundPage() {
         <Image alt="not found" />
       </ImageContainer>
       <BottomWrapper>
-        <Btn
-          type="button"
-          onClick={() => navigate('/')}
-        >
+        <Btn type="button" onClick={() => navigate('/')}>
           To main page
-          
+          <Pawprint1 fill="#54adff" />
         </Btn>
-        <div><ArrowLeft fill="white" /></div>
-
       </BottomWrapper>
     </Container>
   );

@@ -125,6 +125,9 @@ export const Btn = styled.button`
     margin-top: 41px;
     margin-bottom: 24px;
   }
+  svg {
+    fill: #fdf7f2;
+  }
 `;
 
 export const TextConteiner = styled.div`
