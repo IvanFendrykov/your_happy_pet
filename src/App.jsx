@@ -8,7 +8,6 @@ import PublicRoute from './PublicRoute/PublicRoute';
 import PrivateRoute from './PrivateRoute/PrivateRoute';
 
  import Layout from './components/Layout/Layout';
-// import {NoticesPage} from './pages/NoticesPage/NoticesPage'
 
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage/NotFoundPage.jsx'));
 import {NoticesCategoriesList} from  './components/NoticesCategoriesList/NoticesCategoriesList';
@@ -28,6 +27,7 @@ export const App = () => {
     <>
       <Suspense fallback={<VortexLoader />}>
         <Routes>
+
           <Route path="/" element={<Layout />}>
             <Route index element={<MainPage />} />
             <Route path="main" element={<MainPage />} />
