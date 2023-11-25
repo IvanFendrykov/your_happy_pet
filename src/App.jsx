@@ -1,3 +1,7 @@
+
+import { Route, Routes } from 'react-router-dom';
+import AddPetPage from './pages/AddPetPage/AddPetPage';
+
 import { Suspense } from 'react';
 import { lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
@@ -32,6 +36,7 @@ export const App = () => {
             <Route path="main" element={<MainPage />} />
             {/* <Route path="news" element={<NewsPage />} />  */}
              <Route path="notices" element={<NoticesPage />}>
+
               <Route index element={<NoticesCategoriesList />} />
               <Route path="sell" element={<NoticesCategoriesList />} />
               <Route path="lost-found" element={<NoticesCategoriesList />} />
@@ -44,8 +49,7 @@ export const App = () => {
                 <Route path="register" element={<RegisterPage />} />
               <Route path="login" element={<LoginPage />} />
             </Route>
-            <Route element={<PrivateRoute />}>
-
+            <Route element={<PrivateRoute />}> */}
               <Route path="user" element={<UserPage />} />
               {/* <Route path="add-pet" element={<AddPetPage />} />  */}
                </Route>
