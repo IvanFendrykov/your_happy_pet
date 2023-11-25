@@ -5,6 +5,13 @@ import { Formik } from 'formik';
 
 import { ReactComponent as OpenEye } from '../../images/icons/eye-open.svg';
 import { ReactComponent as CloseEye } from '../../images/icons/eye-closed.svg';
+import { ReactComponent as Checkgood} from '../../images/icons/check-good.svg';
+import {ReactComponent as Crosssmal} from '../../images/icons/cross-smal.svg';
+
+import {register} from '../../redux/auth/operation';
+
+import { toast } from 'react-hot-toast';
+
 
 import {
  RegistrationForm,
@@ -47,6 +54,7 @@ const initialValue = {
       errors.email = 'This field is required';
     } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
       errors.email = 'Enter a valid Email';
+      toast.error('Email must contain the "@" symbol')
     }
   
     if (!values.password) {
@@ -61,12 +69,11 @@ const initialValue = {
       errors.confirmPassword = 'Password must be at least 8 characters long';
     } else if (values.password !== values.confirmPassword) {
       errors.confirmPassword = 'Passwords do not match';
+      toast.error('Please, enter correct password')
     }
   
     return errors;
   };
-
-
 
 
   const UserRegisterForm = () => {
@@ -74,7 +81,7 @@ const initialValue = {
 
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-    // const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(false);
     const [availableEmail, setAvailableEmail] = useState(true);
   
     const navigate = useNavigate();
@@ -89,24 +96,32 @@ const initialValue = {
   
     const handleSubmit = async (values, { setSubmitting, resetForm }) => {
       
+      if (loading) {
+        return;
+      }
+
+      setLoading(true);
       const credentials = {
         email: values.email,
         password: values.password,
         username: values.username,
       };
-  
+
+
       try {
-        const response = await dispatch(register(credentials));
-        if (response.error) {
-          setAvailableEmail(false);
-        } else {
+        const response = dispatch(register(credentials));
+         if (response.error) {
+            setAvailableEmail(false);
+       } else {
           setAvailableEmail(true);
           navigate('/user');
         }
       } catch (error) {
         console.error(error);
-      } finally {
+      } finally { 
+        setLoading(false);
         setSubmitting(false);
+        
       }
     };
 
@@ -131,17 +146,17 @@ const initialValue = {
         const isPasswordValid = values.password && values.password.length >= 8;
         const handleFieldChange = e => {
         const { name } = e.target;
-        setErrors({ ...errors, [name]: '' }); // Clear the error for the specific field
+        setErrors({ ...errors, [name]: '' });
         handleChange(e);
       };
       return (
         <RegistrationForm onSubmit={handleSubmit}>
           <RegistrationTitle>Registration</RegistrationTitle>
           <UsernameContainer
-            error={errors.username && touched.username}
+            valider={errors.username && touched.username}
           >
             <UsernameInputContainer
-              error={errors.username && touched.username}
+              valider={errors.username && touched.username}
               style={{
                 borderColor:
                   errors.username && touched.username ? '#F43F5E' : '#54ADFF',
@@ -154,7 +169,7 @@ const initialValue = {
                 value={values.username}
                 onChange={handleFieldChange}
                 onBlur={handleBlur}
-                disabled={loading}
+                // disabled={loading}
               />
               {errors.username && touched.username && values.username && (
                 <IconError
@@ -162,7 +177,6 @@ const initialValue = {
                     resetForm({ values: { ...values, username: '' } });
                   }}
                 >
-                  <CrossIcon />
                 </IconError>
               )}
             </UsernameInputContainer>
@@ -173,7 +187,7 @@ const initialValue = {
 
           <EmailContainer error={errors.email && touched.email}>
             <EmailInputContainer
-              error={errors.email && touched.email}
+              valider={errors.email && touched.email}
               style={{
                 borderColor:
                   errors.email && touched.email ? '#F43F5E' : '#54ADFF',
@@ -186,7 +200,7 @@ const initialValue = {
                 value={values.email}
                 onChange={handleFieldChange}
                 onBlur={handleBlur}
-                disabled={loading}
+                // disabled={loading}
               />
               {errors.email && touched.email && values.email && (
                 <IconError
@@ -194,7 +208,6 @@ const initialValue = {
                     resetForm({ values: { ...values, email: '' } });
                   }}
                 >
-                  <CrossIcon />
                 </IconError>
               )}
             </EmailInputContainer>
@@ -205,17 +218,17 @@ const initialValue = {
           </EmailContainer>
 
           <PasswordContainer
-            error={errors.password && touched.password}
-            secure={isPasswordValid}
+            valider={errors.password && touched.password}
+            // secure={isPasswordValid}
           >
             <PasswordInputContainer
-              error={errors.password && touched.password}
-              secure={isPasswordValid}
+               valider={errors.password && touched.password}
+              // secure={isPasswordValid}
               style={{
                 borderColor:
                   errors.password && touched.password
                     ? '#F43F5E'
-                    : isPasswordValid
+                    :  isPasswordValid
                     ? '#00C3AD'
                     : '#54ADFF',
               }}
@@ -227,19 +240,19 @@ const initialValue = {
                 value={values.password}
                 onChange={handleFieldChange}
                 onBlur={handleBlur}
-                disabled={loading}
+                // disabled={loading}
               />
               <IconPassword>
                 <EyeIcon
                   onClick={toggleVisiblePassword}
-                  error={errors.password && touched.password}
-                  secure={isPasswordValid}
+                  valider={errors.password && touched.password}
+                  // secure={isPasswordValid}
                 >
                   {showPassword ? <OpenEye /> : <CloseEye />}
                 </EyeIcon>
                 {isPasswordValid && (
                   <CheckIcon>
-                    <CheckIcon />
+                    <Checkgood/>
                   </CheckIcon>
                 )}
                 {errors.password && touched.password && values.password && (
@@ -248,7 +261,7 @@ const initialValue = {
                       resetForm({ values: { ...values, password: '' } });
                     }}
                   >
-                    <CrossIcon />
+                    <Crosssmal />
                   </IconError>
                 )}
               </IconPassword>
@@ -258,17 +271,18 @@ const initialValue = {
               <MessageError>{errors.password}</MessageError>
             )}
             {isPasswordValid && (
-              <InfoMessage valid={isPasswordValid}>
-                Password is secure
-              </InfoMessage>
+              //  <InfoMessage valid={isPasswordValid}>
+                // Password is secure
+              // </InfoMessage>
+              <InfoMessage>Password is secure</InfoMessage>
             )}
           </PasswordContainer>
 
           <PasswordContainer
-            error={errors.confirmPassword && touched.confirmPassword}
+             valider={errors.confirmPassword && touched.confirmPassword}
           >
             <PasswordInputContainer
-              error={errors.confirmPassword && touched.confirmPassword}
+              valider={errors.confirmPassword && touched.confirmPassword}
               style={{
                 borderColor:
                   errors.confirmPassword && touched.confirmPassword
@@ -283,18 +297,16 @@ const initialValue = {
                 value={values.confirmPassword}
                 onChange={handleFieldChange}
                 onBlur={handleBlur}
-                disabled={loading}
+                // disabled={loading}
               />
               <IconPassword>
                 <EyeIcon
-                  onClick={toggleConfirmPasswordVisibility}
-                  error={errors.confirmPassword && touched.confirmPassword}
+                  onClick={toggleVisibleConfirmPassword}
+                  valider={errors.confirmPassword && touched.confirmPassword}
                 >
                   {showConfirmPassword ? <OpenEye /> : <CloseEye />}
                 </EyeIcon>
-                {errors.confirmPassword &&
-                  touched.confirmPassword &&
-                  values.confirmPassword && (
+                {errors.confirmPassword && touched.confirmPassword && values.confirmPassword && (
                     <IconError
                       onClick={() => {
                         resetForm({
@@ -302,24 +314,24 @@ const initialValue = {
                         });
                       }}
                     >
-                      <CrossIcon />
+                      <Crosssmal />
                     </IconError>
                   )}
               </IconPassword>
             </PasswordInputContainer>
 
-            {errors.confirmPassword && touched.confirmPassword && (
+             {errors.confirmPassword && touched.confirmPassword && ( 
               <MessageError>{errors.confirmPassword}</MessageError>
             )}
           </PasswordContainer>
 
-          {!emailAvailable && (
-            <RegistrationErrorMessage>
-              This email is already in use. Please, try with another email or
-              log in!
-            </RegistrationErrorMessage>
+          {!availableEmail && (
+             <RegistrationErrorMessage>
+               This email is already in use. Please, try with another email or
+               log in!
+             </RegistrationErrorMessage>
           )}
-
+          
           <RegistrationBtn type="submit" disabled={isSubmitting}>
             Registration
           </RegistrationBtn>

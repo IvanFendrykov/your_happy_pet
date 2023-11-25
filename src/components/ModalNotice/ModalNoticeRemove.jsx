@@ -3,7 +3,6 @@ import { useDispatch } from 'react-redux';
 import { closeModal } from 'redux/modal/modalReducer';
 import { removeNotice } from 'redux/notices/noticesOperations';
 
-
 import {
   RemoveContainer,
   RemoveTitle,
