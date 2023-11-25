@@ -70,6 +70,7 @@ export const NewsList = styled.ul`
     display: flex;
     flex-wrap: wrap;
     gap: 46px 31px;
+    justify-content: center;
 
 `
 
@@ -156,5 +157,15 @@ export const NewsCardFooterLink = styled.a`
        text-decoration: none;
        color: #54ADFF;
        font-weight: 500;
+
+`
+
+export const PaginationContainer = styled.div`
+
+       margin-top: 68px;
+       display: flex;
+       aling-items: center;
+       justify-content: center;
+
 
 `

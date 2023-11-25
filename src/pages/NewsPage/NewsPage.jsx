@@ -3,67 +3,91 @@ import dateFormat from "dateformat";
 import { useEffect } from "react";
 import {
     NewsSection, HeroTitle, NewsList, NewsSearchForm, SearchInputNews, SearchInputSubmitButton, NewsCardContainer, NewsCardTopLine, NewsCardImage, NewsCardContentWrapper, NewsCardTextWrapper, NewsCardTitle, NewsCardSubTitle, NewsCardFooter,
-    NewsCardFooterDate, NewsCardFooterLink
+    NewsCardFooterDate, NewsCardFooterLink, PaginationContainer
 } from "./NewsPage.styled";
 import sprite from "../../images/symbol-defs.svg";
 import axios from "axios";
 import { Pagination } from '@mui/material';
-import { makeStyles } from "@material-ui/core/styles";
+import Notiflix from 'notiflix';
 
+  let search = false;
 
 const NewsPage = () => {
 const reserveImg = 'https://i.seadn.io/gae/2hDpuTi-0AMKvoZJGd-yKWvK4tKdQr_kLIpB_qSeMau2TNGCNidAosMEvrEXFO9G6tmlFlPQplpwiqirgrIPWnCKMvElaYgI-HiVvXc?auto=format&dpr=1&w=1000'
 
   const [newsData, setNewsData] = useState([]);
   const [numOfPages, setNumOfPages] = useState(0);
+  const [request, setRequest] = useState("");
 
     useEffect(() => {
-        // const test = data[3].date;
-        // const dateObj = dateFormat(test, "dd/mm/yyyy");
-      // console.log(dateObj)
       fetchNews(1);
+      // fetchNewsByReqest("Cat", 1)
     }, [])
-  
 
   const fetchNews = async (page) => {
     try {
-      const {data} = await axios.get(`http://localhost:3001/api/news?page=${page}`);
+
+      search = false;
+
+      const {data} = await axios.get(`https://happy-pets-rest-api.onrender.com/api/news?page=${page}`);
       
       setNewsData(data.response);
       setNumOfPages(data.totalPageCount);
-      // console.log(data[28]);
-      // const url = data[86].imgUrl;
-      // console.log(url)
-      // // fetch(url).then(console.log).catch(error => console.log(error))
-      // checkImg(url);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  const fetchNewsByReqest = async (request, page) => {
+
+    const defaultRequest = request.toLowerCase();
+
+    try {
+      const { data } = await axios.get(`https://happy-pets-rest-api.onrender.com/api/news/search/${defaultRequest}?page=${page}`);
+      setNewsData(data.response);
+      setNumOfPages(data.totalPageCount)
     } catch (error) {
       console.log(error);
     }
   }
 
   const handleChange = (e, p) => {
-    fetchNews(p);
-  }
 
-  const useStyles = makeStyles(() => ({
-  ul: {
-    "& .MuiPaginationItem-page.Mui-selected": {
-      background: "#54ADFF",
-      color: "white",
-      border: "1px solid #54ADFF"
+    if (search === true) {
+      fetchNewsByReqest(request, p)
+    } else {
+    fetchNews(p)
+
     }
   }
+
+  const handleRequestChange = e => {
+    setRequest(e.currentTarget.value)
   }
-  ));
-  
-  const classes = useStyles();
+
+  const handleSubmit = e => {
+    e.preventDefault();
+
+    if (request.trim() === "") {
+      return Notiflix.Notify.failure('Sorry, there are no news matching your search query. Please try again')
+    }
+
+    search = true;
+    
+    fetchNewsByReqest(request, 1);
+
+    if (newsData.length === 0) {
+      Notiflix.Notify.failure('Sorry, there are no news matching your search query. Please try again')
+      fetchNews(1);
+    }
+  }
 
     return (
         <NewsSection>
             <HeroTitle>News</HeroTitle>
-            <NewsSearchForm>
-                <SearchInputNews type="text" placeholder="Search" />
-                <SearchInputSubmitButton>
+            <NewsSearchForm onSubmit={handleSubmit}>
+                <SearchInputNews type="text" placeholder="Search" onChange={handleRequestChange} />
+                <SearchInputSubmitButton type="submit">
                     <svg width={24} height={24}>
                         <use href={sprite + "#search"}>
                         </use>
@@ -94,7 +118,9 @@ const reserveImg = 'https://i.seadn.io/gae/2hDpuTi-0AMKvoZJGd-yKWvK4tKdQr_kLIpB_
                 </li>
                 ))}
         </NewsList>
-        <Pagination classes={{ ul: classes.ul}}  count={numOfPages} variant="outlined" color='primary' onChange={handleChange}/>
+        <PaginationContainer>
+          <Pagination count={numOfPages} variant="outlined" color='primary' onChange={handleChange} />
+        </PaginationContainer>
         </NewsSection>
     )
 }
