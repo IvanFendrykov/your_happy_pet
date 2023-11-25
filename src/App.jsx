@@ -29,9 +29,9 @@ export const App = () => {
       <Suspense fallback={<VortexLoader />}>
         <Routes>
            <Route path="/" element={<Layout />}>
-            {/* <Route index element={<MainPage />} />
+            <Route index element={<MainPage />} />
             <Route path="main" element={<MainPage />} />
-            <Route path="news" element={<NewsPage />} />  */}
+            {/* <Route path="news" element={<NewsPage />} />  */}
              <Route path="notices" element={<NoticesPage />}>
               <Route index element={<NoticesCategoriesList />} />
               <Route path="sell" element={<NoticesCategoriesList />} />
