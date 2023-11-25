@@ -1,16 +1,14 @@
-
 import PetsItem from '../PetsItem/PetsItem';
-
+import { NavLink } from 'react-router-dom';
 function PetsList({ pets }) {
-
-    return (
-        <>
-            <a href='/'>Add pet</a>
-            {pets.map((pet) => (
-                <PetsItem key={pet.id} pet={pet} />
-            ))}
-        </>
-    );
+  return (
+    <>
+      <NavLink to="/add-pet">add pet</NavLink>
+      {pets.map((pet) => (
+        <PetsItem key={pet.id} pet={pet} />
+      ))}
+    </>
+  );
 }
 
 export default PetsList;
