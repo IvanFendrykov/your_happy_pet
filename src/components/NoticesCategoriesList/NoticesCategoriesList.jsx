@@ -1,11 +1,12 @@
 import { NoticesCategoriesItem } from '../../components/NoticeCategoryItem/NoticesCategoriesItem';
 
-const NoticesCategoriesList = ({ petsData }) => {
+const NoticesCategoriesList = ({ isLoggedIn, petsData }) => {
   return (
     <div>
       {petsData.map(petData => (
         <NoticesCategoriesItem
-          id={petData._id}
+          key={petData._id}
+          isLoggedIn={isLoggedIn}
           title={petData.title}
           category={petData.category}
           avatar={petData.avatar}

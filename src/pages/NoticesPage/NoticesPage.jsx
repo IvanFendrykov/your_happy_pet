@@ -3,11 +3,12 @@ import { ModalNoticeMore } from '../../components/ModalNotice/ModalNoticeMore';
 import { ModalNoticeRemove } from '../../components/ModalNotice/ModalNoticeRemove';
 import { Link } from 'react-router-dom';
 import { NoticesSearch } from '../../components/NoticesSearch/NoticesSearch';*/
+import { useEffect, useState } from 'react';
 import { NoticesCategoriesNav } from '../../components/NoticesCategoriesNav/NoticesCategoriesNav';
 import { NoticesFilters } from '../../components/NoticesFilters/NoticesFilters';
 import { NoticesCategoriesList } from '../../components/NoticesCategoriesList/NoticesCategoriesList';
 
-const petsData = [
+const PETS_DATA = [
   {
     _id: 'pet-01',
     avatar:
@@ -192,23 +193,73 @@ const petsData = [
   },
 ];
 
+const IS_LOGGED_IN = true;
+
 const NoticesPage = () => {
-  /*const calcYearDifference = oldDate => {
+  const [petsData, setPetsData] = useState(PETS_DATA);
+  const [categoriesData, setCategoriesData] = useState('');
+  const [filtersData, setFiltersData] = useState({
+    age: 'any age',
+    gender: '',
+  });
+  const [editedPetsData, setEditedPetsData] = useState(PETS_DATA);
+
+  const handleCategoriesData = data => {
+    setCategoriesData(data);
+  };
+  const handleFiltersData = data => {
+    setFiltersData(data);
+  };
+
+  const calcYearDifference = oldDateString => {
+    const oldDate = new Date(oldDateString);
     const newDate = new Date();
     const dateDifference = new Date(newDate - oldDate);
     const diffYears = dateDifference.getFullYear() - 1970;
     return diffYears;
-  };*/
+  };
+
+  const isAgeCategory = (item, ageCategory) => {
+    const age = calcYearDifference(item.petBirthday);
+    const ageFilterOptions = {
+      upToOne: age < 1,
+      upToTwo: age < 2,
+      fromTwo: age >= 2,
+      anyAge: true,
+    };
+    return ageFilterOptions[ageCategory];
+  };
+
+  useEffect(() => {
+    const newEditedPetsData = petsData.filter(
+      pet =>
+        (!categoriesData || pet.category === categoriesData) &&
+        isAgeCategory(pet, filtersData.age) &&
+        (!filtersData.gender || pet.sex === filtersData.gender)
+    );
+    const newEditedPetsDataWithAge = newEditedPetsData.map(item => {
+      const petAge = calcYearDifference(item.petBirthday);
+      const petAgeString = `${petAge} year${!(petAge === 1) ? 's' : ''}`;
+      return { ...item, age: petAgeString };
+    });
+    setEditedPetsData(newEditedPetsDataWithAge);
+  }, [petsData, categoriesData, filtersData]);
 
   return (
     <div>
       <h2>Find your favorite pet</h2>
 
       <div>
-        <NoticesCategoriesNav />
-        <NoticesFilters onChange={data => console.log(data)} />
+        <NoticesCategoriesNav
+          isLoggedIn={IS_LOGGED_IN}
+          onChange={handleCategoriesData}
+        />
+        <NoticesFilters onChange={handleFiltersData} />
       </div>
-      <NoticesCategoriesList petsData={petsData} />
+      <NoticesCategoriesList
+        petsData={editedPetsData}
+        isLoggedIn={IS_LOGGED_IN}
+      />
     </div>
   );
 };
@@ -218,4 +269,4 @@ const NoticesPage = () => {
 
 <Link to="">Add pet</Link>
 */
-export { NoticesPage };
+export default NoticesPage;
