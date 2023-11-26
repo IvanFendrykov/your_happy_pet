@@ -2,7 +2,7 @@ import { useState } from 'react';
 import dateFormat from "dateformat";
 import { useEffect } from "react";
 import {
-    NewsSection, HeroTitle, NewsList, NewsSearchForm, SearchInputNews, SearchInputSubmitButton, NewsCardContainer, NewsCardTopLine, NewsCardImage, NewsCardContentWrapper, NewsCardTextWrapper, NewsCardTitle, NewsCardSubTitle, NewsCardFooter,
+    NewsSection, HeroTitle, NewsList, NewsSearchForm, GoBackBtn, GoBackBtnSvg, SearchNewsWrapper, SearchInputNews, SearchInputClearBtn, SearchInputSubmitButton, NewsCardContainer, NewsCardTopLine, NewsCardImage, NewsCardContentWrapper, NewsCardTextWrapper, NewsCardTitle, NewsCardSubTitle, NewsCardFooter,
     NewsCardFooterDate, NewsCardFooterLink, PaginationContainer
 } from "./NewsPage.styled";
 import sprite from "../../images/symbol-defs.svg";
@@ -63,10 +63,18 @@ const reserveImg = 'https://i.seadn.io/gae/2hDpuTi-0AMKvoZJGd-yKWvK4tKdQr_kLIpB_
 
   const handleRequestChange = e => {
     setRequest(e.currentTarget.value)
+    console.log(request.length)
+  }
+
+  const goBackBtn = () => {
+    fetchNews(1);
+    setRequest("")
   }
 
   const handleSubmit = e => {
     e.preventDefault();
+
+    e.target[0].value = "";
 
     if (request.trim() === "") {
       return Notiflix.Notify.failure('Sorry, there are no news matching your search query. Please try again')
@@ -82,24 +90,41 @@ const reserveImg = 'https://i.seadn.io/gae/2hDpuTi-0AMKvoZJGd-yKWvK4tKdQr_kLIpB_
     }
   }
 
+  const handleClear = e => {
+    setRequest("");
+    e.target.form[0].value = "";
+  }
+
     return (
         <NewsSection>
             <HeroTitle>News</HeroTitle>
-            <NewsSearchForm onSubmit={handleSubmit}>
-                <SearchInputNews type="text" placeholder="Search" onChange={handleRequestChange} />
+        <NewsSearchForm onSubmit={handleSubmit}>  
+          {search && <GoBackBtn type='button' onClick={goBackBtn}>
+            <svg width={24} height={24}>
+              <GoBackBtnSvg href={sprite + "#ArrowLeft"}></GoBackBtnSvg>
+            </svg>
+            Back to all news
+          </GoBackBtn>}
+          <SearchNewsWrapper>
+            <SearchInputNews type="text" placeholder="Search" onChange={handleRequestChange} />
+              {request.length > 0 && !search && <SearchInputClearBtn type='button' onClick={handleClear}>X</SearchInputClearBtn>}
                 <SearchInputSubmitButton type="submit">
                     <svg width={24} height={24}>
                         <use href={sprite + "#search"}>
                         </use>
                     </svg>
-                </SearchInputSubmitButton>
+            </SearchInputSubmitButton>
+            </SearchNewsWrapper>
             </NewsSearchForm>
             <NewsList>
                 {newsData.map(({ imgUrl, title, text, date, url, _id }) => (
                 <li key={_id}>
                     <NewsCardContainer>
                         <NewsCardTopLine />
-                        <NewsCardImage src={imgUrl ? imgUrl : reserveImg} alt="newsImg" />
+                      <NewsCardImage onError={({ currentTarget }) => {
+                        currentTarget.onerror = null; // prevents looping
+                        currentTarget.src= reserveImg;
+                          }} src={imgUrl} alt="newsImg" />
                             <NewsCardContentWrapper>
                                 <NewsCardTextWrapper>
                                 <NewsCardTitle>{ title }</NewsCardTitle>
@@ -119,7 +144,7 @@ const reserveImg = 'https://i.seadn.io/gae/2hDpuTi-0AMKvoZJGd-yKWvK4tKdQr_kLIpB_
                 ))}
         </NewsList>
         <PaginationContainer>
-          <Pagination count={numOfPages} variant="outlined" color='primary' onChange={handleChange} />
+          <Pagination size='small' count={numOfPages} variant="outlined" color='primary' onChange={handleChange} />
         </PaginationContainer>
         </NewsSection>
     )
