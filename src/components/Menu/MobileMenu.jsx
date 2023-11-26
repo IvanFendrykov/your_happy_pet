@@ -23,7 +23,7 @@ export const MobileMenu = ({ isLoggedIn, user, toggleModal }) => {
             <Link to="/user">
               <img src={icon} alt="icon" />
             </Link>
-            <User>{user.name}</User>
+            <User>{user}</User>
           </MenuNavBtnUser>
         ) : (
           <MenuNavBtn>

@@ -20,7 +20,7 @@ const UserNav = () => {
        
         <StyledLink to="/user">
           <img src={icon} alt="icon" />
-          <User>{user.username}</User>
+          <User>{user}</User>
         </StyledLink>
       
          {showModal && (
