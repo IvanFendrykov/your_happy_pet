@@ -4,11 +4,7 @@ export const CheckBoxWrap = styled.div`
   display: flex;
   gap: 16px;
 `;
-export const SVGsex = styled.svg`
-  position: absolute;
-  left: 0;
-  fill: black;
-`;
+
 export const LabelChekbox = styled.label`
   display: inline-flex;
   height: 35px;
@@ -41,6 +37,9 @@ export const InputChekbox = styled.input`
     }
   }
 `;
+
+
+
 export const DownInputBox = styled.div`
   display: flex;
   flex-direction: column;

@@ -16,31 +16,32 @@ import {
   InputFile,
   SvgIcon,
   CommentInput,
+  StyledDatePicker,
 } from './AddPetForm.styled';
 import toast from 'react-hot-toast';
 import { postMethod } from '../../pages/AddPetPage';
-
+import { ArrowLeft } from '../../images/svg/svgIcons';
+import { useNavigate } from 'react-router-dom';
 const AddPetForm = ({ changeColors, setActiveComponent, setColors }) => {
   const [submit, setSubmit] = useState('button');
+
   const [name, setPetName] = useState('');
-  const [birthDay, setDateOfBirth] = useState('');
+
   const [typeOfPet, setPetType] = useState('');
+
   const [comments, setComment] = useState('');
   const [image, setSelectedImage] = useState(null);
   const [fileImage, setFileImage] = useState(null);
-
+  const [selectedDate, setSelectedDate] = useState(null);
   const [step, setStep] = useState(1);
-  console.log(step);
   const [next, setNext] = useState(false);
 
+  const navigate = useNavigate();
   const handleInputChange = ({ target }) => {
     const { name, value } = target;
     switch (name) {
       case 'name':
         setPetName(value);
-        break;
-      case 'birthDay':
-        setDateOfBirth(value);
         break;
       case 'typeOfPet':
         setPetType(value);
@@ -76,18 +77,20 @@ const AddPetForm = ({ changeColors, setActiveComponent, setColors }) => {
     const formData = new FormData();
     formData.append('submit', submit);
     formData.append('name', name);
-    formData.append('birthDay', birthDay);
+    formData.append('birthDay', selectedDate);
     formData.append('typeOfPet', typeOfPet);
     formData.append('comments', comments);
     formData.append('image', fileImage);
     setActiveComponent(null);
 
     postMethod('myPet', formData);
+    toast.success('Post has been posted');
+    navigate('/user');
   };
 
   const handleNext = () => {
     const newColor = '#00C3AD';
-    if (!name || !birthDay || !typeOfPet) {
+    if (!name || !selectedDate || !typeOfPet) {
       toast.error('Complete all fields');
       return;
     }
@@ -136,11 +139,11 @@ const AddPetForm = ({ changeColors, setActiveComponent, setColors }) => {
           </LabelInput>
           <LabelInput>
             Date of birth
-            <InputAdd
-              type="text"
-              placeholder="Type date of birth"
-              name="birthDay"
-              onChange={handleInputChange}
+            <StyledDatePicker
+              selected={selectedDate}
+              onChange={(date) => setSelectedDate(date)}
+              placeholderText="Type date of birth"
+              dateFormat="dd/MM/yyyy"
             />
           </LabelInput>
           <LabelInput>
@@ -202,9 +205,7 @@ const AddPetForm = ({ changeColors, setActiveComponent, setColors }) => {
           </svg>
         </NextBtn>
         <BackBtn type="button" onClick={handleBack}>
-          <svg width="24" height="24">
-            <use href={symbolDefs + '#arrow-left'} fill="white"></use>
-          </svg>
+          <ArrowLeft stroke="#54ADFF" />
           Back
         </BackBtn>
       </BtnBox>

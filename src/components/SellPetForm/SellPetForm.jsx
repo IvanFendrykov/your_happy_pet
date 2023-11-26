@@ -4,7 +4,8 @@ import {
   BtnBox,
   NextBtn,
 } from '../../pages/AddPetPage/AddPetPage.styled';
-
+import { ArrowLeft, Male } from '../../images/svg/svgIcons';
+import { Female } from '../../images/svg/svgIcons';
 import symbolDefs from '../../images/symbol-defs.svg';
 import {
   LabelInput,
@@ -16,24 +17,24 @@ import {
   InputFile,
   SvgIcon,
   CommentInput,
+  StyledDatePicker,
 } from '../AddPetForm/AddPetForm.styled';
 import {
   CheckBoxWrap,
   LabelChekbox,
   SexTitle,
   InputChekbox,
-  SVGsex,
-  DownInputBox
+  DownInputBox,
 } from './SellPetForm.styled';
 import { postMethod } from '../../pages/AddPetPage';
 import toast from 'react-hot-toast';
-
+import { useNavigate } from 'react-router-dom';
 const SellPetForm = ({ changeColors, setActiveComponent, setColors }) => {
   const [step, setStep] = useState(1);
   const [submit, setSubmit] = useState('button');
   const [title, setTitle] = useState('');
   const [name, setPetName] = useState('');
-  const [birthDay, setDateOfBirth] = useState('');
+  const [selectedDate, setSelectedDate] = useState(null);
   const [typeOfPet, setPetType] = useState('');
   const [price, setPrice] = useState('');
   const [location, setLocation] = useState('');
@@ -41,6 +42,8 @@ const SellPetForm = ({ changeColors, setActiveComponent, setColors }) => {
   const [image, setSelectedImage] = useState(null);
   const [fileImage, setFileImage] = useState(null);
   const [sex, setSex] = useState(null);
+
+  const navigate = useNavigate();
 
   const [next, setNext] = useState(false);
   const handleInputChange = ({ target }) => {
@@ -52,9 +55,7 @@ const SellPetForm = ({ changeColors, setActiveComponent, setColors }) => {
       case 'name':
         setPetName(value);
         break;
-      case 'birthDay':
-        setDateOfBirth(value);
-        break;
+
       case 'typeOfPet':
         setPetType(value);
         break;
@@ -95,7 +96,7 @@ const SellPetForm = ({ changeColors, setActiveComponent, setColors }) => {
     formData.append('submit', submit);
     formData.append('title', title);
     formData.append('name', name);
-    formData.append('birthDay', birthDay);
+    formData.append('birthDay', selectedDate);
     formData.append('typeOfPet', typeOfPet);
     formData.append('comments', comments);
     formData.append('gender', sex);
@@ -103,12 +104,15 @@ const SellPetForm = ({ changeColors, setActiveComponent, setColors }) => {
     formData.append('location', location);
     formData.append('price', price);
     postMethod('petSale', formData);
+
+    toast.success('Post has been posted');
+    navigate('/user');
   };
 
   const handleNext = () => {
     const newColor = '#00C3AD';
 
-    if (!title || !name || !birthDay || !typeOfPet) {
+    if (!title || !name || !selectedDate || !typeOfPet) {
       toast.error('Complete all fields');
       return;
     }
@@ -172,11 +176,11 @@ const SellPetForm = ({ changeColors, setActiveComponent, setColors }) => {
           </LabelInput>
           <LabelInput>
             Date of birth
-            <InputAdd
-              type="text"
-              placeholder="01/01/2001"
-              name="birthDay"
-              onChange={handleInputChange}
+            <StyledDatePicker
+              selected={selectedDate}
+              onChange={(date) => setSelectedDate(date)}
+              placeholderText="Type date of birth"
+              dateFormat="dd/MM/yyyy"
             />
           </LabelInput>
           <LabelInput>
@@ -193,7 +197,7 @@ const SellPetForm = ({ changeColors, setActiveComponent, setColors }) => {
         <>
           <SexTitle>The sex</SexTitle>
           <CheckBoxWrap>
-          <InputChekbox
+            <InputChekbox
               id="female"
               type="radio"
               name="sex"
@@ -201,9 +205,7 @@ const SellPetForm = ({ changeColors, setActiveComponent, setColors }) => {
               onChange={() => handleCheckbox('female')}
             ></InputChekbox>
             <LabelChekbox htmlFor="female">
-              <SVGsex width="24" height="24">
-                <use href={symbolDefs + '#female'} fill="red"></use>
-              </SVGsex>
+              <Female stroke={sex === 'female' ? '#FFFFFF' : '#F43F5E'} />
               female
             </LabelChekbox>
 
@@ -215,9 +217,7 @@ const SellPetForm = ({ changeColors, setActiveComponent, setColors }) => {
               onChange={() => handleCheckbox('male')}
             />
             <LabelChekbox htmlFor="male">
-              <SVGsex width="24" height="24">
-                <use href={symbolDefs + '#male'} fill="red"></use>
-              </SVGsex>
+              <Male stroke={sex === 'male' ? '#FFFFFF' : '#54ADFF'} />
               male
             </LabelChekbox>
           </CheckBoxWrap>
@@ -250,32 +250,32 @@ const SellPetForm = ({ changeColors, setActiveComponent, setColors }) => {
             </FileWrapper>
           </LabelFile>
           <DownInputBox>
-          <LabelInput>
-            Location
-            <InputAdd
-              type="text"
-              placeholder="Title of add"
-              name="location"
-              onChange={handleInputChange}
-            />
-          </LabelInput>
-          <LabelInput>
-            Price
-            <InputAdd
-              type="text"
-              placeholder="Title of add"
-              name="price"
-              onChange={handleInputChange}
-            />
-          </LabelInput>
-          <LabelInput>
-            Comments
-            <CommentInput
-              placeholder="Comment"
-              name="comments"
-              onChange={handleInputChange}
-            />
-          </LabelInput>
+            <LabelInput>
+              Location
+              <InputAdd
+                type="text"
+                placeholder="Title of add"
+                name="location"
+                onChange={handleInputChange}
+              />
+            </LabelInput>
+            <LabelInput>
+              Price
+              <InputAdd
+                type="text"
+                placeholder="Title of add"
+                name="price"
+                onChange={handleInputChange}
+              />
+            </LabelInput>
+            <LabelInput>
+              Comments
+              <CommentInput
+                placeholder="Comment"
+                name="comments"
+                onChange={handleInputChange}
+              />
+            </LabelInput>
           </DownInputBox>
         </>
       )}
@@ -288,9 +288,7 @@ const SellPetForm = ({ changeColors, setActiveComponent, setColors }) => {
           </svg>
         </NextBtn>
         <BackBtn type="button" onClick={handleBack}>
-          <svg width="24" height="24">
-            <use href={symbolDefs + '#arrow-left'} fill="white"></use>
-          </svg>
+          <ArrowLeft stroke="#54ADFF" />
           Back
         </BackBtn>
       </BtnBox>

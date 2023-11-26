@@ -16,17 +16,19 @@ import {
   InputFile,
   SvgIcon,
   CommentInput,
+  StyledDatePicker,
 } from '../AddPetForm/AddPetForm.styled';
 import {
   CheckBoxWrap,
   LabelChekbox,
   SexTitle,
   InputChekbox,
-  SVGsex,
   DownInputBox,
 } from '../SellPetForm/SellPetForm.styled';
 import { postMethod } from '../../pages/AddPetPage';
 import toast from 'react-hot-toast';
+import { ArrowLeft, Female, Male } from '../../images/svg/svgIcons';
+import { useNavigate } from 'react-router-dom';
 
 const GoodHandsForm = ({ changeColors, setActiveComponent, setColors }) => {
   const [submit, setSubmit] = useState('button');
@@ -35,7 +37,7 @@ const GoodHandsForm = ({ changeColors, setActiveComponent, setColors }) => {
 
   const [title, setTitle] = useState('');
   const [name, setPetName] = useState('');
-  const [birthDay, setDateOfBirth] = useState('');
+  const [selectedDate, setSelectedDate] = useState(null);
   const [typeOfPet, setPetType] = useState('');
   const [location, setLocation] = useState('');
   const [comments, setComment] = useState('');
@@ -43,6 +45,7 @@ const GoodHandsForm = ({ changeColors, setActiveComponent, setColors }) => {
   const [fileImage, setFileImage] = useState(null);
   const [sex, setSex] = useState(null);
 
+  const navigate = useNavigate();
   const [next, setNext] = useState(false);
 
   const handleInputChange = ({ target }) => {
@@ -54,9 +57,7 @@ const GoodHandsForm = ({ changeColors, setActiveComponent, setColors }) => {
       case 'name':
         setPetName(value);
         break;
-      case 'birthDay':
-        setDateOfBirth(value);
-        break;
+
       case 'typeOfPet':
         setPetType(value);
         break;
@@ -95,7 +96,7 @@ const GoodHandsForm = ({ changeColors, setActiveComponent, setColors }) => {
     formData.append('submit', submit);
     formData.append('title', title);
     formData.append('name', name);
-    formData.append('birthDay', birthDay);
+    formData.append('birthDay', selectedDate);
     formData.append('typeOfPet', typeOfPet);
     formData.append('comments', comments);
     formData.append('gender', sex);
@@ -103,12 +104,14 @@ const GoodHandsForm = ({ changeColors, setActiveComponent, setColors }) => {
     formData.append('location', location);
 
     postMethod('inGoodHands', formData);
+    toast.success('Post has been posted');
+    navigate('/user');
   };
 
   const handleNext = () => {
     const newColor = '#00C3AD';
 
-    if (!title || !name || !birthDay || !typeOfPet) {
+    if (!title || !name || !selectedDate || !typeOfPet) {
       toast.error('Complete all fields');
       return;
     }
@@ -172,11 +175,11 @@ const GoodHandsForm = ({ changeColors, setActiveComponent, setColors }) => {
           </LabelInput>
           <LabelInput>
             Date of birth
-            <InputAdd
-              type="text"
-              placeholder="01/01/2001"
-              name="birthDay"
-              onChange={handleInputChange}
+            <StyledDatePicker
+              selected={selectedDate}
+              onChange={(date) => setSelectedDate(date)}
+              placeholderText="Type date of birth"
+              dateFormat="dd/MM/yyyy"
             />
           </LabelInput>
           <LabelInput>
@@ -201,9 +204,7 @@ const GoodHandsForm = ({ changeColors, setActiveComponent, setColors }) => {
               onChange={() => handleCheckbox('female')}
             ></InputChekbox>
             <LabelChekbox htmlFor="female">
-              <SVGsex width="24" height="24">
-                <use href={symbolDefs + '#female'} fill="red"></use>
-              </SVGsex>
+              <Female stroke={sex === 'female' ? '#FFFFFF' : '#F43F5E'} />
               female
             </LabelChekbox>
 
@@ -215,9 +216,7 @@ const GoodHandsForm = ({ changeColors, setActiveComponent, setColors }) => {
               onChange={() => handleCheckbox('male')}
             />
             <LabelChekbox htmlFor="male">
-              <SVGsex width="24" height="24">
-                <use href={symbolDefs + '#male'} fill="red"></use>
-              </SVGsex>
+              <Male stroke={sex === 'male' ? '#FFFFFF' : '#54ADFF'} />
               male
             </LabelChekbox>
           </CheckBoxWrap>
@@ -250,24 +249,24 @@ const GoodHandsForm = ({ changeColors, setActiveComponent, setColors }) => {
             </FileWrapper>
           </LabelFile>
           <DownInputBox>
-          <LabelInput>
-            Location
-            <InputAdd
-              type="text"
-              placeholder="Title of add"
-              name="location"
-              onChange={handleInputChange}
-            />
-          </LabelInput>
+            <LabelInput>
+              Location
+              <InputAdd
+                type="text"
+                placeholder="Title of add"
+                name="location"
+                onChange={handleInputChange}
+              />
+            </LabelInput>
 
-          <LabelInput>
-            Comments
-            <CommentInput
-              placeholder="Comment"
-              name="comments"
-              onChange={handleInputChange}
-            />
-          </LabelInput>
+            <LabelInput>
+              Comments
+              <CommentInput
+                placeholder="Comment"
+                name="comments"
+                onChange={handleInputChange}
+              />
+            </LabelInput>
           </DownInputBox>
         </>
       )}
@@ -280,9 +279,7 @@ const GoodHandsForm = ({ changeColors, setActiveComponent, setColors }) => {
           </svg>
         </NextBtn>
         <BackBtn type="button" onClick={handleBack}>
-          <svg width="24" height="24">
-            <use href={symbolDefs + '#arrow-left'} fill="white"></use>
-          </svg>
+          <ArrowLeft stroke="#54ADFF" />
           Back
         </BackBtn>
       </BtnBox>
