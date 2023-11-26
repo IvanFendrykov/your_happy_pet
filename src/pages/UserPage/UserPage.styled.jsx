@@ -43,6 +43,7 @@ export const UserCardWrapper = styled.form`
     flex-direction: row-reverse;
     justify-content: space-between;
     width: 704px;
+    height: 268px;
     padding-right: 76px;
     padding-bottom: 58px;
   }
@@ -51,6 +52,7 @@ export const UserCardWrapper = styled.form`
     display: block;
     width: 395px;
     padding-right: 0;
+    height: 520px;
   }
 `;
 
@@ -75,8 +77,8 @@ export const UserProfileImage = styled.div`
 export const StyledList = styled.ul`
   list-style-type: none;
   padding: 0;
+  margin-bottom: 20px;
   @media (min-width: 768px) {
-    width: 320px;
   }
   @media (min-width: 1280px) {
     width: 356px;
@@ -89,6 +91,12 @@ export const ListItem = styled.li`
   margin-bottom: 20px;
   &:last-child {
     margin-bottom: 0;
+  }
+  @media (min-width: 768px) {
+    margin-bottom: 10px;
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 `;
 
@@ -108,14 +116,28 @@ export const Span = styled.input`
   border-radius: 20px;
   border: 1px solid var(--unnamed, #54adff);
   padding: 4px 10px;
+  @media (min-width: 768px) {
+    width: 255px;
+    height: 30px;
+  }
 `;
 
 export const LogoutButton = styled.button`
-  position: absolute;
-  left: 10px;
-  bottom: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background-color: transparent;
+  color: #888;
+  font-family: Manrope;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: 0.64px;
   @media (min-width: 768px) {
+    position: absolute;
     left: 20px;
+    bottom: 14px;
   }
 `;
 
@@ -131,10 +153,22 @@ export const EditProfileButton = styled.button`
 `;
 
 export const SaveButton = styled.button`
-  position: absolute;
-  left: 10px;
-  bottom: 14px;
+  color: #fef9f9;
+  display: block;
+  margin: 0 auto;
+  font-family: Manrope;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.56px;
+  width: 248px;
+  max-height: 32px;
+  padding: 6px 108px;
+  border-radius: 40px;
+  border-color: transparent;
+  background: #54adff;
   @media (min-width: 768px) {
-    left: 20px;
+    position: absolute;
+    left: 116px;
+    bottom: 12px;
   }
 `;

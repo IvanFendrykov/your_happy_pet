@@ -16,6 +16,7 @@ import {
 } from './UserPage.styled';
 import { ReactComponent as Edit } from '../../images/svg/edit.svg';
 import { ReactComponent as CrossSmall } from '../../images/svg/cross-small.svg';
+import { ReactComponent as Logout } from '../../images/svg/logout.svg';
 
 const user = {
   name: 'fakeName',
@@ -147,17 +148,20 @@ function UserPage() {
               </ListItem>
             </StyledList>
             {clicked ? (
-              <SaveButton onClick={submitForm}>save</SaveButton>
+              <SaveButton onClick={submitForm}>Save</SaveButton>
             ) : (
-              <LogoutButton>logout</LogoutButton>
+              <LogoutButton>
+                <Logout style={{ stroke: '#54ADFF', marginRight: '12px' }} />{' '}
+                Log Out
+              </LogoutButton>
             )}
             {clicked ? (
               <EditProfileButton onClick={toggleForm}>
-                <CrossSmall style={{ stroke: '#54ADFF' }}></CrossSmall>
+                <CrossSmall style={{ stroke: '#54ADFF' }} />
               </EditProfileButton>
             ) : (
               <EditProfileButton onClick={toggleForm}>
-                <Edit style={{ stroke: '#54ADFF' }}></Edit>
+                <Edit style={{ stroke: '#54ADFF' }} />
               </EditProfileButton>
             )}
           </UserCardWrapper>
