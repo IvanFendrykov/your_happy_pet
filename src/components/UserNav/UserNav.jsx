@@ -17,12 +17,12 @@ const UserNav = () => {
         Log Out
         <CiLogout />
       </LogoutBtn>
-      {user && (
+       
         <StyledLink to="/user">
           <img src={icon} alt="icon" />
-          <User>{user.name}</User>
+          <User>{user.username}</User>
         </StyledLink>
-      )}
+      
          {showModal && (
         <Backdrop closeModal={toggleModal}>
           <ModalApproveAction closeModal={toggleModal} />
