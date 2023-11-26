@@ -1,0 +1,1 @@
+import{j as s}from"./index-c6643879.js";const e=()=>s.jsx(s.Fragment,{children:s.jsx("div",{className:"main-page",children:s.jsxs("h1",{children:["Take good care ",s.jsx("br",{className:"br-desktop"}),"of",s.jsx("br",{className:"br-tablet"})," your small",s.jsx("br",{className:"br-desktop"})," pets"]})})});export{e as default};
