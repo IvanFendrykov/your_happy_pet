@@ -31,6 +31,7 @@ export const register = createAsyncThunk(
           message: 'User with this email already exist',
         });
         toast.error('Email Already Exist! Please enter unique email')
+
       return rejectWithValue(error.message);
     }
   },
@@ -40,7 +41,9 @@ export const login = createAsyncThunk(
   'auth/login',
   async (credentials, { rejectWithValue }) => {
     try {
+
       const response = await axios.post('/api/auth/login', credentials);
+
       setAuthHeader(response.data.accessToken);
       localStorage.setItem('refreshToken', response.data.refreshToken);
       
