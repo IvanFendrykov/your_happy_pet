@@ -15,7 +15,6 @@ import {
   IconContainerRight,
   IconContainerLeft,
   MessageError,
-  LoginErrMessage,
   LoginBtn,
   RegLink,
   EyeIcon,
@@ -57,7 +56,6 @@ const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
-  const [emailCheckDone] = useState(false);
 
 const toggleVisiblePassword = () => {
     setShowPassword(prevState => !prevState);
@@ -78,7 +76,6 @@ const handleSubmit = async (values, { setSubmitting }) => {
     const response = await dispatch(login(credentials));
 
     if (response.status === 200) {
-      // Navigate to '/userpage' upon successful login
       navigate('/userpage');
     }
   } catch (error) {
@@ -195,13 +192,6 @@ const handleSubmit = async (values, { setSubmitting }) => {
               <InfoMessage>Password is secure</InfoMessage>
             )}
           </PasswordContainer>
-
-          {emailCheckDone && (
-            <LoginErrMessage>
-              This email address is not in use. Try registering an address!
-            </LoginErrMessage>
-          )}
-
           <LoginBtn type="submit" disabled={isSubmitting}>
             Login
           </LoginBtn>
