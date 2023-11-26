@@ -136,17 +136,17 @@ export const EyeIcon = styled.span`
   width: 24px;
   height: 24px;
   cursor: pointer;
-
-  & svg {
-    stroke: ${({ theme, error, secure }) =>
-      error
-        ? theme.colors.red
-        : secure
-        ? theme.colors.green
-        : theme.colors.blue};
-  }
 `;
 
+export const DisabledIcon = styled.span`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+
+`;
 export const CheckIcon = styled.span`
   display: flex;
   align-items: center;

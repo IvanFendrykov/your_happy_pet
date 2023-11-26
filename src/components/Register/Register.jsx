@@ -26,7 +26,8 @@ import {
  PasswordContainer,
  PasswordInputContainer,
  IconPassword,
- EyeIcon,
+  EyeIcon,
+ DisabledIcon,
  CheckIcon,
  InfoMessage,
  RegistrationErrorMessage,
@@ -247,6 +248,7 @@ const initialValue = {
                   onClick={toggleVisiblePassword}
                   valider={errors.password && touched.password}
                   // secure={isPasswordValid}
+                  style={{ stroke: showPassword ? '#54ADFF' : '#888' }}
                 >
                   {showPassword ? <OpenEye /> : <CloseEye />}
                 </EyeIcon>
@@ -300,12 +302,13 @@ const initialValue = {
                 // disabled={loading}
               />
               <IconPassword>
-                <EyeIcon
+                <DisabledIcon
                   onClick={toggleVisibleConfirmPassword}
                   valider={errors.confirmPassword && touched.confirmPassword}
+                  style={{ stroke: showConfirmPassword ? '#54ADFF' : '#888' }}
                 >
                   {showConfirmPassword ? <OpenEye /> : <CloseEye />}
-                </EyeIcon>
+                </DisabledIcon>
                 {errors.confirmPassword && touched.confirmPassword && values.confirmPassword && (
                     <IconError
                       onClick={() => {
