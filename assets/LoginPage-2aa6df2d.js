@@ -1,4 +1,4 @@
-import{s as o,L as F,b as E,u as C,r as m,j as e,l as $}from"./index-cd163c5a.js";import{a as k,d as D,c as P,S as v,b as A}from"./cross-smal-e138a2b8.js";var h={};/**
+import{s as o,L as u,b as j,u as F,r as E,j as e,l as $}from"./index-fc450227.js";import{a as C,d as P,c as k,S as D,b as v}from"./cross-smal-2bfc629d.js";var g={};/**
  * @license React
  * react-jsx-dev-runtime.production.min.js
  *
@@ -6,12 +6,12 @@ import{s as o,L as F,b as E,u as C,r as m,j as e,l as $}from"./index-cd163c5a.js
  *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
- */var L=Symbol.for("react.fragment");h.Fragment=L;h.jsxDEV=void 0;const S=o.form`
+ */var A=Symbol.for("react.fragment");g.Fragment=A;g.jsxDEV=void 0;const L=o.form`
   height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-`,z=o.h1`
+`,S=o.h1`
   font-weight: 500;
   font-size: 36px;
   line-height: 1.36;
@@ -22,13 +22,13 @@ import{s as o,L as F,b as E,u as C,r as m,j as e,l as $}from"./index-cd163c5a.js
     font-size: 24px;
     line-height: 1.38;
   }
-`,V=o.div`
+`,z=o.div`
   display: flex;
   flex-direction: column;
 
   @media screen and (max-width: 767px) {
   }
-`,I=o.div`
+`,V=o.div`
   display: flex;
   flex-direction: column;
   position: relative;
@@ -37,7 +37,7 @@ import{s as o,L as F,b as E,u as C,r as m,j as e,l as $}from"./index-cd163c5a.js
   @media screen and (max-width: 767px) {
     margin-bottom: ${({error:i,secure:a})=>i||a?"1px":"24px"};
   }
-`,R=o.input`
+`,I=o.input`
   display: flex;
   align-items: center;
   padding: 12px 16px;
@@ -57,7 +57,7 @@ import{s as o,L as F,b as E,u as C,r as m,j as e,l as $}from"./index-cd163c5a.js
   @media screen and (min-width: 768px) {
     width: 458px;
   }
-`,T=o.div`
+`,R=o.div`
   display: flex;
   flex-direction: column;
   position: relative;
@@ -75,7 +75,7 @@ stroke:#00C3AD;
     right: 52px;
     top: 50%;
     transform: translateY(-50%);
-`,M=o.span`
+`,T=o.span`
 position: absolute;
   display: flex;
   align-items: center;
@@ -173,7 +173,7 @@ right: 15px;
   @media screen and (max-width: 767px) {
     right: 25px; 
   }
-`;const g=o.p`
+`;const m=o.p`
   margin: 8px;
   margin-top: 0;
   padding-left: 16px;
@@ -183,13 +183,13 @@ right: 15px;
   @media screen and (max-width: 767px) {
     font-size: xx-small;
   }
-`,W=o.p`
+`;o.p`
   font-size: smaller;margin:0 auto;
 color:#888888;
   @media screen and (max-width: 767px) {
     font-size: xx-small;
   }
-`,G=o.p`
+`;const M=o.p`
   margin: 8px;
   margin-top: 0;
   padding-left: 21px;
@@ -200,7 +200,7 @@ color:#888888;
     font-size: xx-small;
 
   }
-`,J=o.button`
+`,W=o.button`
   margin-top: 8px;
   width: 256px;
 
@@ -221,7 +221,7 @@ color:#888888;
   @media screen and (min-width: 1024px) {
     width: 458px;
   }
-`,N=o.p`
+`,G=o.p`
  margin-top: 16px;
   font-weight: 400;
   font-size: 12px;
@@ -232,18 +232,18 @@ color:#888888;
       margin-top: 8px;
     }
  
-`,O=o(F)`
+`,J=o(u)`
   text-decoration-line: underline;
   color: ${({theme:i})=>i.colors.blue};
   display: inline;
   cursor: pointer;
-`,H=i=>{const a={};return i.email?/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(i.email)||(a.email="Enter a valid Email"):a.email="This field is required",i.password?i.password.length<8&&(a.password="Password must be at least 8 characters long"):a.password="This field is required",a},K={email:"",password:""},Q=()=>{const i=E(),a=C(),[r,w]=m.useState(!1),[f]=m.useState(!1),b=()=>{w(s=>!s)},c=(s,t,n)=>{const{name:d,value:l}=s.target;t({...n,[d]:l})},u=async(s,{setSubmitting:t})=>{try{const n={email:s.email,password:s.password};(await i($(n))).status===200&&a("/user")}catch(n){console.error("Error caught:",n)}finally{t(!1)}};return e.jsx(k,{initialValues:K,validate:H,onSubmit:u,children:({values:s,errors:t,touched:n,handleBlur:d,handleSubmit:l,isSubmitting:y,resetForm:j,setValues:x})=>e.jsxs(S,{onSubmit:l,children:[e.jsx(z,{children:"Login"}),e.jsxs(V,{error:t.email&&n.email,children:[e.jsxs(I,{error:t.email&&n.email,style:{borderColor:t.email&&n.email?"#F43F5E":"#54ADFF"},children:[e.jsx(R,{type:"string",name:"email",placeholder:"Email",value:s.email,onChange:p=>c(p,x,s),onBlur:d,error:t.email&&n.email,style:{color:"#888"}}),e.jsx(M,{children:t.email&&n.email&&s.email&&e.jsx(D,{onClick:()=>{j({values:{...s,email:""}})}})})]}),t.email&&n.email&&e.jsx(g,{name:"email",children:t.email})]}),e.jsxs(_,{error:t.password&&n.password,children:[e.jsxs(T,{children:[e.jsx(q,{type:r?"text":"password",name:"password",placeholder:"Password",value:s.password,onChange:p=>c(p,x,s),onBlur:p=>{d(p),x({...s,isPasswordValid:!0})},error:t.password&&n.password?"true":"false",valid:!t.password&&n.password&&s.isPasswordValid?"true":"false",style:{borderColor:t.password&&n.password?"#F43F5E":!t.password&&n.password&&s.isPasswordValid?"#00C3AD":"#54ADFF"}}),e.jsx(Y,{children:e.jsx(P,{"data-ispasswordvalid":!t.password&&n.password&&s.password.length>=8&&s.isPasswordValid,style:{stroke:!t.password&&n.password&&s.password.length>=8&&s.isPasswordValid?"#00C3AD":"#888",display:!t.password&&n.password&&s.password.length>=8&&s.isPasswordValid?"block":"none"}})}),e.jsx(Z,{children:e.jsx(B,{onClick:b,error:t.password&&n.password,style:{stroke:r?"#54ADFF":"#888"},children:r?e.jsx(v,{style:{cursor:"pointer"}}):e.jsx(A,{style:{cursor:"pointer"}})})})]}),t.password&&n.password&&e.jsx(g,{children:t.password}),!t.password&&n.password&&s.password.length>=8&&s.isPasswordValid&&e.jsx(G,{children:"Password is secure"})]}),f&&e.jsx(W,{children:"This email address is not in use. Try registering an address!"}),e.jsx(J,{type:"submit",disabled:y,children:"Login"}),e.jsxs(N,{children:["Don't have an account? ",e.jsx(O,{to:"/register",children:"Register"})]})]})})},U=o.div`
+`,N=i=>{const a={};return i.email?/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(i.email)||(a.email="Enter a valid Email"):a.email="This field is required",i.password?i.password.length<8&&(a.password="Password must be at least 8 characters long"):a.password="This field is required",a},O={email:"",password:""},H=()=>{const i=j(),a=F(),[r,h]=E.useState(!1),w=()=>{h(s=>!s)},c=(s,t,n)=>{const{name:d,value:l}=s.target;t({...n,[d]:l})},f=async(s,{setSubmitting:t})=>{try{const n={email:s.email,password:s.password};(await i($(n))).status===200&&a("/user")}catch(n){console.error("Error caught:",n)}finally{t(!1)}};return e.jsx(C,{initialValues:O,validate:N,onSubmit:f,children:({values:s,errors:t,touched:n,handleBlur:d,handleSubmit:l,isSubmitting:b,resetForm:y,setValues:x})=>e.jsxs(L,{onSubmit:l,children:[e.jsx(S,{children:"Login"}),e.jsxs(z,{error:t.email&&n.email,children:[e.jsxs(V,{error:t.email&&n.email,style:{borderColor:t.email&&n.email?"#F43F5E":"#54ADFF"},children:[e.jsx(I,{type:"string",name:"email",placeholder:"Email",value:s.email,onChange:p=>c(p,x,s),onBlur:d,error:t.email&&n.email,style:{color:"#888"}}),e.jsx(T,{children:t.email&&n.email&&s.email&&e.jsx(P,{onClick:()=>{y({values:{...s,email:""}})}})})]}),t.email&&n.email&&e.jsx(m,{name:"email",children:t.email})]}),e.jsxs(_,{error:t.password&&n.password,children:[e.jsxs(R,{children:[e.jsx(q,{type:r?"text":"password",name:"password",placeholder:"Password",value:s.password,onChange:p=>c(p,x,s),onBlur:p=>{d(p),x({...s,isPasswordValid:!0})},error:t.password&&n.password?"true":"false",valid:!t.password&&n.password&&s.isPasswordValid?"true":"false",style:{borderColor:t.password&&n.password?"#F43F5E":!t.password&&n.password&&s.isPasswordValid?"#00C3AD":"#54ADFF"}}),e.jsx(Y,{children:e.jsx(k,{"data-ispasswordvalid":!t.password&&n.password&&s.password.length>=8&&s.isPasswordValid,style:{stroke:!t.password&&n.password&&s.password.length>=8&&s.isPasswordValid?"#00C3AD":"#888",display:!t.password&&n.password&&s.password.length>=8&&s.isPasswordValid?"block":"none"}})}),e.jsx(Z,{children:e.jsx(B,{onClick:w,error:t.password&&n.password,style:{stroke:r?"#54ADFF":"#888"},children:r?e.jsx(D,{style:{cursor:"pointer"}}):e.jsx(v,{style:{cursor:"pointer"}})})})]}),t.password&&n.password&&e.jsx(m,{children:t.password}),!t.password&&n.password&&s.password.length>=8&&s.isPasswordValid&&e.jsx(M,{children:"Password is secure"})]}),e.jsx(W,{type:"submit",disabled:b,children:"Login"}),e.jsxs(G,{children:["Don't have an account? ",e.jsx(J,{to:"/register",children:"Register"})]})]})})},K=o.div`
   display: flex;
   justify-content: center;
   padding-top: 80px;
   height: 100vh;
   background-color: white);
-  `,X=o.div`
+  `,Q=o.div`
   padding: 60px 75px;
   width: 608px;
   height: fit-content;
@@ -257,4 +257,4 @@ color:#888888;
     box-shadow: 3px 8px 14px rgba(136, 198, 253, 0.19);
     border-radius: 20px;
   }
-`,si=()=>e.jsx(U,{children:e.jsx(X,{children:e.jsx(Q,{})})});export{si as default};
+`,ii=()=>e.jsx(K,{children:e.jsx(Q,{children:e.jsx(H,{})})});export{ii as default};
