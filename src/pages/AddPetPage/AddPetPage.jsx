@@ -19,6 +19,7 @@ import {
 import GoodHandsForm from '../../components/GoodHandsForm/GoodHandsForm';
 import symbolDefs from '../../images/symbol-defs.svg';
 import { useNavigate } from 'react-router-dom';
+import { ArrowLeft } from '../../images/svg/svgIcons';
 
 const AddPetPage = () => {
   const [activeComponent, setActiveComponent] = useState(null);
@@ -39,10 +40,36 @@ const AddPetPage = () => {
 
     setColors(newColors);
   };
-
+  const [title, setTitle] = useState('Add Pet');
   const handleChange = ({ target }) => {
     setValue(target.value);
     setActiveComponent(null);
+
+    switch (target.value) {
+      case 'yourPet':
+        setTimeout(() => {
+          setTitle('Your Pet');
+        }, 10);
+        break;
+      case 'sell':
+        setTimeout(() => {
+          setTitle('Add pet for sale');
+        }, 10);
+        break;
+      case 'lost':
+        setTimeout(() => {
+          setTitle('Add lost/faund pet');
+        }, 10);
+        break;
+      case 'goodHands':
+        setTimeout(() => {
+          setTitle(' Add in good hands pet');
+        }, 10);
+        break;
+
+      default:
+        break;
+    }
   };
 
   const handleButtonClick = () => {
@@ -90,7 +117,7 @@ const AddPetPage = () => {
 
   return (
     <MainBox>
-      <MainText>Add pet</MainText>
+      <MainText>{title}</MainText>
       <div>
         <ListLines>
           <ItemLines color={colors[0]}>
@@ -161,9 +188,7 @@ const AddPetPage = () => {
                 </svg>
               </NextBtn>
               <BackBtn onClick={handleButtonClickBack}>
-                <svg width="24" height="24">
-                  <use href={symbolDefs + '#arrow-left'} fill="white"></use>
-                </svg>
+                <ArrowLeft stroke="#54ADFF" />
                 Cancel
               </BackBtn>
             </BtnBox>

@@ -1,11 +1,11 @@
 import { useState } from 'react';
-import axios from 'axios';
+
 import {
   BackBtn,
   BtnBox,
   NextBtn,
 } from '../../pages/AddPetPage/AddPetPage.styled';
-
+import { useNavigate } from 'react-router-dom';
 import symbolDefs from '../../images/symbol-defs.svg';
 import {
   LabelInput,
@@ -17,17 +17,18 @@ import {
   InputFile,
   SvgIcon,
   CommentInput,
+  StyledDatePicker,
 } from '../AddPetForm/AddPetForm.styled';
 import {
   CheckBoxWrap,
   LabelChekbox,
   SexTitle,
   InputChekbox,
-  SVGsex,
   DownInputBox,
 } from '../SellPetForm/SellPetForm.styled';
 import { postMethod } from '../../pages/AddPetPage';
 import toast from 'react-hot-toast';
+import { ArrowLeft, Female, Male } from '../../images/svg/svgIcons';
 
 const LostPetForm = ({ changeColors, setActiveComponent, setColors }) => {
   const [submit, setSubmit] = useState('button');
@@ -36,7 +37,7 @@ const LostPetForm = ({ changeColors, setActiveComponent, setColors }) => {
 
   const [title, setTitle] = useState('');
   const [name, setPetName] = useState('');
-  const [birthDay, setDateOfBirth] = useState('');
+  const [selectedDate, setSelectedDate] = useState(null);
   const [typeOfPet, setPetType] = useState('');
   const [location, setLocation] = useState('');
   const [comments, setComment] = useState('');
@@ -44,6 +45,7 @@ const LostPetForm = ({ changeColors, setActiveComponent, setColors }) => {
   const [fileImage, setFileImage] = useState(null);
   const [sex, setSex] = useState(null);
 
+  const navigate = useNavigate();
   const [next, setNext] = useState(false);
 
   const handleInputChange = ({ target }) => {
@@ -55,9 +57,7 @@ const LostPetForm = ({ changeColors, setActiveComponent, setColors }) => {
       case 'name':
         setPetName(value);
         break;
-      case 'birthDay':
-        setDateOfBirth(value);
-        break;
+   
       case 'typeOfPet':
         setPetType(value);
         break;
@@ -96,7 +96,7 @@ const LostPetForm = ({ changeColors, setActiveComponent, setColors }) => {
     formData.append('submit', submit);
     formData.append('title', title);
     formData.append('name', name);
-    formData.append('birthDay', birthDay);
+    formData.append('birthDay', selectedDate);
     formData.append('typeOfPet', typeOfPet);
     formData.append('comments', comments);
     formData.append('gender', sex);
@@ -104,34 +104,21 @@ const LostPetForm = ({ changeColors, setActiveComponent, setColors }) => {
     formData.append('location', location);
 
     postMethod('lostFound', formData);
-    try {
-      const response = await axios.post(
-        'https://happy-pets-rest-api.onrender.com/api/lostFound',
-        formData,
-        {
-          headers: {
-            'Content-Type': 'multipart/form-data',
-          },
-        },
-      );
-      setActiveComponent(null);
-      console.log('Pet added successfully', response.data);
-    } catch (error) {
-      console.error('Error adding pet:', error.message);
-    }
-  };
 
-  const handleNext = () => {
+    toast.success('Post has been posted');
+    navigate('/user');
+  };
+  const handleNext = async () => {
     const newColor = '#00C3AD';
 
-    if (!title || !name || !birthDay || !typeOfPet) {
+    if (!title || !name || !selectedDate || !typeOfPet) {
       toast.error('Complete all fields');
       return;
     }
     setStep((prev) => prev + 1);
 
     changeColors(newColor);
-    setNext(true);
+    await setNext(true);
 
     setTimeout(() => {
       setSubmit('submit');
@@ -180,6 +167,7 @@ const LostPetForm = ({ changeColors, setActiveComponent, setColors }) => {
           <LabelInput>
             Pet’s name
             <InputAdd
+              required
               type="text"
               placeholder="Type name pet"
               name="name"
@@ -188,11 +176,12 @@ const LostPetForm = ({ changeColors, setActiveComponent, setColors }) => {
           </LabelInput>
           <LabelInput>
             Date of birth
-            <InputAdd
-              type="text"
-              placeholder="01/01/2001"
-              name="birthDay"
-              onChange={handleInputChange}
+           
+            <StyledDatePicker
+              selected={selectedDate}
+              onChange={(date) => setSelectedDate(date)}
+              placeholderText="Type date of birth"
+              dateFormat='dd/MM/yyyy'
             />
           </LabelInput>
           <LabelInput>
@@ -217,9 +206,7 @@ const LostPetForm = ({ changeColors, setActiveComponent, setColors }) => {
               onChange={() => handleCheckbox('female')}
             ></InputChekbox>
             <LabelChekbox htmlFor="female">
-              <SVGsex width="24" height="24">
-                <use href={symbolDefs + '#female'} fill="red"></use>
-              </SVGsex>
+              <Female stroke={sex === 'female' ? '#FFFFFF' : '#F43F5E'} />
               female
             </LabelChekbox>
 
@@ -231,9 +218,7 @@ const LostPetForm = ({ changeColors, setActiveComponent, setColors }) => {
               onChange={() => handleCheckbox('male')}
             />
             <LabelChekbox htmlFor="male">
-              <SVGsex width="24" height="24">
-                <use href={symbolDefs + '#male'} fill="red"></use>
-              </SVGsex>
+              <Male stroke={sex === 'male' ? '#FFFFFF' : '#54ADFF'} />
               male
             </LabelChekbox>
           </CheckBoxWrap>
@@ -297,14 +282,11 @@ const LostPetForm = ({ changeColors, setActiveComponent, setColors }) => {
           </svg>
         </NextBtn>
         <BackBtn type="button" onClick={handleBack}>
-          <svg width="24" height="24">
-            <use href={symbolDefs + '#arrow-left'} fill="white"></use>
-          </svg>
+          <ArrowLeft stroke="#54ADFF" />
           Back
         </BackBtn>
       </BtnBox>
     </PetForm>
   );
 };
-
 export default LostPetForm;
