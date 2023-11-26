@@ -12,6 +12,7 @@ const clearAuthHeader = () => {
 };
 
 
+let retry = false;
 
 
 export const register = createAsyncThunk(
@@ -29,7 +30,8 @@ export const register = createAsyncThunk(
         return rejectWithValue({
           message: 'User with this email already exist',
         });
-        toast.error('Email Already Exist! Plase enter unique email')
+        toast.error('Email Already Exist! Please enter unique email')
+
       return rejectWithValue(error.message);
     }
   },
@@ -39,7 +41,9 @@ export const login = createAsyncThunk(
   'auth/login',
   async (credentials, { rejectWithValue }) => {
     try {
-      const response = await axios.post('api/auth/login', credentials);
+
+      const response = await axios.post('/api/auth/login', credentials);
+
       setAuthHeader(response.data.accessToken);
       localStorage.setItem('refreshToken', response.data.refreshToken);
       
@@ -51,8 +55,40 @@ export const login = createAsyncThunk(
       
       return response.data;
     } catch (error) {
+      toast.error('Incorrect data. Check your input and try again.')
       return rejectWithValue(error.message);
     }
   }
 );
 
+export const getCurrentUser = createAsyncThunk(
+  'auth/currentUser',
+  async (_, { rejectWithValue, getState }) => {
+    if (!retry) {
+      const state = getState();
+      const currentToken = state.auth.token;
+      setAuthHeader(currentToken);
+    }
+
+    try {
+      const response = await axios.get('api/auth/current');
+
+      const token = axios.defaults.headers.common.Authorization.split(' ')[1];
+      return { token, data: response.data };
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+export const logout = createAsyncThunk(
+  'auth/logout',
+  async (_, { rejectWithValue }) => {
+    try {
+      await axios.post('api/auth/logout');
+      clearAuthHeader();
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
