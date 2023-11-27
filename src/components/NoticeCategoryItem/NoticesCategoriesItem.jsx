@@ -76,7 +76,16 @@ const NoticesCategoriesItem = ({
             </Span>
             <Span>{age}</Span>
           </PetInfoOutputItem>
-          <PetInfoOutputItem>{sex}</PetInfoOutputItem>
+          <PetInfoOutputItem>
+            <Span>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <use
+                  xlinkHref={`${icons}#${sex === 'male' ? 'male' : 'female'}`}
+                />
+              </svg>
+            </Span>
+            <Span>{sex}</Span>
+          </PetInfoOutputItem>
         </PetInfoOutput>
       </CategoryItemHeader>
       <CategoryItemFooter>
