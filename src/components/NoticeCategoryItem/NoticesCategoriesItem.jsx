@@ -63,9 +63,9 @@ const NoticesCategoriesItem = ({
         <PetInfoOutput>
           <PetInfoOutputItem>
             <Span>
-              <Svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
                 <use xlinkHref={`${icons}#location-1`} />
-              </Svg>
+              </svg>
             </Span>
             <Span>{location}</Span>
           </PetInfoOutputItem>
