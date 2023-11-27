@@ -13,10 +13,17 @@ import {
   UserCardWrapper,
   UserProfileImage,
   Wrapper,
+  EditButton,
+  EditConfirm,
+  EditExit,
 } from './UserPage.styled';
 import { ReactComponent as Edit } from '../../images/svg/edit.svg';
 import { ReactComponent as CrossSmall } from '../../images/svg/cross-small.svg';
 import { ReactComponent as Logout } from '../../images/svg/logout.svg';
+import { ReactComponent as PhotoDef } from '../../images/svg/photo-default.svg';
+import { ReactComponent as Camera } from '../../images/svg/camera.svg';
+import { ReactComponent as Check } from '../../images/svg/check.svg';
+import { ReactComponent as X } from '../../images/svg/x.svg';
 
 const user = {
   name: 'fakeName',
@@ -47,6 +54,7 @@ const pets = [
 
 function UserPage() {
   const [clicked, setClicked] = useState(false);
+  const [edit, setEdit] = useState(false);
   const [currentUser, setCurrentUser] = useState(user); //it is temporary, need to send this obj on back
   const [currentName, setCurrentName] = useState(currentUser.name);
   const [currentEmail, setCurrentEmail] = useState(currentUser.email);
@@ -88,13 +96,55 @@ function UserPage() {
     setCurrentUser(editedUser);
     setClicked(false);
   };
+  const handleEdit = (e) => {
+    e.preventDefault();
+    setEdit(true);
+  };
+  const handleEditConfirm = (e) => {
+    e.preventDefault();
+    console.log('Edit confirm');
+    setEdit(false);
+  };
+  const handleEditExit = (e) => {
+    e.preventDefault();
+    setEdit(false);
+  };
   return (
     <>
       <Wrapper>
         <Section>
           <H2>My information:</H2>
           <UserCardWrapper>
-            <UserProfileImage />
+            <UserProfileImage>
+              <PhotoDef></PhotoDef>
+              {clicked &&
+                (edit ? (
+                  <div
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      gap: '8px',
+                      position: 'absolute',
+                      bottom: '-36px',
+                      left: '20px',
+                    }}
+                  >
+                    <EditConfirm onClick={handleEditConfirm}>
+                      <Check style={{ stroke: '#54adff' }} />
+                      <span>Confirm</span>
+                    </EditConfirm>
+                    <EditExit onClick={handleEditExit}>
+                      <X />
+                    </EditExit>
+                  </div>
+                ) : (
+                  <EditButton onClick={handleEdit} type="button">
+                    <Camera />
+                    <span>Edit photo</span>
+                  </EditButton>
+                ))}
+            </UserProfileImage>
             <StyledList>
               <ListItem>
                 <Label>Name:</Label>

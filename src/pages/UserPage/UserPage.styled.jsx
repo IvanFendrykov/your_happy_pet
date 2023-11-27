@@ -57,6 +57,7 @@ export const UserCardWrapper = styled.form`
 `;
 
 export const UserProfileImage = styled.div`
+  position: relative;
   width: 182px;
   height: 182px;
   flex-shrink: 0;
@@ -64,6 +65,7 @@ export const UserProfileImage = styled.div`
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 60px;
+  border-radius: 40px;
   @media (min-width: 768px) {
     margin-left: 0;
     margin-right: 0;
@@ -171,4 +173,34 @@ export const SaveButton = styled.button`
     left: 116px;
     bottom: 12px;
   }
+`;
+export const EditButton = styled.button`
+  border: none;
+  position: absolute;
+  bottom: -36px;
+  left: 40px;
+  color: #111;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.83;
+  letter-spacing: 0.48px;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+`;
+export const EditConfirm = styled.button`
+  background-color: transparent;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+`;
+export const EditExit = styled.button`
+  background-color: transparent;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
