@@ -11,7 +11,6 @@ import {
   PetInfoOutput,
   PetInfoOutputItem,
   Span,
-  Svg,
   LearnMoreButton,
   TitleHeader,
 } from './NoticesCategoriesItem.styled';
@@ -69,7 +68,14 @@ const NoticesCategoriesItem = ({
             </Span>
             <Span>{location}</Span>
           </PetInfoOutputItem>
-          <PetInfoOutputItem>{age}</PetInfoOutputItem>
+          <PetInfoOutputItem>
+            <Span>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <use xlinkHref={`${icons}#clock`} />
+              </svg>
+            </Span>
+            <Span>{age}</Span>
+          </PetInfoOutputItem>
           <PetInfoOutputItem>{sex}</PetInfoOutputItem>
         </PetInfoOutput>
       </CategoryItemHeader>
