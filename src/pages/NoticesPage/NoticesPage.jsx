@@ -2,7 +2,7 @@
 //import { ModalNoticeMore } from '../../components/ModalNotice/ModalNoticeMore';
 //import { ModalNoticeRemove } from '../../components/ModalNotice/ModalNoticeRemove';
 //import { Link } from 'react-router-dom';
-//import { NoticesSearch } from '../../components/NoticesSearch/NoticesSearch';
+import { NoticesSearch } from '../../components/NoticesSearch/NoticesSearch';
 import { useEffect, useState } from 'react';
 import { NoticesCategoriesNav } from '../../components/NoticesCategoriesNav/NoticesCategoriesNav';
 import { NoticesFilters } from '../../components/NoticesFilters/NoticesFilters';
@@ -258,7 +258,7 @@ const NoticesPage = () => {
   return (
     <div>
       <h2>Find your favorite pet</h2>
-
+      <NoticesSearch />
       <div>
         <NoticesCategoriesNav
           isLoggedIn={IS_LOGGED_IN}
@@ -277,7 +277,7 @@ const NoticesPage = () => {
   );
 };
 /*
-<NoticesSearch />
+
       <ModalNoticeMore />
 
 <Link to="">Add pet</Link>
