@@ -7,6 +7,7 @@ export const PetContainer = styled.div`
   margin-bottom: 16px;
   width: 280px;
   box-shadow: 3px 8px 14px 0px rgba(136, 198, 253, 0.19);
+  background-color: #fff;
   @media (min-width: 768px) {
     display: flex;
     gap: 20px;
