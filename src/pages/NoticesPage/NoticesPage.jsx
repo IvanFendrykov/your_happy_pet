@@ -265,6 +265,7 @@ const NoticesPage = () => {
           onChange={handleCategoriesData}
         />
         <NoticesFilters onChange={handleFiltersData} />
+        <button>Add pet</button>
       </div>
       <NoticesCategoriesList
         petsData={editedPetsData}
@@ -280,6 +281,6 @@ const NoticesPage = () => {
 
       <ModalNoticeMore />
 
-<Link to="">Add pet</Link>
+
 */
 export default NoticesPage;
