@@ -2,49 +2,61 @@ import styled from 'styled-components';
 
 export const MainBox = styled.div`
   background-color: white;
-  width: 280px;
+  max-width: 458px;
+  padding: 30px;
   flex-shrink: 0;
   align-items: center;
   border-radius: 40px;
   box-shadow: 3px 8px 14px 0px rgba(136, 198, 253, 0.19);
-  padding: 8px;
-  padding-top: 20px;
-  margin: 0 auto;
+  margin: 40px auto 0;
+  @media (max-width: 526px) {
+    padding: 12px;
+    padding-top: 20px;
+  }
 `;
 
 export const MainText = styled.h1`
   color: var(--black, #111);
-  font-size: 20px;
+  font-size: 28px;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
-  margin-bottom: 24px;
+  margin-bottom: 32px;
 `;
 
 export const ListLines = styled.ul`
   display: flex;
   gap: 12px;
-  margin-bottom: 24px;
+  margin-bottom: 38px;
 `;
 export const ItemLines = styled.li`
-  text-align: center;
-  font-size: 10px;
+  width: 33%;
+  font-size: 16px;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
   color: ${(props) => props.color};
 
+  @media (max-width: 526px) {
+    font-size: 12px;
+  }
   & > * {
     background-color: ${(props) => props.color};
   }
+  
+  @media (max-width: 355px) {
+    font-size: 10px;
+  }
+
+
+
 `;
 
 export const SpanLine = styled.span`
   display: block;
-  width: 80px;
+  width: ;
   height: 8px;
   border-radius: 8px;
-
   margin-top: 12px;
 `;
 
@@ -94,15 +106,21 @@ export const CheckBox = styled.input`
 
 export const BtnBox = styled.div`
   display: flex;
-  flex-direction: column;
   align-items: center;
+  justify-content: center;
+
+  @media (max-width: 430px) {
+    flex-direction: column-reverse;
+  }
 `;
 
 export const NextBtn = styled.button`
   background: var(--blue-links, #54adff);
   color: white;
+  font-size: 16px;
   border-radius: 40px;
   border: none;
+  margin-left: 20px;
   display: flex;
   width: 248px;
   padding: 8px 28px;
@@ -114,6 +132,7 @@ export const NextBtn = styled.button`
 export const BackBtn = styled.button`
   background: var(--blue-links, #ffffff);
   color: #54adff;
+  font-size: 16px;
   border-radius: 40px;
   border: none;
   display: flex;

@@ -12,7 +12,7 @@ export const SVGsex = styled.svg`
 export const LabelChekbox = styled.label`
   display: inline-flex;
   height: 35px;
-  padding: 8px 16px;
+  padding: 12px 30px;
   justify-content: center;
   align-items: center;
   border-radius: 40px;
@@ -46,3 +46,8 @@ export const DownInputBox = styled.div`
   flex-direction: column;
   gap: 15px;
 `;
+
+
+
+
+

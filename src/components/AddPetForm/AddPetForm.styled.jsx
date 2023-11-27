@@ -14,7 +14,7 @@ export const LabelInput = styled.label`
   display: flex;
   align-items: start;
   flex-direction: column;
-
+  width: 100%;
   color: var(--black, #111);
   font-size: 14px;
   font-style: normal;
@@ -27,8 +27,8 @@ export const InputAdd = styled.input`
   font-style: normal;
   font-weight: 500;
   line-height: normal;
-
-  width: 264px;
+  width: -webkit-fill-available;
+  max-width: 100%;
   height: 40px;
   padding: 8px 16px;
   border-radius: 40px;
@@ -53,7 +53,6 @@ export const InputAdd = styled.input`
 
 export const LabelFile = styled.label`
   color: var(--black, #111);
-  font-family: Manrope;
   font-size: 14px;
   font-style: normal;
   font-weight: 500;
@@ -61,14 +60,24 @@ export const LabelFile = styled.label`
   display: flex;
   align-items: center;
   margin-bottom: 25px;
+  justify-content: space-evenly;
+
+  @media (min-width: 430px){
+    font-size: 20px;
+  }
 `;
 export const FileWrapper = styled.div`
-  width: 112px;
-  height: 112px;
+  width: 182px;
+  height: 182px;
   background-color: #cce4fb;
   border-radius: 25px;
   margin-left: 14px;
   position: relative;
+
+  @media (max-width: 430px) {
+    width: 112px;
+    height: 112px
+  }
 `;
 export const InputFile = styled.input`
   opacity: 0;
@@ -85,7 +94,8 @@ export const SvgIcon = styled.svg`
 
 export const CommentInput = styled.textarea`
   display: flex;
-  width: 264px;
+  width: -webkit-fill-available;
+  max-width: 100%;
   height: 92px;
   padding: 8px 16px;
   position: relative;

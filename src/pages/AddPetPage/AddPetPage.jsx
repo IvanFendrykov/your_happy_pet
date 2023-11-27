@@ -154,18 +154,18 @@ const AddPetPage = () => {
               </LabelBox>
             </MainForm>
             <BtnBox>
+              <BackBtn onClick={handleButtonClickBack}>
+                <svg width="24" height="24">
+                  <use href={symbolDefs + '#ArrowLeft'} fill="#54adff"></use>
+                </svg>
+                Cancel
+              </BackBtn>
               <NextBtn onClick={handleButtonClick}>
                 Next
                 <svg width="24" height="24">
                   <use href={symbolDefs + '#pawprint-1'} fill="white"></use>
                 </svg>
               </NextBtn>
-              <BackBtn onClick={handleButtonClickBack}>
-                <svg width="24" height="24">
-                  <use href={symbolDefs + '#arrow-left'} fill="white"></use>
-                </svg>
-                Cancel
-              </BackBtn>
             </BtnBox>
           </>
         )}

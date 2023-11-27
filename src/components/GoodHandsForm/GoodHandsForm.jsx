@@ -191,7 +191,7 @@ const GoodHandsForm = ({ changeColors, setActiveComponent, setColors }) => {
         </DivWrapper>
       ) : (
         <>
-          <SexTitle>The sex</SexTitle>
+          <SexTitle>The Sex</SexTitle>
           <CheckBoxWrap>
             <InputChekbox
               id="female"
@@ -204,7 +204,7 @@ const GoodHandsForm = ({ changeColors, setActiveComponent, setColors }) => {
               <SVGsex width="24" height="24">
                 <use href={symbolDefs + '#female'} fill="red"></use>
               </SVGsex>
-              female
+              Female
             </LabelChekbox>
 
             <InputChekbox
@@ -218,7 +218,7 @@ const GoodHandsForm = ({ changeColors, setActiveComponent, setColors }) => {
               <SVGsex width="24" height="24">
                 <use href={symbolDefs + '#male'} fill="red"></use>
               </SVGsex>
-              male
+              Male
             </LabelChekbox>
           </CheckBoxWrap>
           <LabelFile>
@@ -242,7 +242,7 @@ const GoodHandsForm = ({ changeColors, setActiveComponent, setColors }) => {
                     onChange={handleFileChange}
                     name="image"
                   />
-                  <SvgIcon width="24" height="24">
+                  <SvgIcon width="50" height="50">
                     <use href={symbolDefs + '#plus'} fill="white"></use>
                   </SvgIcon>
                 </>
@@ -273,18 +273,18 @@ const GoodHandsForm = ({ changeColors, setActiveComponent, setColors }) => {
       )}
 
       <BtnBox>
+      <BackBtn type="button" onClick={handleBack}>
+          <svg width="24" height="24">
+            <use href={symbolDefs + '#ArrowLeft'} ></use>
+          </svg>
+          Back
+        </BackBtn>
         <NextBtn type={submit} onClick={handleNext}>
           Next
           <svg width="24" height="24">
             <use href={symbolDefs + '#pawprint-1'} fill="white"></use>
           </svg>
         </NextBtn>
-        <BackBtn type="button" onClick={handleBack}>
-          <svg width="24" height="24">
-            <use href={symbolDefs + '#arrow-left'} fill="white"></use>
-          </svg>
-          Back
-        </BackBtn>
       </BtnBox>
     </PetForm>
   );
