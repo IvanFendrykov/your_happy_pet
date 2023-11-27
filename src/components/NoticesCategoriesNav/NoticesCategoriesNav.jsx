@@ -1,40 +1,40 @@
-import { useState } from 'react';
+const NoticesCategoriesNav = ({ isLoggedIn, onChange }) => {
+  const handleInput = event => {
+    event.preventDefault();
+    const categoryData = event.currentTarget.elements.categoryOption.value;
+    onChange(categoryData);
+  };
 
-const NoticesCategoriesNav = () => {
   return (
-    <form>
+    <form onInput={handleInput}>
       <label>
-        <input type="radio" name="noticesCategoriesNavItem" value="sell" />
+        <input type="radio" name="categoryOption" value="" defaultChecked />
+        all categories
+      </label>
+      <label>
+        <input type="radio" name="categoryOption" value="sell" />
         sell
       </label>
       <label>
-        <input
-          type="radio"
-          name="noticesCategoriesNavItem"
-          value="lost/found"
-        />
+        <input type="radio" name="categoryOption" value="lost/found" />
         lost/found
       </label>
       <label>
-        <input
-          type="radio"
-          name="noticesCategoriesNavItem"
-          value="in good hands"
-        />
+        <input type="radio" name="categoryOption" value="in good hands" />
         in good hands
       </label>
-      <label>
-        <input
-          type="radio"
-          name="noticesCategoriesNavItem"
-          value="favorite ads"
-        />
-        favorite ads
-      </label>
-      <label>
-        <input type="radio" name="noticesCategoriesNavItem" value="my ads" />
-        my ads
-      </label>
+      {isLoggedIn && (
+        <label>
+          <input type="radio" name="categoryOption" value="favorite ads" />
+          favorite ads
+        </label>
+      )}
+      {isLoggedIn && (
+        <label>
+          <input type="radio" name="categoryOption" value="my ads" />
+          my ads
+        </label>
+      )}
     </form>
   );
 };

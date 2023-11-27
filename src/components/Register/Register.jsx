@@ -209,6 +209,7 @@ const initialValue = {
                     resetForm({ values: { ...values, email: '' } });
                   }}
                 >
+                   <Crosssmal />
                 </IconError>
               )}
             </EmailInputContainer>

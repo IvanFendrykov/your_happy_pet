@@ -23,7 +23,7 @@ function NotFoundPage() {
       <TextConteiner>
         <Title>
           Ooops!
-          <Paragraf> This page not found :(</Paragraf>
+          <Paragraf> This page not found &#9785;</Paragraf>
         </Title>
       </TextConteiner>
       <ImageContainer>

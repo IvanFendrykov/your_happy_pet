@@ -102,16 +102,27 @@ export const BottomWrapper = styled.div`
   @media (min-width: 1280px) {
     margin-top: 18px;
   }
+    :hover {
+    background: ${(prop) => prop.theme.colors.gradientBlue};
+  }
+  :focus {
+    background-color: ${(prop) => prop.theme.colors.gradientBlue};
+  }
 `;
 
 export const Btn = styled.button`
   width: 248px;
+  display:flex;
+  align-items: center;
 
   padding: 8px 28px;
 
-  background: ${(prop) => prop.theme.colors.blue};
+  background-color: ${(prop) => prop.theme.colors.blue};
   border: none;
   border-radius: 40px;
+  text-align: center;
+  gap: 12px;
+
 
   font-weight: 600;
   font-size: 20px;
@@ -128,6 +139,7 @@ export const Btn = styled.button`
   svg {
     fill: #fdf7f2;
   }
+
 `;
 
 export const TextConteiner = styled.div`

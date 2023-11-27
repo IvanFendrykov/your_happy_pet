@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 // import { logOut } from 'redux/auth/authOperations';
 
@@ -12,11 +12,16 @@ import {
   LogoutIcon,
   BtnsWrapper,
 } from './ModalApproveAction.styled';
+import { logout } from '../../redux/auth/operation';
+
 
 const ModalApproveAction = ({ closeModal }) => {
+
+  const token = useSelector((state) => state.auth.token);
+
   const dispatch = useDispatch();
   const handleLogout = () => {
-    dispatch(logOut());
+    dispatch(logout(token));
   };
   return (
     <Section>

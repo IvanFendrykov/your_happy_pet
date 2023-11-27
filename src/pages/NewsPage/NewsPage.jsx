@@ -21,6 +21,7 @@ const reserveImg = 'https://i.seadn.io/gae/2hDpuTi-0AMKvoZJGd-yKWvK4tKdQr_kLIpB_
 
     useEffect(() => {
       fetchNews(1);
+      console.log(123);
       // fetchNewsByReqest("Cat", 1)
     }, [])
 
@@ -44,8 +45,15 @@ const reserveImg = 'https://i.seadn.io/gae/2hDpuTi-0AMKvoZJGd-yKWvK4tKdQr_kLIpB_
 
     try {
       const { data } = await axios.get(`https://happy-pets-rest-api.onrender.com/api/news/search/${defaultRequest}?page=${page}`);
+
+      if (data.response.length === 0) {
+        Notiflix.Notify.failure('Sorry, there are no news matching your search query. Please try again')
+        setRequest("")
+        fetchNews(1);
+      }
       setNewsData(data.response);
       setNumOfPages(data.totalPageCount)
+
     } catch (error) {
       console.log(error);
     }
@@ -63,7 +71,6 @@ const reserveImg = 'https://i.seadn.io/gae/2hDpuTi-0AMKvoZJGd-yKWvK4tKdQr_kLIpB_
 
   const handleRequestChange = e => {
     setRequest(e.currentTarget.value)
-    console.log(request.length)
   }
 
   const goBackBtn = () => {
@@ -71,10 +78,12 @@ const reserveImg = 'https://i.seadn.io/gae/2hDpuTi-0AMKvoZJGd-yKWvK4tKdQr_kLIpB_
     setRequest("")
   }
 
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault();
 
     e.target[0].value = "";
+
+    console.log(123)
 
     if (request.trim() === "") {
       return Notiflix.Notify.failure('Sorry, there are no news matching your search query. Please try again')
@@ -82,12 +91,8 @@ const reserveImg = 'https://i.seadn.io/gae/2hDpuTi-0AMKvoZJGd-yKWvK4tKdQr_kLIpB_
 
     search = true;
     
-    fetchNewsByReqest(request, 1);
+    await fetchNewsByReqest(request, 1);
 
-    if (newsData.length === 0) {
-      Notiflix.Notify.failure('Sorry, there are no news matching your search query. Please try again')
-      fetchNews(1);
-    }
   }
 
   const handleClear = e => {

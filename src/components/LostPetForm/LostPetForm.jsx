@@ -1,5 +1,5 @@
 import { useState } from 'react';
-
+import { useSelector } from 'react-redux';
 import {
   BackBtn,
   BtnBox,
@@ -31,6 +31,8 @@ import toast from 'react-hot-toast';
 import { ArrowLeft, Female, Male } from '../../images/svg/svgIcons';
 
 const LostPetForm = ({ changeColors, setActiveComponent, setColors }) => {
+  const token = useSelector((state) => state.auth.token);
+
   const [submit, setSubmit] = useState('button');
 
   const [step, setStep] = useState(1);
@@ -57,7 +59,7 @@ const LostPetForm = ({ changeColors, setActiveComponent, setColors }) => {
       case 'name':
         setPetName(value);
         break;
-   
+
       case 'typeOfPet':
         setPetType(value);
         break;
@@ -93,7 +95,9 @@ const LostPetForm = ({ changeColors, setActiveComponent, setColors }) => {
     }
 
     const formData = new FormData();
+
     formData.append('submit', submit);
+    formData.append('category', 'lostFound');
     formData.append('title', title);
     formData.append('name', name);
     formData.append('birthDay', selectedDate);
@@ -103,7 +107,7 @@ const LostPetForm = ({ changeColors, setActiveComponent, setColors }) => {
     formData.append('image', fileImage);
     formData.append('location', location);
 
-    postMethod('lostFound', formData);
+    postMethod('notices', formData, token);
 
     toast.success('Post has been posted');
     navigate('/user');
@@ -176,12 +180,11 @@ const LostPetForm = ({ changeColors, setActiveComponent, setColors }) => {
           </LabelInput>
           <LabelInput>
             Date of birth
-           
             <StyledDatePicker
               selected={selectedDate}
               onChange={(date) => setSelectedDate(date)}
               placeholderText="Type date of birth"
-              dateFormat='dd/MM/yyyy'
+              dateFormat="dd/MM/yyyy"
             />
           </LabelInput>
           <LabelInput>
