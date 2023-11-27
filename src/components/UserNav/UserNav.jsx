@@ -20,10 +20,10 @@ const UserNav = () => {
       {user && (
         <StyledLink to="/user">
           <img src={icon} alt="icon" />
-          <User>{user.name}</User>
+          <User>{user}</User>
         </StyledLink>
       )}
-         {showModal && (
+      {showModal && (
         <Backdrop closeModal={toggleModal}>
           <ModalApproveAction closeModal={toggleModal} />
         </Backdrop>
