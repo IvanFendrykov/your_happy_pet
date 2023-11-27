@@ -6,15 +6,12 @@ import { Container, User } from './Header.styled';
 import icon from '../../assets/images/user/user.png';
 import AuthNav from 'components/AuthNav/AuthNav';
 import { useWindowSize } from '../../hooks/useResize';
-import {useAuth} from '../../hooks/useAuth'
+import { useAuth } from '../../hooks/useAuth';
 import { Menu } from '../Menu/Menu';
-
-
 
 const Header = ({ handleClick }) => {
   const size = useWindowSize();
   const { isLoggedIn, user } = useAuth();
-   
 
   return (
     <Container>
@@ -35,7 +32,15 @@ const Header = ({ handleClick }) => {
           <div>
             <User to="/user">
               <img src={icon} alt="icon" />
-              {user && <p>{user.name}</p>}
+              {user && <p>{user}</p>}
+            </User>
+          </div>
+        )}
+
+        {size[0] < 768 && isLoggedIn && (
+          <div>
+            <User to="/user">
+              <img src={icon} alt="icon" />
             </User>
           </div>
         )}
@@ -58,4 +63,3 @@ const Header = ({ handleClick }) => {
 };
 
 export default Header;
-

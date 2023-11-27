@@ -21,8 +21,6 @@ import AuthNav from '../../components/AuthNav/AuthNav';
 import { useAuth } from '../../hooks/useAuth';
 
 export const Menu = ({ size }) => {
-  
-
   const { isLoggedIn, user } = useAuth();
   const [openMenu, setOpenMenu] = useState(false);
   const { toggleModal, showModal } = useModal(false);
@@ -36,8 +34,6 @@ export const Menu = ({ size }) => {
   useEffect(() => {
     closeMenu();
   }, [url, closeMenu]);
-
- 
 
   return (
     <>
@@ -59,9 +55,9 @@ export const Menu = ({ size }) => {
                   </LogoutBtn>
                 )}
                 {size[0] >= 768 && !isLoggedIn && (
-                 <MenuNavBtnUser>
-                 <AuthNav />
-               </MenuNavBtnUser>
+                  <MenuNavBtnUser>
+                    <AuthNav />
+                  </MenuNavBtnUser>
                 )}
                 <CloseBurger onClick={closeMenu}>
                   <LiaTimesSolid />
