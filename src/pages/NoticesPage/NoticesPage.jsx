@@ -230,6 +230,16 @@ const NoticesPage = () => {
     return ageFilterOptions[ageCategory];
   };
 
+  const onAddToFavourite = id => {
+    console.log('onAddToFavourite' + id);
+  };
+  const onDeleteFromFavourite = id => {
+    console.log('onDeleteFromFavourite' + id);
+  };
+  const onLearnMore = id => {
+    console.log('onLearnMore' + id);
+  };
+
   useEffect(() => {
     const newEditedPetsData = petsData.filter(
       pet =>
@@ -259,6 +269,9 @@ const NoticesPage = () => {
       <NoticesCategoriesList
         petsData={editedPetsData}
         isLoggedIn={IS_LOGGED_IN}
+        onAddToFavourite={onAddToFavourite}
+        onDeleteFromFavourite={onDeleteFromFavourite}
+        onLearnMore={onLearnMore}
       />
     </div>
   );

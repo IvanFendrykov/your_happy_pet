@@ -1,6 +1,4 @@
-//import { useState } from 'react';
-//import { Link } from 'react-router-dom';
-import { HeartIcon } from '../../utils/icon';
+import icons from '../../images/symbol-defs.svg';
 
 import {
   CategoryItem,
@@ -17,6 +15,10 @@ import {
 } from './NoticesCategoriesItem.styled';
 
 const NoticesCategoriesItem = ({
+  id,
+  onAddToFavourite,
+  onDeleteFromFavourite,
+  onLearnMore,
   isLoggedIn,
   title,
   category,
@@ -25,33 +27,34 @@ const NoticesCategoriesItem = ({
   age,
   sex,
 }) => {
-  const onAddToFavourite = () => {
-    console.log('added to favourite');
+  const handleAddToFavourite = () => {
+    onAddToFavourite(id);
   };
 
-  const onDeleteFromFavourite = () => {
-    console.log('removed from favourite');
+  const handleDeleteFromFavourite = () => {
+    onDeleteFromFavourite(id);
   };
 
   const openModal = () => {
-    console.log('modal opened');
+    onLearnMore(id);
   };
-  //        <CategoryItemImage src={avatar} alt="" />
+
   return (
     <CategoryItem>
       <CategoryItemHeader>
+        <CategoryItemImage src={avatar} alt="" />
         <CategoryOutput>{category}</CategoryOutput>
         {isLoggedIn && (
-          <AddButton onClick={onAddToFavourite}>
+          <AddButton onClick={handleAddToFavourite}>
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-              <use xlinkHref={HeartIcon} />
+              <use xlinkHref={`${icons}#heart`} />
             </svg>
           </AddButton>
         )}
         {isLoggedIn && (
-          <RemoveButton onClick={onDeleteFromFavourite}>
+          <RemoveButton onClick={handleDeleteFromFavourite}>
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-              <use xlinkHref={HeartIcon} />
+              <use xlinkHref={`${icons}#trash-2`} />
             </svg>
           </RemoveButton>
         )}
@@ -63,7 +66,12 @@ const NoticesCategoriesItem = ({
       </CategoryItemHeader>
       <CategoryItemFooter>
         <TitleHeader>{title}</TitleHeader>
-        <LearnMoreButton onClick={openModal}>Learn More</LearnMoreButton>
+        <LearnMoreButton onClick={openModal}>
+          Learn More
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <use xlinkHref={`${icons}#pawprint-1`} />
+          </svg>
+        </LearnMoreButton>
       </CategoryItemFooter>
     </CategoryItem>
   );

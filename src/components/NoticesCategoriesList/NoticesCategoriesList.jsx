@@ -1,11 +1,22 @@
 import { NoticesCategoriesItem } from '../../components/NoticeCategoryItem/NoticesCategoriesItem';
+import { CategoriesList } from './NoticesCategoriesList.styled';
 
-const NoticesCategoriesList = ({ isLoggedIn, petsData }) => {
+const NoticesCategoriesList = ({
+  isLoggedIn,
+  petsData,
+  onAddToFavourite,
+  onDeleteFromFavourite,
+  onLearnMore,
+}) => {
   return (
-    <div>
+    <CategoriesList>
       {petsData.map(petData => (
         <NoticesCategoriesItem
+          onAddToFavourite={onAddToFavourite}
+          onDeleteFromFavourite={onDeleteFromFavourite}
+          onLearnMore={onLearnMore}
           key={petData._id}
+          id={petData._id}
           isLoggedIn={isLoggedIn}
           title={petData.title}
           category={petData.category}
@@ -15,7 +26,7 @@ const NoticesCategoriesList = ({ isLoggedIn, petsData }) => {
           sex={petData.sex}
         />
       ))}
-    </div>
+    </CategoriesList>
   );
 };
 
