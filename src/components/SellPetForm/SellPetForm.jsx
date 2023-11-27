@@ -11,8 +11,8 @@ import {
   PetForm,
   InputAdd,
   DivWrapper,
-  LabelFile,
-  FileWrapper,
+  //LabelFile,
+  //FileWrapper,
   InputFile,
   SvgIcon,
   CommentInput,
@@ -23,7 +23,11 @@ import {
   SexTitle,
   InputChekbox,
   SVGsex,
-  DownInputBox
+  DownInputBox,
+  FileWrapperImg,
+  LabelFileWrapperImg,
+  DivContainer,
+  FlexContainer
 } from './SellPetForm.styled';
 import { postMethod } from '../../pages/AddPetPage';
 import toast from 'react-hot-toast';
@@ -191,92 +195,100 @@ const SellPetForm = ({ changeColors, setActiveComponent, setColors }) => {
         </DivWrapper>
       ) : (
         <>
-          <SexTitle>The Sex</SexTitle>
-          <CheckBoxWrap>
-          <InputChekbox
-              id="female"
-              type="radio"
-              name="sex"
-              checked={sex === 'female'}
-              onChange={() => handleCheckbox('female')}
-            ></InputChekbox>
-            <LabelChekbox htmlFor="female">
-              <SVGsex width="24" height="24">
-                <use href={symbolDefs + '#female'} fill="red"></use>
-              </SVGsex>
-              Female
-            </LabelChekbox>
-
+        <DivContainer>
+          <FlexContainer>
+            <SexTitle>The Sex</SexTitle>
+              
+            <CheckBoxWrap>
             <InputChekbox
-              id="male"
-              type="radio"
-              name="sex"
-              checked={sex === 'male'}
-              onChange={() => handleCheckbox('male')}
-            />
-            <LabelChekbox htmlFor="male">
-              <SVGsex width="24" height="24">
-                <use href={symbolDefs + '#male'} fill="red"></use>
-              </SVGsex>
-              Male
-            </LabelChekbox>
-          </CheckBoxWrap>
-          <LabelFile>
-            Load the
-            <br /> pet’s image:
-            <FileWrapper>
-              {image ? (
-                <img
-                  src={image}
-                  alt="Selected"
-                  style={{
-                    width: '100%',
-                    height: '100%',
-                    borderRadius: '25px',
-                  }}
-                />
-              ) : (
-                <>
-                  <InputFile
-                    type="file"
-                    onChange={handleFileChange}
-                    name="image"
+                id="female"
+                type="radio"
+                name="sex"
+                checked={sex === 'female'}
+                onChange={() => handleCheckbox('female')}
+              ></InputChekbox>
+              <LabelChekbox htmlFor="female">
+                <SVGsex width="24" height="24">
+                  <use href={symbolDefs + '#female'} fill="red"></use>
+                </SVGsex>
+                Female
+              </LabelChekbox>
+
+              <InputChekbox
+                id="male"
+                type="radio"
+                name="sex"
+                checked={sex === 'male'}
+                onChange={() => handleCheckbox('male')}
+              />
+              <LabelChekbox htmlFor="male">
+                <SVGsex width="24" height="24">
+                  <use href={symbolDefs + '#male'} fill="red"></use>
+                </SVGsex>
+                Male
+              </LabelChekbox>
+            </CheckBoxWrap>
+            
+            <LabelFileWrapperImg>
+              Load the pet’s image:
+              <FileWrapperImg>
+                {image ? (
+                  <img
+                    src={image}
+                    alt="Selected"
+                    style={{
+                      width: '100%',
+                      height: '100%',
+                      borderRadius: '25px',
+                    }}
                   />
-                  <SvgIcon width="50" height="50">
-                    <use href={symbolDefs + '#plus'} fill="white"></use>
-                  </SvgIcon>
-                </>
-              )}
-            </FileWrapper>
-          </LabelFile>
-          <DownInputBox>
-          <LabelInput>
-            Location
-            <InputAdd
-              type="text"
-              placeholder="Title of add"
-              name="location"
-              onChange={handleInputChange}
-            />
-          </LabelInput>
-          <LabelInput>
-            Price
-            <InputAdd
-              type="text"
-              placeholder="Title of add"
-              name="price"
-              onChange={handleInputChange}
-            />
-          </LabelInput>
-          <LabelInput>
-            Comments
-            <CommentInput
-              placeholder="Comment"
-              name="comments"
-              onChange={handleInputChange}
-            />
-          </LabelInput>
-          </DownInputBox>
+                ) : (
+                  <>
+                    <InputFile
+                      type="file"
+                      onChange={handleFileChange}
+                      name="image"
+                    />
+                    <SvgIcon width="50" height="50">
+                      <use href={symbolDefs + '#plus'} fill="white"></use>
+                    </SvgIcon>
+                  </>
+                )}
+              </FileWrapperImg>
+            </LabelFileWrapperImg>
+          </FlexContainer>
+          <FlexContainer>
+            <DownInputBox>
+            <LabelInput>
+              Location
+              <InputAdd
+                type="text"
+                placeholder="Title of add"
+                name="location"
+                onChange={handleInputChange}
+              />
+            </LabelInput>
+            <LabelInput>
+              Price
+              <InputAdd
+                type="text"
+                placeholder="Title of add"
+                name="price"
+                onChange={handleInputChange}
+              />
+            </LabelInput>
+            <LabelInput>
+              Comments
+              <CommentInput
+                placeholder="Comment"
+                name="comments"
+                onChange={handleInputChange}
+              />
+            </LabelInput>
+            </DownInputBox>
+          </FlexContainer>
+        </DivContainer>
+        {/* </DivContainer> */}
         </>
       )}
 

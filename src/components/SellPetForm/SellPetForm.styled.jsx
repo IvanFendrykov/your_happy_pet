@@ -49,5 +49,57 @@ export const DownInputBox = styled.div`
 
 
 
+export const LabelFileWrapperImg = styled.label`
+  color: var(--black, #111);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  display: flex;
+  margin-bottom: 25px;
+  flex-direction: column;
+  @media (max-width: 750px){
+    width: 270px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: normal;
+  }
+`;
+
+export const FileWrapperImg = styled.div`
+  width: 182px;
+  height: 182px;
+  background-color: #cce4fb;
+  border-radius: 25px;
+  margin-top: 10px;
+  // margin-left: 14px;
+  position: relative;
+
+  @media (max-width: 430px) {
+    width: 112px;
+    height: 112px
+  }
+  @media (max-width: 750px){
+    margin-left: 10px;
+  }
+`;
 
 
+export const DivContainer = styled.div`
+  display: flex;
+  width: 650px;
+  // flex-direction: column;
+  // justify-content:space-evenly;
+
+  @media (max-width: 750px){
+    display: block;
+    width: 100%;
+  }
+`;
+
+export const FlexContainer = styled.div`
+  width: 50%;
+  @media (max-width: 750px){
+    width: 100%;
+  }
+`;

@@ -2,7 +2,8 @@ import styled from 'styled-components';
 
 export const MainBox = styled.div`
   background-color: white;
-  max-width: 458px;
+  width: fit-content;
+  min-width: 458px;
   padding: 30px;
   flex-shrink: 0;
   align-items: center;
@@ -20,6 +21,7 @@ export const MainText = styled.h1`
   font-size: 28px;
   font-style: normal;
   font-weight: 500;
+  text-align: center;
   line-height: normal;
   margin-bottom: 32px;
 `;
@@ -28,6 +30,7 @@ export const ListLines = styled.ul`
   display: flex;
   gap: 12px;
   margin-bottom: 38px;
+  justify-content: center;
 `;
 export const ItemLines = styled.li`
   width: 33%;
@@ -35,6 +38,8 @@ export const ItemLines = styled.li`
   font-style: normal;
   font-weight: 500;
   line-height: normal;
+  max-width:120px;
+
   color: ${(props) => props.color};
 
   @media (max-width: 526px) {
@@ -141,3 +146,4 @@ export const BackBtn = styled.button`
   align-items: center;
   gap: 12px;
 `;
+

@@ -28,7 +28,7 @@ export const InputAdd = styled.input`
   font-weight: 500;
   line-height: normal;
   width: -webkit-fill-available;
-  max-width: 100%;
+  max-width: 458px;
   height: 40px;
   padding: 8px 16px;
   border-radius: 40px;
@@ -81,8 +81,13 @@ export const FileWrapper = styled.div`
 `;
 export const InputFile = styled.input`
   opacity: 0;
-  width: 100%;
-  height: 100%;
+  width: 182px;
+  height: 182px;
+
+  @media (max-width: 430px) {
+    width: 112px;
+    height: 112px
+  }
 `;
 
 export const SvgIcon = styled.svg`
