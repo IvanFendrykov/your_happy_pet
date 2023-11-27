@@ -10,7 +10,7 @@ const NoticesCategoriesList = ({
 }) => {
   return (
     <CategoriesList>
-      {petsData.map(petData => (
+      {petsData.map((petData) => (
         <NoticesCategoriesItem
           onAddToFavourite={onAddToFavourite}
           onDeleteFromFavourite={onDeleteFromFavourite}
@@ -24,6 +24,7 @@ const NoticesCategoriesList = ({
           location={petData.location}
           age={petData.age}
           sex={petData.sex}
+          favourite={favourite}
         />
       ))}
     </CategoriesList>
