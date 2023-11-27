@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { theme } from 'utils/theme';
+import { theme } from '../../utils/theme';
 const { fonts, fontSizes, fontWeights, colors, radii } = theme;
 
 const CategoryItem = styled.div`
