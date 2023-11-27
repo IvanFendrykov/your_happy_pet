@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import icons from '../../images/symbol-defs.svg';
 
 import {
@@ -29,6 +30,8 @@ const NoticesCategoriesItem = ({
   age,
   sex,
 }) => {
+  const [isHover, setIsHover] = useState(false);
+
   const handleAddToFavourite = () => {
     onAddToFavourite(id);
   };
@@ -91,17 +94,17 @@ const NoticesCategoriesItem = ({
       </CategoryItemHeader>
       <CategoryItemFooter>
         <TitleHeader>{title}</TitleHeader>
-        <LearnMoreButton onClick={openModal}>
+        <LearnMoreButton
+          onClick={openModal}
+          onMouseOver={() => setIsHover(true)}
+          onMouseLeave={() => setIsHover(false)}
+        >
           Learn More
-          <OnHoverSVG
-            id="pawprint-icon"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="#fff"
-          >
-            <use xlinkHref={`${icons}#pawprint-1`} />
-          </OnHoverSVG>
+          {isHover && (
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="#fff">
+              <use xlinkHref={`${icons}#pawprint-1`} />
+            </svg>
+          )}
         </LearnMoreButton>
       </CategoryItemFooter>
     </CategoryItem>
