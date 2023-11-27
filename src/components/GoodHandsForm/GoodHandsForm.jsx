@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import {
   BackBtn,
   BtnBox,
@@ -31,6 +32,7 @@ import { ArrowLeft, Female, Male } from '../../images/svg/svgIcons';
 import { useNavigate } from 'react-router-dom';
 
 const GoodHandsForm = ({ changeColors, setActiveComponent, setColors }) => {
+  const token = useSelector((state) => state.auth.token);
   const [submit, setSubmit] = useState('button');
 
   const [step, setStep] = useState(1);
@@ -94,6 +96,7 @@ const GoodHandsForm = ({ changeColors, setActiveComponent, setColors }) => {
 
     const formData = new FormData();
     formData.append('submit', submit);
+    formData.append('category', 'inGoodHands');
     formData.append('title', title);
     formData.append('name', name);
     formData.append('birthDay', selectedDate);
@@ -103,7 +106,7 @@ const GoodHandsForm = ({ changeColors, setActiveComponent, setColors }) => {
     formData.append('image', fileImage);
     formData.append('location', location);
 
-    postMethod('inGoodHands', formData);
+    postMethod('notices', formData, token);
     toast.success('Post has been posted');
     navigate('/user');
   };
