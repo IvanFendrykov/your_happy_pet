@@ -9,7 +9,7 @@ const HiddenRadio = styled.input`
   display: none;
 `;
 
-const NavOption = styled.div`
+const NavOption = styled.label`
   display: flex;
   padding: 8px 16px;
   justify-content: center;
