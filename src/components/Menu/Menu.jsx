@@ -17,13 +17,11 @@ import ModalApproveAction from '../ModalApproveAction/ModalApproveAction';
 import useModal from '../../hooks/useModal';
 import { useCallback, useEffect, useState } from 'react';
 import { MobileMenu } from './MobileMenu';
-import { isLoggedIn } from '../Header/Header';
 import AuthNav from '../../components/AuthNav/AuthNav';
+import { useAuth } from '../../hooks/useAuth';
 
 export const Menu = ({ size }) => {
-  
-const user = true;
-
+  const { isLoggedIn, user } = useAuth();
   const [openMenu, setOpenMenu] = useState(false);
   const { toggleModal, showModal } = useModal(false);
 
@@ -36,8 +34,6 @@ const user = true;
   useEffect(() => {
     closeMenu();
   }, [url, closeMenu]);
-
- 
 
   return (
     <>
@@ -59,9 +55,9 @@ const user = true;
                   </LogoutBtn>
                 )}
                 {size[0] >= 768 && !isLoggedIn && (
-                 <MenuNavBtnUser>
-                 <AuthNav />
-               </MenuNavBtnUser>
+                  <MenuNavBtnUser>
+                    <AuthNav />
+                  </MenuNavBtnUser>
                 )}
                 <CloseBurger onClick={closeMenu}>
                   <LiaTimesSolid />

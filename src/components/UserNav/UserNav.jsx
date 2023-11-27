@@ -5,24 +5,24 @@ import { CiLogout } from 'react-icons/ci';
 import useModal from '../../hooks/useModal';
 import Backdrop from '../../components/Backdrop/Backdrop';
 import ModalApproveAction from '../../components/ModalApproveAction/ModalApproveAction';
-import {user} from '../Header/Header'
+import { useAuth } from '../../hooks/useAuth';
 
 const UserNav = () => {
-  
+  const { user } = useAuth();
   const { toggleModal, showModal } = useModal(false);
 
   return (
     <Container>
-      {user && (
-        <StyledLink to="/user">
-          <img src={icon} alt="icon" />
-          <User>{user.name}</User>
-        </StyledLink>
-      )}
       <LogoutBtn onClick={() => toggleModal()}>
         Log Out
         <CiLogout />
       </LogoutBtn>
+      {user && (
+        <StyledLink to="/user">
+          <img src={icon} alt="icon" />
+          <User>{user}</User>
+        </StyledLink>
+      )}
       {showModal && (
         <Backdrop closeModal={toggleModal}>
           <ModalApproveAction closeModal={toggleModal} />

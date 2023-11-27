@@ -1,21 +1,22 @@
-const BASE_URL = 'https://api.ahsabshfbahsfhbasfhbasfnan.org/3';
+const BASE_URL = 'https://happy-pets-rest-api.onrender.com';
 
 export async function fetchOurFriendsApi() {
-  const url = `${BASE_URL}/ourfriends/`;
+  const url = `${BASE_URL}/api/ourfriends/`;
 
   try {
     const response = await fetch(url);
-    const data = await response.json();
 
     if (!response.ok) {
       throw new Error(
-        `Status code: ${data.status_code}. Status message: ${data.status_message}`
+        `Status code: ${response.status}. Status message: ${response.statusText}`
       );
     }
 
-    return data.results;
+    const data = await response.json();
+    // console.log(data);
+    return data;
   } catch (error) {
     throw new Error(error.message);
   }
-};
+}
 

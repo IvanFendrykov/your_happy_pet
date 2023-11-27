@@ -4,3 +4,5 @@ export const selectAuth = state => {
   };
   
   export const selectUser = state => state.auth.user;
+  
+  export const selectToken = state => state.auth.user.token;

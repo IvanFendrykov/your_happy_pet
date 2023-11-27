@@ -11,11 +11,8 @@ import {
   LogoutBtn,
 } from './Menu.styled';
 import { CiLogout } from 'react-icons/ci';
-import { isLoggedIn } from '../Header/Header';
-import {user} from '../Header/Header'
 
-export const MobileMenu = ({   toggleModal }) => {
-  
+export const MobileMenu = ({ isLoggedIn, user, toggleModal }) => {
   return (
     <>
       <Middle>
@@ -24,7 +21,7 @@ export const MobileMenu = ({   toggleModal }) => {
             <Link to="/user">
               <img src={icon} alt="icon" />
             </Link>
-            <User>{user.name}</User>
+            <User>{user}</User>
           </MenuNavBtnUser>
         ) : (
           <MenuNavBtn>

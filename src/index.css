@@ -70,3 +70,9 @@ ul {
 button {
   cursor: pointer;
 }
+
+samp {
+background-color: #ffffff;
+border: none;
+cursor: pointer;
+};

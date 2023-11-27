@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import {props} from '../Header/Header'
 
 export const AuthContainer = styled.div`
   display: flex;
@@ -18,11 +17,11 @@ export const AuthBtn = styled(Link)`
   gap: 8px;
   border-radius: 40px;
   border: 2px solid var(--header-items-color);
-  background-color: ${props =>
+  background-color: ${(props) =>
     props.login ? 'var(  --header-items-color)' : 'var(--label-active-color)'};
   text-decoration: none;
 
-  color: ${props =>
+  color: ${(props) =>
     props.login ? 'var(--label-active-color)' : 'var(  --header-items-color)'};
   font-family: inherit;
   font-size: 16px;
@@ -36,11 +35,11 @@ export const AuthBtn = styled(Link)`
   }
 
   &:hover {
-    background-color: ${props =>
+    background-color: ${(props) =>
       props.login
         ? 'var(--label-active-color)'
         : 'var(  --header-items-color)'};
-    color: ${props =>
+    color: ${(props) =>
       props.login
         ? 'var(  --header-items-color)'
         : 'var(--label-active-color)'};
