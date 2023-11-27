@@ -45,7 +45,6 @@ export const login = createAsyncThunk(
       const response = await axios.post('/api/auth/login', credentials);
 
       setAuthHeader(response.data.accessToken);
-      localStorage.setItem('refreshToken', response.data.refreshToken);
       
       if (response.status === 200) {
         console.groupCollapsed('Login successful');
