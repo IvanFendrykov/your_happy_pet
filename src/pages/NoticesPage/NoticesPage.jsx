@@ -233,7 +233,7 @@ const NoticesPage = () => {
   const onAddToFavourite = (id) => {
     console.log('onAddToFavourite' + id);
   };
-  const onDeleteFromFavourite = (id) => {
+  const onDelete = (id) => {
     console.log('onDeleteFromFavourite' + id);
   };
   const onLearnMore = (id) => {
@@ -270,7 +270,7 @@ const NoticesPage = () => {
         petsData={editedPetsData}
         isLoggedIn={IS_LOGGED_IN}
         onAddToFavourite={onAddToFavourite}
-        onDeleteFromFavourite={onDeleteFromFavourite}
+        onDelete={onDelete}
         onLearnMore={onLearnMore}
       />
     </div>
