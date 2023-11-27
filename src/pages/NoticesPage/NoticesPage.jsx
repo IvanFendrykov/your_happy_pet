@@ -1,8 +1,8 @@
-/*import { ModalNotice } from '../../components/ModalNotice/ModalNotice';
+//import { ModalNotice } from '../../components/ModalNotice/ModalNotice';
 import { ModalNoticeMore } from '../../components/ModalNotice/ModalNoticeMore';
-import { ModalNoticeRemove } from '../../components/ModalNotice/ModalNoticeRemove';
-import { Link } from 'react-router-dom';
-import { NoticesSearch } from '../../components/NoticesSearch/NoticesSearch';*/
+//import { ModalNoticeRemove } from '../../components/ModalNotice/ModalNoticeRemove';
+//import { Link } from 'react-router-dom';
+//import { NoticesSearch } from '../../components/NoticesSearch/NoticesSearch';
 import { useEffect, useState } from 'react';
 import { NoticesCategoriesNav } from '../../components/NoticesCategoriesNav/NoticesCategoriesNav';
 import { NoticesFilters } from '../../components/NoticesFilters/NoticesFilters';
@@ -204,14 +204,14 @@ const NoticesPage = () => {
   });
   const [editedPetsData, setEditedPetsData] = useState(PETS_DATA);
 
-  const handleCategoriesData = data => {
+  const handleCategoriesData = (data) => {
     setCategoriesData(data);
   };
-  const handleFiltersData = data => {
+  const handleFiltersData = (data) => {
     setFiltersData(data);
   };
 
-  const calcYearDifference = oldDateString => {
+  const calcYearDifference = (oldDateString) => {
     const oldDate = new Date(oldDateString);
     const newDate = new Date();
     const dateDifference = new Date(newDate - oldDate);
@@ -230,24 +230,24 @@ const NoticesPage = () => {
     return ageFilterOptions[ageCategory];
   };
 
-  const onAddToFavourite = id => {
+  const onAddToFavourite = (id) => {
     console.log('onAddToFavourite' + id);
   };
-  const onDeleteFromFavourite = id => {
+  const onDeleteFromFavourite = (id) => {
     console.log('onDeleteFromFavourite' + id);
   };
-  const onLearnMore = id => {
+  const onLearnMore = (id) => {
     console.log('onLearnMore' + id);
   };
 
   useEffect(() => {
     const newEditedPetsData = petsData.filter(
-      pet =>
+      (pet) =>
         (!categoriesData || pet.category === categoriesData) &&
         isAgeCategory(pet, filtersData.age) &&
-        (!filtersData.gender || pet.sex === filtersData.gender)
+        (!filtersData.gender || pet.sex === filtersData.gender),
     );
-    const newEditedPetsDataWithAge = newEditedPetsData.map(item => {
+    const newEditedPetsDataWithAge = newEditedPetsData.map((item) => {
       const petAge = calcYearDifference(item.petBirthday);
       const petAgeString = `${petAge} year${!(petAge === 1) ? 's' : ''}`;
       return { ...item, age: petAgeString };
