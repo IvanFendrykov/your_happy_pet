@@ -31,6 +31,14 @@ const NoticesCategoriesItem = ({
 }) => {
   const [isHover, setIsHover] = useState(false);
 
+  const showPawprint = () => {
+    setIsHover(true);
+  };
+
+  const hidePawprint = () => {
+    setIsHover(false);
+  };
+
   const handleAddToFavourite = () => {
     onAddToFavourite(id);
   };
@@ -95,8 +103,8 @@ const NoticesCategoriesItem = ({
         <TitleHeader>{title}</TitleHeader>
         <LearnMoreButton
           onClick={openModal}
-          onMouseOver={() => setIsHover(true)}
-          onMouseLeave={() => setIsHover(false)}
+          onMouseOver={showPawprint}
+          onMouseLeave={hidePawprint}
         >
           Learn More
           {isHover && (
