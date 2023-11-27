@@ -45,7 +45,6 @@ export const EmailInput = styled.input`
   align-items: center;
   padding: 12px 16px;
   width: 256px;
-  color:#888888;
 
   border: 1px solid ${({ theme, error, valid }) =>
     error ? '#F43F5E' : '#54ADFF'};
@@ -63,9 +62,6 @@ export const EmailInput = styled.input`
     width: 458px;
   }
 `;
-
-
-
 
 export const PasswordForm = styled.div`
   display: flex;
@@ -144,7 +140,6 @@ export const PasswordInput = styled.input`
   align-items: center;
   padding: 12px 16px;
   width: 256px;
-  color:#888888;
   border: 1px solid ${({ theme, error, valid }) =>
     error ? '#F43F5E' : valid ? '#00C3AD' : '#54ADFF'};
   border-radius: 40px;
@@ -206,6 +201,23 @@ export const IconError = styled.span`
   }
 `;
 
+export const IconErrors = styled.span`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  position: absolute;
+  right: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+
+  @media screen and (max-width: 767px) {
+    right: 25px; 
+  }
+`;
+
 export const MessageError = styled.p`
   margin: 8px;
   margin-top: 0;
@@ -244,7 +256,6 @@ export const InfoMessage = styled.p`
 export const LoginBtn = styled.button`
   margin-top: 8px;
   width: 256px;
-
   padding: 10px 0;
   background: ${({ theme }) => theme.colors.blue};
   border: none;
@@ -254,15 +265,21 @@ export const LoginBtn = styled.button`
   line-height: 1.35;
   letter-spacing: 0.04em;
   color: #ffffff;
+  transition: background-color 0.4s;
 
   @media screen and (min-width: 768px) {
     width: 458px;
   }
 
+  &:hover{
+  background: rgb(23 107 182);
+  }
+  
   @media screen and (min-width: 1024px) {
     width: 458px;
   }
 `;
+
 
 export const RegTitle = styled.p`
  margin-top: 16px;
