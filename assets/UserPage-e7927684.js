@@ -1,4 +1,4 @@
-import{s as i,j as t,N as L,r as s}from"./index-ed10fdd6.js";const I=i.div`
+import{s as i,j as t,N as L,r as s}from"./index-e06f5003.js";const I=i.div`
 position: relative;
   border-radius: 20px;
   padding: 16px;
