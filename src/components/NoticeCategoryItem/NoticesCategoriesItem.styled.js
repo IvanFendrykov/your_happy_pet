@@ -130,6 +130,15 @@ const Span = styled.span`
   overflow-wrap: break-word;
 `;
 
+const OnHoverSVG = styled.svg`
+  display: none;
+
+  :hover,
+  :focus {
+    display: block;
+  }
+`;
+
 const TitleHeader = styled.h3`
   padding-block: none;
   color: var(--, #111);
@@ -178,6 +187,7 @@ export {
   PetInfoOutput,
   PetInfoOutputItem,
   Span,
+  OnHoverSVG,
   TitleHeader,
   LearnMoreButton,
 };

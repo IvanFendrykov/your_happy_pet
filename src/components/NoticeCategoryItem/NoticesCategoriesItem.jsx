@@ -11,6 +11,7 @@ import {
   PetInfoOutput,
   PetInfoOutputItem,
   Span,
+  OnHoverSVG,
   LearnMoreButton,
   TitleHeader,
 } from './NoticesCategoriesItem.styled';
@@ -92,9 +93,15 @@ const NoticesCategoriesItem = ({
         <TitleHeader>{title}</TitleHeader>
         <LearnMoreButton onClick={openModal}>
           Learn More
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <OnHoverSVG
+            id="pawprint-icon"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="#fff"
+          >
             <use xlinkHref={`${icons}#pawprint-1`} />
-          </svg>
+          </OnHoverSVG>
         </LearnMoreButton>
       </CategoryItemFooter>
     </CategoryItem>
