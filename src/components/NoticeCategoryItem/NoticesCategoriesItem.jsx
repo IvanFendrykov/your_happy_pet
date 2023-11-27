@@ -12,7 +12,6 @@ import {
   PetInfoOutput,
   PetInfoOutputItem,
   Span,
-  OnHoverSVG,
   LearnMoreButton,
   TitleHeader,
 } from './NoticesCategoriesItem.styled';
