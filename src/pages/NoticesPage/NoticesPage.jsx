@@ -278,7 +278,7 @@ const NoticesPage = () => {
 };
 /*
 <NoticesSearch />
-
+      <ModalNoticeMore />
 
 <Link to="">Add pet</Link>
 */
