@@ -9,6 +9,7 @@ const NoticesCategoriesNav = ({ isLoggedIn, onChange }) => {
     const newCategoryData = event.currentTarget.elements.categoryOption.value;
     setCategoryData(newCategoryData);
     onChange(newCategoryData);
+    console.log(newCategoryData);
   };
 
   return (
@@ -17,7 +18,7 @@ const NoticesCategoriesNav = ({ isLoggedIn, onChange }) => {
         name="categoryOption"
         value="any"
         checked={categoryData === ''}
-        defaultChecked={true}
+        defaultChecked={false}
       >
         all categories
       </NavOption>
