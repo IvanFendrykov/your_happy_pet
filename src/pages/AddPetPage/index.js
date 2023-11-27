@@ -1,13 +1,15 @@
 import axios from 'axios';
+import {useAuth} from '../../hooks/useAuth'
 
-export const postMethod = async (endPoint, formData) => {
+export const postMethod = async (endPoint, formData, token) => {
   try {
     const response = await axios.post(
-      `https://happy-pets-rest-api.onrender.com/api/${endPoint}`,
+      `http://localhost:3000/api/${endPoint}`,
       formData,
       {
         headers: {
           'Content-Type': 'multipart/form-data',
+          Authorization: `Bearer ${token}`,
         },
       },
     );
@@ -18,3 +20,5 @@ export const postMethod = async (endPoint, formData) => {
     throw error;
   }
 };
+
+// `https://happy-pets-rest-api.onrender.com/api/${endPoint}`,

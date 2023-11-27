@@ -4,7 +4,7 @@ import {
   BtnBox,
   NextBtn,
 } from '../../pages/AddPetPage/AddPetPage.styled';
-
+import { useSelector } from 'react-redux';
 import symbolDefs from '../../images/symbol-defs.svg';
 import {
   LabelInput,
@@ -23,6 +23,8 @@ import { postMethod } from '../../pages/AddPetPage';
 import { ArrowLeft } from '../../images/svg/svgIcons';
 import { useNavigate } from 'react-router-dom';
 const AddPetForm = ({ changeColors, setActiveComponent, setColors }) => {
+  const token = useSelector((state) => state.auth.token);
+  console.log(token);
   const [submit, setSubmit] = useState('button');
 
   const [name, setPetName] = useState('');
@@ -37,6 +39,7 @@ const AddPetForm = ({ changeColors, setActiveComponent, setColors }) => {
   const [next, setNext] = useState(false);
 
   const navigate = useNavigate();
+
   const handleInputChange = ({ target }) => {
     const { name, value } = target;
     switch (name) {
@@ -83,7 +86,7 @@ const AddPetForm = ({ changeColors, setActiveComponent, setColors }) => {
     formData.append('image', fileImage);
     setActiveComponent(null);
 
-    postMethod('myPet', formData);
+    postMethod('myPet', formData, token);
     toast.success('Post has been posted');
     navigate('/user');
   };
