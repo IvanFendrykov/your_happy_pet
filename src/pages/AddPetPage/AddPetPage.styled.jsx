@@ -82,16 +82,6 @@ export const CheckBox = styled.input`
   }
 `;
 
-// &:checked {
-//   background-color: #4caf50; /* Змініть на ваш колір для вибраного стану /
-//   border: 1px solid #4caf50; / Змініть на ваш колір для вибраного стану /
-//   color: #fff; / Змініть на ваш колір тексту для вибраного стану /
-
-//   / Змініть цей блок для стилізації лейбла при виборі чекбокса /
-//   & + label {
-//     color: #4caf50; / Змініть на ваш колір для вибраного стану лейбла */
-//   }
-
 export const BtnBox = styled.div`
   display: flex;
   flex-direction: column;

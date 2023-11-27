@@ -1,14 +1,18 @@
 
-import './MainPage.css';
-import Animals from '../../images/main-page/right-animals.png'
+import {
+    BrDesktop,
+    BrTablet,
+    MainContainer,
+    TitleH1
+    
+  } from './MainPage.styled';
 
 const MainPage = () => {
     return (
         <>
-            <div className='main-page'>
-                <h1 >Take good care <br className='br-desktop' />of<br className='br-tablet' /> your small<br className='br-desktop' /> pets</h1>
-                {/* <img src={Animals} alt='Animals'></img> */}
-            </div>
+            <MainContainer>
+                <TitleH1>Take good care <BrDesktop />of<BrTablet /> your small<BrDesktop /> pets</TitleH1>
+            </MainContainer>
         </>
     );
 };

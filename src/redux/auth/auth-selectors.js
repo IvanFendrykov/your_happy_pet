@@ -3,7 +3,7 @@ export const selectAuth = state => {
   return { isLoggedIn, token };
 };
 
-export const selectUser = state => state.auth.user;
+export const selectUser = state => state.auth.username;
 
 export const selectIsLoggedIn = state => state.auth.isLoggedIn;
 

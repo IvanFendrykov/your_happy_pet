@@ -1,6 +1,37 @@
 import styled from 'styled-components';
-
 export const PetForm = styled.form``;
+
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+
+export const StyledDatePicker = styled(DatePicker)`
+ font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+
+  width: 264px;
+  height: 40px;
+  padding: 8px 16px;
+  border-radius: 40px;
+  border: 1px solid var(--blue-links, #54adff);
+  margin-top: 5px;
+
+  &:focus {
+    border: 2px solid var(--blue-links, #54adff);
+    outline: none;
+    transition: border 0.3s ease-out;
+  }
+
+  &::placeholder {
+    color: var(--gray, #888);
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%;
+    letter-spacing: 0.56px;
+  }
+`;
 
 export const DivWrapper = styled.div`
   display: flex;
@@ -22,7 +53,7 @@ export const LabelInput = styled.label`
   line-height: normal;
 `;
 export const InputAdd = styled.input`
-  color: var(--black, #111);
+  /* color: var(--black, #111); */
   font-size: 14px;
   font-style: normal;
   font-weight: 500;
