@@ -18,7 +18,7 @@ const NoticesCategoriesNav = ({ isLoggedIn, onChange }) => {
         name="categoryOption"
         value=""
         checked={categoryData === ''}
-        defaultChecked={false}
+        defaultChecked={true}
       >
         all categories
       </NavOption>

@@ -17,12 +17,7 @@ const NavOption = ({ name, value, checked, defaultChecked, children }) => {
     </CheckedOption>
   ) : (
     <UnCheckedOption>
-      <HiddenRadio
-        type="radio"
-        name={name}
-        value={value}
-        defaultChecked={defaultChecked}
-      />
+      <HiddenRadio type="radio" name={name} value={value} />
       {children}
     </UnCheckedOption>
   );
