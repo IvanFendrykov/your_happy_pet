@@ -7,6 +7,7 @@ const NoticesCategoriesNav = ({ isLoggedIn, onChange }) => {
   const handleInput = (event) => {
     event.preventDefault();
     setCategoryData(event.currentTarget.elements.categoryOption.value);
+    console.log(categoryData);
     onChange(categoryData);
   };
 
