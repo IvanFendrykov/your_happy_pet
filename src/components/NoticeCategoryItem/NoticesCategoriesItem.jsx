@@ -10,6 +10,8 @@ import {
   RemoveButton,
   PetInfoOutput,
   PetInfoOutputItem,
+  Span,
+  Svg,
   LearnMoreButton,
   TitleHeader,
 } from './NoticesCategoriesItem.styled';
@@ -59,7 +61,14 @@ const NoticesCategoriesItem = ({
           </RemoveButton>
         )}
         <PetInfoOutput>
-          <PetInfoOutputItem>{location}</PetInfoOutputItem>
+          <PetInfoOutputItem>
+            <Span>
+              <Svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <use xlinkHref={`${icons}#location-1`} />
+              </Svg>
+            </Span>
+            <Span>{location}</Span>
+          </PetInfoOutputItem>
           <PetInfoOutputItem>{age}</PetInfoOutputItem>
           <PetInfoOutputItem>{sex}</PetInfoOutputItem>
         </PetInfoOutput>
