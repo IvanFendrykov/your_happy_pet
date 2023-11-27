@@ -1,4 +1,4 @@
-import{s as i,r as c,j as e}from"./index-65e6dcb1.js";const j="https://happy-pets-rest-api.onrender.com";async function b(){const d=`${j}/api/ourfriends/`;try{const a=await fetch(d);if(!a.ok)throw new Error(`Status code: ${a.status}. Status message: ${a.statusText}`);return await a.json()}catch(a){throw new Error(a.message)}}const n={mobile:"320px",tablet:"768px",desktop:"1280px"},y=i.div`
+import{s as i,r as c,j as e}from"./index-d1663e5c.js";const j="https://happy-pets-rest-api.onrender.com";async function b(){const d=`${j}/api/ourfriends/`;try{const a=await fetch(d);if(!a.ok)throw new Error(`Status code: ${a.status}. Status message: ${a.statusText}`);return await a.json()}catch(a){throw new Error(a.message)}}const n={mobile:"320px",tablet:"768px",desktop:"1280px"},y=i.div`
   margin-top: 44px;
   text-align: center;
   width: 280px;
