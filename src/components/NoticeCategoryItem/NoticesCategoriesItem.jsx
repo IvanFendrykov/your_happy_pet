@@ -28,6 +28,7 @@ const NoticesCategoriesItem = ({
   location,
   age,
   sex,
+  favourite,
 }) => {
   const [isHover, setIsHover] = useState(false);
 
@@ -50,7 +51,7 @@ const NoticesCategoriesItem = ({
   const openModal = () => {
     onLearnMore(id);
   };
-
+  //{favourite ? '#54adff' : 'none'}
   return (
     <CategoryItem>
       <CategoryItemHeader>
@@ -58,7 +59,12 @@ const NoticesCategoriesItem = ({
         <CategoryOutput>{category}</CategoryOutput>
         {isLoggedIn && (
           <AddButton onClick={handleAddToFavourite}>
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill={favourite ? '#54adff' : 'none'}
+            >
               <use xlinkHref={`${icons}#heart`} />
             </svg>
           </AddButton>
