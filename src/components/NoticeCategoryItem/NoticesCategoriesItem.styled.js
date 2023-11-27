@@ -178,7 +178,6 @@ export {
   PetInfoOutput,
   PetInfoOutputItem,
   Span,
-  Svg,
   TitleHeader,
   LearnMoreButton,
 };
