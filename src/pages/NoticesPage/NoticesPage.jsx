@@ -1,5 +1,5 @@
 //import { ModalNotice } from '../../components/ModalNotice/ModalNotice';
-import { ModalNoticeMore } from '../../components/ModalNotice/ModalNoticeMore';
+//import { ModalNoticeMore } from '../../components/ModalNotice/ModalNoticeMore';
 //import { ModalNoticeRemove } from '../../components/ModalNotice/ModalNoticeRemove';
 //import { Link } from 'react-router-dom';
 //import { NoticesSearch } from '../../components/NoticesSearch/NoticesSearch';
