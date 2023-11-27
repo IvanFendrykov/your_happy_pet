@@ -127,12 +127,7 @@ const PetInfoOutputItem = styled.div`
 
 const Span = styled.span`
   display: flex;
-`;
-
-const Svg = styled.svg`
-  display: block;
-  width: 24;
-  height: 24;
+  overflow-wrap: break-word;
 `;
 
 const TitleHeader = styled.h3`
