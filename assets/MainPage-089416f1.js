@@ -1,4 +1,4 @@
-import{s as i,j as t}from"./index-e291c07c.js";const e="https://ivanfendrykov.github.io/your_happy_pet/assets/right-animals-ce7dfe95.png",o=i.div`
+import{s as i,j as t}from"./index-97e55890.js";const e="https://ivanfendrykov.github.io/your_happy_pet/assets/right-animals-ce7dfe95.png",o=i.div`
     display: flex;
     justify-content:center;
     height: 100vh;
