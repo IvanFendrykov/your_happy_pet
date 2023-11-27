@@ -5,7 +5,7 @@ const NoticesCategoriesList = ({
   isLoggedIn,
   petsData,
   onAddToFavourite,
-  onDeleteFromFavourite,
+  onDelete,
   onLearnMore,
 }) => {
   return (
@@ -13,7 +13,7 @@ const NoticesCategoriesList = ({
       {petsData.map((petData) => (
         <NoticesCategoriesItem
           onAddToFavourite={onAddToFavourite}
-          onDeleteFromFavourite={onDeleteFromFavourite}
+          onDelete={onDeleteFromFavourite}
           onLearnMore={onLearnMore}
           key={petData._id}
           id={petData._id}
