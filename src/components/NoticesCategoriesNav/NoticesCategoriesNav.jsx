@@ -16,7 +16,7 @@ const NoticesCategoriesNav = ({ isLoggedIn, onChange }) => {
     <NavForm onInput={handleInput}>
       <NavOption
         name="categoryOption"
-        value="any"
+        value=""
         checked={categoryData === ''}
         defaultChecked={false}
       >
