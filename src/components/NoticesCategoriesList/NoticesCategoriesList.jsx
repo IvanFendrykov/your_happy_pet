@@ -24,7 +24,7 @@ const NoticesCategoriesList = ({
           location={petData.location}
           age={petData.age}
           sex={petData.sex}
-          favourite={favourite}
+          favourite={petData.favourite}
         />
       ))}
     </CategoriesList>
