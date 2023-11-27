@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import {
   BackBtn,
   BtnBox,
@@ -7,6 +8,7 @@ import {
 import { ArrowLeft, Male } from '../../images/svg/svgIcons';
 import { Female } from '../../images/svg/svgIcons';
 import symbolDefs from '../../images/symbol-defs.svg';
+
 import {
   LabelInput,
   PetForm,
@@ -30,6 +32,9 @@ import { postMethod } from '../../pages/AddPetPage';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 const SellPetForm = ({ changeColors, setActiveComponent, setColors }) => {
+
+  const token = useSelector((state) => state.auth.token);
+
   const [step, setStep] = useState(1);
   const [submit, setSubmit] = useState('button');
   const [title, setTitle] = useState('');
@@ -94,6 +99,7 @@ const SellPetForm = ({ changeColors, setActiveComponent, setColors }) => {
 
     const formData = new FormData();
     formData.append('submit', submit);
+    formData.append('category', 'sell');
     formData.append('title', title);
     formData.append('name', name);
     formData.append('birthDay', selectedDate);
@@ -103,7 +109,7 @@ const SellPetForm = ({ changeColors, setActiveComponent, setColors }) => {
     formData.append('image', fileImage);
     formData.append('location', location);
     formData.append('price', price);
-    postMethod('petSale', formData);
+    postMethod('notices', formData, token);
 
     toast.success('Post has been posted');
     navigate('/user');

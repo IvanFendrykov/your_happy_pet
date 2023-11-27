@@ -22,9 +22,11 @@ import toast from 'react-hot-toast';
 import { postMethod } from '../../pages/AddPetPage';
 import { ArrowLeft } from '../../images/svg/svgIcons';
 import { useNavigate } from 'react-router-dom';
+
+
+
 const AddPetForm = ({ changeColors, setActiveComponent, setColors }) => {
   const token = useSelector((state) => state.auth.token);
-  console.log(token);
   const [submit, setSubmit] = useState('button');
 
   const [name, setPetName] = useState('');
