@@ -13,7 +13,7 @@ const NoticesCategoriesList = ({
       {petsData.map((petData) => (
         <NoticesCategoriesItem
           onAddToFavourite={onAddToFavourite}
-          onDelete={onDeleteFromFavourite}
+          onDelete={onDelete}
           onLearnMore={onLearnMore}
           key={petData._id}
           id={petData._id}
