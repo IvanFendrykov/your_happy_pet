@@ -19,7 +19,7 @@ import {
 const NoticesCategoriesItem = ({
   id,
   onAddToFavourite,
-  onDeleteFromFavourite,
+  onDelete,
   onLearnMore,
   isLoggedIn,
   title,
@@ -44,8 +44,8 @@ const NoticesCategoriesItem = ({
     onAddToFavourite(id);
   };
 
-  const handleDeleteFromFavourite = () => {
-    onDeleteFromFavourite(id);
+  const handleDelete = () => {
+    onDelete(id);
   };
 
   const openModal = () => {
@@ -70,7 +70,7 @@ const NoticesCategoriesItem = ({
           </AddButton>
         )}
         {isLoggedIn && (
-          <RemoveButton onClick={handleDeleteFromFavourite}>
+          <RemoveButton onClick={handleDelete}>
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
               <use xlinkHref={`${icons}#trash-2`} />
             </svg>
