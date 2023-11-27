@@ -196,6 +196,9 @@ export const EditConfirm = styled.button`
   align-items: center;
   justify-content: center;
   gap: 8px;
+  font-size: 12px;
+  line-height: 1.83;
+  letter-spacing: 0.48px;
 `;
 export const EditExit = styled.button`
   background-color: transparent;
