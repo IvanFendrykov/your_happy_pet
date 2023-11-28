@@ -1,4 +1,4 @@
-import { StyledGenderForm } from './NoticesFilters.styled';
+import { FilterForm } from './NoticesFilters.styled';
 
 const GenderForm = ({ onChange }) => {
   const handleInput = (event) => {
@@ -8,7 +8,7 @@ const GenderForm = ({ onChange }) => {
   };
 
   return (
-    <StyledGenderForm onInput={handleInput}>
+    <FilterForm onInput={handleInput}>
       <label>
         <input type="radio" name="genderOption" value="female" />
         female
@@ -21,7 +21,7 @@ const GenderForm = ({ onChange }) => {
         <input type="radio" name="genderOption" value="" defaultChecked />
         any gender
       </label>
-    </StyledGenderForm>
+    </FilterForm>
   );
 };
 
