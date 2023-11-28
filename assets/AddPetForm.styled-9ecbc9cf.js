@@ -1,4 +1,4 @@
-import{g as Ar,f as nt,h as $a,k as C,r as B,m as Zn,R as v,o as Qa,s as Ie}from"./index-4329d20f.js";import{_ as qa,a as x}from"./setPrototypeOf-8d862a7d.js";var Jn={exports:{}};/*!
+import{g as Ar,f as nt,h as $a,k as C,r as B,m as Zn,R as v,o as Qa,s as Ie}from"./index-525dae37.js";import{_ as qa,a as x}from"./setPrototypeOf-8d862a7d.js";var Jn={exports:{}};/*!
 	Copyright (c) 2018 Jed Watson.
 	Licensed under the MIT License (MIT), see
 	http://jedwatson.github.io/classnames
@@ -11,6 +11,9 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   line-height: normal;
 
   width: 264px;
+  @media (min-width:560px ){ //430
+    width: 458px;
+  }
   height: 40px;
   padding: 8px 16px;
   border-radius: 40px;
@@ -41,19 +44,22 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   display: flex;
   align-items: start;
   flex-direction: column;
-
+  width: 100%;
   color: var(--black, #111);
   font-size: 14px;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
 `,Kc=Ie.input`
-  /* color: var(--black, #111); */
+  color: var(--black, #111);
   font-size: 14px;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
-
+  width: -webkit-fill-available;
+  @media (min-width: 560px ){ //430
+    width: 458px;
+  }
   width: 264px;
   height: 40px;
   padding: 8px 16px;
@@ -76,8 +82,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     letter-spacing: 0.56px;
   }
 `,Vc=Ie.label`
-  color: var(--black, #111);
-  font-family: Manrope;
+  // color: var(--black, #111);
   font-size: 14px;
   font-style: normal;
   font-weight: 500;
@@ -85,17 +90,32 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   display: flex;
   align-items: center;
   margin-bottom: 25px;
+  justify-content: space-evenly;
+
+  @media (min-width: 430px){
+    font-size: 20px;
+  }
 `,Xc=Ie.div`
-  width: 112px;
-  height: 112px;
+  width: 182px;
+  height: 182px;
   background-color: #cce4fb;
   border-radius: 25px;
   margin-left: 14px;
   position: relative;
+
+  @media (max-width: 430px) {
+    width: 112px;
+    height: 112px
+  }
 `,zc=Ie.input`
   opacity: 0;
-  width: 100%;
-  height: 100%;
+  width: 182px;
+  height: 182px;
+
+  @media (max-width: 430px) {
+    width: 112px;
+    height: 112px
+  }
 `,Gc=Ie.svg`
   position: absolute;
   top: 50%;
@@ -103,7 +123,8 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   transform: translate(-50%, -50%);
 `,Zc=Ie.textarea`
   display: flex;
-  width: 264px;
+  width: -webkit-fill-available;
+  max-width: 100%;
   height: 92px;
   padding: 8px 16px;
   position: relative;
