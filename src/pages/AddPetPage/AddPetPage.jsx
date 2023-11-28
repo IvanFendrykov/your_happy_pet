@@ -58,7 +58,7 @@ const AddPetPage = () => {
         break;
       case 'lost':
         setTimeout(() => {
-          setTitle('Add lost/faund pet');
+          setTitle('Add lost/found pet');
         }, 10);
         break;
       case 'goodHands':

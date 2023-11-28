@@ -29,8 +29,7 @@ import {
   LabelFileWrapperImg,
   DivContainer,
   FlexContainer,
-  InputAddInfo
-
+  InputAddInfo,
 } from '../SellPetForm/SellPetForm.styled';
 import { postMethod } from '../../pages/AddPetPage';
 import toast from 'react-hot-toast';
@@ -132,7 +131,7 @@ const LostPetForm = ({ changeColors, setActiveComponent, setColors }) => {
 
     setTimeout(() => {
       setSubmit('submit');
-    }, 500);
+    }, 10);
   };
 
   const handleBack = () => {
@@ -152,7 +151,7 @@ const LostPetForm = ({ changeColors, setActiveComponent, setColors }) => {
     setNext(false);
     setTimeout(() => {
       setSubmit('button');
-    }, 500);
+    }, 10);
   };
   const handleCheckbox = (checkbox) => {
     if (sex === checkbox) {
@@ -205,93 +204,91 @@ const LostPetForm = ({ changeColors, setActiveComponent, setColors }) => {
         </DivWrapper>
       ) : (
         <>
-        <DivContainer>
-        <FlexContainer>
+          <DivContainer>
+            <FlexContainer>
+              <SexTitle>The sex</SexTitle>
+              <CheckBoxWrap>
+                <InputChekbox
+                  id="female"
+                  type="radio"
+                  name="sex"
+                  checked={sex === 'female'}
+                  onChange={() => handleCheckbox('female')}
+                ></InputChekbox>
+                <LabelChekbox htmlFor="female">
+                  <Female stroke={sex === 'female' ? '#FFFFFF' : '#F43F5E'} />
+                  female
+                </LabelChekbox>
 
-          <SexTitle>The sex</SexTitle>
-          <CheckBoxWrap>
-            <InputChekbox
-              id="female"
-              type="radio"
-              name="sex"
-              checked={sex === 'female'}
-              onChange={() => handleCheckbox('female')}
-            ></InputChekbox>
-            <LabelChekbox htmlFor="female">
-              <Female stroke={sex === 'female' ? '#FFFFFF' : '#F43F5E'} />
-              female
-            </LabelChekbox>
-
-            <InputChekbox
-              id="male"
-              type="radio"
-              name="sex"
-              checked={sex === 'male'}
-              onChange={() => handleCheckbox('male')}
-            />
-            <LabelChekbox htmlFor="male">
-              <Male stroke={sex === 'male' ? '#FFFFFF' : '#54ADFF'} />
-              male
-            </LabelChekbox>
-          </CheckBoxWrap>
-          <LabelFileWrapperImg>
-            Load the pet’s image:
-            <FileWrapperImg>
-              {image ? (
-                <img
-                  src={image}
-                  alt="Selected"
-                  style={{
-                    width: '100%',
-                    height: '100%',
-                    borderRadius: '25px',
-                  }}
+                <InputChekbox
+                  id="male"
+                  type="radio"
+                  name="sex"
+                  checked={sex === 'male'}
+                  onChange={() => handleCheckbox('male')}
                 />
-              ) : (
-                <>
-                  <InputFile
-                    type="file"
-                    onChange={handleFileChange}
-                    name="image"
+                <LabelChekbox htmlFor="male">
+                  <Male stroke={sex === 'male' ? '#FFFFFF' : '#54ADFF'} />
+                  male
+                </LabelChekbox>
+              </CheckBoxWrap>
+              <LabelFileWrapperImg>
+                Load the pet’s image:
+                <FileWrapperImg>
+                  {image ? (
+                    <img
+                      src={image}
+                      alt="Selected"
+                      style={{
+                        width: '100%',
+                        height: '100%',
+                        borderRadius: '25px',
+                      }}
+                    />
+                  ) : (
+                    <>
+                      <InputFile
+                        type="file"
+                        onChange={handleFileChange}
+                        name="image"
+                      />
+                      <SvgIcon width="24" height="24">
+                        <use href={symbolDefs + '#plus'} fill="white"></use>
+                      </SvgIcon>
+                    </>
+                  )}
+                </FileWrapperImg>
+              </LabelFileWrapperImg>
+            </FlexContainer>
+            <FlexContainer>
+              <DownInputBox>
+                <LabelInput>
+                  Location
+                  <InputAddInfo
+                    type="text"
+                    placeholder="Title of add"
+                    name="location"
+                    onChange={handleInputChange}
                   />
-                  <SvgIcon width="24" height="24">
-                    <use href={symbolDefs + '#plus'} fill="white"></use>
-                  </SvgIcon>
-                </>
-              )}
-            </FileWrapperImg>
-          </LabelFileWrapperImg>
-          </FlexContainer>
-          <FlexContainer>
+                </LabelInput>
 
-          <DownInputBox>
-            <LabelInput>
-              Location
-              <InputAddInfo
-                type="text"
-                placeholder="Title of add"
-                name="location"
-                onChange={handleInputChange}
-              />
-            </LabelInput>
-
-            <LabelInput>
-              Comments
-              <CommentInput
-                placeholder="Comment"
-                name="comments"
-                onChange={handleInputChange}
-              />
-            </LabelInput>
-          </DownInputBox>
-          </FlexContainer>
-        </DivContainer>
+                <LabelInput>
+                  Comments
+                  <CommentInput
+                    placeholder="Comment"
+                    name="comments"
+                    onChange={handleInputChange}
+                  />
+                </LabelInput>
+              </DownInputBox>
+            </FlexContainer>
+          </DivContainer>
         </>
       )}
 
       <BtnBox>
         <NextBtn type={submit} onClick={handleNext}>
-          Next
+          {submit === 'button' ? 'Next' : 'Done'}
           <svg width="24" height="24">
             <use href={symbolDefs + '#pawprint-1'} fill="white"></use>
           </svg>
