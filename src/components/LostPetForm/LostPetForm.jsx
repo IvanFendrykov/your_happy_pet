@@ -12,8 +12,8 @@ import {
   PetForm,
   InputAdd,
   DivWrapper,
-  LabelFile,
-  FileWrapper,
+  // LabelFile,
+  // FileWrapper,
   InputFile,
   SvgIcon,
   CommentInput,
@@ -25,6 +25,12 @@ import {
   SexTitle,
   InputChekbox,
   DownInputBox,
+  FileWrapperImg,
+  LabelFileWrapperImg,
+  DivContainer,
+  FlexContainer,
+  InputAddInfo
+
 } from '../SellPetForm/SellPetForm.styled';
 import { postMethod } from '../../pages/AddPetPage';
 import toast from 'react-hot-toast';
@@ -199,6 +205,9 @@ const LostPetForm = ({ changeColors, setActiveComponent, setColors }) => {
         </DivWrapper>
       ) : (
         <>
+        <DivContainer>
+        <FlexContainer>
+
           <SexTitle>The sex</SexTitle>
           <CheckBoxWrap>
             <InputChekbox
@@ -225,10 +234,9 @@ const LostPetForm = ({ changeColors, setActiveComponent, setColors }) => {
               male
             </LabelChekbox>
           </CheckBoxWrap>
-          <LabelFile>
-            Load the
-            <br /> pet’s image:
-            <FileWrapper>
+          <LabelFileWrapperImg>
+            Load the pet’s image:
+            <FileWrapperImg>
               {image ? (
                 <img
                   src={image}
@@ -251,13 +259,15 @@ const LostPetForm = ({ changeColors, setActiveComponent, setColors }) => {
                   </SvgIcon>
                 </>
               )}
-            </FileWrapper>
-          </LabelFile>
+            </FileWrapperImg>
+          </LabelFileWrapperImg>
+          </FlexContainer>
+          <FlexContainer>
 
           <DownInputBox>
             <LabelInput>
               Location
-              <InputAdd
+              <InputAddInfo
                 type="text"
                 placeholder="Title of add"
                 name="location"
@@ -274,6 +284,8 @@ const LostPetForm = ({ changeColors, setActiveComponent, setColors }) => {
               />
             </LabelInput>
           </DownInputBox>
+          </FlexContainer>
+        </DivContainer>
         </>
       )}
 
