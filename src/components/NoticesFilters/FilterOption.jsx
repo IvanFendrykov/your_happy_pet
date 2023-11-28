@@ -12,7 +12,7 @@ const FilterOption = ({ name, value, checked, defaultChecked, children }) => {
       />
 
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-        <use xlinkHref={`${icons}#round`} />
+        <use xlinkHref={`${icons}#${checked ? 'check-round' : 'round'}`} />
       </svg>
       {children}
     </StyledFilterOption>

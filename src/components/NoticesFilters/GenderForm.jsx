@@ -9,7 +9,6 @@ const GenderForm = ({ onChange }) => {
     const newGenderData = event.currentTarget.elements.genderOption.value;
     setGenderData(newGenderData);
     onChange(newGenderData);
-    console.log(newGenderData);
   };
 
   return (
