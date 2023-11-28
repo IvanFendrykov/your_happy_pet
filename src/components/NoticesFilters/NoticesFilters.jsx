@@ -33,11 +33,11 @@ const NoticesFilters = ({ onChange }) => {
     }
   };
 
-  const selectAge = ageData => {
+  const selectAge = (ageData) => {
     setAge(ageData);
   };
 
-  const selectGender = genderData => {
+  const selectGender = (genderData) => {
     setGender(genderData);
   };
 
