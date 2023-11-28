@@ -18,5 +18,5 @@ const FilterOption = ({ name, value, checked, defaultChecked, children }) => {
     </StyledFilterOption>
   );
 };
-// ${checked ? 'check-round' : 'round'}
+
 export { FilterOption };
