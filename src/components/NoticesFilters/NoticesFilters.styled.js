@@ -68,6 +68,26 @@ const FilterOpenButton = styled.button`
   letter-spacing: 0.64px;
 `;
 
+const FilterCloseButton = styled.button`
+  display: flex;
+  width: 152px;
+  padding: 8px 20px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  border-radius: 40px;
+  border: none;
+  background-color: #fff;
+
+  color: #54adff;
+  font-family: Manrope;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 0.64px;
+`;
+
 const FilterFormButton = styled.button`
   display: flex;
   justify-content: flex-start;
@@ -111,4 +131,5 @@ export {
   StyledFilterOption,
   FilterFormButton,
   FilterOpenButton,
+  FilterCloseButton,
 };

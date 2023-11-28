@@ -5,6 +5,7 @@ import {
   FilterForms,
   FilterFormButton,
   FilterOpenButton,
+  FilterCloseButton,
 } from './NoticesFilters.styled';
 import { AgeForm } from './AgeForm';
 import { GenderForm } from './GenderForm';
@@ -54,14 +55,19 @@ const NoticesFilters = ({ onChange }) => {
 
   return !isFiltersOpen ? (
     <FilterOpenButton onClick={toggleFilters}>
-      Filters{' '}
+      Filter
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
         <use xlinkHref={`${icons}#filters-3`} />
       </svg>
     </FilterOpenButton>
   ) : (
     <FilterModal>
-      <FilterOpenButton onClick={toggleFilters}>Filters</FilterOpenButton>
+      <FilterCloseButton onClick={toggleFilters}>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <use xlinkHref={`${icons}#chevron-up`} />
+        </svg>
+        Filters
+      </FilterCloseButton>
       <FilterForms>
         {isByAgeOpen ? (
           <AgeForm onClick={toggleAgeFilter} onChange={selectAge} />
