@@ -11,6 +11,9 @@ export const StyledDatePicker = styled(DatePicker)`
   line-height: normal;
 
   width: 264px;
+  @media (min-width:560px ){ //430
+    width: 458px;
+  }
   height: 40px;
   padding: 8px 16px;
   border-radius: 40px;
@@ -45,7 +48,7 @@ export const LabelInput = styled.label`
   display: flex;
   align-items: start;
   flex-direction: column;
-
+  width: 100%;
   color: var(--black, #111);
   font-size: 14px;
   font-style: normal;
@@ -53,12 +56,15 @@ export const LabelInput = styled.label`
   line-height: normal;
 `;
 export const InputAdd = styled.input`
-  /* color: var(--black, #111); */
+  color: var(--black, #111);
   font-size: 14px;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
-
+  width: -webkit-fill-available;
+  @media (min-width: 560px ){ //430
+    width: 458px;
+  }
   width: 264px;
   height: 40px;
   padding: 8px 16px;
@@ -83,8 +89,7 @@ export const InputAdd = styled.input`
 `;
 
 export const LabelFile = styled.label`
-  color: var(--black, #111);
-  font-family: Manrope;
+  // color: var(--black, #111);
   font-size: 14px;
   font-style: normal;
   font-weight: 500;
@@ -92,19 +97,34 @@ export const LabelFile = styled.label`
   display: flex;
   align-items: center;
   margin-bottom: 25px;
+  justify-content: space-evenly;
+
+  @media (min-width: 430px){
+    font-size: 20px;
+  }
 `;
 export const FileWrapper = styled.div`
-  width: 112px;
-  height: 112px;
+  width: 182px;
+  height: 182px;
   background-color: #cce4fb;
   border-radius: 25px;
   margin-left: 14px;
   position: relative;
+
+  @media (max-width: 430px) {
+    width: 112px;
+    height: 112px
+  }
 `;
 export const InputFile = styled.input`
   opacity: 0;
-  width: 100%;
-  height: 100%;
+  width: 182px;
+  height: 182px;
+
+  @media (max-width: 430px) {
+    width: 112px;
+    height: 112px
+  }
 `;
 
 export const SvgIcon = styled.svg`
@@ -116,7 +136,8 @@ export const SvgIcon = styled.svg`
 
 export const CommentInput = styled.textarea`
   display: flex;
-  width: 264px;
+  width: -webkit-fill-available;
+  max-width: 100%;
   height: 92px;
   padding: 8px 16px;
   position: relative;
