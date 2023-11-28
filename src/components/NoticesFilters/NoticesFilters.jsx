@@ -1,4 +1,11 @@
 import { useEffect, useState } from 'react';
+import icons from '../../images/symbol-defs.svg';
+import {
+  FilterModal,
+  FilterForms,
+  FilterFormButton,
+  FilterOpenButton,
+} from './NoticesFilters.styled';
 import { AgeForm } from './AgeForm';
 import { GenderForm } from './GenderForm';
 
@@ -45,20 +52,40 @@ const NoticesFilters = ({ onChange }) => {
     onChange({ age, gender });
   }, [age, gender]);
 
-  return (
-    <div>
-      <button onClick={toggleFilters}>Filters</button>
-      {isFiltersOpen && (
-        <div>
-          <button onClick={toggleAgeFilter}>By age</button>
-          {isByAgeOpen && <AgeForm onChange={selectAge} />}
-          <button onClick={toggleGenderFilter}>By gender</button>
-          {isByGenderOpen && (
-            <GenderForm onClick={toggleGenderFilter} onChange={selectGender} />
-          )}
-        </div>
-      )}
-    </div>
+  return !isFiltersOpen ? (
+    <FilterOpenButton onClick={toggleFilters}>
+      Filters{' '}
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <use xlinkHref={`${icons}#filters-3`} />
+      </svg>
+    </FilterOpenButton>
+  ) : (
+    <FilterModal>
+      <FilterOpenButton onClick={toggleFilters}>Filters</FilterOpenButton>
+      <FilterForms>
+        {isByAgeOpen ? (
+          <AgeForm onClick={toggleAgeFilter} onChange={selectAge} />
+        ) : (
+          <FilterFormButton onClick={toggleAgeFilter}>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <use xlinkHref={`${icons}#chevron-down`} />
+            </svg>
+            By gender
+          </FilterFormButton>
+        )}
+
+        {isByGenderOpen ? (
+          <GenderForm onClick={toggleGenderFilter} onChange={selectGender} />
+        ) : (
+          <FilterFormButton onClick={toggleGenderFilter}>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <use xlinkHref={`${icons}#chevron-down`} />
+            </svg>
+            By gender
+          </FilterFormButton>
+        )}
+      </FilterForms>
+    </FilterModal>
   );
 };
 

@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { FilterForm } from './NoticesFilters.styled';
+import icons from '../../images/symbol-defs.svg';
+import { FilterForm, FilterFormButton } from './NoticesFilters.styled';
 import { FilterOption } from './FilterOption';
 
 const GenderForm = ({ onClick, onChange }) => {
@@ -18,7 +19,12 @@ const GenderForm = ({ onClick, onChange }) => {
 
   return (
     <FilterForm onInput={handleInput} onSubmit={handleSubmit}>
-      <button type="submit">By gender</button>
+      <FilterFormButton type="submit">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <use xlinkHref={`${icons}#chevron-up`} />
+        </svg>
+        By gender
+      </FilterFormButton>
       <FilterOption
         name="genderOption"
         value="female"
