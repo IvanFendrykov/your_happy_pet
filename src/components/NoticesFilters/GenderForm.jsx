@@ -1,26 +1,41 @@
-import { FilterForm } from './NoticesFilters.styled';
+import { useState } from 'react';
+import { FilterForm, FilterOption } from './NoticesFilters.styled';
 
 const GenderForm = ({ onChange }) => {
+  const [genderData, setGenderData] = useState('');
   const handleInput = (event) => {
     event.preventDefault();
-    const genderData = event.currentTarget.elements.genderOption.value;
-    onChange(genderData);
+    const newGenderData = event.currentTarget.elements.genderOption.value;
+    setGenderData(newGenderData);
+    onChange(newGenderData);
   };
 
   return (
     <FilterForm onInput={handleInput}>
-      <label>
-        <input type="radio" name="genderOption" value="female" />
+      <FilterOption
+        name="genderOption"
+        value="female"
+        checked={genderData === 'female'}
+        defaultChecked={false}
+      >
         female
-      </label>
-      <label>
-        <input type="radio" name="genderOption" value="male" />
+      </FilterOption>
+      <FilterOption
+        name="genderOption"
+        value="male"
+        checked={genderData === 'male'}
+        defaultChecked={false}
+      >
         male
-      </label>
-      <label>
-        <input type="radio" name="genderOption" value="" defaultChecked />
+      </FilterOption>
+      <FilterOption
+        name="genderOption"
+        value=""
+        checked={genderData === ''}
+        defaultChecked={true}
+      >
         any gender
-      </label>
+      </FilterOption>
     </FilterForm>
   );
 };
