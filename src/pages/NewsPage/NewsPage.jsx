@@ -140,7 +140,7 @@ const reserveImg = 'https://i.seadn.io/gae/2hDpuTi-0AMKvoZJGd-yKWvK4tKdQr_kLIpB_
                                         <NewsCardFooterDate>{dateFormat(date, "dd/mm/yyyy")}</NewsCardFooterDate>
                                 </li>
                                 <li>
-                                    <NewsCardFooterLink href={url}>Read more</NewsCardFooterLink>
+                                    <NewsCardFooterLink href={url} target='_blank'>Read more</NewsCardFooterLink>
                                 </li>
                             </NewsCardFooter>
                         </NewsCardContentWrapper>
