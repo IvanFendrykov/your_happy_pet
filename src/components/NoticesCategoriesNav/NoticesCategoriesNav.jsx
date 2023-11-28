@@ -17,7 +17,7 @@ const NoticesCategoriesNav = ({ isLoggedIn, onChange }) => {
       </label>
       <label>
         <input type="radio" name="categoryOption" value="lost/found" />
-        lost/found
+        lostFound
       </label>
       <label>
         <input type="radio" name="categoryOption" value="in good hands" />

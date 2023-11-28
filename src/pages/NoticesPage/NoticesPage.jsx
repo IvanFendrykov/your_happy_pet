@@ -3,10 +3,13 @@ import { ModalNoticeMore } from '../../components/ModalNotice/ModalNoticeMore';
 import { ModalNoticeRemove } from '../../components/ModalNotice/ModalNoticeRemove';
 import { Link } from 'react-router-dom';
 import { NoticesSearch } from '../../components/NoticesSearch/NoticesSearch';*/
+import { ModalNoticeMore } from '../../components/ModalNotice/ModalNoticeMore';
 import { useEffect, useState } from 'react';
 import { NoticesCategoriesNav } from '../../components/NoticesCategoriesNav/NoticesCategoriesNav';
 import { NoticesFilters } from '../../components/NoticesFilters/NoticesFilters';
 import { NoticesCategoriesList } from '../../components/NoticesCategoriesList/NoticesCategoriesList';
+import axios from 'axios';
+import { useSelector } from 'react-redux';
 
 const PETS_DATA = [
   {
@@ -196,7 +199,11 @@ const PETS_DATA = [
 const IS_LOGGED_IN = true;
 
 const NoticesPage = () => {
-  const [petsData, setPetsData] = useState(PETS_DATA);
+  const token = useSelector((state) => state.auth.token);
+  const [petsData, setPetsData] = useState(null);
+  const [modalData, setModalData] = useState(null);
+  const [showModal, setShowModal] = useState(false)
+  const [favorites, setFavorites] = useState(null)
   const [categoriesData, setCategoriesData] = useState('');
   const [filtersData, setFiltersData] = useState({
     age: 'any age',
@@ -241,19 +248,74 @@ const NoticesPage = () => {
   };
 
   useEffect(() => {
-    const newEditedPetsData = petsData.filter(
-      pet =>
-        (!categoriesData || pet.category === categoriesData) &&
-        isAgeCategory(pet, filtersData.age) &&
-        (!filtersData.gender || pet.sex === filtersData.gender)
-    );
-    const newEditedPetsDataWithAge = newEditedPetsData.map(item => {
-      const petAge = calcYearDifference(item.petBirthday);
-      const petAgeString = `${petAge} year${!(petAge === 1) ? 's' : ''}`;
-      return { ...item, age: petAgeString };
-    });
-    setEditedPetsData(newEditedPetsDataWithAge);
+    if (petsData) {
+      const newEditedPetsData = petsData.filter(
+        pet =>
+          (!categoriesData || pet.category === categoriesData) &&
+          isAgeCategory(pet, filtersData.age) &&
+          (!filtersData.gender || pet.sex === filtersData.gender)
+      );
+      const newEditedPetsDataWithAge = newEditedPetsData.map(item => {
+        const petAge = calcYearDifference(item.birthDay);
+        const petAgeString = `${petAge} year${!(petAge === 1) ? 's' : ''}`;
+        return { ...item, age: petAgeString };
+      });
+      setEditedPetsData(newEditedPetsDataWithAge);
+    }
+
   }, [petsData, categoriesData, filtersData]);
+
+  useEffect(() => {
+    const getUser = async () => {
+      try {
+        const response = await axios.get(`${import.meta.env.VITE_BACKEND_BASE_URL}/api/auth/current`, {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+            Authorization: `Bearer ${token}`,
+          },
+        },);
+        return response.data;
+      } catch (error) {
+        console.error("Error fetching user:", error);
+        return null;
+      }
+    };
+
+    const fetchUserAndSetCurrentUser = async () => {
+      const user = await getUser();
+      if (user) {
+        const { favoriteNoties } = user;
+        setFavorites(favoriteNoties);
+      }
+    };
+
+    const getNotices = async () => {
+      try {
+        const response = await axios.get(`${import.meta.env.VITE_BACKEND_BASE_URL}/api/notices`);
+        console.log(response)
+        setPetsData(response.data.data.docs);
+      } catch (error) {
+        console.error("Error fetching user:", error);
+        return null;
+      }
+    };
+
+    getNotices();
+
+    if (token) {
+      fetchUserAndSetCurrentUser();
+    }
+
+
+  }, [])
+
+  const handleShowMore = (id) => {
+    const selectedPet = petsData.find((pet) => pet._id === id);
+    if (selectedPet) {
+      setModalData([selectedPet]);
+    }
+    console.log(modalData)
+  }
 
   return (
     <div>
@@ -267,6 +329,7 @@ const NoticesPage = () => {
         <NoticesFilters onChange={handleFiltersData} />
       </div>
       <NoticesCategoriesList
+        handleShowMore={handleShowMore}
         petsData={editedPetsData}
         isLoggedIn={IS_LOGGED_IN}
         onAddToFavourite={onAddToFavourite}

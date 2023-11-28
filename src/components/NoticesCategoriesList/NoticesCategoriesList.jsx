@@ -7,11 +7,13 @@ const NoticesCategoriesList = ({
   onAddToFavourite,
   onDeleteFromFavourite,
   onLearnMore,
+  handleShowMore
 }) => {
   return (
     <CategoriesList>
       {petsData.map(petData => (
         <NoticesCategoriesItem
+          handleShowMore={handleShowMore}
           onAddToFavourite={onAddToFavourite}
           onDeleteFromFavourite={onDeleteFromFavourite}
           onLearnMore={onLearnMore}
@@ -20,7 +22,7 @@ const NoticesCategoriesList = ({
           isLoggedIn={isLoggedIn}
           title={petData.title}
           category={petData.category}
-          avatar={petData.avatar}
+          avatar={petData.image}
           location={petData.location}
           age={petData.age}
           sex={petData.sex}

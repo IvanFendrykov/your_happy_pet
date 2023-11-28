@@ -2,7 +2,6 @@ import { toast } from 'react-hot-toast';
 import { VscHeart } from 'react-icons/vsc';
 import { useDispatch, useSelector } from 'react-redux';
 // import { selectAuth, selectIsLoggedIn } from 'redux/auth/authSelectors';
-import { closeModal } from 'redux/modal/modalReducer';
 // import { favoriteNotice } from 'redux/notices/noticesOperations';
 // import { makeCategory } from '../NoticeCategoryItem/NoticeCategoryItem';
 import {
@@ -19,41 +18,10 @@ import {
   BtnContainer,
 } from './ModalNotice.styled';
 
-export const ModalNoticeMore = ({
-  pet: {
-    _id,
-    avatar,
-    title,
-    location,
-    petBirthday,
-    sex,
-    name,
-    breed,
-    price,
-    favorite,
-    description,
-    owner,
-    category,
-  },
-}) => {
+export const ModalNoticeMore = ({ pet }) => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const dispatch = useDispatch();
   const auth = useSelector(selectAuth);
-
-  let isFavorite = favorite.includes(auth?._id);
-
-  const onClickFavBtn = () => {
-    if (!isLoggedIn) {
-      toast.error('You need to sign in');
-    } else {
-      dispatch(
-        favoriteNotice({
-          id: _id,
-        })
-      );
-      dispatch(closeModal());
-    }
-  };
 
   return (
     <>

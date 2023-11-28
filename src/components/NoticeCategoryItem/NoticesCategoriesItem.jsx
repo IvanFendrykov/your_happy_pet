@@ -15,6 +15,7 @@ import {
 } from './NoticesCategoriesItem.styled';
 
 const NoticesCategoriesItem = ({
+  handleShowMore,
   id,
   onAddToFavourite,
   onDeleteFromFavourite,
@@ -38,7 +39,6 @@ const NoticesCategoriesItem = ({
   const openModal = () => {
     onLearnMore(id);
   };
-
   return (
     <CategoryItem>
       <CategoryItemHeader>
@@ -66,7 +66,7 @@ const NoticesCategoriesItem = ({
       </CategoryItemHeader>
       <CategoryItemFooter>
         <TitleHeader>{title}</TitleHeader>
-        <LearnMoreButton onClick={openModal}>
+        <LearnMoreButton onClick={() => handleShowMore(id)}>
           Learn More
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
             <use xlinkHref={`${icons}#pawprint-1`} />
