@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { FilterForm } from './NoticesFilters.styled';
 import { FilterOption } from './FilterOption';
 
-const GenderForm = ({ onChange }) => {
+const GenderForm = ({ onClick, onChange }) => {
   const [genderData, setGenderData] = useState('');
   const handleInput = (event) => {
     event.preventDefault();
@@ -11,8 +11,14 @@ const GenderForm = ({ onChange }) => {
     onChange(newGenderData);
   };
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    onClick();
+  };
+
   return (
-    <FilterForm onInput={handleInput}>
+    <FilterForm onInput={handleInput} onSubmit={handleSubmit}>
+      <button type="submit">By gender</button>
       <FilterOption
         name="genderOption"
         value="female"
