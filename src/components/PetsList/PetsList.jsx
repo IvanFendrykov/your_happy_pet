@@ -40,7 +40,7 @@ const StyledLink = styled(NavLink)`
     right: 10px;
   }
 `;
-function PetsList({ pets }) {
+function PetsList({ pets, onDelete }) {
   return (
     <div style={{ position: 'relative' }}>
       <StyledLink to="/add-pet">
@@ -48,7 +48,7 @@ function PetsList({ pets }) {
         <span>Add pet</span>
       </StyledLink>
       {pets.map((pet) => (
-        <PetsItem key={pet.id} pet={pet} />
+        <PetsItem key={pet._id} pet={pet} onDelete={onDelete} />
       ))}
     </div>
   );

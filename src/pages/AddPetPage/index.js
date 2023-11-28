@@ -3,7 +3,7 @@ import axios from 'axios';
 export const postMethod = async (endPoint, formData, token) => {
   try {
     const response = await axios.post(
-      `https://happy-pets-rest-api.onrender.com/api/${endPoint}`,
+      `${import.meta.env.VITE_BACKEND_BASE_URL}/api/${endPoint}`,
       formData,
       {
         headers: {

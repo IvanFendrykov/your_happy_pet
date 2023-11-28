@@ -206,4 +206,32 @@ export const EditExit = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
+  text-align: center;
+  margin-left:20px;
+`;
+
+export const FileWrapper = styled.div`
+  width: 182px;
+  height: 182px;
+  background-color: #cce4fb;
+  border-radius: 40px;
+  position: absolute;
+  cursor: pointer;
+  bottom: 35px;
+  left: -20px
+`;
+
+export const SvgIcon = styled.svg`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+`;
+
+export const UserAvatar = styled.img`
+ width: 99%;
+  height: 99%;
+  object-fit: cover;
+  border-radius: 40px;
 `;

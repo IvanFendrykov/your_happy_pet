@@ -8,17 +8,13 @@ import {
 } from './PetsItem.styled';
 import { ReactComponent as Trash } from '../../images/svg/trash.svg';
 
-function PetsItem({ pet }) {
-  const onDelete = (id) => {
-    //do delete request by pet id to delete it from list
-    console.log(pet);
-  };
+function PetsItem({ pet, onDelete }) {
   return (
     <PetContainer>
-      <DeleteButton onClick={() => onDelete(pet.id)}>
+      <DeleteButton onClick={() => onDelete(pet._id)}>
         <Trash style={{ stroke: '#54ADFF' }} />
       </DeleteButton>
-      <PetImage src={pet.imageUrl} alt={pet.name} />
+      <PetImage src={pet.image} alt={pet.name} />
       <PetInfoWrapper>
         <PetInfo>
           <Label>Name:</Label> {pet.name}
