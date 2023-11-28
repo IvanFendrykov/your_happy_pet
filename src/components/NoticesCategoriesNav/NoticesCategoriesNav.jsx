@@ -9,7 +9,6 @@ const NoticesCategoriesNav = ({ isLoggedIn, onChange }) => {
     const newCategoryData = event.currentTarget.elements.categoryOption.value;
     setCategoryData(newCategoryData);
     onChange(newCategoryData);
-    console.log(newCategoryData);
   };
 
   return (
