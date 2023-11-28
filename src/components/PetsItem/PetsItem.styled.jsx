@@ -1,23 +1,24 @@
 import styled from 'styled-components';
 
 export const PetContainer = styled.div`
-position: relative;
+  position: relative;
   border-radius: 20px;
   padding: 16px;
   margin-bottom: 16px;
   width: 280px;
   box-shadow: 3px 8px 14px 0px rgba(136, 198, 253, 0.19);
+  background-color: #fff;
   @media (min-width: 768px) {
     display: flex;
     gap: 20px;
     width: 704px;
     padding-right: 76px;
-    padding-bottom: 58px
+    padding-bottom: 58px;
   }
 
-    @media (min-width: 1280px) {
-      gap: 32px;
-    }
+  @media (min-width: 1280px) {
+    gap: 32px;
+  }
 `;
 
 export const PetImage = styled.img`
@@ -26,8 +27,8 @@ export const PetImage = styled.img`
   border-radius: 20px;
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 8px;
-    @media (min-width: 768px) {
+  margin-bottom: 20px;
+  @media (min-width: 768px) {
     height: 128px;
     width: 128px;
     margin-left: 0;
@@ -40,23 +41,31 @@ export const PetImage = styled.img`
   }
 `;
 
-export const PetInfoWrapper = styled.div`
-  
-`;
+export const PetInfoWrapper = styled.div``;
 
 export const PetInfo = styled.p`
-letter-spacing: 0.56px;
+  letter-spacing: 0.56px;
+  margin-bottom: 12px;
+  @media (min-width: 768px) {
+    margin-bottom: 16px;
+  }
 `;
 
 export const Label = styled.span`
-color: #111;
-font-size: 14px;
-font-weight: 700;
-letter-spacing: 0.56px;
+  color: #111;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.56px;
 `;
 
 export const DeleteButton = styled.button`
-position: absolute;
-top: 10px;
-right: 10px;
-`
+  background-color: transparent;
+  border-color: transparent;
+  position: absolute;
+  top: 272px;
+  right: 16px;
+  @media (min-width: 768px) {
+    top: 20px;
+    right: 20px;
+  }
+`;

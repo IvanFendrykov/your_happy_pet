@@ -25,6 +25,8 @@ import { ReactComponent as Round } from './round.svg';
 import { ReactComponent as Search } from './search.svg';
 import { ReactComponent as Trash } from './trash.svg';
 import { ReactComponent as User } from './user.svg';
+import { ReactComponent as PhotoDef } from './photo-default.svg';
+import { ReactComponent as X } from './x.svg';
 
 export {
   Pawprint1,
@@ -54,4 +56,6 @@ export {
   Search,
   Trash,
   User,
+  PhotoDef,
+  X,
 };
