@@ -78,4 +78,4 @@ const CheckedOption = styled.label`
   letter-spacing: 0.56px;
 `;
 
-export { StyledGenderForm, HiddenRadio, CheckedOption, UnCheckedOption };
+export { FilterModal, FilterForm, HiddenRadio, CheckedOption, UnCheckedOption };
