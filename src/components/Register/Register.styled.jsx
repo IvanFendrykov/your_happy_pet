@@ -126,7 +126,8 @@ export const PasswordInputContainer = styled.div`
 export const IconPassword = styled.span`
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 10px;  
+flex-direction: row-reverse;
 `;
 
 export const EyeIcon = styled.span`
@@ -153,7 +154,6 @@ export const CheckIcon = styled.span`
   justify-content: center;
   width: 24px;
   height: 24px;
-  cursor: pointer;
 
   & svg {
     stroke: ${({ theme }) => theme.colors.green};
@@ -189,7 +189,11 @@ export const RegistrationBtn = styled.button`
   letter-spacing: 0.04em;
 
   color: #ffffff;
-
+  transition: background-color 0.4s;
+  &:hover{
+  background: rgb(23 107 182);
+  }
+  
   @media screen and (max-width: 767px) {
     margin-top: 41px;
     margin-bottom: 24px;
