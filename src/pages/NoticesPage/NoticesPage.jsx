@@ -1,6 +1,6 @@
-//import { ModalNotice } from '../../components/ModalNotice/ModalNotice';
-//import { ModalNoticeMore } from '../../components/ModalNotice/ModalNoticeMore';
-//import { ModalNoticeRemove } from '../../components/ModalNotice/ModalNoticeRemove';
+import { ModalNotice } from '../../components/ModalNotice/ModalNotice';
+import { ModalNoticeMore } from '../../components/ModalNotice/ModalNoticeMore';
+import { ModalNoticeRemove } from '../../components/ModalNotice/ModalNoticeRemove';
 //import { Link } from 'react-router-dom';
 import { NoticesSearch } from '../../components/NoticesSearch/NoticesSearch';
 import { useEffect, useState } from 'react';
@@ -274,6 +274,9 @@ const NoticesPage = () => {
         onDelete={onDelete}
         onLearnMore={onLearnMore}
       />
+      <ModalNotice />
+      <ModalNoticeMore />
+      <ModalNoticeRemove />
     </div>
   );
 };
