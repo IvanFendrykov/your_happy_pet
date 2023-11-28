@@ -1,41 +1,71 @@
+import { useState } from 'react';
+import { NavForm } from './NoticesCategoriesNav.styled';
+import { NavOption } from './NavOption';
+
 const NoticesCategoriesNav = ({ isLoggedIn, onChange }) => {
-  const handleInput = event => {
+  const [categoryData, setCategoryData] = useState('');
+  const handleInput = (event) => {
     event.preventDefault();
-    const categoryData = event.currentTarget.elements.categoryOption.value;
-    onChange(categoryData);
+    const newCategoryData = event.currentTarget.elements.categoryOption.value;
+    setCategoryData(newCategoryData);
+    onChange(newCategoryData);
   };
 
   return (
-    <form onInput={handleInput}>
-      <label>
-        <input type="radio" name="categoryOption" value="" defaultChecked />
+    <NavForm onInput={handleInput}>
+      <NavOption
+        name="categoryOption"
+        value=""
+        checked={categoryData === ''}
+        defaultChecked={true}
+      >
         all categories
-      </label>
-      <label>
-        <input type="radio" name="categoryOption" value="sell" />
+      </NavOption>
+      <NavOption
+        name="categoryOption"
+        value="sell"
+        checked={categoryData === 'sell'}
+        defaultChecked={false}
+      >
         sell
-      </label>
-      <label>
-        <input type="radio" name="categoryOption" value="lost/found" />
+      </NavOption>
+      <NavOption
+        name="categoryOption"
+        value="lost/found"
+        checked={categoryData === 'lost/found'}
+        defaultChecked={false}
+      >
         lost/found
-      </label>
-      <label>
-        <input type="radio" name="categoryOption" value="in good hands" />
+      </NavOption>
+      <NavOption
+        name="categoryOption"
+        value="in good hands"
+        checked={categoryData === 'in good hands'}
+        defaultChecked={false}
+      >
         in good hands
-      </label>
+      </NavOption>
       {isLoggedIn && (
-        <label>
-          <input type="radio" name="categoryOption" value="favorite ads" />
+        <NavOption
+          name="categoryOption"
+          value="favorite ads"
+          checked={categoryData === 'favorite ads'}
+          defaultChecked={false}
+        >
           favorite ads
-        </label>
+        </NavOption>
       )}
       {isLoggedIn && (
-        <label>
-          <input type="radio" name="categoryOption" value="my ads" />
+        <NavOption
+          name="categoryOption"
+          value="my ads"
+          checked={categoryData === 'my ads'}
+          defaultChecked={false}
+        >
           my ads
-        </label>
+        </NavOption>
       )}
-    </form>
+    </NavForm>
   );
 };
 

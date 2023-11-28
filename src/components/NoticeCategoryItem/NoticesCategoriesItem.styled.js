@@ -104,7 +104,7 @@ const PetInfoOutputItem = styled.div`
   display: flex;
   width: 80px;
   padding: 2px 4px;
-  justify-content: center;
+  justify-content: left;
   align-items: center;
   gap: 4px;
 
@@ -117,13 +117,17 @@ const PetInfoOutputItem = styled.div`
 
   overflow: hidden;
   color: var(--, #111);
-  text-overflow: ellipsis;
-  white-space: nowrap;
+
   font-family: ${fonts.semiBold};
   font-size: ${fontSizes.xs};
   font-style: normal;
   line-height: normal;
   letter-spacing: 0.48px;
+`;
+
+const Span = styled.span`
+  display: flex;
+  overflow-wrap: break-word;
 `;
 
 const TitleHeader = styled.h3`
@@ -173,6 +177,7 @@ export {
   RemoveButton,
   PetInfoOutput,
   PetInfoOutputItem,
+  Span,
   TitleHeader,
   LearnMoreButton,
 };

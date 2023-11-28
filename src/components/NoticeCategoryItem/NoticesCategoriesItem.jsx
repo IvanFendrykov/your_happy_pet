@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import icons from '../../images/symbol-defs.svg';
 
 import {
@@ -10,6 +11,7 @@ import {
   RemoveButton,
   PetInfoOutput,
   PetInfoOutputItem,
+  Span,
   LearnMoreButton,
   TitleHeader,
 } from './NoticesCategoriesItem.styled';
@@ -17,7 +19,7 @@ import {
 const NoticesCategoriesItem = ({
   id,
   onAddToFavourite,
-  onDeleteFromFavourite,
+  onDelete,
   onLearnMore,
   isLoggedIn,
   title,
@@ -26,19 +28,30 @@ const NoticesCategoriesItem = ({
   location,
   age,
   sex,
+  favourite,
 }) => {
+  const [isHover, setIsHover] = useState(false);
+
+  const showPawprint = () => {
+    setIsHover(true);
+  };
+
+  const hidePawprint = () => {
+    setIsHover(false);
+  };
+
   const handleAddToFavourite = () => {
     onAddToFavourite(id);
   };
 
-  const handleDeleteFromFavourite = () => {
-    onDeleteFromFavourite(id);
+  const handleDelete = () => {
+    onDelete(id);
   };
 
   const openModal = () => {
     onLearnMore(id);
   };
-
+  //{favourite ? '#54adff' : 'none'}
   return (
     <CategoryItem>
       <CategoryItemHeader>
@@ -46,31 +59,65 @@ const NoticesCategoriesItem = ({
         <CategoryOutput>{category}</CategoryOutput>
         {isLoggedIn && (
           <AddButton onClick={handleAddToFavourite}>
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill={favourite ? '#54adff' : 'none'}
+            >
               <use xlinkHref={`${icons}#heart`} />
             </svg>
           </AddButton>
         )}
         {isLoggedIn && (
-          <RemoveButton onClick={handleDeleteFromFavourite}>
+          <RemoveButton onClick={handleDelete}>
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
               <use xlinkHref={`${icons}#trash-2`} />
             </svg>
           </RemoveButton>
         )}
         <PetInfoOutput>
-          <PetInfoOutputItem>{location}</PetInfoOutputItem>
-          <PetInfoOutputItem>{age}</PetInfoOutputItem>
-          <PetInfoOutputItem>{sex}</PetInfoOutputItem>
+          <PetInfoOutputItem>
+            <Span>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <use xlinkHref={`${icons}#location-1`} />
+              </svg>
+            </Span>
+            <Span>{location}</Span>
+          </PetInfoOutputItem>
+          <PetInfoOutputItem>
+            <Span>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <use xlinkHref={`${icons}#clock`} />
+              </svg>
+            </Span>
+            <Span>{age}</Span>
+          </PetInfoOutputItem>
+          <PetInfoOutputItem>
+            <Span>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <use
+                  xlinkHref={`${icons}#${sex === 'male' ? 'male' : 'female'}`}
+                />
+              </svg>
+            </Span>
+            <Span>{sex}</Span>
+          </PetInfoOutputItem>
         </PetInfoOutput>
       </CategoryItemHeader>
       <CategoryItemFooter>
         <TitleHeader>{title}</TitleHeader>
-        <LearnMoreButton onClick={openModal}>
+        <LearnMoreButton
+          onClick={openModal}
+          onMouseOver={showPawprint}
+          onMouseLeave={hidePawprint}
+        >
           Learn More
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-            <use xlinkHref={`${icons}#pawprint-1`} />
-          </svg>
+          {isHover && (
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="#fff">
+              <use xlinkHref={`${icons}#pawprint-1`} />
+            </svg>
+          )}
         </LearnMoreButton>
       </CategoryItemFooter>
     </CategoryItem>

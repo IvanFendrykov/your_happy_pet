@@ -1,25 +1,55 @@
-const GenderForm = ({ onChange }) => {
-  const handleInput = event => {
+import { useState } from 'react';
+import icons from '../../images/symbol-defs.svg';
+import { FilterForm, FilterFormButton } from './NoticesFilters.styled';
+import { FilterOption } from './FilterOption';
+
+const GenderForm = ({ onClick, onChange }) => {
+  const [genderData, setGenderData] = useState('');
+  const handleInput = (event) => {
     event.preventDefault();
-    const genderData = event.currentTarget.elements.genderOption.value;
-    onChange(genderData);
+    const newGenderData = event.currentTarget.elements.genderOption.value;
+    setGenderData(newGenderData);
+    onChange(newGenderData);
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    onClick();
   };
 
   return (
-    <form onInput={handleInput}>
-      <label>
-        <input type="radio" name="genderOption" value="female" />
+    <FilterForm onInput={handleInput} onSubmit={handleSubmit}>
+      <FilterFormButton type="submit">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <use xlinkHref={`${icons}#chevron-up`} />
+        </svg>
+        By gender
+      </FilterFormButton>
+      <FilterOption
+        name="genderOption"
+        value="female"
+        checked={genderData === 'female'}
+        defaultChecked={false}
+      >
         female
-      </label>
-      <label>
-        <input type="radio" name="genderOption" value="male" />
+      </FilterOption>
+      <FilterOption
+        name="genderOption"
+        value="male"
+        checked={genderData === 'male'}
+        defaultChecked={false}
+      >
         male
-      </label>
-      <label>
-        <input type="radio" name="genderOption" value="" defaultChecked />
+      </FilterOption>
+      <FilterOption
+        name="genderOption"
+        value=""
+        checked={genderData === ''}
+        defaultChecked={true}
+      >
         any gender
-      </label>
-    </form>
+      </FilterOption>
+    </FilterForm>
   );
 };
 
