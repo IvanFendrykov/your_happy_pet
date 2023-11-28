@@ -53,7 +53,9 @@ const NoticesFilters = ({ onChange }) => {
           <button onClick={toggleAgeFilter}>By age</button>
           {isByAgeOpen && <AgeForm onChange={selectAge} />}
           <button onClick={toggleGenderFilter}>By gender</button>
-          {isByGenderOpen && <GenderForm onChange={selectGender} />}
+          {isByGenderOpen && (
+            <GenderForm onClick={toggleGenderFilter} onChange={selectGender} />
+          )}
         </div>
       )}
     </div>
