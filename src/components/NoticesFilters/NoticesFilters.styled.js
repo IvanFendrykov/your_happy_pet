@@ -12,7 +12,7 @@ const FilterModal = styled.div`
   align-items: center;
 `;
 
-const StyledGenderForm = styled.form`
+const FilterForm = styled.form`
   display: flex;
   width: 136px;
   padding: 14px;
