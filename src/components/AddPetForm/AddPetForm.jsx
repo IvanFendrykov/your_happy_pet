@@ -90,7 +90,7 @@ const AddPetForm = ({ changeColors, setActiveComponent, setColors }) => {
 
     postMethod('myPet', formData, token);
     toast.success('Post has been posted');
-    navigate('/user');
+    navigate(-1)
   };
 
   const handleNext = () => {

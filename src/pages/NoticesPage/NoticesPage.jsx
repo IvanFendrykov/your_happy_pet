@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react';
 import { NoticesCategoriesNav } from '../../components/NoticesCategoriesNav/NoticesCategoriesNav';
 import { NoticesFilters } from '../../components/NoticesFilters/NoticesFilters';
 import { NoticesCategoriesList } from '../../components/NoticesCategoriesList/NoticesCategoriesList';
+import { NavLink } from 'react-router-dom';
 
 const PETS_DATA = [
   {
@@ -265,7 +266,9 @@ const NoticesPage = () => {
           onChange={handleCategoriesData}
         />
         <NoticesFilters onChange={handleFiltersData} />
-        <button>Add pet</button>
+        <button>
+          <NavLink to="http://localhost:5173/your_happy_pet/add-pet"> Add pet</NavLink>
+        </button>
       </div>
       <NoticesCategoriesList
         petsData={editedPetsData}
