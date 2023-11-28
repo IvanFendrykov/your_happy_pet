@@ -39,8 +39,9 @@ const HiddenRadio = styled.input`
   display: none;
 `;
 
-const FilterOption = styled.label`
+const StyledFilterOption = styled.label`
+  display: flex;
   font-size: 12px;
 `;
 
-export { FilterModal, FilterForm, HiddenRadio, FilterOption };
+export { FilterModal, FilterForm, HiddenRadio, StyledFilterOption };

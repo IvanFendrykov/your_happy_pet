@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { FilterForm, FilterOption } from './NoticesFilters.styled';
+import { FilterForm } from './NoticesFilters.styled';
+import { FilterOption } from './FilterOption';
 
 const GenderForm = ({ onChange }) => {
   const [genderData, setGenderData] = useState('');
@@ -8,6 +9,7 @@ const GenderForm = ({ onChange }) => {
     const newGenderData = event.currentTarget.elements.genderOption.value;
     setGenderData(newGenderData);
     onChange(newGenderData);
+    console.log(newGenderData);
   };
 
   return (
