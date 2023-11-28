@@ -1,12 +1,14 @@
+import { StyledGenderForm } from './NoticesFilters.styled';
+
 const GenderForm = ({ onChange }) => {
-  const handleInput = event => {
+  const handleInput = (event) => {
     event.preventDefault();
     const genderData = event.currentTarget.elements.genderOption.value;
     onChange(genderData);
   };
 
   return (
-    <form onInput={handleInput}>
+    <StyledGenderForm onInput={handleInput}>
       <label>
         <input type="radio" name="genderOption" value="female" />
         female
@@ -19,7 +21,7 @@ const GenderForm = ({ onChange }) => {
         <input type="radio" name="genderOption" value="" defaultChecked />
         any gender
       </label>
-    </form>
+    </StyledGenderForm>
   );
 };
 

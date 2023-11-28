@@ -1,3 +1,4 @@
+import icons from '../../images/symbol-defs.svg';
 import {
   HiddenRadio,
   CheckedOption,

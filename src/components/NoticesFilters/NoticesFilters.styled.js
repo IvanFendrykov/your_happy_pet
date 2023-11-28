@@ -1,8 +1,38 @@
 import styled from '@emotion/styled';
+import { theme } from '../../utils/theme';
+const { fonts, fontSizes, fontWeights, colors, radii } = theme;
 
-const NavForm = styled.form`
+const FilterModal = styled.div`
   display: flex;
-  column-gap: 12px;
+  width: 152px;
+  height: 334px;
+  padding: 14px 8px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
+const StyledGenderForm = styled.form`
+  display: flex;
+  width: 136px;
+  padding: 14px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+
+  border-radius: 20px;
+  background: var(--blue-light, #cce4fb);
+
+  color: var(--unnamed, #54adff);
+  font-feature-settings:
+    'clig' off,
+    'liga' off;
+
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 130%; /* 18.2px */
 `;
 
 const HiddenRadio = styled.input`
@@ -48,4 +78,4 @@ const CheckedOption = styled.label`
   letter-spacing: 0.56px;
 `;
 
-export { NavForm, HiddenRadio, CheckedOption, UnCheckedOption };
+export { StyledGenderForm, HiddenRadio, CheckedOption, UnCheckedOption };
