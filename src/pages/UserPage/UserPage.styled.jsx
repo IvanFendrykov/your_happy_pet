@@ -1,3 +1,4 @@
+import ReactDatePicker from 'react-datepicker';
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
@@ -234,4 +235,27 @@ export const UserAvatar = styled.img`
   height: 99%;
   object-fit: cover;
   border-radius: 40px;
+`;
+
+export const StyledDatePicker = styled(ReactDatePicker)`
+  display: flex;
+  font-size: 12px;
+  letter-spacing: 0.48px;
+  width: 188px;
+  border-radius: 20px;
+  border: 1px solid var(--unnamed, #54adff);
+  padding: 4px 10px;
+
+  @media (min-width: 768px) {
+    width: 255px;
+    height: 30px;
+  }
+
+  &:focus {
+    border: 2px solid var(--blue-links, #54adff);
+    outline: none;
+    transition: border 0.3s ease-out;
+  }
+
+
 `;

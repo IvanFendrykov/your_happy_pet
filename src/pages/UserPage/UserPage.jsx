@@ -19,6 +19,7 @@ import {
   SvgIcon,
   FileWrapper,
   UserAvatar,
+  StyledDatePicker,
 } from './UserPage.styled';
 import { ReactComponent as Edit } from '../../images/svg/edit.svg';
 import { ReactComponent as CrossSmall } from '../../images/svg/cross-small.svg';
@@ -28,38 +29,13 @@ import { ReactComponent as Camera } from '../../images/svg/camera.svg';
 import { ReactComponent as Check } from '../../images/svg/check.svg';
 import { ReactComponent as X } from '../../images/svg/x.svg';
 import axios from 'axios';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { InputFile } from '../../components/AddPetForm/AddPetForm.styled';
 import symbolDefs from '../../images/symbol-defs.svg';
 import Backdrop from '../../components/Backdrop/Backdrop';
 import ModalApproveAction from '../../components/ModalApproveAction/ModalApproveAction';
+import { update } from '../../redux/auth/operation';
 
-// const user = {
-//   name: 'fakeName',
-//   email: 'fakeEmail',
-//   bday: '11.11',
-//   phone: '111-111-111',
-//   city: 'Kyiv',
-// };
-
-// const pets = [
-//   {
-//     id: 2,
-//     imageUrl: 'https://placekitten.com/200/200',
-//     name: 'Fluffy',
-//     dateOfBirth: '2020-01-01',
-//     type: 'Cat',
-//     comments: 'A cute and fluffy kitty.',
-//   },
-//   {
-//     id: 1,
-//     imageUrl: 'https://placekitten.com/200/210',
-//     name: 'Fluffy',
-//     dateOfBirth: '2020-01-01',
-//     type: 'Cat',
-//     comments: 'A cute and fluffy kitty.',
-//   },
-// ];
 
 function UserPage() {
   const [clicked, setClicked] = useState(false);
@@ -73,15 +49,16 @@ function UserPage() {
   const [fileImage, setFileImage] = useState(null);
   const [imageUrl, setImageUrl] = useState(null);
   const [pets, setPets] = useState(null)
-
   const [showModal, setShowModal] = useState(null)
 
+  const dispatch = useDispatch();
   const token = useSelector((state) => state.auth.token);
+
+  const noDataPlaceHolder = 'No info';
 
   const toggleForm = (e) => {
     e.preventDefault();
     setClicked(!clicked);
-    console.log(clicked);
   };
   const onUserNameChange = (e) => {
     setCurrentName(e.target.value);
@@ -111,19 +88,11 @@ function UserPage() {
       editedUserFormData.append('image', fileImage);
     }
 
-
-
-    const response = await axios.patch(
-      `${import.meta.env.VITE_BACKEND_BASE_URL}/api/auth/current`,
-      editedUserFormData,
-      {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-          Authorization: `Bearer ${token}`,
-        },
-      },
-    );
+    const response = dispatch(update({ token, editedUserFormData }))
     setClicked(false);
+    if (response.status === 200) {
+      setImageUrl(response.data.profilePic)
+    }
   };
   const handleEdit = (e) => {
     e.preventDefault();
@@ -146,7 +115,6 @@ function UserPage() {
         }
       );
       setPets((prevPets) => prevPets.filter((pet) => pet._id !== id));
-      console.log(pets)
     } catch (error) {
       console.error('Error:', error);
     }
@@ -188,20 +156,12 @@ function UserPage() {
       if (user) {
         const { username, email, birthDay, phone, city, profilePic } = user;
 
-        setCurrentName(username || '');
-        setCurrentEmail(email || '');
-        setCurrentPhone(phone || '');
-        setCurrentCity(city || '');
-        setImageUrl(profilePic || '')
-
-        const birthDate = new Date(birthDay);
-        const formattedBday = birthDate.toLocaleDateString('ru-RU', {
-          day: 'numeric',
-          month: 'numeric',
-          year: 'numeric',
-        });
-
-        setCurrentBday(formattedBday || '');
+        setCurrentName(username || noDataPlaceHolder);
+        setCurrentEmail(email || noDataPlaceHolder);
+        setCurrentPhone(phone || noDataPlaceHolder);
+        setCurrentCity(city || noDataPlaceHolder);
+        setImageUrl(profilePic || noDataPlaceHolder)
+        setCurrentBday(birthDay || '');
       }
     };
 
@@ -220,9 +180,6 @@ function UserPage() {
     }
   };
 
-  const toggleLogoutModal = () => {
-    console.log("first")
-  }
 
   return (
     <>
@@ -309,13 +266,14 @@ function UserPage() {
               </ListItem>
               <ListItem>
                 <Label>Birthday:</Label>
-                <Span
+                <StyledDatePicker
                   type="text"
                   name="birthday"
-                  value={currentBday}
+                  placeholderText='Select a date'
+                  selected={currentBday ? new Date(currentBday) : null}
                   disabled={!clicked}
-                  onChange={onUserBdayChange}
-                ></Span>
+                  onChange={(date) => setCurrentBday(date ? date : '')}
+                ></StyledDatePicker>
               </ListItem>
               <ListItem>
                 <Label>Phone:</Label>
@@ -359,7 +317,7 @@ function UserPage() {
         </Section>
         <Section>
           <H2>My pets:</H2>
-          {pets ? <PetsList pets={pets} onDelete={onDelete} /> : <H2>You didnt added any pets!</H2>}
+          <PetsList pets={pets} onDelete={onDelete} />
         </Section>
         {showModal && (
           <Backdrop closeModal={() => setShowModal(!showModal)}>

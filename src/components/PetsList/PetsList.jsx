@@ -40,6 +40,20 @@ const StyledLink = styled(NavLink)`
     right: 10px;
   }
 `;
+
+export const H2 = styled.h2`
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: 0.8px;
+  margin-bottom: 24px;
+  width: 280px;
+   @media (min-width: 768px) {
+    width: 700px;
+   }
+`;
+
+
+
 function PetsList({ pets, onDelete }) {
   return (
     <div style={{ position: 'relative' }}>
@@ -47,9 +61,12 @@ function PetsList({ pets, onDelete }) {
         <Plus style={{ stroke: '#fff' }} />
         <span>Add pet</span>
       </StyledLink>
-      {pets.map((pet) => (
-        <PetsItem key={pet._id} pet={pet} onDelete={onDelete} />
-      ))}
+
+      {pets && pets.length > 0 ? (
+        pets.map((pet) => <PetsItem key={pet._id} pet={pet} onDelete={onDelete} />)
+      ) : (
+        <H2>You didnt added any pets!</H2>
+      )}
     </div>
   );
 }

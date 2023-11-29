@@ -181,3 +181,25 @@ export const logout = createAsyncThunk(
     }
   },
 );
+
+export const update = createAsyncThunk(
+  'auth/update',
+  async ({ token, editedUserFormData }, { rejectWithValue }) => {
+    try {
+      setAuthHeader(token);
+      const response = await axios.patch(
+        'api/auth/current',
+        editedUserFormData,
+        {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+            Authorization: `Bearer ${token}`,
+          },
+        },
+      );
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  },
+);
