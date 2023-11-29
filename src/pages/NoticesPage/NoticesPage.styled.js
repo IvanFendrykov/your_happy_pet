@@ -24,7 +24,7 @@ const NoticePageContrtolsRight = styled.div`
   column-gap: 16px;
 `;
 
-const AddPetLink = styled.NavLink`
+const AddPetLink = styled(NavLink)`
   display: flex;
   width: 129px;
   padding: 8px 20px;
