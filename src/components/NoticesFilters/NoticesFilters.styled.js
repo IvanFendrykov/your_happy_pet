@@ -1,8 +1,9 @@
 import styled from '@emotion/styled';
-//import { createGlobalStyle } from 'styled-components';
+
 import { theme } from '../../utils/theme';
 const { fonts, fontSizes, fontWeights, colors } = theme;
 
+//import { createGlobalStyle } from 'styled-components';
 //createGlobalStyle`@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');`;
 
 const FilterModal = styled.div`
