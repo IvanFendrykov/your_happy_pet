@@ -54,6 +54,8 @@ function UserPage() {
   const dispatch = useDispatch();
   const token = useSelector((state) => state.auth.token);
 
+  const noDataPlaceHolder = 'No info';
+
   const toggleForm = (e) => {
     e.preventDefault();
     setClicked(!clicked);
@@ -154,11 +156,11 @@ function UserPage() {
       if (user) {
         const { username, email, birthDay, phone, city, profilePic } = user;
 
-        setCurrentName(username || '');
-        setCurrentEmail(email || '');
-        setCurrentPhone(phone || '');
-        setCurrentCity(city || '');
-        setImageUrl(profilePic || '')
+        setCurrentName(username || noDataPlaceHolder);
+        setCurrentEmail(email || noDataPlaceHolder);
+        setCurrentPhone(phone || noDataPlaceHolder);
+        setCurrentCity(city || noDataPlaceHolder);
+        setImageUrl(profilePic || noDataPlaceHolder)
         setCurrentBday(birthDay || '');
       }
     };
@@ -267,9 +269,10 @@ function UserPage() {
                 <StyledDatePicker
                   type="text"
                   name="birthday"
+                  placeholderText='Select a date'
                   selected={currentBday ? new Date(currentBday) : null}
                   disabled={!clicked}
-                  onChange={(date) => setCurrentBday(date ? date.toISOString() : '')}
+                  onChange={(date) => setCurrentBday(date ? date : '')}
                 ></StyledDatePicker>
               </ListItem>
               <ListItem>

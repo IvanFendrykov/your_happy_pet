@@ -55,6 +55,7 @@ export const H2 = styled.h2`
 
 
 function PetsList({ pets, onDelete }) {
+  console.log(pets)
   return (
     <div style={{ position: 'relative' }}>
       <StyledLink to="/add-pet">

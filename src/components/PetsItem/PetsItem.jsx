@@ -9,6 +9,12 @@ import {
 import { ReactComponent as Trash } from '../../images/svg/trash.svg';
 
 function PetsItem({ pet, onDelete }) {
+  const birthDate = new Date(pet.birthDay);
+  const formattedBday = birthDate.toLocaleDateString('ru-RU', {
+    day: 'numeric',
+    month: 'numeric',
+    year: 'numeric',
+  });
   return (
     <PetContainer>
       <DeleteButton onClick={() => onDelete(pet._id)}>
@@ -20,10 +26,10 @@ function PetsItem({ pet, onDelete }) {
           <Label>Name:</Label> {pet.name}
         </PetInfo>
         <PetInfo>
-          <Label>Date of Birth:</Label> {pet.dateOfBirth}
+          <Label>Date of Birth:</Label> {formattedBday}
         </PetInfo>
         <PetInfo>
-          <Label>Type:</Label> {pet.type}
+          <Label>Type:</Label> {pet.typeOfPet}
         </PetInfo>
         <PetInfo>
           <Label>Comments:</Label> {pet.comments}
