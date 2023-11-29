@@ -8,7 +8,12 @@ import { NoticesCategoriesNav } from '../../components/NoticesCategoriesNav/Noti
 import { NoticesFilters } from '../../components/NoticesFilters/NoticesFilters';
 import { NoticesCategoriesList } from '../../components/NoticesCategoriesList/NoticesCategoriesList';
 import { NavLink } from 'react-router-dom';
-import { Header } from './NoticesPage.styled';
+import {
+  Header,
+  NoticePageContrtols,
+  NoticePageContrtolsRight,
+  FilterOpenButton,
+} from './NoticesPage.styled';
 
 const PETS_DATA = [
   {
