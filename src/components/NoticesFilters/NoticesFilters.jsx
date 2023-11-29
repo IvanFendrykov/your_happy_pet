@@ -56,7 +56,7 @@ const NoticesFilters = ({ onChange }) => {
   return !isFiltersOpen ? (
     <FilterOpenButton onClick={toggleFilters}>
       Filter
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+      <svg width="24" height="24" viewBox="0 0 24 24">
         <use xlinkHref={`${icons}#filters-3`} />
       </svg>
     </FilterOpenButton>
