@@ -212,8 +212,8 @@ export const EditExit = styled.button`
 `;
 
 export const FileWrapper = styled.div`
-  width: 182px;
-  height: 182px;
+  width: 184px;
+  height: 184px;
   background-color: #cce4fb;
   border-radius: 40px;
   position: absolute;
@@ -235,6 +235,13 @@ export const UserAvatar = styled.img`
   height: 99%;
   object-fit: cover;
   border-radius: 40px;
+`;
+
+export const InputFile = styled.input`
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
 `;
 
 export const StyledDatePicker = styled(ReactDatePicker)`

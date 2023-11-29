@@ -20,6 +20,7 @@ import {
   FileWrapper,
   UserAvatar,
   StyledDatePicker,
+  InputFile,
 } from './UserPage.styled';
 import { ReactComponent as Edit } from '../../images/svg/edit.svg';
 import { ReactComponent as CrossSmall } from '../../images/svg/cross-small.svg';
@@ -30,7 +31,6 @@ import { ReactComponent as Check } from '../../images/svg/check.svg';
 import { ReactComponent as X } from '../../images/svg/x.svg';
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
-import { InputFile } from '../../components/AddPetForm/AddPetForm.styled';
 import symbolDefs from '../../images/symbol-defs.svg';
 import Backdrop from '../../components/Backdrop/Backdrop';
 import ModalApproveAction from '../../components/ModalApproveAction/ModalApproveAction';
@@ -220,14 +220,14 @@ function UserPage() {
                         />
                       ) : (
                         <>
+                          <SvgIcon width="24" height="24">
+                            <use href={symbolDefs + '#plus'} fill="white"></use>
+                          </SvgIcon>
                           <InputFile
                             type="file"
                             onChange={handleFileChange}
                             name="image"
                           />
-                          <SvgIcon width="24" height="24">
-                            <use href={symbolDefs + '#plus'} fill="white"></use>
-                          </SvgIcon>
                         </>
                       )}
                     </FileWrapper >
