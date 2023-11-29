@@ -1,11 +1,12 @@
-import { useState } from 'react';
+//import { useState } from 'react';
+import { SearchForm, SearchInput, SearchButton } from './NoticesSearch.styled';
 
 const NoticesSearch = () => {
   return (
-    <form>
-      <input type="text" />
-      <button type="submit"></button>
-    </form>
+    <SearchForm>
+      <SearchInput type="text" />
+      <SearchButton type="submit"></SearchButton>
+    </SearchForm>
   );
 };
 
