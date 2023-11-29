@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { NavLink } from 'react-router-dom';
 import { theme } from '../../utils/theme';
 const { fonts, fontSizes, fontWeights, colors } = theme;
 
@@ -23,7 +24,7 @@ const NoticePageContrtolsRight = styled.div`
   column-gap: 16px;
 `;
 
-const FilterOpenButton = styled.button`
+const FilterOpenButton = styled.NavLink`
   display: flex;
   width: 129px;
   padding: 8px 20px;
