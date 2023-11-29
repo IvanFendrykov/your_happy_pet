@@ -24,6 +24,8 @@ const FilterForms = styled.div`
 `;
 
 const FilterForm = styled.form`
+  @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
   display: flex;
   width: 136px;
   padding: 8px;
@@ -32,17 +34,17 @@ const FilterForm = styled.form`
   gap: 10px;
 
   border-radius: 20px;
-  background: #cce4fb;
+  background: ${colors.blue_light};
 
   color: #54adff;
   font-feature-settings:
     'clig' off,
     'liga' off;
 
-  font-family: Inter;
-  font-size: 14px;
+  font-family: Inter, sans-serif;
+  font-size: ${fontSizes.s};
   font-style: normal;
-  font-weight: 400;
+  font-weight: ${fontWeights.normal};
   line-height: 130%; /* 18.2px */
 `;
 
@@ -54,21 +56,19 @@ const FilterOpenButton = styled.button`
   align-items: center;
   gap: 8px;
   border-radius: 40px;
-  border: 2px solid #54adff;
+  border: 2px solid ${colors.blue};
   background-color: #fff;
 
   color: #54adff;
-  font-family: Manrope;
+  font-family: ${fonts.bold}, sans-serif;
   font-size: 16px;
   font-style: normal;
-  font-weight: 700;
+  font-weight: ${fontWeights.bold};
   line-height: normal;
   letter-spacing: 0.64px;
 `;
 
 const FilterCloseButton = styled.button`
-  @import url('../../utils/fonts/Manrope-Bold.ttf');
-
   display: flex;
   width: 152px;
   padding: 8px 20px;
@@ -81,9 +81,8 @@ const FilterCloseButton = styled.button`
 
   color: #54adff;
   font-family: ${fonts.bold}, sans-serif;
-  font-size: 16px;
+  font-size: ${fontSizes.m};
   font-style: normal;
-  font-weight: 700;
   line-height: normal;
   letter-spacing: 0.64px;
 `;
@@ -105,10 +104,10 @@ const FilterFormButton = styled.button`
     'clig' off,
     'liga' off;
 
-  font-family: Inter;
-  font-size: 14px;
+  font-family: Inter, sans-serif;
+  font-size: ${fontSizes.s};
   font-style: normal;
-  font-weight: 400;
+  font-weight: ${fontWeights.normal};
   line-height: 130%; /* 18.2px */
 `;
 
