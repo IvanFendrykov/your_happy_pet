@@ -15,6 +15,8 @@ const Header = styled.h3`
 `;
 
 const NoticePageContrtols = styled.div`
+  margin-bottom: 42px;
+  height: 35px;
   display: flex;
   justify-content: space-between;
 `;
