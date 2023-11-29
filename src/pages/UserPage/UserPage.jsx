@@ -29,11 +29,12 @@ import { ReactComponent as Camera } from '../../images/svg/camera.svg';
 import { ReactComponent as Check } from '../../images/svg/check.svg';
 import { ReactComponent as X } from '../../images/svg/x.svg';
 import axios from 'axios';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { InputFile } from '../../components/AddPetForm/AddPetForm.styled';
 import symbolDefs from '../../images/symbol-defs.svg';
 import Backdrop from '../../components/Backdrop/Backdrop';
 import ModalApproveAction from '../../components/ModalApproveAction/ModalApproveAction';
+import { update } from '../../redux/auth/operation';
 
 
 function UserPage() {
@@ -48,15 +49,14 @@ function UserPage() {
   const [fileImage, setFileImage] = useState(null);
   const [imageUrl, setImageUrl] = useState(null);
   const [pets, setPets] = useState(null)
-
   const [showModal, setShowModal] = useState(null)
 
+  const dispatch = useDispatch();
   const token = useSelector((state) => state.auth.token);
 
   const toggleForm = (e) => {
     e.preventDefault();
     setClicked(!clicked);
-    console.log(clicked);
   };
   const onUserNameChange = (e) => {
     setCurrentName(e.target.value);
@@ -86,19 +86,11 @@ function UserPage() {
       editedUserFormData.append('image', fileImage);
     }
 
-
-
-    const response = await axios.patch(
-      `${import.meta.env.VITE_BACKEND_BASE_URL}/api/auth/current`,
-      editedUserFormData,
-      {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-          Authorization: `Bearer ${token}`,
-        },
-      },
-    );
+    const response = dispatch(update({ token, editedUserFormData }))
     setClicked(false);
+    if (response.status === 200) {
+      setImageUrl(response.data.profilePic)
+    }
   };
   const handleEdit = (e) => {
     e.preventDefault();
@@ -121,7 +113,6 @@ function UserPage() {
         }
       );
       setPets((prevPets) => prevPets.filter((pet) => pet._id !== id));
-      console.log(pets)
     } catch (error) {
       console.error('Error:', error);
     }
@@ -168,14 +159,6 @@ function UserPage() {
         setCurrentPhone(phone || '');
         setCurrentCity(city || '');
         setImageUrl(profilePic || '')
-
-        const birthDate = new Date(birthDay);
-        const formattedBday = birthDate.toLocaleDateString('ru-RU', {
-          day: 'numeric',
-          month: 'numeric',
-          year: 'numeric',
-        });
-        console.log(birthDay)
         setCurrentBday(birthDay || '');
       }
     };
@@ -195,10 +178,6 @@ function UserPage() {
     }
   };
 
-  const toggleLogoutModal = () => {
-    console.log("first")
-  }
-  console.log(currentBday)
 
   return (
     <>
