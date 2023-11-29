@@ -24,7 +24,7 @@ const NoticePageContrtolsRight = styled.div`
   column-gap: 16px;
 `;
 
-const FilterOpenButton = styled.NavLink`
+const AddPetLink = styled.NavLink`
   display: flex;
   width: 129px;
   padding: 8px 20px;
@@ -44,9 +44,4 @@ const FilterOpenButton = styled.NavLink`
   letter-spacing: 0.64px;
 `;
 
-export {
-  Header,
-  NoticePageContrtols,
-  NoticePageContrtolsRight,
-  FilterOpenButton,
-};
+export { Header, NoticePageContrtols, NoticePageContrtolsRight, AddPetLink };
