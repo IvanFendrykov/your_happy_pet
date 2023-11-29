@@ -111,7 +111,7 @@ const GoodHandsForm = ({ changeColors, setActiveComponent, setColors }) => {
     formData.append('image', fileImage);
     formData.append('location', location);
 
-    postMethod('notices', formData, token);
+    await postMethod('notices', formData, token);
     toast.success('Post has been posted');
     navigate(-1);
   };

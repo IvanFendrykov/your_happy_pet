@@ -88,7 +88,7 @@ const AddPetForm = ({ changeColors, setActiveComponent, setColors }) => {
     formData.append('image', fileImage);
     setActiveComponent(null);
 
-    postMethod('myPet', formData, token);
+   await postMethod('myPet', formData, token);
     toast.success('Post has been posted');
     navigate(-1)
   };
