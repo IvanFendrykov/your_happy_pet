@@ -35,32 +35,6 @@ import symbolDefs from '../../images/symbol-defs.svg';
 import Backdrop from '../../components/Backdrop/Backdrop';
 import ModalApproveAction from '../../components/ModalApproveAction/ModalApproveAction';
 
-// const user = {
-//   name: 'fakeName',
-//   email: 'fakeEmail',
-//   bday: '11.11',
-//   phone: '111-111-111',
-//   city: 'Kyiv',
-// };
-
-// const pets = [
-//   {
-//     id: 2,
-//     imageUrl: 'https://placekitten.com/200/200',
-//     name: 'Fluffy',
-//     dateOfBirth: '2020-01-01',
-//     type: 'Cat',
-//     comments: 'A cute and fluffy kitty.',
-//   },
-//   {
-//     id: 1,
-//     imageUrl: 'https://placekitten.com/200/210',
-//     name: 'Fluffy',
-//     dateOfBirth: '2020-01-01',
-//     type: 'Cat',
-//     comments: 'A cute and fluffy kitty.',
-//   },
-// ];
 
 function UserPage() {
   const [clicked, setClicked] = useState(false);
