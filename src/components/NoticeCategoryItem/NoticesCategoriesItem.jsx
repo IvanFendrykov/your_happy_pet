@@ -51,7 +51,7 @@ const NoticesCategoriesItem = ({
   const openModal = () => {
     onLearnMore(id);
   };
-  //{favourite ? '#54adff' : 'none'}
+
   return (
     <CategoryItem>
       <CategoryItemHeader>
