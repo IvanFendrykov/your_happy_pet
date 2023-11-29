@@ -15,6 +15,12 @@ const Header = styled.h3`
 
 const NoticePageContrtols = styled.div`
   display: flex;
+  justify-content: space-between;
+`;
+
+const NoticePageContrtolsRight = styled.div`
+  display: flex;
+  column-gap: 16px;
 `;
 
 const FilterOpenButton = styled.button`
