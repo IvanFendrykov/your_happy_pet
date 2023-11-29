@@ -5,6 +5,7 @@ const { fonts, fontSizes, colors } = theme;
 const NavForm = styled.form`
   display: flex;
   column-gap: 12px;
+  height: 35px;
 `;
 
 const HiddenRadio = styled.input`
