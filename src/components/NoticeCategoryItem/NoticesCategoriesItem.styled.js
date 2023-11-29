@@ -6,7 +6,7 @@ const CategoryItem = styled.div`
   width: 288px;
   height: 456px;
   border-radius: 0px 0px 40px 40px;
-  background: var(--, #fff);
+  background: #fff;
 
   box-shadow: 3px 8px 14px 0px rgba(136, 198, 253, 0.19);
 `;
@@ -46,7 +46,7 @@ const CategoryOutput = styled.div`
   text-align: center;
   leading-trim: both;
   text-edge: cap;
-  font-family: ${fonts.medium};
+  font-family: ${fonts.medium}, sans-serif;
   font-size: ${fontSizes.s};
   font-style: normal;
   line-height: normal;
@@ -69,7 +69,7 @@ const AddButton = styled.button`
 
   border: none;
   border-radius: ${radii.round};
-  background: var(--blue-light, ${colors.blue_light});
+  background: ${colors.blue_light};
 `;
 
 const RemoveButton = styled.button`
@@ -86,7 +86,7 @@ const RemoveButton = styled.button`
 
   border: none;
   border-radius: ${radii.round};
-  background: var(--blue-light, ${colors.blue_light});
+  background: ${colors.blue_light};
 `;
 
 const PetInfoOutput = styled.div`
@@ -108,8 +108,8 @@ const PetInfoOutputItem = styled.div`
   align-items: center;
   gap: 4px;
 
-  color: var(--, #111);
-  font-family: ${fonts.semiBold};
+  color: #111;
+  font-family: ${fonts.semiBold}, sans-serif;
   overflow-wrap: break-word;
 
   border-radius: 16px;
@@ -118,7 +118,7 @@ const PetInfoOutputItem = styled.div`
   overflow: hidden;
   color: var(--, #111);
 
-  font-family: ${fonts.semiBold};
+  font-family: ${fonts.semiBold}, sans-serif;
   font-size: ${fontSizes.xs};
   font-style: normal;
   line-height: normal;
@@ -133,7 +133,7 @@ const Span = styled.span`
 const TitleHeader = styled.h3`
   padding-block: none;
   color: var(--, #111);
-  font-family: ${fonts.bold};
+  font-family: ${fonts.bold}, sans-serif;
   font-size: 24px;
 `;
 
@@ -147,20 +147,21 @@ const LearnMoreButton = styled.button`
   gap: 10px;
   background-color: inherit;
   border-radius: 40px;
-  border: 2px solid var(--unnamed, ${colors.blue});
+  border: 2px solid ${colors.blue};
 
-  color: var(--unnamed, ${colors.blue});
-  font-family: ${fonts.semiBold};
+  color: ${colors.blue};
+  font-family: ${fonts.semiBold}, sans-serif;
   font-size: ${fontSizes.m};
   line-height: normal;
   letter-spacing: 0.64px;
+  transition: 500ms;
 
   :hover,
   :focus {
     border: none;
     background: linear-gradient(290deg, #419ef1 0%, #9bd0ff 107.89%);
     color: #fef9f9;
-    font-family: ${fonts.bold};
+    font-family: ${fonts.bold}, sans-serif;
     font-size: ${fontSizes.m};
     line-height: normal;
     letter-spacing: 0.64px;
