@@ -46,7 +46,10 @@ export const H2 = styled.h2`
   font-weight: 500;
   letter-spacing: 0.8px;
   margin-bottom: 24px;
-  width: 700px
+  width: 280px;
+   @media (min-width: 768px) {
+    width: 700px;
+   }
 `;
 
 
