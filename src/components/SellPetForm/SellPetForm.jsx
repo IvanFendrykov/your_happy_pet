@@ -113,7 +113,7 @@ const SellPetForm = ({ changeColors, setActiveComponent, setColors }) => {
     formData.append('image', fileImage);
     formData.append('location', location);
     formData.append('price', price);
-    postMethod('notices', formData, token);
+    await postMethod('notices', formData, token);
 
     toast.success('Post has been posted');
     navigate(-1);
