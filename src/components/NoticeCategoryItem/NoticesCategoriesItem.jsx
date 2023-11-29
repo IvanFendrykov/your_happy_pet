@@ -14,7 +14,6 @@ import {
   Span,
   LearnMoreButton,
   TitleHeader,
-  Svg,
 } from './NoticesCategoriesItem.styled';
 
 const NoticesCategoriesItem = ({
@@ -115,9 +114,9 @@ const NoticesCategoriesItem = ({
         >
           Learn More
           {isHover && (
-            <Svg width="24" height="24" viewBox="0 0 24 24" fill="#fff">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="#fff">
               <use xlinkHref={`${icons}#pawprint-1`} />
-            </Svg>
+            </svg>
           )}
         </LearnMoreButton>
       </CategoryItemFooter>

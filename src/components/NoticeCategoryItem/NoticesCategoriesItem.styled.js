@@ -168,14 +168,6 @@ const LearnMoreButton = styled.button`
   }
 `;
 
-const Svg = styled.svg`
-  transition: 500ms;
-`;
-
-const Use = styled.use`
-  transition: 500ms;
-`;
-
 export {
   CategoryItem,
   CategoryItemHeader,
@@ -189,6 +181,4 @@ export {
   Span,
   TitleHeader,
   LearnMoreButton,
-  Svg,
-  Use,
 };
