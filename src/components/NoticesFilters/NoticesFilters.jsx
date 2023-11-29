@@ -73,7 +73,7 @@ const NoticesFilters = ({ onChange }) => {
         width="24"
         height="24"
         viewBox="0 0 24 24"
-        stroke={isHover ? 'none' : '#54adff'}
+        stroke={isHover ? '#FEF9F9' : '#54adff'}
       >
         <use xlinkHref={`${icons}#filters-3`} />
       </svg>
