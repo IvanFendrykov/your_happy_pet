@@ -169,7 +169,11 @@ const LearnMoreButton = styled.button`
 `;
 
 const Svg = styled.svg`
-  transition: 500ms;
+  transition: 250ms;
+`;
+
+const Use = styled.use`
+  transition: 250ms;
 `;
 
 export {
