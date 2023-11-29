@@ -66,10 +66,10 @@ const FilterOpenButton = styled.button`
   font-weight: ${fontWeights.bold};
   line-height: normal;
   letter-spacing: 0.64px;
-  transition: 500ms;
 
   :hover,
   :focus {
+    padding: 6px 12px;
     border: none;
     border-radius: 40px;
     background: linear-gradient(290deg, #419ef1 0%, #9bd0ff 107.89%);
