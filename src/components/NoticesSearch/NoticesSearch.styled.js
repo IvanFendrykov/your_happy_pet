@@ -1,8 +1,8 @@
 import styled from '@emotion/styled';
+import { theme } from '../../utils/theme';
+const { fonts } = theme;
 
 const SearchForm = styled.form`
-  @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
-
   margin-top: 40px;
   margin-inline: auto;
   margin-bottom: 43px;
@@ -19,8 +19,6 @@ const SearchForm = styled.form`
 `;
 
 const SearchInput = styled.input`
-  @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
-
   width: 544px;
   height: 44px;
   border: none;
@@ -28,7 +26,7 @@ const SearchInput = styled.input`
   outline: none;
 
   color: #888;
-  font-family: Inter, sans-serif;
+  font-family: ${fonts.regular}, sans-serif;
   font-size: 20px;
   font-style: normal;
   font-weight: 400;
