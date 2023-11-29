@@ -359,7 +359,7 @@ function UserPage() {
         </Section>
         <Section>
           <H2>My pets:</H2>
-          {pets ? <PetsList pets={pets} onDelete={onDelete} /> : <H2>You didnt added any pets!</H2>}
+          <PetsList pets={pets} onDelete={onDelete} />
         </Section>
         {showModal && (
           <Backdrop closeModal={() => setShowModal(!showModal)}>
