@@ -266,16 +266,18 @@ const NoticesPage = () => {
     <div>
       <Header>Find your favorite pet</Header>
       <NoticesSearch />
-      <div>
+      <NoticePageContrtols>
         <NoticesCategoriesNav
           isLoggedIn={IS_LOGGED_IN}
           onChange={handleCategoriesData}
         />
-        <NoticesFilters onChange={handleFiltersData} />
-        <NavLink to="http://localhost:5173/your_happy_pet/add-pet">
-          Add pet
-        </NavLink>
-      </div>
+        <NoticePageContrtolsRight>
+          <NoticesFilters onChange={handleFiltersData} />
+          <NavLink to="http://localhost:5173/your_happy_pet/add-pet">
+            Add pet
+          </NavLink>
+        </NoticePageContrtolsRight>
+      </NoticePageContrtols>
       <NoticesCategoriesList
         petsData={editedPetsData}
         isLoggedIn={IS_LOGGED_IN}
