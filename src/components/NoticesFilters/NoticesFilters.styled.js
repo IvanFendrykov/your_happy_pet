@@ -4,7 +4,7 @@ import { theme } from '../../utils/theme';
 const { fonts, fontSizes, fontWeights, colors } = theme;
 
 //import { createGlobalStyle } from 'styled-components';
-//createGlobalStyle`@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');`;
+//createGlobalStyle`@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap')`;
 
 const FilterModal = styled.div`
   width: 152px;
