@@ -51,7 +51,7 @@ const FilterForm = styled.form`
 const FilterOpenButton = styled.button`
   display: flex;
   width: 152px;
-  padding: 8px 20px;
+  padding: 4px 10px;
   justify-content: center;
   align-items: center;
   gap: 8px;
