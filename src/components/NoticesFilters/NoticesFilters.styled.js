@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import { theme } from '../../utils/theme';
-const { fonts } = theme;
+const { fonts, fontSizes, fontWeights, colors } = theme;
 
 const FilterModal = styled.div`
   width: 152px;
