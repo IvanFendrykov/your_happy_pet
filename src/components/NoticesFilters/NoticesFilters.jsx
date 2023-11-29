@@ -16,6 +16,15 @@ const NoticesFilters = ({ onChange }) => {
   const [isByGenderOpen, setIsByGenderOpen] = useState(false);
   const [age, setAge] = useState('anyAge');
   const [gender, setGender] = useState('');
+  const [isHover, setIsHover] = useState(false);
+
+  const showFilterIcon = () => {
+    setIsHover(true);
+  };
+
+  const hideFilterIcon = () => {
+    setIsHover(false);
+  };
 
   const toggleFilters = () => {
     if (isFiltersOpen) {
@@ -54,9 +63,18 @@ const NoticesFilters = ({ onChange }) => {
   }, [age, gender]);
 
   return !isFiltersOpen ? (
-    <FilterOpenButton onClick={toggleFilters}>
+    <FilterOpenButton
+      onClick={toggleFilters}
+      onMouseOver={showFilterIcon}
+      onMouseLeave={hideFilterIcon}
+    >
       Filter
-      <svg width="24" height="24" viewBox="0 0 24 24" stroke="#54adff">
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        stroke={isHover ? 'none' : '#54adff'}
+      >
         <use xlinkHref={`${icons}#filters-3`} />
       </svg>
     </FilterOpenButton>
