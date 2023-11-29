@@ -12,8 +12,6 @@ const FilterModal = styled.div`
 
   border-radius: 20px;
   background: #fff;
-
-  /* Shadow default */
   box-shadow: 3px 8px 14px 0px rgba(136, 198, 253, 0.19);
 `;
 
