@@ -267,12 +267,9 @@ const NoticesPage = () => {
           onChange={handleCategoriesData}
         />
         <NoticesFilters onChange={handleFiltersData} />
-        <button>
-          <NavLink to="http://localhost:5173/your_happy_pet/add-pet">
-            {' '}
-            Add pet
-          </NavLink>
-        </button>
+        <NavLink to="http://localhost:5173/your_happy_pet/add-pet">
+          Add pet
+        </NavLink>
       </div>
       <NoticesCategoriesList
         petsData={editedPetsData}
