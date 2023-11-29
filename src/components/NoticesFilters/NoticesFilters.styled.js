@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import { theme } from '../../utils/theme';
-const { fonts, fontSizes, fontWeights, colors, radii } = theme;
+const { fonts } = theme;
 
 const FilterModal = styled.div`
   width: 152px;
@@ -32,9 +32,9 @@ const FilterForm = styled.form`
   gap: 10px;
 
   border-radius: 20px;
-  background: var(--blue-light, #cce4fb);
+  background: #cce4fb;
 
-  color: var(--unnamed, #54adff);
+  color: #54adff;
   font-feature-settings:
     'clig' off,
     'liga' off;
@@ -67,6 +67,8 @@ const FilterOpenButton = styled.button`
 `;
 
 const FilterCloseButton = styled.button`
+  @import url('../../utils/fonts/Manrope-Bold.ttf');
+
   display: flex;
   width: 152px;
   padding: 8px 20px;
@@ -78,7 +80,7 @@ const FilterCloseButton = styled.button`
   background-color: #fff;
 
   color: #54adff;
-  font-family: Manrope;
+  font-family: ${fonts.bold}, sans-serif;
   font-size: 16px;
   font-style: normal;
   font-weight: 700;
