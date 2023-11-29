@@ -115,7 +115,7 @@ const LostPetForm = ({ changeColors, setActiveComponent, setColors }) => {
     postMethod('notices', formData, token);
 
     toast.success('Post has been posted');
-    navigate('/user');
+    navigate(-1);
   };
   const handleNext = async () => {
     const newColor = '#00C3AD';
