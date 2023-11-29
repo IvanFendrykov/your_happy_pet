@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import { theme } from '../../utils/theme';
-const { fonts, fontSizes, fontWeights, colors, radii } = theme;
+const { fonts, fontSizes, colors, radii } = theme;
 
 const CategoryItem = styled.div`
   width: 288px;
