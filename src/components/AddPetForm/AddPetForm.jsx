@@ -106,7 +106,7 @@ const AddPetForm = ({ changeColors, setActiveComponent, setColors }) => {
 
     setTimeout(() => {
       setSubmit('submit');
-    }, 500);
+    }, 10);
   };
 
   const handleBack = () => {
@@ -126,7 +126,7 @@ const AddPetForm = ({ changeColors, setActiveComponent, setColors }) => {
     setNext(false);
     setTimeout(() => {
       setSubmit('button');
-    }, 500);
+    }, 10);
   };
 
   return (
@@ -204,7 +204,7 @@ const AddPetForm = ({ changeColors, setActiveComponent, setColors }) => {
 
       <BtnBox>
         <NextBtn type={submit} onClick={handleNext}>
-          Next
+        {submit === 'button' ? 'Next' : 'Done'}
           <svg width="24" height="24">
             <use href={symbolDefs + '#pawprint-1'} fill="white"></use>
           </svg>
