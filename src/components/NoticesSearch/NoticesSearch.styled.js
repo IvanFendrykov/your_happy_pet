@@ -19,15 +19,25 @@ const SearchForm = styled.form`
 `;
 
 const SearchInput = styled.input`
+  @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
   width: 544px;
   height: 44px;
   border: none;
   background: none;
   outline: none;
 
+  color: #888;
+  font-family: Inter, sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0.8px;
+
   ::placeholder {
-    color: var(--C, #888);
-    font-family: Inter;
+    color: #888;
+    font-family: Inter, sans-serif;
     font-size: 20px;
     font-style: normal;
     font-weight: 400;
