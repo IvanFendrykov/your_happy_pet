@@ -12,7 +12,7 @@ import {
   Header,
   NoticePageContrtols,
   NoticePageContrtolsRight,
-  FilterOpenButton,
+  AddPetLink,
 } from './NoticesPage.styled';
 
 const PETS_DATA = [
@@ -273,9 +273,9 @@ const NoticesPage = () => {
         />
         <NoticePageContrtolsRight>
           <NoticesFilters onChange={handleFiltersData} />
-          <NavLink to="http://localhost:5173/your_happy_pet/add-pet">
+          <AddPetLink to="http://localhost:5173/your_happy_pet/add-pet">
             Add pet
-          </NavLink>
+          </AddPetLink>
         </NoticePageContrtolsRight>
       </NoticePageContrtols>
       <NoticesCategoriesList
