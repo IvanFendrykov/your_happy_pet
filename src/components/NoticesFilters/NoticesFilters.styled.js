@@ -66,6 +66,12 @@ const FilterOpenButton = styled.button`
   font-weight: ${fontWeights.bold};
   line-height: normal;
   letter-spacing: 0.64px;
+
+  :hover,
+  :focus {
+    border-radius: 40px;
+    background: linear-gradient(290deg, #419ef1 0%, #9bd0ff 107.89%);
+  }
 `;
 
 const FilterCloseButton = styled.button`
