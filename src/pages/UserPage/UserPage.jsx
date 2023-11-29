@@ -70,7 +70,9 @@ function UserPage() {
     setCurrentBday(e.target.value);
   };
   const onUserPhoneChange = (e) => {
-    setCurrentPhone(e.target.value);
+    const inputValue = e.target.value;
+    const cleanedValue = inputValue.replace(/[^\d()\-]/g, '');
+    setCurrentPhone(cleanedValue);
   };
   const onUserCityChange = (e) => {
     setCurrentCity(e.target.value);
@@ -160,7 +162,7 @@ function UserPage() {
         setCurrentEmail(email || noDataPlaceHolder);
         setCurrentPhone(phone || noDataPlaceHolder);
         setCurrentCity(city || noDataPlaceHolder);
-        setImageUrl(profilePic || noDataPlaceHolder)
+        setImageUrl(profilePic || '')
         setCurrentBday(birthDay || '');
       }
     };
@@ -169,7 +171,6 @@ function UserPage() {
     getPets();
 
   }, [token]);
-
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];
