@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+const { fonts, fontSizes, fontWeights, colors } = theme;
 
 const NavForm = styled.form`
   display: flex;
