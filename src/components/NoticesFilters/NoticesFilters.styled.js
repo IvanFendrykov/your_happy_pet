@@ -40,7 +40,7 @@ const FilterForm = styled.form`
     'clig' off,
     'liga' off;
 
-  font-family: Inter, sans-serif;
+  font-family: ${fonts.normal}, sans-serif;
   font-size: ${fontSizes.s};
   font-style: normal;
   font-weight: ${fontWeights.normal};
