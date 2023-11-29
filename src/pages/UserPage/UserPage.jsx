@@ -19,6 +19,7 @@ import {
   SvgIcon,
   FileWrapper,
   UserAvatar,
+  StyledDatePicker,
 } from './UserPage.styled';
 import { ReactComponent as Edit } from '../../images/svg/edit.svg';
 import { ReactComponent as CrossSmall } from '../../images/svg/cross-small.svg';
@@ -200,8 +201,8 @@ function UserPage() {
           month: 'numeric',
           year: 'numeric',
         });
-
-        setCurrentBday(formattedBday || '');
+        console.log(birthDay)
+        setCurrentBday(birthDay || '');
       }
     };
 
@@ -223,6 +224,7 @@ function UserPage() {
   const toggleLogoutModal = () => {
     console.log("first")
   }
+  console.log(currentBday)
 
   return (
     <>
@@ -309,13 +311,13 @@ function UserPage() {
               </ListItem>
               <ListItem>
                 <Label>Birthday:</Label>
-                <Span
+                <StyledDatePicker
                   type="text"
                   name="birthday"
-                  value={currentBday}
+                  selected={currentBday ? new Date(currentBday) : null}
                   disabled={!clicked}
-                  onChange={onUserBdayChange}
-                ></Span>
+                  onChange={(date) => setCurrentBday(date ? date.toISOString() : '')}
+                ></StyledDatePicker>
               </ListItem>
               <ListItem>
                 <Label>Phone:</Label>
