@@ -3,6 +3,9 @@ import { theme } from '../../utils/theme';
 const { fonts, fontSizes, fontWeights, colors } = theme;
 
 const SearchForm = styled.form`
+  margin-top: 40px;
+  margin-inline: auto;
+  margin-bottom: 43px;
   width: 608px;
   height: 44px;
   display: flex;
