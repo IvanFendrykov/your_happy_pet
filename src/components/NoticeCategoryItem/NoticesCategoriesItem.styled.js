@@ -169,11 +169,11 @@ const LearnMoreButton = styled.button`
 `;
 
 const Svg = styled.svg`
-  transition: 250ms;
+  transition: 500ms;
 `;
 
 const Use = styled.use`
-  transition: 250ms;
+  transition: 500ms;
 `;
 
 export {
@@ -190,4 +190,5 @@ export {
   TitleHeader,
   LearnMoreButton,
   Svg,
+  Use,
 };
