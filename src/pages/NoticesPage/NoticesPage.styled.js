@@ -16,7 +16,6 @@ const Header = styled.h3`
 
 const NoticePageContrtols = styled.div`
   margin-bottom: 42px;
-  height: 35px;
   display: flex;
   justify-content: space-between;
 `;
@@ -29,6 +28,7 @@ const NoticePageContrtolsRight = styled.div`
 const AddPetLink = styled(NavLink)`
   display: flex;
   width: 129px;
+  height: 25px;
   padding: 8px 20px;
   justify-content: center;
   align-items: center;
