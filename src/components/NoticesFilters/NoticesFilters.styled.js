@@ -100,7 +100,7 @@ const FilterFormButton = styled.button`
   display: flex;
   justify-content: flex-start;
   padding: 4px 8px;
-  align-items: flex-start;
+  align-items: center;
   gap: 10px;
   align-self: stretch;
   width: 100%;
