@@ -24,6 +24,7 @@ const NoticePageContrtols = styled.div`
 const NoticePageContrtolsRight = styled.div`
   display: flex;
   column-gap: 16px;
+  z-index: 1;
 `;
 
 const AddPetLink = styled(NavLink)`
