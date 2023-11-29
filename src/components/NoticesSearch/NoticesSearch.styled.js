@@ -7,6 +7,7 @@ const SearchForm = styled.form`
   height: 44px;
   display: flex;
   justify-content: center;
+  align-items: center;
   border-radius: 20px;
   background: #fff;
   padding-left: 20px;
