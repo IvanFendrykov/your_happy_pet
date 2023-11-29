@@ -8,6 +8,7 @@ import { NoticesCategoriesNav } from '../../components/NoticesCategoriesNav/Noti
 import { NoticesFilters } from '../../components/NoticesFilters/NoticesFilters';
 import { NoticesCategoriesList } from '../../components/NoticesCategoriesList/NoticesCategoriesList';
 import { NavLink } from 'react-router-dom';
+import { Header } from './NoticesPage.styled';
 
 const PETS_DATA = [
   {
@@ -258,7 +259,7 @@ const NoticesPage = () => {
 
   return (
     <div>
-      <h2>Find your favorite pet</h2>
+      <Header>Find your favorite pet</Header>
       <NoticesSearch />
       <div>
         <NoticesCategoriesNav
@@ -267,7 +268,10 @@ const NoticesPage = () => {
         />
         <NoticesFilters onChange={handleFiltersData} />
         <button>
-          <NavLink to="http://localhost:5173/your_happy_pet/add-pet"> Add pet</NavLink>
+          <NavLink to="http://localhost:5173/your_happy_pet/add-pet">
+            {' '}
+            Add pet
+          </NavLink>
         </button>
       </div>
       <NoticesCategoriesList
