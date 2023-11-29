@@ -1,6 +1,4 @@
 import styled from '@emotion/styled';
-import { theme } from '../../utils/theme';
-const { fontWeights } = theme;
 
 const SearchForm = styled.form`
   @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
@@ -18,14 +16,6 @@ const SearchForm = styled.form`
   padding-left: 20px;
   padding-right: 10px;
   box-shadow: 3px 8px 14px 0px rgba(136, 198, 253, 0.19);
-
-  color: #888;
-  font-family: Inter, sans-serif;
-  font-size: 20px;
-  font-style: normal;
-  font-weight: ${fontWeights.bold};
-  line-height: normal;
-  letter-spacing: 0.8px;
 `;
 
 const SearchInput = styled.input`
@@ -34,6 +24,16 @@ const SearchInput = styled.input`
   border: none;
   background: none;
   outline: none;
+
+  ::placeholder {
+    color: var(--C, #888);
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.8px;
+  }
 `;
 
 const SearchButton = styled.button`
