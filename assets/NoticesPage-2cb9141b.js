@@ -1,4 +1,4 @@
-import{j as e,t as c,r as l,i as h,N as H,w as O}from"./index-09d39653.js";const T=()=>e.jsxs("form",{children:[e.jsx("input",{type:"text"}),e.jsx("button",{type:"submit"})]}),Q=c.form`
+import{j as e,v as c,r as l,i as h,N as H,x as O}from"./index-d94675e1.js";const T=()=>e.jsxs("form",{children:[e.jsx("input",{type:"text"}),e.jsx("button",{type:"submit"})]}),Q=c.form`
   display: flex;
   column-gap: 12px;
 `,F=c.input`
