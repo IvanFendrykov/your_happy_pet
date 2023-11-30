@@ -275,6 +275,9 @@ const NoticesPage = () => {
           <NoticesFilters onChange={handleFiltersData} />
           <AddPetLink to="http://localhost:5173/your_happy_pet/add-pet">
             Add pet
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="#fff">
+              <use xlinkHref={`${icons}#plus-small-white`} />
+            </svg>
           </AddPetLink>
         </NoticePageContrtolsRight>
       </NoticePageContrtols>
