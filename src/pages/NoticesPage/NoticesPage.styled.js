@@ -17,11 +17,13 @@ const Header = styled.h3`
 const NoticePageContrtols = styled.div`
   margin-bottom: 42px;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
 `;
 
 const NoticePageContrtolsRight = styled.div`
   display: flex;
+  flex-wrap: wrap;
   column-gap: 16px;
 `;
 
