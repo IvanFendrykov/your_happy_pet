@@ -99,7 +99,11 @@ const NoticesFilters = ({ onChange }) => {
         )}
 
         {isByGenderOpen ? (
-          <GenderForm onClick={toggleGenderFilter} onChange={selectGender} />
+          <GenderForm
+            onClick={toggleGenderFilter}
+            onChange={selectGender}
+            defaultChecked={gender}
+          />
         ) : (
           <FilterFormButton onClick={toggleGenderFilter}>
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
