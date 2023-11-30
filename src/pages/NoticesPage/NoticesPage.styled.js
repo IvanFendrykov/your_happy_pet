@@ -20,12 +20,14 @@ const NoticePageContrtols = styled.div`
   flex-wrap: wrap;
   justify-content: space-between;
   align-content: space-between;
+  row-gap: 16px;
 `;
 
 const NoticePageContrtolsRight = styled.div`
   display: flex;
   flex-wrap: wrap;
   column-gap: 16px;
+  row-gap: 12px;
 `;
 
 const AddPetLink = styled(NavLink)`
