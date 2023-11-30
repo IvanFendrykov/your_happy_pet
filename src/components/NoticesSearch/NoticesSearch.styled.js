@@ -19,7 +19,7 @@ const SearchForm = styled.form`
 `;
 
 const SearchInput = styled.input`
-  width: 544px;
+  max-width: 544px;
   height: 44px;
   border: none;
   background: none;
