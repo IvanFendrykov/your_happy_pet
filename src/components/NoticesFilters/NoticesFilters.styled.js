@@ -10,7 +10,6 @@ const FilterModal = styled.div`
   flex-direction: column;
   align-items: center;
   row-gap: 8px;
-  z-index: 1;
 
   border-radius: 20px;
   background: #fff;
