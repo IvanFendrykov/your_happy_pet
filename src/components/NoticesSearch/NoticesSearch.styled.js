@@ -6,7 +6,7 @@ const SearchForm = styled.form`
   margin-top: 40px;
   margin-inline: auto;
   margin-bottom: 43px;
-  width: 608px;
+  max-width: 608px;
   height: 44px;
   display: flex;
   justify-content: center;
