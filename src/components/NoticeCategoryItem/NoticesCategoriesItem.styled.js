@@ -154,7 +154,6 @@ const LearnMoreButton = styled.button`
   font-size: ${fontSizes.m};
   line-height: normal;
   letter-spacing: 0.64px;
-  transition: 500ms;
 
   :hover,
   :focus {
