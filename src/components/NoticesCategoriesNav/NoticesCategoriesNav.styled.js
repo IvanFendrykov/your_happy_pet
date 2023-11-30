@@ -5,8 +5,7 @@ const { fonts, fontSizes, colors } = theme;
 const NavForm = styled.form`
   display: flex;
   flex-wrap: wrap;
-  column-gap: 12px;
-  height: 35px;
+  gap: 12px;
 `;
 
 const HiddenRadio = styled.input`
@@ -15,10 +14,11 @@ const HiddenRadio = styled.input`
 
 const UnCheckedOption = styled.label`
   display: flex;
-  padding: 8px 16px;
   justify-content: center;
   align-items: center;
   gap: 8px;
+  height: 25px;
+  padding: 8px 16px;
 
   border-radius: 40px;
   background: rgba(140, 200, 253, 0.44);
@@ -34,10 +34,11 @@ const UnCheckedOption = styled.label`
 
 const CheckedOption = styled.label`
   display: flex;
-  padding: 8px 16px;
   justify-content: center;
   align-items: center;
   gap: 8px;
+  height: 25px;
+  padding: 8px 16px;
 
   border-radius: 40px;
   border-radius: 40px;
