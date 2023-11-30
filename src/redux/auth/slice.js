@@ -32,22 +32,31 @@ const authSlice = createSlice({
       state.email = action.payload.email;
       state.token = action.payload.token;
       state.isLoggedIn = true;
+      state.profilePic = action.payload.profilePic;
+      state.isloading = false;
     },
     [logout.fulfilled](state, action) {
       state.username = null;
       state.email = null;
       state.token = null;
       state.isLoggedIn = false;
+      state.profilePic = null;
     },
     [logout.rejected](state, action) {
       state.username = null;
       state.email = null;
       state.token = null;
       state.isLoggedIn = false;
+      state.profilePic = null;
+    },
+    [update.pending](state, action) {
+      state.isLoading = true;
     },
     [update.fulfilled](state, action) {
       state.username = action.payload.username;
       state.email = action.payload.email;
+      state.profilePic = action.payload.profilePic;
+      state.isLoading = false;
     },
   },
 });

@@ -1,5 +1,6 @@
 import ReactDatePicker from 'react-datepicker';
 import styled from 'styled-components';
+import 'react-datepicker/dist/react-datepicker.css';
 
 export const Wrapper = styled.div`
   margin-left: auto;
@@ -242,6 +243,7 @@ export const InputFile = styled.input`
   width: 100%;
   height: 100%;
   cursor: pointer;
+  border-radius: 40px;
 `;
 
 export const StyledDatePicker = styled(ReactDatePicker)`
@@ -265,4 +267,16 @@ export const StyledDatePicker = styled(ReactDatePicker)`
   }
 
 
+`;
+
+export const LoaderWrapper = styled.div`
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #c9c9c945;
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
+  position: absolute;
+  z-index:10
 `;
