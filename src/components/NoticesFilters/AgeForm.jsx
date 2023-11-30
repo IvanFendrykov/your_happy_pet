@@ -29,7 +29,6 @@ const AgeForm = ({ onClick, onChange, initialValue }) => {
         name="ageOption"
         value="upToOne"
         checked={ageData === 'upToOne'}
-        defaultChecked={initialValue === 'upToOne'}
       >
         up to 1 year
       </FilterOption>
@@ -37,7 +36,6 @@ const AgeForm = ({ onClick, onChange, initialValue }) => {
         name="ageOption"
         value="upToTwo"
         checked={ageData === 'upToTwo'}
-        defaultChecked={initialValue === 'upToTwo'}
       >
         up to 2 years
       </FilterOption>
@@ -45,7 +43,6 @@ const AgeForm = ({ onClick, onChange, initialValue }) => {
         name="ageOption"
         value="fromTwo"
         checked={ageData === 'fromTwo'}
-        defaultChecked={initialValue === 'fromTwo'}
       >
         from 2 years
       </FilterOption>
@@ -53,7 +50,6 @@ const AgeForm = ({ onClick, onChange, initialValue }) => {
         name="ageOption"
         value="anyAge"
         checked={ageData === 'anyAge'}
-        defaultChecked={initialValue === 'anyAge'}
       >
         any age
       </FilterOption>

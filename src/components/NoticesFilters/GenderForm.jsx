@@ -29,7 +29,6 @@ const GenderForm = ({ onClick, onChange, initialValue }) => {
         name="genderOption"
         value="female"
         checked={genderData === 'female'}
-        defaultChecked={initialValue === 'female'}
       >
         female
       </FilterOption>
@@ -37,16 +36,10 @@ const GenderForm = ({ onClick, onChange, initialValue }) => {
         name="genderOption"
         value="male"
         checked={genderData === 'male'}
-        defaultChecked={initialValue === 'male'}
       >
         male
       </FilterOption>
-      <FilterOption
-        name="genderOption"
-        value=""
-        checked={genderData === ''}
-        defaultChecked={initialValue === ''}
-      >
+      <FilterOption name="genderOption" value="" checked={genderData === ''}>
         any gender
       </FilterOption>
     </FilterForm>
