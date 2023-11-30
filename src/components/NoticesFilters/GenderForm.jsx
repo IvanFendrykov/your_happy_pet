@@ -4,7 +4,7 @@ import { FilterForm, FilterFormButton } from './NoticesFilters.styled';
 import { FilterOption } from './FilterOption';
 
 const GenderForm = ({ onClick, onChange, initialValue }) => {
-  const [genderData, setGenderData] = useState('');
+  const [genderData, setGenderData] = useState(initialValue);
   const handleInput = (event) => {
     event.preventDefault();
     const newGenderData = event.currentTarget.elements.genderOption.value;

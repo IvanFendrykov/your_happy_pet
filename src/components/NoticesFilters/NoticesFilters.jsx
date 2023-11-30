@@ -88,7 +88,11 @@ const NoticesFilters = ({ onChange }) => {
       </FilterCloseButton>
       <FilterForms>
         {isByAgeOpen ? (
-          <AgeForm onClick={toggleAgeFilter} onChange={selectAge} />
+          <AgeForm
+            onClick={toggleAgeFilter}
+            onChange={selectAge}
+            initialValue={age}
+          />
         ) : (
           <FilterFormButton onClick={toggleAgeFilter}>
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -102,7 +106,7 @@ const NoticesFilters = ({ onChange }) => {
           <GenderForm
             onClick={toggleGenderFilter}
             onChange={selectGender}
-            defaultChecked={gender}
+            initialValue={gender}
           />
         ) : (
           <FilterFormButton onClick={toggleGenderFilter}>
