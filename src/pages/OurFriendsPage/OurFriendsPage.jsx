@@ -110,6 +110,7 @@ const OurFriendsPage = () => {
                           : ourFriend.url
                       }
                       target="_blank"
+                      rel="noreferrer noopener"
                     >
                       {ourFriend.address ? ourFriend.address : reserveMessage}
                     </Url>
