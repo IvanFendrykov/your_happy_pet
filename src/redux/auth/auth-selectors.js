@@ -22,7 +22,7 @@ export const selectlogoutSuccessful = ({ auth }) => auth.logoutSuccessful;
 
 export const userInfo = (state) => state.auth;
 
-export const getFavorite = ({ auth }) => auth.user.favorite;
+export const getFavorite = (state) => state.auth.favoriteNoties;
 
 export const getUserId = ({ auth }) => auth.user._id;
 

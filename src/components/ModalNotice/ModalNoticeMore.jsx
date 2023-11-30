@@ -1,8 +1,10 @@
 import { toast } from 'react-hot-toast';
+import { CgClose } from 'react-icons/cg';
 import { VscHeart } from 'react-icons/vsc';
 import { useDispatch, useSelector } from 'react-redux';
 // import { selectAuth, selectIsLoggedIn } from 'redux/auth/authSelectors';
-import { closeModal } from 'redux/modal/modalReducer';
+import { selectAuth, selectIsLoggedIn } from '../../redux/auth/auth-selectors';
+import { setFavoriteNotice } from '../../redux/auth/operation';
 // import { favoriteNotice } from 'redux/notices/noticesOperations';
 // import { makeCategory } from '../NoticeCategoryItem/NoticeCategoryItem';
 import {
@@ -17,99 +19,98 @@ import {
   ContactLink,
   AddToFav,
   BtnContainer,
+  Content,
+  Backdrop,
+  BtnClose,
 } from './ModalNotice.styled';
 
-export const ModalNoticeMore = ({
-  pet: {
-    _id,
-    avatar,
-    title,
-    location,
-    petBirthday,
-    sex,
-    name,
-    breed,
-    price,
-    favorite,
-    description,
-    owner,
-    category,
-  },
-}) => {
-  const isLoggedIn = useSelector(selectIsLoggedIn);
+export const ModalNoticeMore = ({ notice, onClose }) => {
   const dispatch = useDispatch();
   const auth = useSelector(selectAuth);
 
-  let isFavorite = favorite.includes(auth?._id);
-
   const onClickFavBtn = () => {
-    if (!isLoggedIn) {
+    if (!auth.isLoggedIn) {
       toast.error('You need to sign in');
     } else {
       dispatch(
-        favoriteNotice({
-          id: _id,
+        setFavoriteNotice({
+          noticeId: notice._id,
+          token: auth.token
         })
       );
-      dispatch(closeModal());
     }
+  };
+
+  const calcYearDifference = (oldDateString) => {
+    const oldDate = new Date(oldDateString);
+    const newDate = new Date();
+    const dateDifference = new Date(newDate - oldDate);
+    const diffYears = dateDifference.getFullYear() - 1970;
+    return diffYears;
   };
 
   return (
     <>
-      <ContainerInfo>
-        <ImageContainer>
-          <Image src={avatar} alt="dog" />
-          <Type>{makeCategory(category)}</Type>
-        </ImageContainer>
-        <div style={{ width: '321px', padding: '0 12px' }}>
-          <Title>{title}</Title>
-          <div style={{ display: 'flex', gap: '50px' }}>
-            <List>
-              <Item>Name: </Item>
-              <Item>Birthday: </Item>
-              <Item>Breed: </Item>
-              {price !== '0$' && price !== '0' && <Item>Price: </Item>}
-              <Item>Place: </Item>
-              <Item>The sex: </Item>
-              <Item>Email: </Item>
-              <Item>Phone: </Item>
-            </List>
-            <List>
-              <Item>{name}</Item>
-              <Item>{petBirthday}</Item>
-              <Item>{breed}</Item>
-              {price !== '0$' && price !== '0' && <Item>{price}</Item>}
-              <Item>{location}</Item>
-              <Item>{sex}</Item>
-              <Item>
-                <a
-                  style={{ color: '#FFC107', textDecoration: 'underline' }}
-                  href={`mailto:${owner.email}`}
-                >
-                  {owner.email}
-                </a>
-              </Item>
-              <Item style={{ color: '#FFC107', textDecoration: 'underline' }}>
-                <a
-                  style={{ color: '#FFC107', textDecoration: 'underline' }}
-                  href={`tel:${owner.phone}`}
-                >
-                  {owner.phone}
-                </a>
-              </Item>
-            </List>
-          </div>
-        </div>
-      </ContainerInfo>
-      <Comment>{description}</Comment>
-      <BtnContainer>
-        <AddToFav type="button" onClick={onClickFavBtn}>
-          <span>{isFavorite ? 'Remove' : 'Add'}</span>
-          <VscHeart size={20} />
-        </AddToFav>
-        <ContactLink href={`tel:${owner.phone}`}>Contact</ContactLink>
-      </BtnContainer>
+      <Backdrop>
+        <Content>
+          <BtnClose type="button" onClick={() => onClose()}>
+            <CgClose size={22} color="#54ADFF" />
+          </BtnClose>
+          <ContainerInfo>
+            <ImageContainer>
+              <Image src={notice.image} alt="dog" />
+              {/* <Type>{makeCategory(notice.typeOfnotice)}</Type>    СДЕЛАТЬ ТАЙП ПЕТА*/}
+            </ImageContainer>
+            <div style={{ width: '321px', padding: '0 12px' }}>
+              <Title>{notice.title}</Title>
+              <div style={{ display: 'flex', gap: '50px' }}>
+                <List>
+                  <Item>Name: </Item>
+                  <Item>Age: </Item>
+                  <Item>Breed: </Item>
+                  {notice.price && <Item>Price: </Item>}
+                  <Item>Place: </Item>
+                  <Item>The sex: </Item>
+                  <Item>Email: </Item>
+                  <Item>Phone: </Item>
+                </List>
+                <List>
+                  <Item>{notice.name}</Item>
+                  <Item>{calcYearDifference(notice.birthDay)}</Item>
+                  <Item>{notice.typeOfPet}</Item>
+                  {notice.price && <Item> {notice.price}</Item>}
+                  <Item>{notice.location}</Item>
+                  <Item>{notice.gender}</Item>
+                  <Item>
+                    <a
+                      style={{ color: '#FFC107', textDecoration: 'underline' }}
+                      href={`mailto:${notice.email}`}
+                    >
+                      {notice.email}
+                    </a>
+                  </Item>
+                  <Item style={{ color: '#FFC107', textDecoration: 'underline' }}>
+                    <a
+                      style={{ color: '#FFC107', textDecoration: 'underline' }}
+                      href={`tel:${notice.phone}`}
+                    >
+                      {notice.phone}
+                    </a>
+                  </Item>
+                </List>
+              </div>
+            </div>
+          </ContainerInfo>
+          <Comment>Commentaries: {notice.comments}</Comment>
+          <BtnContainer>
+            <AddToFav type="button" onClick={() => onClickFavBtn(notice._id)}>
+              <span>{auth.isFavorite ? 'Remove' : 'Add'}</span>
+              <VscHeart size={20} />
+            </AddToFav>
+            <ContactLink href={`tel:${notice.phone}`}>Contact</ContactLink>
+          </BtnContainer>
+        </Content>
+      </Backdrop>
     </>
   );
 };

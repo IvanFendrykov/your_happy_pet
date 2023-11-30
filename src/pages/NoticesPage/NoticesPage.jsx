@@ -14,203 +14,27 @@ import {
   NoticePageContrtolsRight,
   AddPetLink,
 } from './NoticesPage.styled';
+import { ModalNoticeMore } from '../../components/ModalNotice/ModalNoticeMore';
+import { useDispatch, useSelector } from 'react-redux';
+import axios from 'axios';
+import VortexLoader from '../../components/VortexLoader/VortexLoader';
+import { setFavoriteNotice } from '../../redux/auth/operation';
 
-const PETS_DATA = [
-  {
-    _id: 'pet-01',
-    avatar:
-      'https://fastly.picsum.photos/id/237/200/300.jpg?hmac=TmmQSbShHz9CdQm0NkEjx1Dyh_Y984R9LpNrpvH2D_U',
-    title: 'Сute dog looking for a home',
-    location: 'Ivano - Frankivsk',
-    petBirthday: '2022-07-09',
-    sex: 'female',
-    name: 'Dog',
-    breed: 'friendly',
-    price: '0$',
-    favourite: true,
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
-    category: 'in good hands',
-  },
-  {
-    _id: 'pet-02',
-    avatar:
-      'https://fastly.picsum.photos/id/237/200/300.jpg?hmac=TmmQSbShHz9CdQm0NkEjx1Dyh_Y984R9LpNrpvH2D_U',
-    title: 'Сute cat looking for a home',
-    location: 'Lviv',
-    petBirthday: '2013-04-29',
-    sex: 'female',
-    name: 'Cat',
-    breed: 'lazy',
-    price: '50$',
-    favourite: false,
-    description: 'Morbi a ipsum scelerisque, dapibus arcu et, faucibus nulla',
-    category: 'lost/found',
-  },
-  {
-    _id: 'pet-03',
-    avatar:
-      'https://fastly.picsum.photos/id/237/200/300.jpg?hmac=TmmQSbShHz9CdQm0NkEjx1Dyh_Y984R9LpNrpvH2D_U',
-    title: 'Сute mouse looking for a home',
-    location: 'Khmelnytskyi',
-    petBirthday: '2015-03-13',
-    sex: 'female',
-    name: 'Mouse',
-    breed: 'sneaky',
-    price: '100$',
-    favourite: true,
-    description: 'Etiam vitae ex at purus interdum congue',
-    category: 'favorite ads',
-  },
-  {
-    _id: 'pet-04',
-    avatar:
-      'https://fastly.picsum.photos/id/237/200/300.jpg?hmac=TmmQSbShHz9CdQm0NkEjx1Dyh_Y984R9LpNrpvH2D_U',
-    title: 'Сute frog looking for a home',
-    location: 'Lviv',
-    petBirthday: '2019-06-06',
-    sex: 'female',
-    name: 'Frog',
-    breed: 'clumsy',
-    price: '0$',
-    favourite: false,
-    description: 'Quisque dignissim augue sed imperdiet consectetur',
-    category: 'my ads',
-  },
-  {
-    _id: 'pet-05',
-    avatar:
-      'https://fastly.picsum.photos/id/237/200/300.jpg?hmac=TmmQSbShHz9CdQm0NkEjx1Dyh_Y984R9LpNrpvH2D_U',
-    title: 'Сute bat looking for a home',
-    location: 'Ivano - Frankivsk',
-    petBirthday: '2023-02-24',
-    sex: 'male',
-    name: 'Bat',
-    breed: 'scary',
-    price: '50$',
-    favourite: false,
-    description: 'Vivamus dapibus sed felis in faucibus.',
-    category: 'sell',
-  },
-  {
-    _id: 'pet-06',
-    avatar:
-      'https://fastly.picsum.photos/id/237/200/300.jpg?hmac=TmmQSbShHz9CdQm0NkEjx1Dyh_Y984R9LpNrpvH2D_U',
-    title: 'Сute elephant looking for a home',
-    location: 'Ivano - Frankivsk',
-    petBirthday: '2023-03-02',
-    sex: 'female',
-    name: 'Elephant',
-    breed: 'big',
-    price: '100$',
-    favourite: true,
-    description: 'Mauris congue metus eget libero ornare suscipit.',
-    category: 'in good hands',
-  },
-  {
-    _id: 'pet-07',
-    avatar:
-      'https://fastly.picsum.photos/id/237/200/300.jpg?hmac=TmmQSbShHz9CdQm0NkEjx1Dyh_Y984R9LpNrpvH2D_U',
-    title: 'Сute lion looking for a home',
-    location: 'Ivano - Frankivsk',
-    petBirthday: '2022-04-18',
-    sex: 'female',
-    name: 'Lion',
-    breed: 'brave',
-    price: '0$',
-    favourite: true,
-    description: 'Donec finibus rhoncus mauris porta euismod.',
-    category: 'lost/found',
-  },
-  {
-    _id: 'pet-08',
-    avatar:
-      'https://fastly.picsum.photos/id/237/200/300.jpg?hmac=TmmQSbShHz9CdQm0NkEjx1Dyh_Y984R9LpNrpvH2D_U',
-    title: 'Сute fox looking for a home',
-    location: 'Ivano - Frankivsk',
-    petBirthday: '2016-09-01',
-    sex: 'male',
-    name: 'Fox',
-    breed: 'cunning',
-    price: '50$',
-    favourite: false,
-    description: 'Fusce faucibus aliquet nunc, ut faucibus augue laoreet in.',
-    category: 'my ads',
-  },
-  {
-    _id: 'pet-09',
-    avatar:
-      'https://fastly.picsum.photos/id/237/200/300.jpg?hmac=TmmQSbShHz9CdQm0NkEjx1Dyh_Y984R9LpNrpvH2D_U',
-    title: 'Сute blue whale looking for a home',
-    location: 'Chernivtsi',
-    petBirthday: '2023-08-06',
-    sex: 'female',
-    name: 'Blue Whale',
-    breed: 'giant',
-    price: '100$',
-    favourite: true,
-    description: 'Phasellus in dui feugiat, pharetra dolor at, rutrum tortor.',
-    category: 'in good hands',
-  },
-  {
-    _id: 'pet-10',
-    avatar:
-      'https://fastly.picsum.photos/id/237/200/300.jpg?hmac=TmmQSbShHz9CdQm0NkEjx1Dyh_Y984R9LpNrpvH2D_U',
-    title: 'Сute rabbit looking for a home',
-    location: 'Ivano - Frankivsk',
-    petBirthday: '2022-11-10',
-    sex: 'male',
-    name: 'Rabbit',
-    breed: 'fast',
-    price: '0$',
-    favourite: false,
-    description:
-      'Pellentesque quis lectus feugiat, luctus purus ut, semper diam. Integer sagittis mattis dui.',
-    category: 'favorite ads',
-  },
-  {
-    _id: 'pet-11',
-    avatar:
-      'https://fastly.picsum.photos/id/237/200/300.jpg?hmac=TmmQSbShHz9CdQm0NkEjx1Dyh_Y984R9LpNrpvH2D_U',
-    title: 'Сute hedgehog looking for a home',
-    location: 'Ivano - Frankivsk',
-    petBirthday: '2023-01-30',
-    sex: 'female',
-    name: 'Hedgehog',
-    breed: 'spiky',
-    price: '50$',
-    favourite: false,
-    description:
-      'Fusce nec ornare lectus. Morbi id lorem cursus, congue ligula eget, imperdiet metus.',
-    category: 'in good hands',
-  },
-  {
-    _id: 'pet-12',
-    avatar:
-      'https://fastly.picsum.photos/id/237/200/300.jpg?hmac=TmmQSbShHz9CdQm0NkEjx1Dyh_Y984R9LpNrpvH2D_U',
-    title: 'Сute fish looking for a home',
-    location: 'Zaporizhzhia',
-    petBirthday: '2020-12-16',
-    sex: 'male',
-    name: 'Fish',
-    breed: 'floatable',
-    price: '100$',
-    favourite: true,
-    description: 'Phasellus fermentum sed ligula sed porta.',
-    category: 'lost/found',
-  },
-];
 
-const IS_LOGGED_IN = true;
 
 const NoticesPage = () => {
-  const [petsData, setPetsData] = useState(PETS_DATA);
+  const [petsData, setPetsData] = useState(null);
   const [categoriesData, setCategoriesData] = useState('');
   const [filtersData, setFiltersData] = useState({
     age: 'any age',
     gender: '',
   });
-  const [editedPetsData, setEditedPetsData] = useState(PETS_DATA);
-
+  const [editedPetsData, setEditedPetsData] = useState(['']);
+  const [notice, setNotice] = useState(null)
+  const [isLoaded, setIsLoaded] = useState(false)
+  const dispatch = useDispatch()
+  const token = useSelector((state) => state.auth.token);
+  const IS_LOGGED_IN = useSelector((state) => state.auth.isLoggedIn);;
   const handleCategoriesData = (data) => {
     setCategoriesData(data);
   };
@@ -237,31 +61,76 @@ const NoticesPage = () => {
     return ageFilterOptions[ageCategory];
   };
 
-  const onAddToFavourite = (id) => {
-    console.log('onAddToFavourite' + id);
+  const onAddToFavourite = (noticeId) => {
+    console.log(noticeId)
+    if (!IS_LOGGED_IN) {
+      //МОДАЛКА ПРО ЗАЛОГИНИТСЯ
+    }
+    dispatch(setFavoriteNotice({ token, noticeId }))
   };
-  const onDelete = (id) => {
+  const onDelete = async (id) => {
     console.log('onDeleteFromFavourite' + id);
+    try {
+      const response = await axios.delete(`${import.meta.env.VITE_BACKEND_BASE_URL}/api/notices/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      },);
+      if (response.status === 200) {
+        setPetsData((prevPets) => prevPets.filter((notice) => notice._id !== id));
+      }
+
+    } catch (error) {
+      console.error("Error fetching user:", error);
+      return null;
+    }
+
   };
   const onLearnMore = (id) => {
-    console.log('onLearnMore' + id);
+    setNotice(petsData.find(pet => pet._id === id));
   };
+  const onClose = () => {
+    setNotice(null)
+  }
 
   useEffect(() => {
-    const newEditedPetsData = petsData.filter(
-      (pet) =>
-        (!categoriesData || pet.category === categoriesData) &&
-        isAgeCategory(pet, filtersData.age) &&
-        (!filtersData.gender || pet.sex === filtersData.gender),
-    );
-    const newEditedPetsDataWithAge = newEditedPetsData.map((item) => {
-      const petAge = calcYearDifference(item.petBirthday);
-      const petAgeString = `${petAge} year${!(petAge === 1) ? 's' : ''}`;
-      return { ...item, age: petAgeString };
-    });
-    setEditedPetsData(newEditedPetsDataWithAge);
+    const getNotices = async () => {
+      try {
+        const response = await axios.get(`${import.meta.env.VITE_BACKEND_BASE_URL}/api/notices`);
+        setPetsData(response.data.data.docs);
+      } catch (error) {
+        console.error("Error fetching user:", error);
+        setIsLoaded(true)
+        return null;
+      }
+    };
+
+    getNotices();
+
+  }, []);
+
+  useEffect(() => {
+    if (petsData) {
+      const newEditedPetsData = petsData.filter(
+        (pet) =>
+          (!categoriesData || pet.category === categoriesData) &&
+          isAgeCategory(pet, filtersData.age) &&
+          (!filtersData.gender || pet.sex === filtersData.gender),
+      );
+      const newEditedPetsDataWithAge = newEditedPetsData.map((item) => {
+        const petAge = calcYearDifference(item.birthDay);
+        const petAgeString = `${petAge} year${!(petAge === 1) ? 's' : ''}`;
+        return { ...item, age: petAgeString };
+      });
+      setEditedPetsData(newEditedPetsDataWithAge);
+      setIsLoaded(true)
+    }
+
   }, [petsData, categoriesData, filtersData]);
 
+  if (!isLoaded) {
+    return <VortexLoader />
+  }
   return (
     <div>
       <Header>Find your favorite pet</Header>
@@ -273,7 +142,7 @@ const NoticesPage = () => {
         />
         <NoticePageContrtolsRight>
           <NoticesFilters onChange={handleFiltersData} />
-          <AddPetLink to="http://localhost:5173/your_happy_pet/add-pet">
+          <AddPetLink to="/add-pet">
             Add pet
             <svg width="24" height="24" viewBox="0 0 24 24" fill="#fff">
               <use xlinkHref={`${icons}#plus-small-white`} />
@@ -288,12 +157,13 @@ const NoticesPage = () => {
         onDelete={onDelete}
         onLearnMore={onLearnMore}
       />
+      {notice && <ModalNoticeMore notice={notice} onClose={onClose} />}
     </div>
   );
 };
 /*
 
-      <ModalNoticeMore />
+      
 
 
 */

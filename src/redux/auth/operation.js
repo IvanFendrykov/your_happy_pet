@@ -203,3 +203,17 @@ export const update = createAsyncThunk(
     }
   },
 );
+
+export const setFavoriteNotice = createAsyncThunk(
+  'auth/notice',
+  async ({ token, noticeId }, { rejectWithValue }) => {
+    try {
+      setAuthHeader(token);
+      const response = await axios.patch(`api/notices/${noticeId}/favorite`);
+      return response.data;
+    } catch (error) {
+      toast.error('Incorrect data. Check your input and try again.');
+      return rejectWithValue(error.message);
+    }
+  },
+);
