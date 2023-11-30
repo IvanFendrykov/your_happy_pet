@@ -1,8 +1,11 @@
 import styled from '@emotion/styled';
+import { theme } from '../../utils/theme';
+const { fonts, fontSizes, colors } = theme;
 
 const NavForm = styled.form`
   display: flex;
-  column-gap: 12px;
+  flex-wrap: wrap;
+  gap: 12px;
 `;
 
 const HiddenRadio = styled.input`
@@ -11,17 +14,18 @@ const HiddenRadio = styled.input`
 
 const UnCheckedOption = styled.label`
   display: flex;
-  padding: 8px 16px;
   justify-content: center;
   align-items: center;
   gap: 8px;
+  height: 25px;
+  padding: 8px 16px;
 
   border-radius: 40px;
   background: rgba(140, 200, 253, 0.44);
 
-  color: var(--unnamed, #54adff);
-  font-family: Manrope;
-  font-size: 14px;
+  color: ${colors.blue};
+  font-family: ${fonts.medium}, sans-serif;
+  font-size: ${fontSizes.s};
   font-style: normal;
   font-weight: 500;
   line-height: normal;
@@ -30,18 +34,19 @@ const UnCheckedOption = styled.label`
 
 const CheckedOption = styled.label`
   display: flex;
-  padding: 8px 16px;
   justify-content: center;
   align-items: center;
   gap: 8px;
+  height: 25px;
+  padding: 8px 16px;
 
   border-radius: 40px;
   border-radius: 40px;
-  background: #54adff;
+  background: ${colors.blue};
 
   color: #fef9f9;
-  font-family: Manrope;
-  font-size: 14px;
+  font-family: ${fonts.medium}, sans-serif;
+  font-size: ${fontSizes.s};
   font-style: normal;
   font-weight: 500;
   line-height: normal;

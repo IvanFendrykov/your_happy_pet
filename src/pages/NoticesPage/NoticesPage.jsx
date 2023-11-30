@@ -7,7 +7,13 @@ import { useEffect, useState } from 'react';
 import { NoticesCategoriesNav } from '../../components/NoticesCategoriesNav/NoticesCategoriesNav';
 import { NoticesFilters } from '../../components/NoticesFilters/NoticesFilters';
 import { NoticesCategoriesList } from '../../components/NoticesCategoriesList/NoticesCategoriesList';
-import { NavLink } from 'react-router-dom';
+import icons from '../../images/symbol-defs.svg';
+import {
+  Header,
+  NoticePageContrtols,
+  NoticePageContrtolsRight,
+  AddPetLink,
+} from './NoticesPage.styled';
 
 const PETS_DATA = [
   {
@@ -258,18 +264,23 @@ const NoticesPage = () => {
 
   return (
     <div>
-      <h2>Find your favorite pet</h2>
+      <Header>Find your favorite pet</Header>
       <NoticesSearch />
-      <div>
+      <NoticePageContrtols>
         <NoticesCategoriesNav
           isLoggedIn={IS_LOGGED_IN}
           onChange={handleCategoriesData}
         />
-        <NoticesFilters onChange={handleFiltersData} />
-        <button>
-          <NavLink to="http://localhost:5173/your_happy_pet/add-pet"> Add pet</NavLink>
-        </button>
-      </div>
+        <NoticePageContrtolsRight>
+          <NoticesFilters onChange={handleFiltersData} />
+          <AddPetLink to="http://localhost:5173/your_happy_pet/add-pet">
+            Add pet
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="#fff">
+              <use xlinkHref={`${icons}#plus-small-white`} />
+            </svg>
+          </AddPetLink>
+        </NoticePageContrtolsRight>
+      </NoticePageContrtols>
       <NoticesCategoriesList
         petsData={editedPetsData}
         isLoggedIn={IS_LOGGED_IN}

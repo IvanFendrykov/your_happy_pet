@@ -3,8 +3,8 @@ import icons from '../../images/symbol-defs.svg';
 import { FilterForm, FilterFormButton } from './NoticesFilters.styled';
 import { FilterOption } from './FilterOption';
 
-const GenderForm = ({ onClick, onChange }) => {
-  const [genderData, setGenderData] = useState('');
+const GenderForm = ({ onClick, onChange, initialValue }) => {
+  const [genderData, setGenderData] = useState(initialValue);
   const handleInput = (event) => {
     event.preventDefault();
     const newGenderData = event.currentTarget.elements.genderOption.value;
@@ -29,7 +29,6 @@ const GenderForm = ({ onClick, onChange }) => {
         name="genderOption"
         value="female"
         checked={genderData === 'female'}
-        defaultChecked={false}
       >
         female
       </FilterOption>
@@ -37,16 +36,10 @@ const GenderForm = ({ onClick, onChange }) => {
         name="genderOption"
         value="male"
         checked={genderData === 'male'}
-        defaultChecked={false}
       >
         male
       </FilterOption>
-      <FilterOption
-        name="genderOption"
-        value=""
-        checked={genderData === ''}
-        defaultChecked={true}
-      >
+      <FilterOption name="genderOption" value="" checked={genderData === ''}>
         any gender
       </FilterOption>
     </FilterForm>

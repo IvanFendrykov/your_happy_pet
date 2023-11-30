@@ -3,8 +3,8 @@ import icons from '../../images/symbol-defs.svg';
 import { FilterForm, FilterFormButton } from './NoticesFilters.styled';
 import { FilterOption } from './FilterOption';
 
-const AgeForm = ({ onClick, onChange }) => {
-  const [ageData, setAgeData] = useState('anyAge');
+const AgeForm = ({ onClick, onChange, initialValue }) => {
+  const [ageData, setAgeData] = useState(initialValue);
   const handleInput = (event) => {
     event.preventDefault();
     const newAgeData = event.currentTarget.elements.ageOption.value;
@@ -29,7 +29,6 @@ const AgeForm = ({ onClick, onChange }) => {
         name="ageOption"
         value="upToOne"
         checked={ageData === 'upToOne'}
-        defaultChecked={false}
       >
         up to 1 year
       </FilterOption>
@@ -37,7 +36,6 @@ const AgeForm = ({ onClick, onChange }) => {
         name="ageOption"
         value="upToTwo"
         checked={ageData === 'upToTwo'}
-        defaultChecked={false}
       >
         up to 2 years
       </FilterOption>
@@ -45,7 +43,6 @@ const AgeForm = ({ onClick, onChange }) => {
         name="ageOption"
         value="fromTwo"
         checked={ageData === 'fromTwo'}
-        defaultChecked={false}
       >
         from 2 years
       </FilterOption>
@@ -53,7 +50,6 @@ const AgeForm = ({ onClick, onChange }) => {
         name="ageOption"
         value="anyAge"
         checked={ageData === 'anyAge'}
-        defaultChecked={true}
       >
         any age
       </FilterOption>
