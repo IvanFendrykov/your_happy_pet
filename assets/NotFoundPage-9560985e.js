@@ -1,4 +1,4 @@
-import{s as i,r as e,u as o,j as n}from"./index-159b26c4.js";const a="https://ivanfendrykov.github.io/your_happy_pet/assets/notfound-img-mobile-2x-860fb928.png",p="https://ivanfendrykov.github.io/your_happy_pet/assets/notfound-img-tablet-2x-83686b8a.png",r="https://ivanfendrykov.github.io/your_happy_pet/assets/notfound-img-desctop-2x-273e2b7b.png",s=i.div`
+import{s as i,r as e,u as o,j as n}from"./index-36e80b74.js";const a="https://ivanfendrykov.github.io/your_happy_pet/assets/notfound-img-mobile-2x-860fb928.png",p="https://ivanfendrykov.github.io/your_happy_pet/assets/notfound-img-tablet-2x-83686b8a.png",r="https://ivanfendrykov.github.io/your_happy_pet/assets/notfound-img-desctop-2x-273e2b7b.png",s=i.div`
   width: 100%;
   background-repeat: no-repeat;
   background-size: contain;
