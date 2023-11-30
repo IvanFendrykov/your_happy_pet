@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react';
 import { NoticesCategoriesNav } from '../../components/NoticesCategoriesNav/NoticesCategoriesNav';
 import { NoticesFilters } from '../../components/NoticesFilters/NoticesFilters';
 import { NoticesCategoriesList } from '../../components/NoticesCategoriesList/NoticesCategoriesList';
-import { NavLink } from 'react-router-dom';
+import icons from '../../images/symbol-defs.svg';
 import {
   Header,
   NoticePageContrtols,
