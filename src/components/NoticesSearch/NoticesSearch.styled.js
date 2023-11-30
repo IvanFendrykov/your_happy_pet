@@ -9,17 +9,16 @@ const SearchForm = styled.form`
   max-width: 608px;
   height: 44px;
   display: flex;
-  justify-content: center;
   align-items: center;
   border-radius: 20px;
   background: #fff;
   padding-left: 20px;
-  padding-right: 10px;
+  padding-right: 20px;
   box-shadow: 3px 8px 14px 0px rgba(136, 198, 253, 0.19);
 `;
 
 const SearchInput = styled.input`
-  max-width: 544px;
+  width: 100%;
   height: 44px;
   border: none;
   background: none;
