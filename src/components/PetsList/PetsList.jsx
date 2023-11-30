@@ -58,7 +58,7 @@ export const H2 = styled.h2`
 
 function PetsList({ pets, onDelete }) {
   return (
-    <Contejner style={{ position: 'relative', zIndex: 5 }}>
+    <div style={{ position: 'relative', zIndex: 5 }}>
       <StyledLink to="/add-pet">
         <Plus style={{ stroke: '#fff' }} />
         <span>Add pet</span>
@@ -69,7 +69,7 @@ function PetsList({ pets, onDelete }) {
       ) : (
         <H2>You didnt added any pets!</H2>
       )}
-    </Contejner>
+    </div>
   );
 }
 
