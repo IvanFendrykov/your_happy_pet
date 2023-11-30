@@ -2,6 +2,7 @@ import PetsItem from '../PetsItem/PetsItem';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import { ReactComponent as Plus } from '../../images/svg/plus.svg';
+import zIndex from '@mui/material/styles/zIndex';
 
 const StyledLink = styled(NavLink)`
   display: flex;
@@ -56,7 +57,7 @@ export const H2 = styled.h2`
 
 function PetsList({ pets, onDelete }) {
   return (
-    <div style={{ position: 'relative' }}>
+    <div style={{ position: 'relative', zIndex: 10 }}>
       <StyledLink to="/add-pet">
         <Plus style={{ stroke: '#fff' }} />
         <span>Add pet</span>

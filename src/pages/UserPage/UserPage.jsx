@@ -20,6 +20,8 @@ import {
   FileWrapper,
   UserAvatar,
   StyledDatePicker,
+  InputFile,
+  LoaderWrapper,
 } from './UserPage.styled';
 import { ReactComponent as Edit } from '../../images/svg/edit.svg';
 import { ReactComponent as CrossSmall } from '../../images/svg/cross-small.svg';
@@ -30,11 +32,12 @@ import { ReactComponent as Check } from '../../images/svg/check.svg';
 import { ReactComponent as X } from '../../images/svg/x.svg';
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
-import { InputFile } from '../../components/AddPetForm/AddPetForm.styled';
 import symbolDefs from '../../images/symbol-defs.svg';
 import Backdrop from '../../components/Backdrop/Backdrop';
 import ModalApproveAction from '../../components/ModalApproveAction/ModalApproveAction';
 import { update } from '../../redux/auth/operation';
+import { useAuth } from '../../hooks/useAuth';
+import VortexLoader from '../../components/VortexLoader/VortexLoader';
 
 
 function UserPage() {
@@ -48,9 +51,10 @@ function UserPage() {
   const [image, setSelectedImage] = useState(null);
   const [fileImage, setFileImage] = useState(null);
   const [imageUrl, setImageUrl] = useState(null);
-  const [pets, setPets] = useState(null)
-  const [showModal, setShowModal] = useState(null)
-
+  const [pets, setPets] = useState(null);
+  const [showModal, setShowModal] = useState(null);
+  const { profilePic } = useAuth()
+  const { isLoading } = useAuth()
   const dispatch = useDispatch();
   const token = useSelector((state) => state.auth.token);
 
@@ -91,10 +95,10 @@ function UserPage() {
     }
 
     const response = dispatch(update({ token, editedUserFormData }))
+    setSelectedImage(null)
+    setFileImage(null)
     setClicked(false);
-    if (response.status === 200) {
-      setImageUrl(response.data.profilePic)
-    }
+    setEdit(false);
   };
   const handleEdit = (e) => {
     e.preventDefault();
@@ -121,6 +125,10 @@ function UserPage() {
       console.error('Error:', error);
     }
   };
+
+  useEffect(() => {
+    setImageUrl(profilePic)
+  }, [profilePic])
 
 
   useEffect(() => {
@@ -181,7 +189,6 @@ function UserPage() {
     }
   };
 
-
   return (
     <>
       <Wrapper>
@@ -189,6 +196,9 @@ function UserPage() {
           <H2>My information:</H2>
 
           <UserCardWrapper>
+            {isLoading &&
+              <LoaderWrapper><VortexLoader /></LoaderWrapper>
+            }
             <UserProfileImage>
 
               {imageUrl ? <UserAvatar src={imageUrl} alt="User picture" /> : <PhotoDef />}
@@ -220,14 +230,14 @@ function UserPage() {
                         />
                       ) : (
                         <>
+                          <SvgIcon width="24" height="24">
+                            <use href={symbolDefs + '#plus'} fill="white"></use>
+                          </SvgIcon>
                           <InputFile
                             type="file"
                             onChange={handleFileChange}
                             name="image"
                           />
-                          <SvgIcon width="24" height="24">
-                            <use href={symbolDefs + '#plus'} fill="white"></use>
-                          </SvgIcon>
                         </>
                       )}
                     </FileWrapper >
@@ -270,7 +280,7 @@ function UserPage() {
                 <StyledDatePicker
                   type="text"
                   name="birthday"
-                  placeholderText='Select a date'
+                  // placeholderText='Select a date'
                   selected={currentBday ? new Date(currentBday) : null}
                   disabled={!clicked}
                   onChange={(date) => setCurrentBday(date ? date : '')}
