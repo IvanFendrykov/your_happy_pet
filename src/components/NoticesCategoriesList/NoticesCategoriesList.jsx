@@ -12,19 +12,13 @@ const NoticesCategoriesList = ({
     <CategoriesList>
       {petsData.map((petData) => (
         <NoticesCategoriesItem
+          petData={petData}
           onAddToFavourite={onAddToFavourite}
           onDelete={onDelete}
           onLearnMore={onLearnMore}
           key={petData._id}
           id={petData._id}
           isLoggedIn={isLoggedIn}
-          title={petData.title}
-          category={petData.category}
-          avatar={petData.avatar}
-          location={petData.location}
-          age={petData.age}
-          sex={petData.sex}
-          favourite={petData.favourite}
         />
       ))}
     </CategoriesList>

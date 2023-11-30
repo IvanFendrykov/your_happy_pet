@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { theme } from 'utils/themeModal';
+import { theme } from '../../utils/themeModal';
 const { fonts, fontSizes, fontWeights, colors, media } = theme;
 
 export const Backdrop = styled.div`
