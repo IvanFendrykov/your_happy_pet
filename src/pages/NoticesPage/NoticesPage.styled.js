@@ -19,6 +19,7 @@ const NoticePageContrtols = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  align-content: space-between;
 `;
 
 const NoticePageContrtolsRight = styled.div`
