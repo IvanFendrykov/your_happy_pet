@@ -1,5 +1,5 @@
 import React from 'react';
-import { User, Container, LogoutBtn, StyledLink } from './UserNav.styled';
+import { User, Container, LogoutBtn, StyledLink, Img } from './UserNav.styled';
 import icon from '../../assets/images/user/user.png';
 import { CiLogout } from 'react-icons/ci';
 import useModal from '../../hooks/useModal';
@@ -8,7 +8,7 @@ import ModalApproveAction from '../../components/ModalApproveAction/ModalApprove
 import { useAuth } from '../../hooks/useAuth';
 
 const UserNav = () => {
-  const { user } = useAuth();
+  const { user, profilePic } = useAuth();
   const { toggleModal, showModal } = useModal(false);
 
   return (
@@ -19,7 +19,11 @@ const UserNav = () => {
       </LogoutBtn>
       {user && (
         <StyledLink to="/user">
-          <img src={icon} alt="icon" />
+          {profilePic !== null ? (
+            <Img src={profilePic} alt="avatar" />
+          ) : (
+            <img src={icon} alt="icon" />
+          )}
           <User>{user}</User>
         </StyledLink>
       )}
