@@ -17,7 +17,7 @@ const UnCheckedOption = styled.label`
   justify-content: center;
   align-items: center;
   gap: 8px;
-  height: 25px;
+  height: 35px;
   padding: 8px 16px;
 
   border-radius: 40px;
