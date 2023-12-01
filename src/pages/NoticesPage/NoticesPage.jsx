@@ -107,35 +107,8 @@ const NoticesPage = () => {
     setNotice(null);
   };
 
-  useEffect(() => {
-    const getNotices = async () => {
-      try {
-        let response;
-        if (categoriesData !== 'own') {
-          response = await axios.get(
-            `${import.meta.env.VITE_BACKEND_BASE_URL}/api/notices?${
-              categoriesData && 'category=' + categoriesData
-            }`,
-          );
-        } else {
-          response = await axios.get(
-            `${import.meta.env.VITE_BACKEND_BASE_URL}/api/notices/my/adds`,
-            {
-              headers: {
-                Authorization: `Bearer ${token}`,
-              },
-            },
-          );
-        }
-        setPetsData(response.data.data.docs);
-      } catch (error) {
-        return null;
-      }
-      setIsLoaded(true);
-    };
-    getNotices();
-  }, [categoriesData, filtersData]);
-  /*
+
+
   useEffect(() => {
     const getAdds = async () => {
       try {
