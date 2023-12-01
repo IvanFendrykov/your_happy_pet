@@ -7,6 +7,7 @@ import { selectAuth, selectIsLoggedIn } from '../../redux/auth/auth-selectors';
 import { setFavoriteNotice } from '../../redux/auth/operation';
 // import { favoriteNotice } from 'redux/notices/noticesOperations';
 // import { makeCategory } from '../NoticeCategoryItem/NoticeCategoryItem';
+import  ModalUnauthorize from '../ModalUnauthorize/ModalUnauthorize';
 import {
   Image,
   ImageContainer,
@@ -23,10 +24,16 @@ import {
   Backdrop,
   BtnClose,
 } from './ModalNotice.styled';
+import { useEffect, useState } from 'react';
 
 export const ModalNoticeMore = ({ notice, onClose }) => {
   const dispatch = useDispatch();
   const auth = useSelector(selectAuth);
+
+  const [isAuthorizedModalOpen, setIsAuthorizedModalOpen] = useState(false);
+  const [isAddToFavModalOpen, setIsAddToFavModalOpen] = useState(false);
+
+  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
 
   const onClickFavBtn = () => {
     if (!auth.isLoggedIn) {
@@ -49,9 +56,17 @@ export const ModalNoticeMore = ({ notice, onClose }) => {
     return diffYears;
   };
 
-  return (
+  const toggleUnauthorizeModal = () => {
+    setIsAuthorizedModalOpen((prevState) => !prevState);
+  };
+
+  const toggleAddToFavModal = () => {
+    setIsAddToFavModalOpen((prevState) => !prevState);
+  };
+
+return (
     <>
-      <Backdrop>
+      <Backdrop onClick={toggleAddToFavModal}>
         <Content>
           <BtnClose type="button" onClick={() => onClose()}>
             <CgClose size={22} color="#54ADFF" />
@@ -100,15 +115,23 @@ export const ModalNoticeMore = ({ notice, onClose }) => {
                 </List>
               </div>
             </div>
-          </ContainerInfo>
+                </ContainerInfo>
           <Comment>Commentaries: {notice.comments}</Comment>
           <BtnContainer>
-            <AddToFav type="button" onClick={() => onClickFavBtn(notice._id)}>
+                  <AddToFav
+                  type="button"
+                  onClick={() => {
+                    onClickFavBtn(notice._id);
+                    toggleUnauthorizeModal();
+                  }}>
               <span>{auth.isFavorite ? 'Remove' : 'Add'}</span>
               <VscHeart size={20} />
             </AddToFav>
             <ContactLink href={`tel:${notice.phone}`}>Contact</ContactLink>
           </BtnContainer>
+          {isAuthorizedModalOpen && !isLoggedIn && (
+          <ModalUnauthorize toggleUnauthorizeModal={toggleUnauthorizeModal} />
+          )}
         </Content>
       </Backdrop>
     </>

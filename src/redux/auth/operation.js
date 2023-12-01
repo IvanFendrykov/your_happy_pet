@@ -135,11 +135,6 @@ export const login = createAsyncThunk(
 
       setAuthHeader(response.data.accessToken);
 
-      if (response.status === 200) {
-        console.groupCollapsed('Login successful');
-        console.log('Login successful:', response);
-        console.groupEnd();
-      }
 
       return response.data;
     } catch (error) {

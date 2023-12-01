@@ -4,7 +4,7 @@ const { fonts, fontSizes, fontWeights, colors, media } = theme;
 
 export const Backdrop = styled.div`
   position: fixed;
-  z-index: 1000;
+  z-index: 3;
   top: 0;
 
   width: 100vw;
