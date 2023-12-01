@@ -14,7 +14,7 @@ import {
 } from './NoticesPage.styled';
 import { ModalNoticeMore } from '../../components/ModalNotice/ModalNoticeMore';
 import { useDispatch, useSelector } from 'react-redux';
-import { Outlet } from 'react-router-dom';
+import { NoticesFilters } from '../../components/NoticesFilters/NoticesFilters';
 import axios from 'axios';
 import VortexLoader from '../../components/VortexLoader/VortexLoader';
 import { setFavoriteNotice } from '../../redux/auth/operation';
@@ -216,6 +216,7 @@ const NoticesPage = () => {
                 <use xlinkHref={`${icons}#plus-small-white`} />
               </svg>
             </AddPetLink>
+            <NoticesFilters onChange={handleFiltersData} />
           </AddPetBtn>
         </NoticePageContrtolsRight>
       </NoticePageContrtols>
