@@ -1,5 +1,6 @@
 import { NoticesCategoriesItem } from '../../components/NoticeCategoryItem/NoticesCategoriesItem';
 import { CategoriesList } from './NoticesCategoriesList.styled';
+import { nanoid } from 'nanoid';
 
 const NoticesCategoriesList = ({
   isLoggedIn,
@@ -16,7 +17,7 @@ const NoticesCategoriesList = ({
           onAddToFavourite={onAddToFavourite}
           onDelete={onDelete}
           onLearnMore={onLearnMore}
-          key={petData._id}
+          key={nanoid()}
           id={petData._id}
           isLoggedIn={isLoggedIn}
         />
