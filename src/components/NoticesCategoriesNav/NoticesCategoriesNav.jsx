@@ -31,16 +31,16 @@ const NoticesCategoriesNav = ({ isLoggedIn, onChange }) => {
       </NavOption>
       <NavOption
         name="categoryOption"
-        value="lost/found"
-        checked={categoryData === 'lost/found'}
+        value="lost-found"
+        checked={categoryData === 'lost-found'}
         defaultChecked={false}
       >
         lost/found
       </NavOption>
       <NavOption
         name="categoryOption"
-        value="in good hands"
-        checked={categoryData === 'in good hands'}
+        value="for-free"
+        checked={categoryData === 'for-free'}
         defaultChecked={false}
       >
         in good hands
@@ -48,8 +48,8 @@ const NoticesCategoriesNav = ({ isLoggedIn, onChange }) => {
       {isLoggedIn && (
         <NavOption
           name="categoryOption"
-          value="favorite ads"
-          checked={categoryData === 'favorite ads'}
+          value="favorite"
+          checked={categoryData === 'favorite'}
           defaultChecked={false}
         >
           favorite ads
@@ -58,8 +58,8 @@ const NoticesCategoriesNav = ({ isLoggedIn, onChange }) => {
       {isLoggedIn && (
         <NavOption
           name="categoryOption"
-          value="my ads"
-          checked={categoryData === 'my ads'}
+          value="own"
+          checked={categoryData === 'own'}
           defaultChecked={false}
         >
           my ads

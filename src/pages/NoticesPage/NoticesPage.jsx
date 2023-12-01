@@ -105,6 +105,7 @@ const NoticesPage = () => {
           `${import.meta.env.VITE_BACKEND_BASE_URL}/api/notices`,
         );
         setPetsData(response.data.data.docs);
+        console.log(response.data.data.docs);
       } catch (error) {
         console.error('Error fetching user:', error);
         setIsLoaded(true);
