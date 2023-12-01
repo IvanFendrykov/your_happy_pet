@@ -5,7 +5,7 @@ import {
   UnCheckedOption,
 } from './NoticesCategoriesNav.styled';
 
-const NavOption = ({ to, name, value, checked, defaultChecked, children }) => {
+const NavOption = ({ name, value, checked, defaultChecked, children }) => {
   return checked ? (
     <CheckedOption>
       <HiddenRadio
