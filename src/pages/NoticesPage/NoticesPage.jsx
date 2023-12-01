@@ -111,12 +111,23 @@ const NoticesPage = () => {
     const getNotices = async () => {
       try {
         let response;
-        if (categoriesData !== 'own') {
+        if (categoriesData !== 'own' && categoriesData !== 'favorite') {
           response = await axios.get(
             `${import.meta.env.VITE_BACKEND_BASE_URL}/api/notices?${
               categoriesData && 'category=' + categoriesData
             }`,
           );
+          setPetsData(response.data.data.docs);
+        } else if (categoriesData === 'favorite') {
+          response = await axios.get(
+            `${import.meta.env.VITE_BACKEND_BASE_URL}/api/notices/favorite`,
+            {
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+            },
+          );
+          setPetsData(response.data.data.favoriteNoties);
         } else {
           response = await axios.get(
             `${import.meta.env.VITE_BACKEND_BASE_URL}/api/notices/my/adds`,
@@ -126,8 +137,8 @@ const NoticesPage = () => {
               },
             },
           );
+          setPetsData(response.data.data.docs);
         }
-        setPetsData(response.data.data.docs);
       } catch (error) {
         return null;
       }
@@ -135,6 +146,7 @@ const NoticesPage = () => {
     };
     getNotices();
   }, [categoriesData, filtersData]);
+
   /*
   useEffect(() => {
     const getAdds = async () => {
@@ -157,6 +169,7 @@ const NoticesPage = () => {
     getAdds();
   }, []);
 */
+
 
   useEffect(() => {
     if (petsData) {
