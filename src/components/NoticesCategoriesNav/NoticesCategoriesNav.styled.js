@@ -13,7 +13,7 @@ const HiddenRadio = styled.input`
   display: none;
 `;
 
-const UnCheckedOption = styled.label`
+const UnCheckedOption = styled(NavLink)`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -33,7 +33,7 @@ const UnCheckedOption = styled.label`
   letter-spacing: 0.56px;
 `;
 
-const CheckedOption = styled.label`
+const CheckedOption = styled(NavLink)`
   display: flex;
   justify-content: center;
   align-items: center;
