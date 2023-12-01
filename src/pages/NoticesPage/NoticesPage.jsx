@@ -194,7 +194,7 @@ const NoticesPage = () => {
   return (
     <div>
       <Header>Find your favorite pet</Header>
-      <NoticesSearch />
+      {/* <NoticesSearch /> */}
       <NoticePageContrtols>
         <NoticesCategoriesNav
           isLoggedIn={IS_LOGGED_IN}
