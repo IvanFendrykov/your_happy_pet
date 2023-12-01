@@ -109,7 +109,10 @@ const NoticesPage = () => {
               categoriesData && 'category=' + categoriesData
             }`,
           );
-          setPetsData(response.data.data.docs);
+          response = await response.data;
+          response = await response.data;
+          response = await response.docs;
+          setPetsData(response);
         } else if (categoriesData === 'favorite') {
           response = await axios.get(
             `${import.meta.env.VITE_BACKEND_BASE_URL}/api/notices/favorite`,
@@ -119,7 +122,10 @@ const NoticesPage = () => {
               },
             },
           );
-          setPetsData(response.data.data.favoriteNoties);
+          response = await response.data;
+          response = await response.data;
+          response = await response.favoriteNoties;
+          setPetsData(response);
         } else {
           response = await axios.get(
             `${import.meta.env.VITE_BACKEND_BASE_URL}/api/notices/my/adds`,
@@ -129,8 +135,12 @@ const NoticesPage = () => {
               },
             },
           );
-          setPetsData(response.data.data.docs);
+          response = await response.data;
+          response = await response.data;
+          response = await response.docs;
+          setPetsData(response);
         }
+        console.log(response);
       } catch (error) {
         return null;
       }
@@ -161,6 +171,7 @@ const NoticesPage = () => {
           onChange={handleCategoriesData}
         />
         <NoticePageContrtolsRight>
+          <NoticesFilters onChange={handleFiltersData} />
           <AddPetBtn type="button" onClick={handleAddPetClick}>
             <AddPetLink>
               Add pet
@@ -168,17 +179,10 @@ const NoticesPage = () => {
                 <use xlinkHref={`${icons}#plus-small-white`} />
               </svg>
             </AddPetLink>
-            <NoticesFilters onChange={handleFiltersData} />
           </AddPetBtn>
         </NoticePageContrtolsRight>
       </NoticePageContrtols>
-      <NoticesCategoriesList
-        petsData={petsData}
-        isLoggedIn={IS_LOGGED_IN}
-        onAddToFavourite={onAddToFavourite}
-        onDelete={onDelete}
-        onLearnMore={onLearnMore}
-      />
+
       {isUnauthorizeModalOpen && !IS_LOGGED_IN && (
         <ModalUnauthorize toggleUnauthorizeModal={toggleUnauthorizeModal} />
       )}
@@ -187,7 +191,13 @@ const NoticesPage = () => {
   );
 };
 /*
-
+      <NoticesCategoriesList
+        petsData={petsData}
+        isLoggedIn={IS_LOGGED_IN}
+        onAddToFavourite={onAddToFavourite}
+        onDelete={onDelete}
+        onLearnMore={onLearnMore}
+      />
       
 
 
