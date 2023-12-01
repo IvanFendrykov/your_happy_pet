@@ -33,6 +33,7 @@ const NoticesPage = () => {
   const dispatch = useDispatch();
   const token = useSelector((state) => state.auth.token);
   const IS_LOGGED_IN = useSelector((state) => state.auth.isLoggedIn);
+
   const handleCategoriesData = (data) => {
     setCategoriesData(data);
   };
