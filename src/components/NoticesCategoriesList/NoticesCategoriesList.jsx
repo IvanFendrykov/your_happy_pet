@@ -8,7 +8,6 @@ const NoticesCategoriesList = ({
   onAddToFavourite,
   onDelete,
   onLearnMore,
-  myAdds,
 }) => {
   return (
     <CategoriesList>
