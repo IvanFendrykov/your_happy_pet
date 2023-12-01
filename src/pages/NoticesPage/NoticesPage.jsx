@@ -8,7 +8,6 @@ import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { NoticesCategoriesNav } from '../../components/NoticesCategoriesNav/NoticesCategoriesNav';
 import ModalUnauthorize from '../../components/ModalUnauthorize/ModalUnauthorize';
-import { NoticesFilters } from '../../components/NoticesFilters/NoticesFilters';
 import { NoticesCategoriesList } from '../../components/NoticesCategoriesList/NoticesCategoriesList';
 import icons from '../../images/symbol-defs.svg';
 import {
@@ -202,7 +201,6 @@ const NoticesPage = () => {
           onChange={handleCategoriesData}
         />
         <NoticePageContrtolsRight>
-          <NoticesFilters onChange={handleFiltersData} />
           <AddPetBtn type="button" onClick={handleAddPetClick}>
             <AddPetLink>
               Add pet
