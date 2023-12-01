@@ -1,8 +1,3 @@
-//import { ModalNotice } from '../../components/ModalNotice/ModalNotice';
-//import { ModalNoticeMore } from '../../components/ModalNotice/ModalNoticeMore';
-//import { ModalNoticeRemove } from '../../components/ModalNotice/ModalNoticeRemove';
-//import { Link } from 'react-router-dom';
-
 import { NoticesSearch } from '../../components/NoticesSearch/NoticesSearch';
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
@@ -169,7 +164,6 @@ const NoticesPage = () => {
     getAdds();
   }, []);
 */
-
 
   useEffect(() => {
     if (petsData) {
