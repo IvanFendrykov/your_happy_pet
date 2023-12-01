@@ -103,6 +103,7 @@ const NoticesPage = () => {
     const getNotices = async () => {
       try {
         let response;
+
         if (categoriesData !== 'own' && categoriesData !== 'favorite') {
           response = await axios.get(
             `${import.meta.env.VITE_BACKEND_BASE_URL}/api/notices?${
@@ -112,7 +113,6 @@ const NoticesPage = () => {
           response = await response.data;
           response = await response.data;
           response = await response.docs;
-          setPetsData(response);
         } else if (categoriesData === 'favorite') {
           response = await axios.get(
             `${import.meta.env.VITE_BACKEND_BASE_URL}/api/notices/favorite`,
@@ -125,7 +125,6 @@ const NoticesPage = () => {
           response = await response.data;
           response = await response.data;
           response = await response.favoriteNoties;
-          setPetsData(response);
         } else {
           response = await axios.get(
             `${import.meta.env.VITE_BACKEND_BASE_URL}/api/notices/my/adds`,
@@ -138,8 +137,9 @@ const NoticesPage = () => {
           response = await response.data;
           response = await response.data;
           response = await response.docs;
-          setPetsData(response);
         }
+
+        setPetsData(response);
         console.log(response);
       } catch (error) {
         return null;
