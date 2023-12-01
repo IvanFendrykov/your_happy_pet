@@ -20,7 +20,6 @@ import VortexLoader from '../../components/VortexLoader/VortexLoader';
 import { setFavoriteNotice } from '../../redux/auth/operation';
 
 const NoticesPage = () => {
-  const [myAdds, setMyAdds] = useState(null);
   const [petsData, setPetsData] = useState(null);
   const navigate = useNavigate();
   const [categoriesData, setCategoriesData] = useState('');
@@ -28,8 +27,6 @@ const NoticesPage = () => {
     age: 'any age',
     gender: '',
   });
-
-  const [editedPetsData, setEditedPetsData] = useState(['']);
 
   const [notice, setNotice] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -141,28 +138,6 @@ const NoticesPage = () => {
     };
     getNotices();
   }, [categoriesData, filtersData]);
-
-  useEffect(() => {
-    if (petsData) {
-      const newEditedPetsData = petsData.filter(
-        (pet) =>
-          (!categoriesData || pet.category === categoriesData) &&
-          isAgeCategory(pet, filtersData.age) &&
-          (!filtersData.gender || pet.sex === filtersData.gender),
-      );
-      const newEditedPetsDataWithAge = newEditedPetsData.map((item) => {
-        const petAge = calcYearDifference(item.birthDay);
-        const petAgeString = `${petAge} year${!(petAge === 1) ? 's' : ''}`;
-        return { ...item, age: petAgeString };
-      });
-      setEditedPetsData(newEditedPetsDataWithAge);
-      setIsLoaded(true);
-    }
-  }, [petsData, categoriesData, filtersData]);
-
-  if (!isLoaded) {
-    return <VortexLoader />;
-  }
 
   const handleAddPetClick = () => {
     if (!IS_LOGGED_IN) {
