@@ -2,7 +2,7 @@
 //import { ModalNoticeMore } from '../../components/ModalNotice/ModalNoticeMore';
 //import { ModalNoticeRemove } from '../../components/ModalNotice/ModalNoticeRemove';
 //import { Link } from 'react-router-dom';
-import { NoticesSearch } from '../../components/NoticesSearch/NoticesSearch';
+import  NoticesSearch  from '../../components/NoticesSearch/NoticesSearch';
 import { useEffect, useState } from 'react';
 import { NoticesCategoriesNav } from '../../components/NoticesCategoriesNav/NoticesCategoriesNav';
 import { NoticesFilters } from '../../components/NoticesFilters/NoticesFilters';
@@ -35,6 +35,8 @@ const NoticesPage = () => {
   const dispatch = useDispatch()
   const token = useSelector((state) => state.auth.token);
   const IS_LOGGED_IN = useSelector((state) => state.auth.isLoggedIn);;
+
+
   const handleCategoriesData = (data) => {
     setCategoriesData(data);
   };
@@ -93,21 +95,26 @@ const NoticesPage = () => {
     setNotice(null)
   }
 
-  useEffect(() => {
-    const getNotices = async () => {
-      try {
-        const response = await axios.get(`${import.meta.env.VITE_BACKEND_BASE_URL}/api/notices`);
-        setPetsData(response.data.data.docs);
-      } catch (error) {
-        console.error("Error fetching user:", error);
-        setIsLoaded(true)
-        return null;
-      }
-    };
+useEffect(() => {
+  const getNotices = async () => {
+    try {
+      const response = await axios.get(
+        `${import.meta.env.VITE_BACKEND_BASE_URL}/api/notices?${
+          categoriesData && 'category=' + categoriesData
+        }`,
+      );
+      setPetsData(response.data.data.docs);
+    } catch (error) {
+      return null;
+    }
+    setIsLoaded(true);
+  };
+  getNotices();
+}, [categoriesData, filtersData]);
 
-    getNotices();
-
-  }, []);
+    // const onFormSubmit = (query) => {
+    //   setQuery(query);
+    // };
 
   useEffect(() => {
     if (petsData) {
@@ -134,7 +141,9 @@ const NoticesPage = () => {
   return (
     <div>
       <Header>Find your favorite pet</Header>
-      <NoticesSearch />
+      <NoticesSearch 
+      // onFormSubmit={onFormSubmit} 
+      />
       <NoticePageContrtols>
         <NoticesCategoriesNav
           isLoggedIn={IS_LOGGED_IN}
