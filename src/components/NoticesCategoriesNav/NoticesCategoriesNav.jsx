@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { NavForm } from './NoticesCategoriesNav.styled';
 import { NavOption } from './NavOption';
 
@@ -14,21 +14,23 @@ const NoticesCategoriesNav = ({ isLoggedIn, onChange }) => {
 
   return (
     <NavForm onInput={handleInput}>
-      <NavOption
-        name="categoryOption"
-        value=""
-        checked={categoryData === ''}
-        defaultChecked={true}
-      >
-        all categories
-      </NavOption>
+      <Link to="/notices">
+        <NavOption
+          name="categoryOption"
+          value=""
+          checked={categoryData === ''}
+          defaultChecked={true}
+        >
+          all categories
+        </NavOption>
+      </Link>
       <NavOption
         name="categoryOption"
         value="sell"
         checked={categoryData === 'sell'}
         defaultChecked={false}
       >
-        sell
+        <Link to="/notices/sell">sell</Link>
       </NavOption>
       <NavOption
         name="categoryOption"
@@ -36,7 +38,7 @@ const NoticesCategoriesNav = ({ isLoggedIn, onChange }) => {
         checked={categoryData === 'lostFound'}
         defaultChecked={false}
       >
-        lost/found
+        <Link to="/notices/lost-found">lost/found</Link>
       </NavOption>
       <NavOption
         name="categoryOption"
@@ -44,7 +46,7 @@ const NoticesCategoriesNav = ({ isLoggedIn, onChange }) => {
         checked={categoryData === 'inGoodHands'}
         defaultChecked={false}
       >
-        in good hands
+        <Link to="/notices">in good hands</Link>
       </NavOption>
       {isLoggedIn && (
         <NavOption
@@ -53,7 +55,7 @@ const NoticesCategoriesNav = ({ isLoggedIn, onChange }) => {
           checked={categoryData === 'favorite'}
           defaultChecked={false}
         >
-          favorite ads
+          <Link to="/notices">favorite ads</Link>
         </NavOption>
       )}
       {isLoggedIn && (
@@ -63,7 +65,7 @@ const NoticesCategoriesNav = ({ isLoggedIn, onChange }) => {
           checked={categoryData === 'own'}
           defaultChecked={false}
         >
-          my ads
+          <Link to="/notices">my ads</Link>
         </NavOption>
       )}
     </NavForm>
