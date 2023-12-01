@@ -112,9 +112,6 @@ useEffect(() => {
   getNotices();
 }, [categoriesData, filtersData]);
 
-    // const onFormSubmit = (query) => {
-    //   setQuery(query);
-    // };
 
   useEffect(() => {
     if (petsData) {
@@ -142,7 +139,7 @@ useEffect(() => {
     <div>
       <Header>Find your favorite pet</Header>
       <NoticesSearch 
-      // onFormSubmit={onFormSubmit} 
+
       />
       <NoticePageContrtols>
         <NoticesCategoriesNav
