@@ -20,7 +20,7 @@ import VortexLoader from '../../components/VortexLoader/VortexLoader';
 import { setFavoriteNotice } from '../../redux/auth/operation';
 
 const NoticesPage = () => {
-  const [petsData, setPetsData] = useState(null);
+  const [petsData, setPetsData] = useState([]);
   const navigate = useNavigate();
   const [categoriesData, setCategoriesData] = useState('');
   const [filtersData, setFiltersData] = useState({
