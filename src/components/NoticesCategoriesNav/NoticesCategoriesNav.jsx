@@ -31,16 +31,16 @@ const NoticesCategoriesNav = ({ isLoggedIn, onChange }) => {
       </NavOption>
       <NavOption
         name="categoryOption"
-        value="lost-found"
-        checked={categoryData === 'lost-found'}
+        value="lostFound"
+        checked={categoryData === 'lostFound'}
         defaultChecked={false}
       >
         lost/found
       </NavOption>
       <NavOption
         name="categoryOption"
-        value="for-free"
-        checked={categoryData === 'for-free'}
+        value="inGoodHands"
+        checked={categoryData === 'inGoodHands'}
         defaultChecked={false}
       >
         in good hands
