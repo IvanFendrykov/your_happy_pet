@@ -27,17 +27,3 @@ const NoticesCategoriesList = ({
 };
 
 export { NoticesCategoriesList };
-/*
-      {
-        petsData.map((petData) => (
-          <NoticesCategoriesItem
-            petData={petData}
-            onAddToFavourite={onAddToFavourite}
-            onDelete={onDelete}
-            onLearnMore={onLearnMore}
-            key={nanoid()}
-            id={petData._id}
-            isLoggedIn={isLoggedIn}
-          />
-        ));
-      }*/
