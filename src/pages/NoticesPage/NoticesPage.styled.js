@@ -51,4 +51,7 @@ const AddPetLink = styled(NavLink)`
   letter-spacing: 0.64px;
 `;
 
-export { Header, NoticePageContrtols, NoticePageContrtolsRight, AddPetLink };
+const AddPetBtn = styled.div`
+  row-gap: 12px;
+`;
+export { Header, NoticePageContrtols, NoticePageContrtolsRight, AddPetLink, AddPetBtn };

@@ -11,15 +11,22 @@ import {
   LogoutBtn,
 } from './Menu.styled';
 import { CiLogout } from 'react-icons/ci';
+import { useAuth } from '../../hooks/useAuth';
+import { Img } from '../UserNav/UserNav.styled';
 
 export const MobileMenu = ({ isLoggedIn, user, toggleModal }) => {
+  const { profilePic } = useAuth();
   return (
     <>
       <Middle>
         {isLoggedIn ? (
           <MenuNavBtnUser user="true">
             <Link to="/user">
-              <img src={icon} alt="icon" />
+              {profilePic !== null ? (
+                <Img src={profilePic} alt="avatar" />
+              ) : (
+                <img src={icon} alt="icon" />
+              )}
             </Link>
             <User>{user}</User>
           </MenuNavBtnUser>

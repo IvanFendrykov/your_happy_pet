@@ -2,9 +2,12 @@
 //import { ModalNoticeMore } from '../../components/ModalNotice/ModalNoticeMore';
 //import { ModalNoticeRemove } from '../../components/ModalNotice/ModalNoticeRemove';
 //import { Link } from 'react-router-dom';
+
 import { NoticesSearch } from '../../components/NoticesSearch/NoticesSearch';
-import { Suspense, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import { NoticesCategoriesNav } from '../../components/NoticesCategoriesNav/NoticesCategoriesNav';
+import ModalUnauthorize from '../../components/ModalUnauthorize/ModalUnauthorize';
 import { NoticesFilters } from '../../components/NoticesFilters/NoticesFilters';
 import { NoticesCategoriesList } from '../../components/NoticesCategoriesList/NoticesCategoriesList';
 import icons from '../../images/symbol-defs.svg';
@@ -13,6 +16,7 @@ import {
   NoticePageContrtols,
   NoticePageContrtolsRight,
   AddPetLink,
+  AddPetBtn,
 } from './NoticesPage.styled';
 import { ModalNoticeMore } from '../../components/ModalNotice/ModalNoticeMore';
 import { useDispatch, useSelector } from 'react-redux';
@@ -23,14 +27,18 @@ import { setFavoriteNotice } from '../../redux/auth/operation';
 
 const NoticesPage = () => {
   const [petsData, setPetsData] = useState(null);
+  const navigate = useNavigate();
   const [categoriesData, setCategoriesData] = useState('');
   const [filtersData, setFiltersData] = useState({
     age: 'any age',
     gender: '',
   });
+
   const [editedPetsData, setEditedPetsData] = useState(['']);
+
   const [notice, setNotice] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
+  const [isUnauthorizeModalOpen, setIsUnauthorizeModalOpen] = useState(false);
   const dispatch = useDispatch();
   const token = useSelector((state) => state.auth.token);
   const IS_LOGGED_IN = useSelector((state) => state.auth.isLoggedIn);
@@ -103,19 +111,18 @@ const NoticesPage = () => {
     const getNotices = async () => {
       try {
         const response = await axios.get(
-          `${import.meta.env.VITE_BACKEND_BASE_URL}/api/notices`,
+          `${import.meta.env.VITE_BACKEND_BASE_URL}/api/notices?${
+            categoriesData && 'category=' + categoriesData
+          }`,
         );
         setPetsData(response.data.data.docs);
-        console.log(response.data.data.docs);
       } catch (error) {
-        console.error('Error fetching user:', error);
-        setIsLoaded(true);
         return null;
       }
+      setIsLoaded(true);
     };
-
     getNotices();
-  }, []);
+  }, [categoriesData, filtersData]);
 
   useEffect(() => {
     if (petsData) {
@@ -138,6 +145,19 @@ const NoticesPage = () => {
   if (!isLoaded) {
     return <VortexLoader />;
   }
+
+  const handleAddPetClick = () => {
+    if (!IS_LOGGED_IN) {
+      toggleUnauthorizeModal();
+    } else {
+      navigate('/add-pet');
+    }
+  };
+
+  const toggleUnauthorizeModal = () => {
+    setIsUnauthorizeModalOpen((prevState) => !prevState);
+  };
+
   return (
     <div>
       <Header>Find your favorite pet</Header>
@@ -149,12 +169,14 @@ const NoticesPage = () => {
         />
         <NoticePageContrtolsRight>
           <NoticesFilters onChange={handleFiltersData} />
-          <AddPetLink to="/add-pet">
-            Add pet
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="#fff">
-              <use xlinkHref={`${icons}#plus-small-white`} />
-            </svg>
-          </AddPetLink>
+          <AddPetBtn type="button" onClick={handleAddPetClick}>
+            <AddPetLink>
+              Add pet
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="#fff">
+                <use xlinkHref={`${icons}#plus-small-white`} />
+              </svg>
+            </AddPetLink>
+          </AddPetBtn>
         </NoticePageContrtolsRight>
       </NoticePageContrtols>
       <NoticesCategoriesList
@@ -164,6 +186,9 @@ const NoticesPage = () => {
         onDelete={onDelete}
         onLearnMore={onLearnMore}
       />
+      {isUnauthorizeModalOpen && !IS_LOGGED_IN && (
+        <ModalUnauthorize toggleUnauthorizeModal={toggleUnauthorizeModal} />
+      )}
       {notice && <ModalNoticeMore notice={notice} onClose={onClose} />}
     </div>
   );

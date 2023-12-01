@@ -8,10 +8,11 @@ import AuthNav from 'components/AuthNav/AuthNav';
 import { useWindowSize } from '../../hooks/useResize';
 import { useAuth } from '../../hooks/useAuth';
 import { Menu } from '../Menu/Menu';
+import { Img } from '../UserNav/UserNav.styled';
 
 const Header = ({ handleClick }) => {
   const size = useWindowSize();
-  const { isLoggedIn, user } = useAuth();
+  const { isLoggedIn, user, profilePic } = useAuth();
 
   return (
     <Container>
@@ -31,7 +32,7 @@ const Header = ({ handleClick }) => {
         {size[0] >= 768 && size[0] < 1200 && isLoggedIn && (
           <div>
             <User to="/user">
-              <img src={icon} alt="icon" />
+            {profilePic !== null  ?  <Img src={profilePic} alt="avatar" /> : <img src={icon} alt="icon" /> }
               {user && <p>{user}</p>}
             </User>
           </div>
@@ -40,7 +41,7 @@ const Header = ({ handleClick }) => {
         {size[0] < 768 && isLoggedIn && (
           <div>
             <User to="/user">
-              <img src={icon} alt="icon" />
+            {profilePic !== null  ?  <Img src={profilePic} alt="avatar" /> : <img src={icon} alt="icon" /> }
             </User>
           </div>
         )}

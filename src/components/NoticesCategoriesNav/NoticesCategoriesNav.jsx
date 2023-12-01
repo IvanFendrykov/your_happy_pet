@@ -1,9 +1,11 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import { NavForm } from './NoticesCategoriesNav.styled';
 import { NavOption } from './NavOption';
+import { useNavigate } from 'react-router-dom';
 
 const NoticesCategoriesNav = ({ isLoggedIn, onChange }) => {
+  const navigate = useNavigate();
+
   const [categoryData, setCategoryData] = useState('');
   const handleInput = (event) => {
     event.preventDefault();
@@ -11,6 +13,14 @@ const NoticesCategoriesNav = ({ isLoggedIn, onChange }) => {
     setCategoryData(newCategoryData);
     onChange(newCategoryData);
   };
+
+  useEffect(() => {
+    if (categoryData) {
+      navigate(`/notices/${categoryData}`);
+    } else {
+      navigate(`/notices`);
+    }
+  });
 
   return (
     <NavForm onInput={handleInput}>
