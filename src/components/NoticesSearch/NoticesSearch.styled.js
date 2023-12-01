@@ -50,5 +50,22 @@ const SearchButton = styled.button`
   border: none;
   background: none;
 `;
+const CleareUpBtn = styled.button`
+  right: 13px;
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  border: none;
+  background: none;
 
-export { SearchForm, SearchInput, SearchButton };
+  transform: translateX(0);
+  ${'' /* opacity: ${({ query }) => (query ? 1 : 0)};
+
+  transition: opacity 300ms ${({ theme }) => theme.transition.main};
+
+  & svg {
+    stroke: ${({ theme }) => theme.colors.yellow};
+  } */}
+`;
+
+export { SearchForm, SearchInput, SearchButton, CleareUpBtn };
