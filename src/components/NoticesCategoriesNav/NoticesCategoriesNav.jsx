@@ -63,6 +63,7 @@ const NoticesCategoriesNav = ({ isLoggedIn, onChange }) => {
       )}
       {isLoggedIn && (
         <NavOption
+          to="/notices/own"
           name="categoryOption"
           value="own"
           checked={categoryData === 'own'}
