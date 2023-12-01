@@ -26,6 +26,7 @@ import VortexLoader from '../../components/VortexLoader/VortexLoader';
 import { setFavoriteNotice } from '../../redux/auth/operation';
 
 const NoticesPage = () => {
+  const [myAdds, setMyAdds] = useState(null);
   const [petsData, setPetsData] = useState(null);
   const navigate = useNavigate();
   const [categoriesData, setCategoriesData] = useState('');
@@ -110,11 +111,23 @@ const NoticesPage = () => {
   useEffect(() => {
     const getNotices = async () => {
       try {
-        const response = await axios.get(
-          `${import.meta.env.VITE_BACKEND_BASE_URL}/api/notices?${
-            categoriesData && 'category=' + categoriesData
-          }`,
-        );
+        let response;
+        if (categoriesData !== 'own') {
+          response = await axios.get(
+            `${import.meta.env.VITE_BACKEND_BASE_URL}/api/notices?${
+              categoriesData && 'category=' + categoriesData
+            }`,
+          );
+        } else {
+          response = await axios.get(
+            `${import.meta.env.VITE_BACKEND_BASE_URL}/api/notices/my/adds`,
+            {
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+            },
+          );
+        }
         setPetsData(response.data.data.docs);
       } catch (error) {
         return null;
@@ -123,7 +136,28 @@ const NoticesPage = () => {
     };
     getNotices();
   }, [categoriesData, filtersData]);
-
+  /*
+  useEffect(() => {
+    const getAdds = async () => {
+      try {
+        const response = await axios.get(
+          `${import.meta.env.VITE_BACKEND_BASE_URL}/api/notices/my/adds`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          },
+        );
+        setPetsData(response.data.data.docs);
+        console.log(response, 'Hello');
+      } catch (error) {
+        return null;
+      }
+      setIsLoaded(true);
+    };
+    getAdds();
+  }, []);
+*/
   useEffect(() => {
     if (petsData) {
       const newEditedPetsData = petsData.filter(
@@ -180,7 +214,7 @@ const NoticesPage = () => {
         </NoticePageContrtolsRight>
       </NoticePageContrtols>
       <NoticesCategoriesList
-        petsData={editedPetsData}
+        petsData={petsData}
         isLoggedIn={IS_LOGGED_IN}
         onAddToFavourite={onAddToFavourite}
         onDelete={onDelete}
