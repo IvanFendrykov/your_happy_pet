@@ -21,7 +21,6 @@ const reserveImg = 'https://i.seadn.io/gae/2hDpuTi-0AMKvoZJGd-yKWvK4tKdQr_kLIpB_
 
     useEffect(() => {
       fetchNews(1);
-      console.log(123);
       // fetchNewsByReqest("Cat", 1)
     }, [])
 

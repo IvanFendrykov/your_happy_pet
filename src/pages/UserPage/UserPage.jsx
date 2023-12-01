@@ -60,8 +60,8 @@ function UserPage() {
   const [imageUrl, setImageUrl] = useState(null);
   const [pets, setPets] = useState(null);
   const [showModal, setShowModal] = useState(null);
-  const { profilePic } = useAuth()
-  const { isLoading } = useAuth()
+  const { profilePic } = useAuth();
+  const { isLoading } = useAuth();
   const dispatch = useDispatch();
   const token = useSelector((state) => state.auth.token);
 
@@ -120,9 +120,9 @@ function UserPage() {
       editedUserFormData.append('image', fileImage);
     }
 
-    const response = dispatch(update({ token, editedUserFormData }))
-    setSelectedImage(null)
-    setFileImage(null)
+    const response = dispatch(update({ token, editedUserFormData }));
+    setSelectedImage(null);
+    setFileImage(null);
     setClicked(false);
     setEdit(false);
   };
@@ -132,8 +132,8 @@ function UserPage() {
   };
   const handleEditExit = (e) => {
     e.preventDefault();
-    setSelectedImage(null)
-    setFileImage(null)
+    setSelectedImage(null);
+    setFileImage(null);
     setEdit(false);
   };
   const onDelete = async (id) => {
@@ -144,7 +144,7 @@ function UserPage() {
           headers: {
             Authorization: `Bearer ${token}`,
           },
-        }
+        },
       );
       setPets((prevPets) => prevPets.filter((pet) => pet._id !== id));
     } catch (error) {
@@ -153,36 +153,41 @@ function UserPage() {
   };
 
   useEffect(() => {
-    setImageUrl(profilePic)
-  }, [profilePic])
-
+    setImageUrl(profilePic);
+  }, [profilePic]);
 
   useEffect(() => {
     const getPets = async () => {
       try {
-        const response = await axios.get(`${import.meta.env.VITE_BACKEND_BASE_URL}/api/myPet`, {
-          headers: {
-            'Content-Type': 'multipart/form-data',
-            Authorization: `Bearer ${token}`,
+        const response = await axios.get(
+          `${import.meta.env.VITE_BACKEND_BASE_URL}/api/myPet`,
+          {
+            headers: {
+              'Content-Type': 'multipart/form-data',
+              Authorization: `Bearer ${token}`,
+            },
           },
-        },);
+        );
         setPets(response.data.data.response.docs);
       } catch (error) {
-        console.error("Error fetching user:", error);
+        console.error('Error fetching user:', error);
         return null;
       }
     };
     const getUser = async () => {
       try {
-        const response = await axios.get(`${import.meta.env.VITE_BACKEND_BASE_URL}/api/auth/current`, {
-          headers: {
-            'Content-Type': 'multipart/form-data',
-            Authorization: `Bearer ${token}`,
+        const response = await axios.get(
+          `${import.meta.env.VITE_BACKEND_BASE_URL}/api/auth/current`,
+          {
+            headers: {
+              'Content-Type': 'multipart/form-data',
+              Authorization: `Bearer ${token}`,
+            },
           },
-        },);
+        );
         return response.data;
       } catch (error) {
-        console.error("Error fetching user:", error);
+        console.error('Error fetching user:', error);
         return null;
       }
     };
@@ -196,7 +201,7 @@ function UserPage() {
         setCurrentEmail(email || noDataPlaceHolder);
         setCurrentPhone(phone || noDataPlaceHolder);
         setCurrentCity(city || noDataPlaceHolder);
-        setImageUrl(profilePic || '')
+        setImageUrl(profilePic || '');
         setCurrentBday(birthDay || '');
         setFreshRegistered(freshRegistred)
       }
@@ -210,7 +215,6 @@ function UserPage() {
 
     fetchUserAndSetCurrentUser();
     getPets();
-
   }, [token]);
 
   const handleFileChange = (event) => {
@@ -234,13 +238,17 @@ function UserPage() {
           <H2>My information:</H2>
 
           <UserCardWrapper>
-            {isLoading &&
-              <LoaderWrapper><VortexLoader /></LoaderWrapper>
-            }
+            {isLoading && (
+              <LoaderWrapper>
+                <VortexLoader />
+              </LoaderWrapper>
+            )}
             <UserProfileImage>
-
-              {imageUrl ? <UserAvatar src={imageUrl} alt="User picture" /> : <PhotoDef />}
-
+              {imageUrl ? (
+                <UserAvatar src={imageUrl} alt="User picture" />
+              ) : (
+                <PhotoDef />
+              )}
 
               {clicked &&
                 (edit ? (
@@ -278,14 +286,13 @@ function UserPage() {
                           />
                         </>
                       )}
-                    </FileWrapper >
+                    </FileWrapper>
                     <EditExit onClick={handleEditExit}>
-                      Cancel photo  <X />
+                      Cancel photo <X />
                     </EditExit>
                   </div>
                 ) : (
                   <EditButton onClick={handleEdit} type="button">
-
                     <Camera />
 
                     <span>Edit photo</span>
@@ -348,7 +355,10 @@ function UserPage() {
             {clicked ? (
               <SaveButton onClick={submitForm}>Save</SaveButton>
             ) : (
-              <LogoutButton type='button' onClick={() => setShowModal(!showModal)}>
+              <LogoutButton
+                type="button"
+                onClick={() => setShowModal(!showModal)}
+              >
                 <Logout style={{ stroke: '#54ADFF', marginRight: '12px' }} />{' '}
                 Log Out
               </LogoutButton>
