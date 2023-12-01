@@ -19,7 +19,7 @@ const NavOption = ({ to, name, value, checked, defaultChecked, children }) => {
       </label>
     </CheckedOption>
   ) : (
-    <UnCheckedOption>
+    <UnCheckedOption to={to}>
       <label>
         <HiddenRadio type="radio" name={name} value={value} />
         {children}
