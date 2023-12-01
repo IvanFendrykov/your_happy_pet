@@ -33,7 +33,7 @@ const NoticesCategoriesNav = ({ isLoggedIn, onChange }) => {
         sell
       </NavOption>
       <NavOption
-        to="/notices/lost-found"
+        to="/notices/lostFound"
         name="categoryOption"
         value="lostFound"
         checked={categoryData === 'lostFound'}
