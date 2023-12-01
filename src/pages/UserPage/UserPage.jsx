@@ -46,7 +46,7 @@ import RegisterSuccess from '../../components/RegisterSuccess/RegisterSuccess';
 function UserPage() {
 
   const [freshRegistred, setFreshRegistered] = useState(false)
-  
+
 
   const [clicked, setClicked] = useState(false);
   const [edit, setEdit] = useState(false);
@@ -71,9 +71,9 @@ function UserPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
-      // if ( user && user.firstVisit ) {
-      setIsModalOpen(true);
-      setCongradModal(true);
+    // if ( user && user.firstVisit ) {
+    setIsModalOpen(true);
+    setCongradModal(true);
     // }
   }, []);
 
@@ -224,11 +224,11 @@ function UserPage() {
 
   return (
     <>
-         {freshRegistred && (
-        <Modal toggleModal={freshRegistred}>
-          <RegisterSuccess toggleModal={toggleModal} />
+      {freshRegistred && (
+        <Modal toggleModal={setFreshRegistered}>
+          <RegisterSuccess toggleModal={setFreshRegistered} />
         </Modal>
-      )} 
+      )}
       <Wrapper>
         <Section>
           <H2>My information:</H2>

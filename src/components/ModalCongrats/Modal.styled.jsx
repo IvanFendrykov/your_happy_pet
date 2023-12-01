@@ -27,9 +27,10 @@ export const ModalWindow = styled.div`
 `;
 
 export const BtnClose = styled.button`
-display: flex;
-margin-left: auto;
-outline: none;
+position: absolute;
+top: 24px;
+right: 24px;
+/* opacity: 0; */
 
 &:svg {
   fill: blue;

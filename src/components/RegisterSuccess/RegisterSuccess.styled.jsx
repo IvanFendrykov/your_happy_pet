@@ -11,7 +11,6 @@ justify-content: center;
 
 @media screen and (min-width: 768px) {
   width: 608px;
-  height: 354px;
 }
 `;
 
@@ -24,21 +23,22 @@ margin-bottom: 26px;
 
 @media screen and (min-width: 768px) {
   font-size: 36px;
-  margin-bottom: 38px;
+  margin-bottom: 60px;
 }
 `;
 
 export const Text = styled.p`
   
   font-weight: 500;
-  font-size: 18px;
+  font-size: 16px;
   line-height: 1.35;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
   margin-top: 16px;
   letter-spacing: 0.04em;
   color: ${({ theme }) => theme.colors.black};
   @media screen and (min-width: 768px) {
-    font-size: 20px;
+    font-size: 24px;
+    margin-bottom: 60px;
   }
 `;
 
@@ -51,7 +51,7 @@ export const Button = styled.button`
   padding: 8px;
   color: ${({ theme }) => theme.colors.white};
 
-  background-color: ${({ theme}) => theme.colors.blue};
+  background-color: ${({ theme }) => theme.colors.blue};
   border-color: ${({ theme }) => theme.colors.blue};
   border-style: solid;
   border-radius: 40px;
