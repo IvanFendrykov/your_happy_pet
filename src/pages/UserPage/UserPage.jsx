@@ -67,24 +67,6 @@ function UserPage() {
 
   const noDataPlaceHolder = 'No info';
 
-  const [congradModal, setCongradModal] = useState(false);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  useEffect(() => {
-    // if ( user && user.firstVisit ) {
-    setIsModalOpen(true);
-    setCongradModal(true);
-    // }
-  }, []);
-
-  const toggleModal = () => {
-    setIsModalOpen(prevState => !prevState);
-    setCongradModal(prevState => !prevState);
-    // dispatch(changeStatus({ firstVisit: false }));
-  };
-
-
-
 
   const toggleForm = (e) => {
     e.preventDefault();
@@ -154,7 +136,12 @@ function UserPage() {
 
   useEffect(() => {
     setImageUrl(profilePic);
-  }, [profilePic]);
+    if (freshRegistred) {
+      const editedUserFormData = new FormData();
+      editedUserFormData.append('freshRegistred', false);
+      dispatch(update({ token, editedUserFormData }));
+    }
+  }, [profilePic, freshRegistred]);
 
   useEffect(() => {
     const getPets = async () => {
@@ -204,12 +191,6 @@ function UserPage() {
         setImageUrl(profilePic || '');
         setCurrentBday(birthDay || '');
         setFreshRegistered(freshRegistred)
-      }
-      if (freshRegistred) {
-        console.log("first")
-        const editedUserFormData = new FormData()
-        editedUserFormData.append('freshRegistred', false);
-        dispatch(update({ token, editedUserFormData }))
       }
     };
 
