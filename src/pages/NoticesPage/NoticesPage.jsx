@@ -67,6 +67,7 @@ const NoticesPage = () => {
     }
     dispatch(setFavoriteNotice({ token, noticeId }));
   };
+
   const onDelete = async (id) => {
     console.log('onDeleteFromFavourite' + id);
     try {
