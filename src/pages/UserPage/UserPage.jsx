@@ -39,8 +39,15 @@ import { update } from '../../redux/auth/operation';
 import { useAuth } from '../../hooks/useAuth';
 import VortexLoader from '../../components/VortexLoader/VortexLoader';
 
+import Modal from '../../components/ModalCongrats/Modal';
+import RegisterSuccess from '../../components/RegisterSuccess/RegisterSuccess';
+
 
 function UserPage() {
+
+  const [freshRegistred, setFreshRegistered] = useState(false)
+  
+
   const [clicked, setClicked] = useState(false);
   const [edit, setEdit] = useState(false);
   const [currentName, setCurrentName] = useState('');
@@ -59,6 +66,25 @@ function UserPage() {
   const token = useSelector((state) => state.auth.token);
 
   const noDataPlaceHolder = 'No info';
+
+  const [congradModal, setCongradModal] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  useEffect(() => {
+      // if ( user && user.firstVisit ) {
+      setIsModalOpen(true);
+      setCongradModal(true);
+    // }
+  }, []);
+
+  const toggleModal = () => {
+    setIsModalOpen(prevState => !prevState);
+    setCongradModal(prevState => !prevState);
+    // dispatch(changeStatus({ firstVisit: false }));
+  };
+
+
+
 
   const toggleForm = (e) => {
     e.preventDefault();
@@ -164,7 +190,7 @@ function UserPage() {
     const fetchUserAndSetCurrentUser = async () => {
       const user = await getUser();
       if (user) {
-        const { username, email, birthDay, phone, city, profilePic } = user;
+        const { username, email, birthDay, phone, city, profilePic, freshRegistred } = user;
 
         setCurrentName(username || noDataPlaceHolder);
         setCurrentEmail(email || noDataPlaceHolder);
@@ -172,6 +198,13 @@ function UserPage() {
         setCurrentCity(city || noDataPlaceHolder);
         setImageUrl(profilePic || '')
         setCurrentBday(birthDay || '');
+        setFreshRegistered(freshRegistred)
+      }
+      if (freshRegistred) {
+        console.log("first")
+        const editedUserFormData = new FormData()
+        editedUserFormData.append('freshRegistred', false);
+        dispatch(update({ token, editedUserFormData }))
       }
     };
 
@@ -191,6 +224,11 @@ function UserPage() {
 
   return (
     <>
+         {freshRegistred && (
+        <Modal toggleModal={freshRegistred}>
+          <RegisterSuccess toggleModal={toggleModal} />
+        </Modal>
+      )} 
       <Wrapper>
         <Section>
           <H2>My information:</H2>
