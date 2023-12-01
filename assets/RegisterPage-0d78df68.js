@@ -1,4 +1,4 @@
-import{s as r,L as U,c as q,r as c,u as M,j as s,n as k,d as Z,b as B,e as O,V as W}from"./index-87a0f241.js";import{F as G,a as N,S as u,b as v,c as C,d as H}from"./cross-smal-6889de6d.js";const J=r.form`
+import{s as r,L as U,c as q,r as c,u as M,j as s,n as k,d as Z,b as B,e as O,V as W}from"./index-cfc62993.js";import{F as G,a as N,S as v,b as C,c as H}from"./check-good-54c25b97.js";import{S as u}from"./cross-smal-df994e5f.js";const J=r.form`
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -221,4 +221,4 @@ flex-direction: row-reverse;
     box-shadow: 3px 8px 14px rgba(136, 198, 253, 0.19);
     border-radius: 20px;
   }
-`,Pe=()=>{const e=B(O);return s.jsx(ue,{children:s.jsxs(be,{children:[e&&s.jsx(W,{}),s.jsx(ce,{})]})})};export{Pe as default};
+`,ke=()=>{const e=B(O);return s.jsx(ue,{children:s.jsxs(be,{children:[e&&s.jsx(W,{}),s.jsx(ce,{})]})})};export{ke as default};

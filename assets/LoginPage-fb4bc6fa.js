@@ -1,4 +1,4 @@
-import{s as t,L as y,c as j,u as F,r as E,j as e,l as k}from"./index-87a0f241.js";import{a as $,S as C,d as P,b as D,c as v}from"./cross-smal-6889de6d.js";var g={};/**
+import{s as t,L as y,c as j,u as F,r as E,j as e,l as k}from"./index-cfc62993.js";import{a as $,c as C,S as P,b as D}from"./check-good-54c25b97.js";import{S as v}from"./cross-smal-df994e5f.js";var g={};/**
  * @license React
  * react-jsx-dev-runtime.production.min.js
  *
@@ -6,12 +6,12 @@ import{s as t,L as y,c as j,u as F,r as E,j as e,l as k}from"./index-87a0f241.js
  *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
- */var A=Symbol.for("react.fragment");g.Fragment=A;g.jsxDEV=void 0;const L=t.form`
+ */var A=Symbol.for("react.fragment");g.Fragment=A;g.jsxDEV=void 0;const S=t.form`
   height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-`,S=t.h1`
+`,L=t.h1`
   font-weight: 500;
   font-size: 36px;
   line-height: 1.36;
@@ -254,7 +254,7 @@ color:#888888;
   color: ${({theme:i})=>i.colors.blue};
   display: inline;
   cursor: pointer;
-`,N=i=>{const a={};return i.email?/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(i.email)||(a.email="Enter a valid Email"):a.email="This field is required",i.password?i.password.length<8&&(a.password="Password must be at least 8 characters long"):a.password="This field is required",a},O={email:"",password:""},H=()=>{const i=j(),a=F(),[r,h]=E.useState(!1),w=()=>{h(s=>!s)},c=(s,n,o)=>{const{name:p,value:l}=s.target;n({...o,[p]:l})},f=async(s,{setSubmitting:n})=>{try{const o={email:s.email,password:s.password};(await i(k(o))).status===200&&a("/user")}catch(o){console.error("Error caught:",o)}finally{n(!1)}};return e.jsx($,{initialValues:O,validate:N,onSubmit:f,children:({values:s,errors:n,touched:o,handleBlur:p,handleSubmit:l,isSubmitting:b,resetForm:u,setValues:x})=>e.jsxs(L,{onSubmit:l,children:[e.jsx(S,{children:"Login"}),e.jsxs(z,{error:n.email&&o.email,children:[e.jsxs(V,{error:n.email&&o.email,style:{borderColor:n.email&&o.email?"#F43F5E":"#54ADFF"},children:[e.jsx(I,{type:"string",name:"email",placeholder:"Email",value:s.email,onChange:d=>c(d,x,s),onBlur:p,error:n.email&&o.email,style:{color:"#888"}}),e.jsx(T,{children:n.email&&o.email&&s.email&&e.jsx(C,{onClick:()=>{u({values:{...s,email:""}})}})})]}),n.email&&o.email&&e.jsx(m,{name:"email",children:n.email})]}),e.jsxs(_,{error:n.password&&o.password,children:[e.jsxs(Y,{children:[e.jsx(q,{type:r?"text":"password",name:"password",placeholder:"Password",value:s.password,onChange:d=>c(d,x,s),onBlur:d=>{p(d),x({...s,isPasswordValid:!0})},error:n.password&&o.password?"true":"false",valid:!n.password&&o.password&&s.isPasswordValid?"true":"false",style:{borderColor:n.password&&o.password?"#F43F5E":!n.password&&o.password&&s.isPasswordValid?"#00C3AD":"#54ADFF"}}),e.jsx(R,{children:e.jsx(P,{"data-ispasswordvalid":!n.password&&o.password&&s.password.length>=8&&s.isPasswordValid,style:{stroke:!n.password&&o.password&&s.password.length>=8&&s.isPasswordValid?"#00C3AD":"#888",display:!n.password&&o.password&&s.password.length>=8&&s.isPasswordValid?"block":"none"}})}),e.jsx(Z,{children:e.jsx(B,{onClick:w,error:n.password&&o.password,style:{stroke:r?"#54ADFF":"#888"},children:r?e.jsx(D,{style:{cursor:"pointer"}}):e.jsx(v,{style:{cursor:"pointer"}})})})]}),n.password&&o.password&&e.jsx(m,{children:n.password}),!n.password&&o.password&&s.password.length>=8&&s.isPasswordValid&&e.jsx(M,{children:"Password is secure"})]}),e.jsx(W,{type:"submit",disabled:b,children:"Login"}),e.jsxs(G,{children:["Don't have an account? ",e.jsx(J,{to:"/register",children:"Register"})]})]})})},K=t.div`
+`,N=i=>{const a={};return i.email?/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(i.email)||(a.email="Enter a valid Email"):a.email="This field is required",i.password?i.password.length<8&&(a.password="Password must be at least 8 characters long"):a.password="This field is required",a},O={email:"",password:""},H=()=>{const i=j(),a=F(),[r,h]=E.useState(!1),w=()=>{h(s=>!s)},c=(s,n,o)=>{const{name:p,value:l}=s.target;n({...o,[p]:l})},f=async(s,{setSubmitting:n})=>{try{const o={email:s.email,password:s.password};(await i(k(o))).status===200&&a("/user")}catch(o){console.error("Error caught:",o)}finally{n(!1)}};return e.jsx($,{initialValues:O,validate:N,onSubmit:f,children:({values:s,errors:n,touched:o,handleBlur:p,handleSubmit:l,isSubmitting:b,resetForm:u,setValues:x})=>e.jsxs(S,{onSubmit:l,children:[e.jsx(L,{children:"Login"}),e.jsxs(z,{error:n.email&&o.email,children:[e.jsxs(V,{error:n.email&&o.email,style:{borderColor:n.email&&o.email?"#F43F5E":"#54ADFF"},children:[e.jsx(I,{type:"string",name:"email",placeholder:"Email",value:s.email,onChange:d=>c(d,x,s),onBlur:p,error:n.email&&o.email,style:{color:"#888"}}),e.jsx(T,{children:n.email&&o.email&&s.email&&e.jsx(v,{onClick:()=>{u({values:{...s,email:""}})}})})]}),n.email&&o.email&&e.jsx(m,{name:"email",children:n.email})]}),e.jsxs(_,{error:n.password&&o.password,children:[e.jsxs(Y,{children:[e.jsx(q,{type:r?"text":"password",name:"password",placeholder:"Password",value:s.password,onChange:d=>c(d,x,s),onBlur:d=>{p(d),x({...s,isPasswordValid:!0})},error:n.password&&o.password?"true":"false",valid:!n.password&&o.password&&s.isPasswordValid?"true":"false",style:{borderColor:n.password&&o.password?"#F43F5E":!n.password&&o.password&&s.isPasswordValid?"#00C3AD":"#54ADFF"}}),e.jsx(R,{children:e.jsx(C,{"data-ispasswordvalid":!n.password&&o.password&&s.password.length>=8&&s.isPasswordValid,style:{stroke:!n.password&&o.password&&s.password.length>=8&&s.isPasswordValid?"#00C3AD":"#888",display:!n.password&&o.password&&s.password.length>=8&&s.isPasswordValid?"block":"none"}})}),e.jsx(Z,{children:e.jsx(B,{onClick:w,error:n.password&&o.password,style:{stroke:r?"#54ADFF":"#888"},children:r?e.jsx(P,{style:{cursor:"pointer"}}):e.jsx(D,{style:{cursor:"pointer"}})})})]}),n.password&&o.password&&e.jsx(m,{children:n.password}),!n.password&&o.password&&s.password.length>=8&&s.isPasswordValid&&e.jsx(M,{children:"Password is secure"})]}),e.jsx(W,{type:"submit",disabled:b,children:"Login"}),e.jsxs(G,{children:["Don't have an account? ",e.jsx(J,{to:"/register",children:"Register"})]})]})})},K=t.div`
   display: flex;
   justify-content: center;
   padding-top: 80px;
@@ -274,4 +274,4 @@ color:#888888;
     box-shadow: 3px 8px 14px rgba(136, 198, 253, 0.19);
     border-radius: 20px;
   }
-`,ii=()=>e.jsx(K,{children:e.jsx(Q,{children:e.jsx(H,{})})});export{ii as default};
+`,ei=()=>e.jsx(K,{children:e.jsx(Q,{children:e.jsx(H,{})})});export{ei as default};
