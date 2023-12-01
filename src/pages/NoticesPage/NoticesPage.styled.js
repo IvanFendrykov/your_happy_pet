@@ -31,7 +31,7 @@ const NoticePageContrtolsRight = styled.div`
 `;
 
 const AddPetLink = styled(NavLink)`
-  height: 25px;
+  height: 35px;
   text-decoration: none;
   padding: 8px 20px;
   display: flex;
