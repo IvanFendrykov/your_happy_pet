@@ -89,9 +89,11 @@ const NoticesPage = () => {
       return null;
     }
   };
+
   const onLearnMore = (id) => {
     setNotice(petsData.find((pet) => pet._id === id));
   };
+
   const onClose = () => {
     setNotice(null);
   };
