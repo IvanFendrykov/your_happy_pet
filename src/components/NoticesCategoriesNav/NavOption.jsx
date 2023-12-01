@@ -5,21 +5,25 @@ import {
   UnCheckedOption,
 } from './NoticesCategoriesNav.styled';
 
-const NavOption = ({ name, value, checked, defaultChecked, children }) => {
+const NavOption = ({ to, name, value, checked, defaultChecked, children }) => {
   return checked ? (
-    <CheckedOption>
-      <HiddenRadio
-        type="radio"
-        name={name}
-        value={value}
-        defaultChecked={defaultChecked}
-      />
-      {children}
+    <CheckedOption to="sell">
+      <label>
+        <HiddenRadio
+          type="radio"
+          name={name}
+          value={value}
+          defaultChecked={defaultChecked}
+        />
+        {children}
+      </label>
     </CheckedOption>
   ) : (
     <UnCheckedOption>
-      <HiddenRadio type="radio" name={name} value={value} />
-      {children}
+      <label>
+        <HiddenRadio type="radio" name={name} value={value} />
+        {children}
+      </label>
     </UnCheckedOption>
   );
 };
