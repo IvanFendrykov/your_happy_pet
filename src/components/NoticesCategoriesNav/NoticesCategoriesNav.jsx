@@ -4,7 +4,7 @@ import { NavOption } from './NavOption';
 import { useNavigate } from 'react-router-dom';
 
 const NoticesCategoriesNav = ({ isLoggedIn, onChange }) => {
-const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const [categoryData, setCategoryData] = useState('');
   const handleInput = (event) => {
@@ -15,16 +15,37 @@ const navigate = useNavigate();
   };
 
   useEffect(() => {
-    if(categoryData) {
-      navigate(`/notices/${categoryData}`)
+    if (categoryData) {
+      navigate(`/notices/${categoryData}`);
     } else {
-      navigate(`/notices`)
+      navigate(`/notices`);
     }
-  })
-
+  });
+  /*
+  useEffect(() => {
+    const getAdds = async () => {
+      try {
+        const response = await axios.get(
+          `${import.meta.env.VITE_BACKEND_BASE_URL}/api/notices/my/adds`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          },
+        );
+        console.log(response, 'Eue');
+      } catch (error) {
+        return null;
+      }
+      setIsLoaded(true);
+    };
+    getAdds();
+  }, []);
+*/
   return (
     <NavForm onInput={handleInput}>
       <NavOption
+        to="/notices"
         name="categoryOption"
         value=""
         checked={categoryData === ''}
@@ -33,6 +54,7 @@ const navigate = useNavigate();
         all categories
       </NavOption>
       <NavOption
+        to="/notices/sell"
         name="categoryOption"
         value="sell"
         checked={categoryData === 'sell'}
@@ -41,26 +63,29 @@ const navigate = useNavigate();
         sell
       </NavOption>
       <NavOption
+        to="/notices/lostFound"
         name="categoryOption"
-        value="lost/found"
-        checked={categoryData === 'lost/found'}
+        value="lostFound"
+        checked={categoryData === 'lostFound'}
         defaultChecked={false}
       >
         lost/found
       </NavOption>
       <NavOption
+        to="/notices/inGoodHands"
         name="categoryOption"
-        value="in good hands"
-        checked={categoryData === 'in good hands'}
+        value="inGoodHands"
+        checked={categoryData === 'inGoodHands'}
         defaultChecked={false}
       >
         in good hands
       </NavOption>
       {isLoggedIn && (
         <NavOption
+          to="/notices/favorite"
           name="categoryOption"
-          value="favorite ads"
-          checked={categoryData === 'favorite ads'}
+          value="favorite"
+          checked={categoryData === 'favorite'}
           defaultChecked={false}
         >
           favorite ads
@@ -68,9 +93,10 @@ const navigate = useNavigate();
       )}
       {isLoggedIn && (
         <NavOption
+          to="/notices/own"
           name="categoryOption"
-          value="my ads"
-          checked={categoryData === 'my ads'}
+          value="own"
+          checked={categoryData === 'own'}
           defaultChecked={false}
         >
           my ads
