@@ -52,7 +52,9 @@ const NoticesCategoriesItem = ({
         <CategoryItemImage src={petData.image} alt="" />
         <CategoryOutput>{petData.category}</CategoryOutput>
         {isLoggedIn && (
-          <AddButton onClick={() => handleAddToFavourite(petData._id)}>
+          <AddButton onClick={() => handleAddToFavourite(petData._id)
+        
+          }>
             <svg
               width="24"
               height="24"
