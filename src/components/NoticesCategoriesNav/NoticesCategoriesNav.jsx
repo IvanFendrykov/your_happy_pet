@@ -14,48 +14,51 @@ const NoticesCategoriesNav = ({ isLoggedIn, onChange }) => {
 
   return (
     <NavForm onInput={handleInput}>
-      <Link to="/notices">
-        <NavOption
-          name="categoryOption"
-          value=""
-          checked={categoryData === ''}
-          defaultChecked={true}
-        >
-          all categories
-        </NavOption>
-      </Link>
       <NavOption
+        to="/notices"
+        name="categoryOption"
+        value=""
+        checked={categoryData === ''}
+        defaultChecked={true}
+      >
+        all categories
+      </NavOption>
+      <NavOption
+        to="/notices/sell"
         name="categoryOption"
         value="sell"
         checked={categoryData === 'sell'}
         defaultChecked={false}
       >
-        <Link to="/notices/sell">sell</Link>
+        sell
       </NavOption>
       <NavOption
+        to="/notices/lost-found"
         name="categoryOption"
         value="lostFound"
         checked={categoryData === 'lostFound'}
         defaultChecked={false}
       >
-        <Link to="/notices/lost-found">lost/found</Link>
+        lost/found
       </NavOption>
       <NavOption
+        to="/notices/inGoodHands"
         name="categoryOption"
         value="inGoodHands"
         checked={categoryData === 'inGoodHands'}
         defaultChecked={false}
       >
-        <Link to="/notices">in good hands</Link>
+        in good hands
       </NavOption>
       {isLoggedIn && (
         <NavOption
+          to="/notices/favourite"
           name="categoryOption"
-          value="favorite"
-          checked={categoryData === 'favorite'}
+          value="favourite"
+          checked={categoryData === 'favourite'}
           defaultChecked={false}
         >
-          <Link to="/notices">favorite ads</Link>
+          favorite ads
         </NavOption>
       )}
       {isLoggedIn && (
@@ -65,7 +68,7 @@ const NoticesCategoriesNav = ({ isLoggedIn, onChange }) => {
           checked={categoryData === 'own'}
           defaultChecked={false}
         >
-          <Link to="/notices">my ads</Link>
+          my ads
         </NavOption>
       )}
     </NavForm>
