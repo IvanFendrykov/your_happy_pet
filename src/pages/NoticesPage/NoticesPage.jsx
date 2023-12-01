@@ -107,29 +107,46 @@ const NoticesPage = () => {
     setNotice(null);
   };
 
-
-
   useEffect(() => {
-    const getAdds = async () => {
+    const getNotices = async () => {
       try {
-        const response = await axios.get(
-          `${import.meta.env.VITE_BACKEND_BASE_URL}/api/notices/my/adds`,
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
+        let response;
+        if (categoriesData !== 'own' && categoriesData !== 'favorite') {
+          response = await axios.get(
+            `${import.meta.env.VITE_BACKEND_BASE_URL}/api/notices?${
+              categoriesData && 'category=' + categoriesData
+            }`,
+          );
+          setPetsData(response.data.data.docs);
+        } else if (categoriesData === 'favorite') {
+          response = await axios.get(
+            `${import.meta.env.VITE_BACKEND_BASE_URL}/api/notices/favorite`,
+            {
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
             },
-          },
-        );
-        setPetsData(response.data.data.docs);
-        console.log(response, 'Hello');
+          );
+          setPetsData(response.data.data.favoriteNoties);
+        } else {
+          response = await axios.get(
+            `${import.meta.env.VITE_BACKEND_BASE_URL}/api/notices/my/adds`,
+            {
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+            },
+          );
+          setPetsData(response.data.data.docs);
+        }
       } catch (error) {
         return null;
       }
       setIsLoaded(true);
     };
-    getAdds();
-  }, []);
-*/
+    getNotices();
+  }, [categoriesData, filtersData]);
+
   useEffect(() => {
     if (petsData) {
       const newEditedPetsData = petsData.filter(
