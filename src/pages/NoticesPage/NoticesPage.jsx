@@ -183,6 +183,14 @@ const NoticesPage = () => {
         </NoticePageContrtolsRight>
       </NoticePageContrtols>
       There must be Notice List
+      <NoticesCategoriesList
+        petsData={petsData}
+        isLoggedIn={IS_LOGGED_IN}
+        onAddToFavourite={onAddToFavourite}
+        onDelete={onDelete}
+        onLearnMore={onLearnMore}
+      />
+      There must be Notice List
       {isUnauthorizeModalOpen && !IS_LOGGED_IN && (
         <ModalUnauthorize toggleUnauthorizeModal={toggleUnauthorizeModal} />
       )}
