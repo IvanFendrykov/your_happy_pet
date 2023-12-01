@@ -59,3 +59,9 @@ export const StyledLink = styled(Link)`
   align-items: center;
   text-decoration: none;
 `;
+
+export const Img = styled.img`
+ width: 28px;
+ height: 28px;
+ border-radius: 50%;
+`;
