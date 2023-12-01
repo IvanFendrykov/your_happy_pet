@@ -7,7 +7,7 @@ import {
 
 const NavOption = ({ to, name, value, checked, defaultChecked, children }) => {
   return checked ? (
-    <CheckedOption to="sell">
+    <CheckedOption to={to}>
       <label>
         <HiddenRadio
           type="radio"
