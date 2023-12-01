@@ -52,10 +52,10 @@ const NoticesCategoriesNav = ({ isLoggedIn, onChange }) => {
       </NavOption>
       {isLoggedIn && (
         <NavOption
-          to="/notices/favourite"
+          to="/notices/favorite"
           name="categoryOption"
-          value="favourite"
-          checked={categoryData === 'favourite'}
+          value="favorite"
+          checked={categoryData === 'favorite'}
           defaultChecked={false}
         >
           favorite ads
