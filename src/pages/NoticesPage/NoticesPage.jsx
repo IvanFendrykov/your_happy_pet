@@ -25,7 +25,7 @@ const NoticesPage = () => {
   const [categoriesData, setCategoriesData] = useState('');
   const [filtersData, setFiltersData] = useState({
     age: 'any age',
-    gender: '',
+    gender: 'male',
   });
 
   const [notice, setNotice] = useState(null);
