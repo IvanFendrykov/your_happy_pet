@@ -22,7 +22,7 @@ const NoticesCategoriesItem = ({
   onDelete,
   onLearnMore,
   isLoggedIn,
-  petData
+  petData,
 }) => {
   const [isHover, setIsHover] = useState(false);
 
@@ -52,14 +52,12 @@ const NoticesCategoriesItem = ({
         <CategoryItemImage src={petData.image} alt="" />
         <CategoryOutput>{petData.category}</CategoryOutput>
         {isLoggedIn && (
-          <AddButton onClick={() => handleAddToFavourite(petData._id)
-        
-          }>
+          <AddButton onClick={() => handleAddToFavourite(petData._id)}>
             <svg
               width="24"
               height="24"
               viewBox="0 0 24 24"
-            // fill={favourite ? '#54adff' : 'none'}
+              // fill={favourite ? '#54adff' : 'none'}
             >
               <use xlinkHref={`${icons}#heart`} />
             </svg>
@@ -93,7 +91,9 @@ const NoticesCategoriesItem = ({
             <Span>
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
                 <use
-                  xlinkHref={`${icons}#${petData.gender === 'male' ? 'male' : 'female'}`}
+                  xlinkHref={`${icons}#${
+                    petData.gender === 'male' ? 'male' : 'female'
+                  }`}
                 />
               </svg>
             </Span>
