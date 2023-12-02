@@ -31,6 +31,7 @@ const NoticesPage = () => {
   const [notice, setNotice] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [isUnauthorizeModalOpen, setIsUnauthorizeModalOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
   const dispatch = useDispatch();
   const token = useSelector((state) => state.auth.token);
   const IS_LOGGED_IN = useSelector((state) => state.auth.isLoggedIn);
@@ -40,6 +41,9 @@ const NoticesPage = () => {
   };
   const handleFiltersData = (data) => {
     setFiltersData(data);
+  };
+  const handleSearchQuery = (data) => {
+    setSearchQuery(data);
   };
 
   const onAddToFavourite = (noticeId) => {
@@ -145,7 +149,7 @@ const NoticesPage = () => {
   return (
     <div>
       <Header>Find your favorite pet</Header>
-      <NoticesSearch />
+      <NoticesSearch onSubmit={handleSearchQuery} />
       <NoticePageContrtols>
         <NoticesCategoriesNav
           isLoggedIn={IS_LOGGED_IN}
