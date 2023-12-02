@@ -20,7 +20,7 @@ const NoticesCategoriesNav = ({ isLoggedIn, onChange }) => {
     } else {
       navigate(`/notices`);
     }
-  });
+  }, []);
 
   return (
     <NavForm onInput={handleInput}>

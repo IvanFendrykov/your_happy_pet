@@ -125,7 +125,7 @@ const NoticesPage = () => {
         }
 
         setPetsData(response);
-        console.log(response);
+        //console.log(response);
       } catch (error) {
         return null;
       }
@@ -144,33 +144,25 @@ const NoticesPage = () => {
   /*
 
 ?age=${filtersData.age}&gender=${filtersData.gender}
+*/
 
   useEffect(() => {
-    const getNotices = async () => {
+    const getBySearch = async () => {
       try {
-        let response;
-
-        response = await axios.get(
+        const response = await axios.get(
           `${
             import.meta.env.VITE_BACKEND_BASE_URL
           }/api/notices/search/?search=${searchQuery}`,
         );
 
-        console.log(response);
-
-        response = await response.data;
-        response = await response.data;
-        response = await response.docs;
-
-        setPetsData(response);
+        setPetsData(response.data.docs);
       } catch (error) {
         return null;
       }
       setIsLoaded(true);
     };
-    getNotices();
+    getBySearch();
   }, [searchQuery]);
-*/
   const toggleUnauthorizeModal = () => {
     setIsUnauthorizeModalOpen((prevState) => !prevState);
   };

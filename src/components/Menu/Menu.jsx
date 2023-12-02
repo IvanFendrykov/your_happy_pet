@@ -30,11 +30,11 @@ export const Menu = ({ size }) => {
   const closeMenu = useCallback(() => {
     setOpenMenu(false);
   }, [setOpenMenu]);
-
+  /*
   useEffect(() => {
     closeMenu();
   }, [url, closeMenu]);
-
+*/
   return (
     <>
       <div>
