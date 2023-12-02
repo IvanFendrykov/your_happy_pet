@@ -93,14 +93,18 @@ const NoticesPage = () => {
           response = await axios.get(
             `${import.meta.env.VITE_BACKEND_BASE_URL}/api/notices?${
               categoriesData && 'category=' + categoriesData
-            }`,
+            }?age=${filtersData.age}&gender=${filtersData.gender}`,
           );
           response = await response.data;
           response = await response.data;
           response = await response.docs;
         } else if (categoriesData === 'favorite') {
           response = await axios.get(
-            `${import.meta.env.VITE_BACKEND_BASE_URL}/api/notices/favorite`,
+            `${
+              import.meta.env.VITE_BACKEND_BASE_URL
+            }/api/notices/favorite?age=${filtersData.age}&gender=${
+              filtersData.gender
+            }`,
             {
               headers: {
                 Authorization: `Bearer ${token}`,
@@ -112,7 +116,9 @@ const NoticesPage = () => {
           response = await response.favoriteNoties;
         } else {
           response = await axios.get(
-            `${import.meta.env.VITE_BACKEND_BASE_URL}/api/notices/my/adds`,
+            `${import.meta.env.VITE_BACKEND_BASE_URL}/api/notices/my/adds?age=${
+              filtersData.age
+            }&gender=${filtersData.gender}`,
             {
               headers: {
                 Authorization: `Bearer ${token}`,
