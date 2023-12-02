@@ -142,6 +142,30 @@ const NoticesPage = () => {
     }
   };
 
+  useEffect(() => {
+    const getNotices = async () => {
+      try {
+        let response;
+
+        response = await axios.get(
+          `${
+            import.meta.env.VITE_BACKEND_BASE_URL
+          }..../api/notices/search/?search=${searchQuery}`,
+        );
+        response = await response.data;
+        response = await response.data;
+        response = await response.docs;
+
+        setPetsData(response);
+        console.log(response);
+      } catch (error) {
+        return null;
+      }
+      setIsLoaded(true);
+    };
+    getNotices();
+  }, [searchQuery]);
+
   const toggleUnauthorizeModal = () => {
     setIsUnauthorizeModalOpen((prevState) => !prevState);
   };
