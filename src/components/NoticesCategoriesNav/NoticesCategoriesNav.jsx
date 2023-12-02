@@ -22,6 +22,7 @@ const NoticesCategoriesNav = ({ isLoggedIn, onChange }) => {
     }
   });
   /*
+
   useEffect(() => {
     const getAdds = async () => {
       try {
