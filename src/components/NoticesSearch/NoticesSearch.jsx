@@ -2,7 +2,7 @@ import { useState } from 'react';
 import icons from '../../images/symbol-defs.svg';
 import { SearchForm, SearchInput, SearchButton } from './NoticesSearch.styled';
 
-const NoticesSearch = (onSubmit) => {
+const NoticesSearch = ({ onSubmit }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     const form = event.currentTarget;
