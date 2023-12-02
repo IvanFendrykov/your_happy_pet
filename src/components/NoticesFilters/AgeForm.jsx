@@ -25,24 +25,16 @@ const AgeForm = ({ onClick, onChange, initialValue }) => {
         </svg>
         By age
       </FilterFormButton>
-      <FilterOption
-        name="ageOption"
-        value="upToOne"
-        checked={ageData === 'upToOne'}
-      >
+      <FilterOption name="ageOption" value="up1" checked={ageData === 'up1'}>
         up to 1 year
       </FilterOption>
-      <FilterOption
-        name="ageOption"
-        value="upToTwo"
-        checked={ageData === 'upToTwo'}
-      >
+      <FilterOption name="ageOption" value="up2" checked={ageData === 'up2'}>
         up to 2 years
       </FilterOption>
       <FilterOption
         name="ageOption"
-        value="fromTwo"
-        checked={ageData === 'fromTwo'}
+        value="from2"
+        checked={ageData === 'from2'}
       >
         from 2 years
       </FilterOption>
