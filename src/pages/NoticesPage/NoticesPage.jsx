@@ -1,6 +1,6 @@
 import { NoticesSearch } from '../../components/NoticesSearch/NoticesSearch';
 import { useNavigate } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import { NoticesCategoriesNav } from '../../components/NoticesCategoriesNav/NoticesCategoriesNav';
 import ModalUnauthorize from '../../components/ModalUnauthorize/ModalUnauthorize';
 import { NoticesCategoriesList } from '../../components/NoticesCategoriesList/NoticesCategoriesList';
@@ -188,15 +188,15 @@ const NoticesPage = () => {
           </AddPetBtn>
         </NoticePageContrtolsRight>
       </NoticePageContrtols>
-      There must be Notice List
-      <NoticesCategoriesList
-        petsData={petsData}
-        isLoggedIn={IS_LOGGED_IN}
-        onAddToFavourite={onAddToFavourite}
-        onDelete={onDelete}
-        onLearnMore={onLearnMore}
-      />
-      There must be Notice List
+      <Suspense fallback={<VortexLoader />}>
+        <NoticesCategoriesList
+          petsData={petsData}
+          isLoggedIn={IS_LOGGED_IN}
+          onAddToFavourite={onAddToFavourite}
+          onDelete={onDelete}
+          onLearnMore={onLearnMore}
+        />
+      </Suspense>
       {isUnauthorizeModalOpen && !IS_LOGGED_IN && (
         <ModalUnauthorize toggleUnauthorizeModal={toggleUnauthorizeModal} />
       )}
