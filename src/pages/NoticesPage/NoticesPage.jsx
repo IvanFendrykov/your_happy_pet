@@ -147,7 +147,7 @@ const NoticesPage = () => {
       navigate('/add-pet');
     }
   };
-
+  /*
   useEffect(() => {
     const getNotices = async () => {
       try {
@@ -173,7 +173,7 @@ const NoticesPage = () => {
     };
     getNotices();
   }, [searchQuery]);
-
+*/
   const toggleUnauthorizeModal = () => {
     setIsUnauthorizeModalOpen((prevState) => !prevState);
   };
