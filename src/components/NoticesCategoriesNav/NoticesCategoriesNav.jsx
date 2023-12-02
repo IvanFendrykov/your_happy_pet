@@ -21,28 +21,7 @@ const NoticesCategoriesNav = ({ isLoggedIn, onChange }) => {
       navigate(`/notices`);
     }
   });
-  /*
 
-  useEffect(() => {
-    const getAdds = async () => {
-      try {
-        const response = await axios.get(
-          `${import.meta.env.VITE_BACKEND_BASE_URL}/api/notices/my/adds`,
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          },
-        );
-        console.log(response, 'Eue');
-      } catch (error) {
-        return null;
-      }
-      setIsLoaded(true);
-    };
-    getAdds();
-  }, []);
-*/
   return (
     <NavForm onInput={handleInput}>
       <NavOption
