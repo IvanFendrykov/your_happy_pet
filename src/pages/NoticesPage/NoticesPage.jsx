@@ -42,25 +42,6 @@ const NoticesPage = () => {
     setFiltersData(data);
   };
 
-  const calcYearDifference = (oldDateString) => {
-    const oldDate = new Date(oldDateString);
-    const newDate = new Date();
-    const dateDifference = new Date(newDate - oldDate);
-    const diffYears = dateDifference.getFullYear() - 1970;
-    return diffYears;
-  };
-
-  const isAgeCategory = (item, ageCategory) => {
-    const age = calcYearDifference(item.petBirthday);
-    const ageFilterOptions = {
-      upToOne: age < 1,
-      upToTwo: age < 2,
-      fromTwo: age >= 2,
-      anyAge: true,
-    };
-    return ageFilterOptions[ageCategory];
-  };
-
   const onAddToFavourite = (noticeId) => {
     console.log(noticeId);
     if (!IS_LOGGED_IN) {
