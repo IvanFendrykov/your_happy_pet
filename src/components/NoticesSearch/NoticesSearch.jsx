@@ -5,8 +5,9 @@ import { SearchForm, SearchInput, SearchButton } from './NoticesSearch.styled';
 const NoticesSearch = (onSubmit) => {
   const handleSubmit = (event) => {
     event.preventDefault();
-    onSubmit(event.currentTarget.elements.searchInput.value);
-    event.currentTarget.reset();
+    const form = event.currentTarget;
+    onSubmit(form.elements.searchInput.value);
+    form.reset();
   };
 
   return (
