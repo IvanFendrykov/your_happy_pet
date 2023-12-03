@@ -30,6 +30,10 @@ const UnCheckedOption = styled.label`
   font-weight: 500;
   line-height: normal;
   letter-spacing: 0.56px;
+
+  :hover {
+    border: 2px solid ${colors.blue};
+  }
 `;
 
 const CheckedOption = styled.label`
