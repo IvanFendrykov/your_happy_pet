@@ -90,9 +90,9 @@ const NoticesPage = () => {
         if (categoriesData !== 'own' && categoriesData !== 'favorite') {
           const request = `${
             import.meta.env.VITE_BACKEND_BASE_URL
-          }/api/notices?${
-            categoriesData && 'category=' + categoriesData + '&'
-          }${filtersData.gender}&${filtersData.age}`;
+          }/api/notices?${categoriesData && 'category=' + categoriesData}&${
+            filtersData.gender
+          }&${filtersData.age}`;
           response = await axios.get(request);
           response = await response.data;
           response = await response.data;
