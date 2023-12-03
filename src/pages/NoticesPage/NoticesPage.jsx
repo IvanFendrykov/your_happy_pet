@@ -108,8 +108,8 @@ const NoticesPage = () => {
           const request = `${
             import.meta.env.VITE_BACKEND_BASE_URL
           }/api/notices?${categoriesData && 'category=' + categoriesData}${
-            filtersData.age && '&' + filtersData.gender
-          }&${filtersData.age}`;
+            filtersData.age && filtersData.age
+          }&${filtersData.gender && filtersData.gender}`;
           response = await axios.get(request);
           response = await response.data;
           response = await response.data;
