@@ -40,6 +40,7 @@ const NoticesPage = () => {
     setCategoriesData(data);
   };
   const handleFiltersData = (data) => {
+    console.log(data);
     setFiltersData(data);
   };
   const handleSearchQuery = (data) => {
@@ -92,7 +93,8 @@ const NoticesPage = () => {
         if (categoriesData !== 'own' && categoriesData !== 'favorite') {
           response = await axios.get(
             `${import.meta.env.VITE_BACKEND_BASE_URL}/api/notices?${
-              categoriesData && 'category=' + categoriesData + filtersData.age
+              categoriesData &&
+              'category=' + categoriesData + filtersData.gender
             }`,
           );
           response = await response.data;

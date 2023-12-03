@@ -27,15 +27,15 @@ const GenderForm = ({ onClick, onChange, initialValue }) => {
       </FilterFormButton>
       <FilterOption
         name="genderOption"
-        value="female"
-        checked={genderData === 'female'}
+        value="&gender=female"
+        checked={genderData === '&gender=female'}
       >
         female
       </FilterOption>
       <FilterOption
         name="genderOption"
-        value="male"
-        checked={genderData === 'male'}
+        value="&gender=male"
+        checked={genderData === '&gender=male'}
       >
         male
       </FilterOption>
