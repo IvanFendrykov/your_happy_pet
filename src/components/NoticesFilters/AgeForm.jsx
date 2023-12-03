@@ -3,7 +3,7 @@ import icons from '../../images/symbol-defs.svg';
 import { FilterForm, FilterFormButton } from './NoticesFilters.styled';
 import { FilterOption } from './FilterOption';
 
-const AgeForm = ({ onClick, onChange, initialValue }) => {
+const AgeForm = ({ onClick, onChange, value }) => {
   const setAge = (newAgeData) => {
     onChange(newAgeData);
   };
@@ -20,16 +20,16 @@ const AgeForm = ({ onClick, onChange, initialValue }) => {
         </svg>
         By age
       </FilterFormButton>
-      <FilterOption newValue="&age=up1" value={initialValue} onClick={setAge}>
+      <FilterOption newValue="&age=up1" value={value} onClick={setAge}>
         up to 1 year
       </FilterOption>
-      <FilterOption newValue="&age=up2" value={initialValue} onClick={setAge}>
+      <FilterOption newValue="&age=up2" value={value} onClick={setAge}>
         up to 2 years
       </FilterOption>
-      <FilterOption newValue="&age=from2" value={initialValue} onClick={setAge}>
+      <FilterOption newValue="&age=from2" value={value} onClick={setAge}>
         from 2 years
       </FilterOption>
-      <FilterOption newValue="" value={initialValue} onClick={setAge}>
+      <FilterOption newValue="" value={value} onClick={setAge}>
         any age
       </FilterOption>
     </FilterForm>

@@ -23,11 +23,8 @@ const NoticesPage = () => {
   const [petsData, setPetsData] = useState([]);
   const navigate = useNavigate();
   const [categoriesData, setCategoriesData] = useState('');
-  const [filtersData, setFiltersData] = useState({
-    age: 'any age',
-    gender: 'male',
-  });
-
+  const [ageData, setAgeData] = useState('');
+  const [genderData, setGenderData] = useState('');
   const [notice, setNotice] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [isUnauthorizeModalOpen, setIsUnauthorizeModalOpen] = useState(false);
@@ -39,9 +36,15 @@ const NoticesPage = () => {
   const handleCategoriesData = (data) => {
     setCategoriesData(data);
   };
-  const handleFiltersData = (data) => {
-    setFiltersData(data);
+
+  const handleAgeData = (data) => {
+    setAgeData(data);
   };
+
+  const handleGenderData = (data) => {
+    setGenderData(data);
+  };
+
   const handleSearchQuery = (data) => {
     setSearchQuery(data);
   };
@@ -108,8 +111,8 @@ const NoticesPage = () => {
           const request = `${
             import.meta.env.VITE_BACKEND_BASE_URL
           }/api/notices?${categoriesData && 'category=' + categoriesData}${
-            filtersData.age && filtersData.age
-          }&${filtersData.gender && filtersData.gender}`;
+            ageData && ageData
+          }${genderData && genderData}`;
           response = await axios.get(request);
           response = await response.data;
           response = await response.data;
@@ -147,7 +150,7 @@ const NoticesPage = () => {
       setIsLoaded(true);
     };
     getNotices();
-  }, [categoriesData, filtersData]);
+  }, [categoriesData, ageData, genderData]);
 
   const handleAddPetClick = () => {
     if (!IS_LOGGED_IN) {
@@ -156,10 +159,6 @@ const NoticesPage = () => {
       navigate('/add-pet');
     }
   };
-  /*
-
-?age=${filtersData.age}&gender=${filtersData.gender}
-*/
 
   useEffect(() => {
     const getBySearch = async () => {
@@ -192,7 +191,12 @@ const NoticesPage = () => {
           onChange={handleCategoriesData}
         />
         <NoticePageContrtolsRight>
-          <NoticesFilters onChange={handleFiltersData} />
+          <NoticesFilters
+            onChangeAge={handleAgeData}
+            onChangeGender={handleGenderData}
+            age={ageData}
+            gender={genderData}
+          />
           <AddPetBtn type="button" onClick={handleAddPetClick}>
             <AddPetLink>
               Add pet

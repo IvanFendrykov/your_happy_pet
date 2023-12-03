@@ -3,7 +3,7 @@ import icons from '../../images/symbol-defs.svg';
 import { FilterForm, FilterFormButton } from './NoticesFilters.styled';
 import { FilterOption } from './FilterOption';
 
-const GenderForm = ({ onClick, onChange, initialValue }) => {
+const GenderForm = ({ onClick, onChange, value }) => {
   const setGender = (newGenderData) => {
     onChange(newGenderData);
   };
@@ -20,21 +20,13 @@ const GenderForm = ({ onClick, onChange, initialValue }) => {
         </svg>
         By gender
       </FilterFormButton>
-      <FilterOption
-        newValue="&gender=female"
-        value={initialValue}
-        onClick={setGender}
-      >
+      <FilterOption newValue="&gender=female" value={value} onClick={setGender}>
         female
       </FilterOption>
-      <FilterOption
-        newValue="&gender=male"
-        value={initialValue}
-        onClick={setGender}
-      >
+      <FilterOption newValue="&gender=male" value={value} onClick={setGender}>
         male
       </FilterOption>
-      <FilterOption newValue="" value={initialValue} onClick={setGender}>
+      <FilterOption newValue="" value={value} onClick={setGender}>
         any gender
       </FilterOption>
     </FilterForm>
