@@ -93,7 +93,6 @@ const NoticesPage = () => {
           }/api/notices?${
             categoriesData && 'category=' + categoriesData + '&'
           }${filtersData.gender}&${filtersData.age}`;
-          console.log(request);
           response = await axios.get(request);
           response = await response.data;
           response = await response.data;
