@@ -7,9 +7,7 @@ const NoticesCategoriesNav = ({ isLoggedIn, onChange }) => {
   const navigate = useNavigate();
 
   const [categoryData, setCategoryData] = useState('');
-  const handleInput = (event) => {
-    event.preventDefault();
-    const newCategoryData = event.currentTarget.elements.categoryOption.value;
+  const setCategory = (newCategoryData) => {
     setCategoryData(newCategoryData);
     onChange(newCategoryData);
   };
@@ -23,67 +21,43 @@ const NoticesCategoriesNav = ({ isLoggedIn, onChange }) => {
   }, []);
 
   return (
-    <NavForm onInput={handleInput}>
-      <NavOption
-        to="/notices"
-        name="categoryOption"
-        value=""
-        checked={categoryData === ''}
-        defaultChecked={true}
-      >
+    <NavForm>
+      <NavOption newValue="" value={categoryData} onClick={setCategory}>
         all categories
       </NavOption>
-      <NavOption
-        to="/notices/sell"
-        name="categoryOption"
-        value="sell"
-        checked={categoryData === 'sell'}
-        defaultChecked={false}
-      >
+      <NavOption newValue="sell" value={categoryData} onClick={setCategory}>
         sell
       </NavOption>
       <NavOption
-        to="/notices/lostFound"
-        name="categoryOption"
-        value="lostFound"
-        checked={categoryData === 'lostFound'}
-        defaultChecked={false}
+        newValue="lostFound"
+        value={categoryData}
+        onClick={setCategory}
       >
         lost/found
       </NavOption>
       <NavOption
-        to="/notices/inGoodHands"
-        name="categoryOption"
-        value="inGoodHands"
-        checked={categoryData === 'inGoodHands'}
-        defaultChecked={false}
+        newValue="inGoodHands"
+        value={categoryData}
+        onClick={setCategory}
       >
         in good hands
       </NavOption>
       {isLoggedIn && (
         <NavOption
-          to="/notices/favorite"
-          name="categoryOption"
-          value="favorite"
-          checked={categoryData === 'favorite'}
-          defaultChecked={false}
+          newValue="favorite"
+          value={categoryData}
+          onClick={setCategory}
         >
           favorite ads
         </NavOption>
       )}
       {isLoggedIn && (
-        <NavOption
-          to="/notices/own"
-          name="categoryOption"
-          value="own"
-          checked={categoryData === 'own'}
-          defaultChecked={false}
-        >
+        <NavOption newValue="own" value={categoryData} onClick={setCategory}>
           my ads
         </NavOption>
       )}
     </NavForm>
   );
 };
-
+// onClick={setCategory}
 export { NoticesCategoriesNav };
