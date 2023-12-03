@@ -46,6 +46,23 @@ const NoticesPage = () => {
     setSearchQuery(data);
   };
 
+  const calcYearDifference = (oldDateString) => {
+    const oldDate = new Date(oldDateString);
+    const newDate = new Date();
+    const dateDifference = new Date(newDate - oldDate);
+    const diffYears = dateDifference.getFullYear() - 1970;
+    return diffYears;
+  };
+
+  const addPetAge = (items) => {
+    items.map((item) => {
+      const petAge = calcYearDifference(item.birthDay);
+      //console.log(petAge);
+      const petAgeString = `${petAge} year${!(petAge === 1) ? 's' : ''}`;
+      return { ...item, age: petAgeString };
+    });
+  };
+
   const onAddToFavourite = (noticeId) => {
     if (!IS_LOGGED_IN) {
       //МОДАЛКА ПРО ЗАЛОГИНИТСЯ
@@ -122,8 +139,9 @@ const NoticesPage = () => {
           response = await response.data;
           response = await response.docs;
         }
-
+        //const petsDataWithAge = await addPetAge(response);
         setPetsData(response);
+        //console.log(response);
       } catch (error) {
         return null;
       }
