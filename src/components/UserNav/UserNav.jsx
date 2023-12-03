@@ -19,7 +19,7 @@ const UserNav = () => {
       </LogoutBtn>
       {user && (
         <StyledLink to="/user">
-          {profilePic !== null ? (
+          {profilePic  ? (
             <Img src={profilePic} alt="avatar" />
           ) : (
             <img src={icon} alt="icon" />
