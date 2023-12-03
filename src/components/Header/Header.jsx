@@ -32,7 +32,7 @@ const Header = ({ handleClick }) => {
         {size[0] >= 768 && size[0] < 1200 && isLoggedIn && (
           <div>
             <User to="/user">
-            {profilePic !== null  ?  <Img src={profilePic} alt="avatar" /> : <img src={icon} alt="icon" /> }
+            {profilePic   ?  <Img src={profilePic} alt="avatar" /> : <img src={icon} alt="icon" /> }
               {user && <p>{user}</p>}
             </User>
           </div>
@@ -41,7 +41,7 @@ const Header = ({ handleClick }) => {
         {size[0] < 768 && isLoggedIn && (
           <div>
             <User to="/user">
-            {profilePic !== null  ?  <Img src={profilePic} alt="avatar" /> : <img src={icon} alt="icon" /> }
+            {profilePic   ?  <Img src={profilePic} alt="avatar" /> : <img src={icon} alt="icon" /> }
             </User>
           </div>
         )}
