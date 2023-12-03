@@ -50,6 +50,7 @@ const FilterForm = styled.div`
 const FilterOpenButton = styled.button`
   display: flex;
   width: 152px;
+  height: 35px;
   padding: 4px 10px;
   justify-content: center;
   align-items: center;
