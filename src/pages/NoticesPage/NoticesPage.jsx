@@ -139,9 +139,9 @@ const NoticesPage = () => {
           response = await response.data;
           response = await response.docs;
         }
-        //const petsDataWithAge = await addPetAge(response);
+        const petsDataWithAge = addPetAge(response);
         setPetsData(response);
-        //console.log(response);
+        console.log(petsDataWithAge);
       } catch (error) {
         return null;
       }
