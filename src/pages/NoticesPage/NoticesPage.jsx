@@ -40,7 +40,6 @@ const NoticesPage = () => {
     setCategoriesData(data);
   };
   const handleFiltersData = (data) => {
-    console.log(data);
     setFiltersData(data);
   };
   const handleSearchQuery = (data) => {
@@ -48,7 +47,6 @@ const NoticesPage = () => {
   };
 
   const onAddToFavourite = (noticeId) => {
-    console.log(noticeId);
     if (!IS_LOGGED_IN) {
       //МОДАЛКА ПРО ЗАЛОГИНИТСЯ
     }
@@ -56,7 +54,6 @@ const NoticesPage = () => {
   };
 
   const onDelete = async (id) => {
-    console.log('onDeleteFromFavourite' + id);
     try {
       const response = await axios.delete(
         `${import.meta.env.VITE_BACKEND_BASE_URL}/api/notices/${id}`,
@@ -91,12 +88,13 @@ const NoticesPage = () => {
         let response;
 
         if (categoriesData !== 'own' && categoriesData !== 'favorite') {
-          response = await axios.get(
-            `${import.meta.env.VITE_BACKEND_BASE_URL}/api/notices?${
-              categoriesData &&
-              'category=' + categoriesData + filtersData.gender
-            }`,
-          );
+          const request = `${
+            import.meta.env.VITE_BACKEND_BASE_URL
+          }/api/notices?${
+            categoriesData && 'category=' + categoriesData + '&'
+          }${filtersData.gender}&${filtersData.age}`;
+          console.log(request);
+          response = await axios.get(request);
           response = await response.data;
           response = await response.data;
           response = await response.docs;
@@ -127,7 +125,6 @@ const NoticesPage = () => {
         }
 
         setPetsData(response);
-        //console.log(response);
       } catch (error) {
         return null;
       }
