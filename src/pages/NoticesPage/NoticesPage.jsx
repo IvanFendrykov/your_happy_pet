@@ -55,12 +55,12 @@ const NoticesPage = () => {
   };
 
   const addPetAge = (items) => {
-    items.map((item) => {
+    const itemsWithAge = items.map((item) => {
       const petAge = calcYearDifference(item.birthDay);
-      //console.log(petAge);
       const petAgeString = `${petAge} year${!(petAge === 1) ? 's' : ''}`;
       return { ...item, age: petAgeString };
     });
+    return itemsWithAge;
   };
 
   const onAddToFavourite = (noticeId) => {
@@ -140,8 +140,7 @@ const NoticesPage = () => {
           response = await response.docs;
         }
         const petsDataWithAge = addPetAge(response);
-        setPetsData(response);
-        console.log(petsDataWithAge);
+        setPetsData(petsDataWithAge);
       } catch (error) {
         return null;
       }
