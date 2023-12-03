@@ -1,5 +1,5 @@
 import { NoticesSearch } from '../../components/NoticesSearch/NoticesSearch';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { Suspense, useEffect, useState } from 'react';
 import { NoticesCategoriesNav } from '../../components/NoticesCategoriesNav/NoticesCategoriesNav';
 import ModalUnauthorize from '../../components/ModalUnauthorize/ModalUnauthorize';
@@ -21,20 +21,23 @@ import { setFavoriteNotice } from '../../redux/auth/operation';
 
 const NoticesPage = () => {
   const [petsData, setPetsData] = useState([]);
-  const navigate = useNavigate();
-  const [categoriesData, setCategoriesData] = useState('');
+  const [categoryData, setCategoryData] = useState('');
   const [ageData, setAgeData] = useState('');
   const [genderData, setGenderData] = useState('');
   const [notice, setNotice] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [isUnauthorizeModalOpen, setIsUnauthorizeModalOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
+
   const dispatch = useDispatch();
   const token = useSelector((state) => state.auth.token);
   const IS_LOGGED_IN = useSelector((state) => state.auth.isLoggedIn);
 
+  const navigate = useNavigate();
+  const [searchParams, setSearchParams] = useSearchParams();
+
   const handleCategoriesData = (data) => {
-    setCategoriesData(data);
+    setCategoryData(data);
   };
 
   const handleAgeData = (data) => {
@@ -48,6 +51,14 @@ const NoticesPage = () => {
   const handleSearchQuery = (data) => {
     setSearchQuery(data);
   };
+
+  useEffect(() => {
+    if (categoryData) {
+      navigate(`/notices/${categoryData}`);
+    } else {
+      navigate(`/notices`);
+    }
+  }, [categoryData]);
 
   const calcYearDifference = (oldDateString) => {
     const oldDate = new Date(oldDateString);
@@ -107,17 +118,22 @@ const NoticesPage = () => {
       try {
         let response;
 
-        if (categoriesData !== 'own' && categoriesData !== 'favorite') {
+        if (categoryData !== 'own' && categoryData !== 'favorite') {
           const request = `${
             import.meta.env.VITE_BACKEND_BASE_URL
-          }/api/notices?${categoriesData && 'category=' + categoriesData}${
+          }/api/notices?${categoryData && 'category=' + categoryData}${
             ageData && ageData
           }${genderData && genderData}`;
+          setSearchParams({
+            category: categoryData || 'any',
+            age: ageData || 'any',
+            gender: genderData || 'any',
+          });
           response = await axios.get(request);
           response = await response.data;
           response = await response.data;
           response = await response.docs;
-        } else if (categoriesData === 'favorite') {
+        } else if (categoryData === 'favorite') {
           response = await axios.get(
             `${import.meta.env.VITE_BACKEND_BASE_URL}/api/notices/favorite`,
             {
@@ -150,7 +166,7 @@ const NoticesPage = () => {
       setIsLoaded(true);
     };
     getNotices();
-  }, [categoriesData, ageData, genderData]);
+  }, [categoryData, ageData, genderData]);
 
   const handleAddPetClick = () => {
     if (!IS_LOGGED_IN) {
@@ -189,6 +205,7 @@ const NoticesPage = () => {
         <NoticesCategoriesNav
           isLoggedIn={IS_LOGGED_IN}
           onChange={handleCategoriesData}
+          category={categoryData}
         />
         <NoticePageContrtolsRight>
           <NoticesFilters

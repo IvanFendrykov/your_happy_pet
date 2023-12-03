@@ -1,63 +1,37 @@
-import { useEffect, useState } from 'react';
 import { NavForm } from './NoticesCategoriesNav.styled';
 import { NavOption } from './NavOption';
-import { useNavigate } from 'react-router-dom';
 
-const NoticesCategoriesNav = ({ isLoggedIn, onChange }) => {
-  const navigate = useNavigate();
-
-  const [categoryData, setCategoryData] = useState('');
+const NoticesCategoriesNav = ({ isLoggedIn, onChange, category }) => {
   const setCategory = (newCategoryData) => {
-    setCategoryData(newCategoryData);
     onChange(newCategoryData);
   };
 
-  useEffect(() => {
-    if (categoryData) {
-      navigate(`/notices/${categoryData}`);
-    } else {
-      navigate(`/notices`);
-    }
-  }, []);
-
   return (
     <NavForm>
-      <NavOption newValue="" value={categoryData} onClick={setCategory}>
+      <NavOption newValue="" value={category} onClick={setCategory}>
         all categories
       </NavOption>
-      <NavOption newValue="sell" value={categoryData} onClick={setCategory}>
+      <NavOption newValue="sell" value={category} onClick={setCategory}>
         sell
       </NavOption>
-      <NavOption
-        newValue="lostFound"
-        value={categoryData}
-        onClick={setCategory}
-      >
+      <NavOption newValue="lostFound" value={category} onClick={setCategory}>
         lost/found
       </NavOption>
-      <NavOption
-        newValue="inGoodHands"
-        value={categoryData}
-        onClick={setCategory}
-      >
+      <NavOption newValue="inGoodHands" value={category} onClick={setCategory}>
         in good hands
       </NavOption>
       {isLoggedIn && (
-        <NavOption
-          newValue="favorite"
-          value={categoryData}
-          onClick={setCategory}
-        >
+        <NavOption newValue="favorite" value={category} onClick={setCategory}>
           favorite ads
         </NavOption>
       )}
       {isLoggedIn && (
-        <NavOption newValue="own" value={categoryData} onClick={setCategory}>
+        <NavOption newValue="own" value={category} onClick={setCategory}>
           my ads
         </NavOption>
       )}
     </NavForm>
   );
 };
-// onClick={setCategory}
+
 export { NoticesCategoriesNav };
