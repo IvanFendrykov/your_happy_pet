@@ -29,7 +29,7 @@ const FilterForm = styled.div`
   width: 136px;
   padding: 8px;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   gap: 10px;
 
   border-radius: 20px;
@@ -131,7 +131,7 @@ const FilterFormButton = styled.button`
 const StyledFilterOption = styled.button`
   box-sizing: border-box;
   height: 30px;
-  width: 120px;
+  width: 125px;
   display: flex;
   align-items: center;
   column-gap: 12px;
