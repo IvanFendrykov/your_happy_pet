@@ -22,11 +22,11 @@ export const MobileMenu = ({ isLoggedIn, user, toggleModal }) => {
         {isLoggedIn ? (
           <MenuNavBtnUser user="true">
             <Link to="/user">
-              {profilePic !== null ? (
+              {profilePic  ? 
                 <Img src={profilePic} alt="avatar" />
-              ) : (
+               : 
                 <img src={icon} alt="icon" />
-              )}
+              }
             </Link>
             <User>{user}</User>
           </MenuNavBtnUser>
