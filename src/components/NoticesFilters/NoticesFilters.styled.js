@@ -78,13 +78,13 @@ const FilterOpenButton = styled.button`
 
 const FilterCloseButton = styled.button`
   display: flex;
-  width: 152px;
+  width: 136px;
   padding: 8px 20px;
   justify-content: center;
   align-items: center;
   gap: 8px;
   border-radius: 40px;
-  border: none;
+  border: 2px solid #fff;
   background-color: #fff;
 
   color: #54adff;
@@ -93,6 +93,10 @@ const FilterCloseButton = styled.button`
   font-style: normal;
   line-height: normal;
   letter-spacing: 0.64px;
+
+  :hover {
+    border: 2px solid ${colors.blue};
+  }
 `;
 
 const FilterFormButton = styled.button`
@@ -106,6 +110,7 @@ const FilterFormButton = styled.button`
   border: none;
   border-radius: 20px;
   background: #cce4fb;
+  border: 2px solid ${colors.blue_light};
 
   color: #54adff;
   font-feature-settings:
@@ -117,15 +122,23 @@ const FilterFormButton = styled.button`
   font-style: normal;
   font-weight: ${fontWeights.normal};
   line-height: 130%; /* 18.2px */
+
+  :hover {
+    border: 2px solid ${colors.blue};
+  }
 `;
 
 const StyledFilterOption = styled.button`
+  box-sizing: border-box;
+  height: 30px;
+  width: 120px;
   display: flex;
   align-items: center;
   column-gap: 12px;
   font-size: 12px;
+  border: 2px solid ${colors.blue_light};
+  border-radius: 20px;
   background: none;
-  border: none;
 
   color: ${colors.blue};
   font-feature-settings:
@@ -136,6 +149,10 @@ const StyledFilterOption = styled.button`
   font-style: normal;
   font-weight: 400;
   line-height: 130%; /* 15.6px */
+
+  :hover {
+    border: 2px solid ${colors.blue};
+  }
 `;
 
 export {
