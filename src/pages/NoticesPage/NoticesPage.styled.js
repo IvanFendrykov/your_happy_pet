@@ -31,7 +31,7 @@ const NoticePageContrtolsRight = styled.div`
 `;
 
 const AddPetLink = styled(NavLink)`
-  height: 35px;
+  height: 25px;
   text-decoration: none;
   padding: 8px 20px;
   display: flex;
@@ -54,4 +54,10 @@ const AddPetLink = styled(NavLink)`
 const AddPetBtn = styled.div`
   row-gap: 12px;
 `;
-export { Header, NoticePageContrtols, NoticePageContrtolsRight, AddPetLink, AddPetBtn };
+export {
+  Header,
+  NoticePageContrtols,
+  NoticePageContrtolsRight,
+  AddPetLink,
+  AddPetBtn,
+};

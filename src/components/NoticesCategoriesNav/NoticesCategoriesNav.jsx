@@ -1,6 +1,8 @@
 import { NavForm } from './NoticesCategoriesNav.styled';
 import { NavOption } from './NavOption';
 
+const NAV_OPTION_DATA = [];
+
 const NoticesCategoriesNav = ({ isLoggedIn, onChange, category }) => {
   const setCategory = (newCategoryData) => {
     onChange(newCategoryData);

@@ -124,11 +124,7 @@ const NoticesPage = () => {
           }/api/notices?${categoryData && 'category=' + categoryData}${
             ageData && ageData
           }${genderData && genderData}`;
-          setSearchParams({
-            category: categoryData || 'any',
-            age: ageData || 'any',
-            gender: genderData || 'any',
-          });
+
           response = await axios.get(request);
           response = await response.data;
           response = await response.data;
@@ -158,6 +154,12 @@ const NoticesPage = () => {
           response = await response.data;
           response = await response.docs;
         }
+        setSearchParams({
+          category: categoryData || 'any',
+          age: ageData || 'any',
+          gender: genderData || 'any',
+          search: 'default_notices',
+        });
         const petsDataWithAge = addPetAge(response);
         setPetsData(petsDataWithAge);
       } catch (error) {
@@ -191,6 +193,12 @@ const NoticesPage = () => {
       }
       setIsLoaded(true);
     };
+    setSearchParams({
+      category: categoryData || 'any',
+      age: ageData || 'any',
+      gender: genderData || 'any',
+      search: searchQuery || 'default_notices',
+    });
     getBySearch();
   }, [searchQuery]);
   const toggleUnauthorizeModal = () => {
