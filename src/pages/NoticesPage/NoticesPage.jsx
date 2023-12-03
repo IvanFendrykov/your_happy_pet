@@ -168,7 +168,7 @@ const NoticesPage = () => {
           category: categoryData || 'any',
           age: ageData || 'any',
           gender: genderData || 'any',
-          search: 'default_notices',
+          search: 'search_by_nav_and_filters',
         });
         const petsDataWithAge = addPetAge(response);
         setPetsData(petsDataWithAge);
