@@ -2,17 +2,13 @@ import styled from '@emotion/styled';
 import { theme } from '../../utils/theme';
 const { fonts, fontSizes, colors } = theme;
 
-const NavForm = styled.form`
+const NavForm = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
 `;
 
-const HiddenRadio = styled.input`
-  display: none;
-`;
-
-const UnCheckedOption = styled.label`
+const UnCheckedOption = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -20,6 +16,7 @@ const UnCheckedOption = styled.label`
   height: 35px;
   padding: 8px 16px;
 
+  border: 2px solid ${colors.blue_light};
   border-radius: 40px;
   background: rgba(140, 200, 253, 0.44);
 
@@ -36,7 +33,7 @@ const UnCheckedOption = styled.label`
   }
 `;
 
-const CheckedOption = styled.label`
+const CheckedOption = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -44,6 +41,7 @@ const CheckedOption = styled.label`
   height: 35px;
   padding: 8px 16px;
 
+  border: 2px solid ${colors.blue};
   border-radius: 40px;
   border-radius: 40px;
   background: ${colors.blue};
@@ -57,4 +55,4 @@ const CheckedOption = styled.label`
   letter-spacing: 0.56px;
 `;
 
-export { NavForm, HiddenRadio, CheckedOption, UnCheckedOption };
+export { NavForm, CheckedOption, UnCheckedOption };

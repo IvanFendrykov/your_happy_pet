@@ -1,9 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import {
-  HiddenRadio,
-  CheckedOption,
-  UnCheckedOption,
-} from './NoticesCategoriesNav.styled';
+import { CheckedOption, UnCheckedOption } from './NoticesCategoriesNav.styled';
 
 const NavOption = ({ value, newValue, onClick, children }) => {
   const handleClick = () => {
