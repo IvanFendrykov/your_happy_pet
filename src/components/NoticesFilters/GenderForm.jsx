@@ -4,42 +4,37 @@ import { FilterForm, FilterFormButton } from './NoticesFilters.styled';
 import { FilterOption } from './FilterOption';
 
 const GenderForm = ({ onClick, onChange, initialValue }) => {
-  const [genderData, setGenderData] = useState(initialValue);
-  const handleInput = (event) => {
-    event.preventDefault();
-    const newGenderData = event.currentTarget.elements.genderOption.value;
-    setGenderData(newGenderData);
+  const setGender = (newGenderData) => {
     onChange(newGenderData);
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  const handleClick = () => {
     onClick();
   };
 
   return (
-    <FilterForm onInput={handleInput} onSubmit={handleSubmit}>
-      <FilterFormButton type="submit">
+    <FilterForm>
+      <FilterFormButton type="button" onClick={handleClick}>
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
           <use xlinkHref={`${icons}#chevron-up`} />
         </svg>
         By gender
       </FilterFormButton>
       <FilterOption
-        name="genderOption"
-        value="&gender=female"
-        checked={genderData === '&gender=female'}
+        newValue="&gender=female"
+        value={initialValue}
+        onClick={setGender}
       >
         female
       </FilterOption>
       <FilterOption
-        name="genderOption"
-        value="&gender=male"
-        checked={genderData === '&gender=male'}
+        newValue="&gender=male"
+        value={initialValue}
+        onClick={setGender}
       >
         male
       </FilterOption>
-      <FilterOption name="genderOption" value="" checked={genderData === ''}>
+      <FilterOption newValue="" value={initialValue} onClick={setGender}>
         any gender
       </FilterOption>
     </FilterForm>

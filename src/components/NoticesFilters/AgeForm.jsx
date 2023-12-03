@@ -4,49 +4,32 @@ import { FilterForm, FilterFormButton } from './NoticesFilters.styled';
 import { FilterOption } from './FilterOption';
 
 const AgeForm = ({ onClick, onChange, initialValue }) => {
-  const [ageData, setAgeData] = useState(initialValue);
-  const handleInput = (event) => {
-    event.preventDefault();
-    const newAgeData = event.currentTarget.elements.ageOption.value;
-    setAgeData(newAgeData);
+  const setAge = (newAgeData) => {
     onChange(newAgeData);
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  const handleClick = () => {
     onClick();
   };
 
   return (
-    <FilterForm onInput={handleInput} onSubmit={handleSubmit}>
-      <FilterFormButton type="submit">
+    <FilterForm>
+      <FilterFormButton type="submit" onClick={handleClick}>
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
           <use xlinkHref={`${icons}#chevron-up`} />
         </svg>
         By age
       </FilterFormButton>
-      <FilterOption
-        name="ageOption"
-        value="&age=up1"
-        checked={ageData === '&age=up1'}
-      >
+      <FilterOption newValue="&age=up1" value={initialValue} onClick={setAge}>
         up to 1 year
       </FilterOption>
-      <FilterOption
-        name="ageOption"
-        value="&age=up2"
-        checked={ageData === '&age=up2'}
-      >
+      <FilterOption newValue="&age=up2" value={initialValue} onClick={setAge}>
         up to 2 years
       </FilterOption>
-      <FilterOption
-        name="ageOption"
-        value="&age=from2"
-        checked={ageData === '&age=from2'}
-      >
+      <FilterOption newValue="&age=from2" value={initialValue} onClick={setAge}>
         from 2 years
       </FilterOption>
-      <FilterOption name="ageOption" value="" checked={ageData === ''}>
+      <FilterOption newValue="" value={initialValue} onClick={setAge}>
         any age
       </FilterOption>
     </FilterForm>

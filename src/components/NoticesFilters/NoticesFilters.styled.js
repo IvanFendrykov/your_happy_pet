@@ -24,7 +24,7 @@ const FilterForms = styled.div`
   row-gap: 8px;
 `;
 
-const FilterForm = styled.form`
+const FilterForm = styled.div`
   display: flex;
   width: 136px;
   padding: 8px;
@@ -112,29 +112,36 @@ const FilterFormButton = styled.button`
     'clig' off,
     'liga' off;
 
-  font-family: Inter, sans-serif;
+  font-family: ${fonts.regular}, sans-serif;
   font-size: ${fontSizes.s};
   font-style: normal;
   font-weight: ${fontWeights.normal};
   line-height: 130%; /* 18.2px */
 `;
 
-const HiddenRadio = styled.input`
-  display: none;
-`;
-
-const StyledFilterOption = styled.label`
+const StyledFilterOption = styled.button`
   display: flex;
   align-items: center;
   column-gap: 12px;
   font-size: 12px;
+  background: none;
+  border: none;
+
+  color: ${colors.blue};
+  font-feature-settings:
+    'clig' off,
+    'liga' off;
+  font-family: ${fonts.regular}, sans-serif;
+  font-size: ${fontSizes.xs};
+  font-style: normal;
+  font-weight: 400;
+  line-height: 130%; /* 15.6px */
 `;
 
 export {
   FilterModal,
   FilterForms,
   FilterForm,
-  HiddenRadio,
   StyledFilterOption,
   FilterFormButton,
   FilterOpenButton,
