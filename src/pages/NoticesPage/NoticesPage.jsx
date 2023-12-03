@@ -36,6 +36,16 @@ const NoticesPage = () => {
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
 
+  const [isHover, setIsHover] = useState(false);
+
+  const showAddPetIcon = () => {
+    setIsHover(true);
+  };
+
+  const hideAddPetIcon = () => {
+    setIsHover(false);
+  };
+
   const handleCategoriesData = (data) => {
     setCategoryData(data);
   };
@@ -122,8 +132,8 @@ const NoticesPage = () => {
           const request = `${
             import.meta.env.VITE_BACKEND_BASE_URL
           }/api/notices?${categoryData && 'category=' + categoryData}${
-            ageData && ageData
-          }${genderData && genderData}`;
+            ageData && '&age=' + ageData
+          }${genderData && '&gender=' + genderData}`;
 
           response = await axios.get(request);
           response = await response.data;
@@ -223,10 +233,15 @@ const NoticesPage = () => {
             gender={genderData}
           />
           <AddPetBtn type="button" onClick={handleAddPetClick}>
-            <AddPetLink>
+            <AddPetLink
+              onMouseOver={showAddPetIcon}
+              onMouseLeave={hideAddPetIcon}
+            >
               Add pet
               <svg width="24" height="24" viewBox="0 0 24 24" fill="#fff">
-                <use xlinkHref={`${icons}#plus-small-white`} />
+                <use
+                  xlinkHref={`${icons}#plus-small${isHover ? '-white' : ''}`}
+                />
               </svg>
             </AddPetLink>
           </AddPetBtn>

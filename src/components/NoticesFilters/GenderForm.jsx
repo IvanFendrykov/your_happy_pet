@@ -1,7 +1,12 @@
-import { useState } from 'react';
 import icons from '../../images/symbol-defs.svg';
 import { FilterForm, FilterFormButton } from './NoticesFilters.styled';
 import { FilterOption } from './FilterOption';
+
+const AGE_OPTION_DATA = [
+  { value: 'female', children: 'female' },
+  { value: 'male', children: 'male' },
+  { value: '', children: 'any gender' },
+];
 
 const GenderForm = ({ onClick, onChange, value }) => {
   const setGender = (newGenderData) => {
@@ -14,21 +19,24 @@ const GenderForm = ({ onClick, onChange, value }) => {
 
   return (
     <FilterForm>
-      <FilterFormButton type="button" onClick={handleClick}>
+      <FilterFormButton type="submit" onClick={handleClick}>
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
           <use xlinkHref={`${icons}#chevron-up`} />
         </svg>
         By gender
       </FilterFormButton>
-      <FilterOption newValue="&gender=female" value={value} onClick={setGender}>
-        female
-      </FilterOption>
-      <FilterOption newValue="&gender=male" value={value} onClick={setGender}>
-        male
-      </FilterOption>
-      <FilterOption newValue="" value={value} onClick={setGender}>
-        any gender
-      </FilterOption>
+      {AGE_OPTION_DATA.map((genderOption, genderOptionIndex) => {
+        return (
+          <FilterOption
+            key={genderOptionIndex}
+            newValue={genderOption.value}
+            value={value}
+            onClick={setGender}
+          >
+            {genderOption.children}
+          </FilterOption>
+        );
+      })}
     </FilterForm>
   );
 };

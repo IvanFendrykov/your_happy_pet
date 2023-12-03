@@ -55,10 +55,11 @@ const FilterOpenButton = styled.button`
   align-items: center;
   gap: 8px;
   border-radius: 40px;
+
   border: 2px solid ${colors.blue};
   background-color: #fff;
 
-  color: #54adff;
+  color: ${colors.blue};
   font-family: ${fonts.bold}, sans-serif;
   font-size: 16px;
   font-style: normal;

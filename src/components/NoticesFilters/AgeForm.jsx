@@ -1,7 +1,13 @@
-import { useState } from 'react';
 import icons from '../../images/symbol-defs.svg';
 import { FilterForm, FilterFormButton } from './NoticesFilters.styled';
 import { FilterOption } from './FilterOption';
+
+const AGE_OPTION_DATA = [
+  { value: 'up1', children: 'up to 1 year' },
+  { value: 'up2', children: 'up to 2 years' },
+  { value: 'from2', children: 'from 2 years' },
+  { value: '', children: 'any age' },
+];
 
 const AgeForm = ({ onClick, onChange, value }) => {
   const setAge = (newAgeData) => {
@@ -20,18 +26,18 @@ const AgeForm = ({ onClick, onChange, value }) => {
         </svg>
         By age
       </FilterFormButton>
-      <FilterOption newValue="&age=up1" value={value} onClick={setAge}>
-        up to 1 year
-      </FilterOption>
-      <FilterOption newValue="&age=up2" value={value} onClick={setAge}>
-        up to 2 years
-      </FilterOption>
-      <FilterOption newValue="&age=from2" value={value} onClick={setAge}>
-        from 2 years
-      </FilterOption>
-      <FilterOption newValue="" value={value} onClick={setAge}>
-        any age
-      </FilterOption>
+      {AGE_OPTION_DATA.map((ageOption, ageOptionIndex) => {
+        return (
+          <FilterOption
+            key={ageOptionIndex}
+            newValue={ageOption.value}
+            value={value}
+            onClick={setAge}
+          >
+            {ageOption.children}
+          </FilterOption>
+        );
+      })}
     </FilterForm>
   );
 };
