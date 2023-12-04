@@ -21,6 +21,7 @@ import { setFavoriteNotice } from '../../redux/auth/operation';
 
 const NoticesPage = () => {
   const [petsData, setPetsData] = useState([]);
+  const [petsDataWithAge, setPetsDataWithAge] = useState([]);
   const [categoryData, setCategoryData] = useState('');
   const [ageData, setAgeData] = useState('');
   const [genderData, setGenderData] = useState('');
@@ -188,23 +189,24 @@ const NoticesPage = () => {
   };
 
   useEffect(() => {
-    const petsDataWithAge = addPetAge(petsData);
-    setPetsData(petsDataWithAge);
-  }, [searchParams]);
+    setPetsDataWithAge(addPetAge(petsData));
+  }, [petsData]);
 
   useEffect(() => {
     const getBySearch = async () => {
+      let response;
       try {
-        const response = await axios.get(
+        response = await axios.get(
           `${
             import.meta.env.VITE_BACKEND_BASE_URL
           }/api/notices/search/?search=${searchQuery}`,
         );
-
-        setPetsData(response.data.docs);
+        response = await response.data;
+        response = await response.docs;
       } catch (error) {
         return null;
       }
+      setPetsData(response);
       setIsLoaded(true);
     };
     setSearchParams({
@@ -253,7 +255,7 @@ const NoticesPage = () => {
       </NoticePageContrtols>
       <Suspense fallback={<VortexLoader />}>
         <NoticesCategoriesList
-          petsData={petsData}
+          petsData={petsDataWithAge}
           isLoggedIn={IS_LOGGED_IN}
           onAddToFavourite={onAddToFavourite}
           onDelete={onDelete}

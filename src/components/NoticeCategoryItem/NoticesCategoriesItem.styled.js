@@ -103,6 +103,7 @@ const PetInfoOutput = styled.div`
 const PetInfoOutputItem = styled.div`
   display: flex;
   width: 80px;
+  height: 28px;
   padding: 2px 4px;
   justify-content: left;
   align-items: center;
