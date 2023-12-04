@@ -11,6 +11,7 @@ import {
   RemoveButton,
   PetInfoOutput,
   PetInfoOutputItem,
+  LocationInfo,
   Span,
   LearnMoreButton,
   TitleHeader,
@@ -71,14 +72,14 @@ const NoticesCategoriesItem = ({
           </RemoveButton>
         )}
         <PetInfoOutput>
-          <PetInfoOutputItem>
+          <LocationInfo>
             <Span>
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
                 <use xlinkHref={`${icons}#location-1`} />
               </svg>
             </Span>
             <Span>{petData.location}</Span>
-          </PetInfoOutputItem>
+          </LocationInfo>
           <PetInfoOutputItem>
             <Span>
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
