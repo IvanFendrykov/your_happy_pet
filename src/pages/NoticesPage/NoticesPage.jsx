@@ -170,8 +170,7 @@ const NoticesPage = () => {
           gender: genderData || 'any',
           search: 'search_by_nav_and_filters',
         });
-        const petsDataWithAge = addPetAge(response);
-        setPetsData(petsDataWithAge);
+        setPetsData(response);
       } catch (error) {
         return null;
       }
@@ -187,6 +186,11 @@ const NoticesPage = () => {
       navigate('/add-pet');
     }
   };
+
+  useEffect(() => {
+    const petsDataWithAge = addPetAge(petsData);
+    setPetsData(petsDataWithAge);
+  }, [searchParams]);
 
   useEffect(() => {
     const getBySearch = async () => {
