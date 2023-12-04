@@ -128,8 +128,9 @@ const PetInfoOutputItem = styled.div`
 
 const LocationInfo = styled(PetInfoOutputItem)`
   :hover {
+    min-width: 80px;
     justify-content: center;
-    width: 120px;
+    width: auto;
   }
 `;
 
