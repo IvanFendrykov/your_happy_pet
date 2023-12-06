@@ -103,6 +103,7 @@ const PetInfoOutput = styled.div`
 const PetInfoOutputItem = styled.div`
   display: flex;
   width: 80px;
+  height: 28px;
   padding: 2px 4px;
   justify-content: left;
   align-items: center;
@@ -125,8 +126,17 @@ const PetInfoOutputItem = styled.div`
   letter-spacing: 0.48px;
 `;
 
+const LocationInfo = styled(PetInfoOutputItem)`
+  :hover {
+    min-width: 80px;
+    justify-content: center;
+    width: auto;
+  }
+`;
+
 const Span = styled.span`
   display: flex;
+  text-align: center;
   overflow-wrap: break-word;
 `;
 
@@ -177,6 +187,7 @@ export {
   RemoveButton,
   PetInfoOutput,
   PetInfoOutputItem,
+  LocationInfo,
   Span,
   TitleHeader,
   LearnMoreButton,

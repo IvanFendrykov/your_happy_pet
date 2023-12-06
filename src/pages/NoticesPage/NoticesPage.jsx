@@ -1,6 +1,6 @@
 import { NoticesSearch } from '../../components/NoticesSearch/NoticesSearch';
-import { useNavigate } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useNavigate, useSearchParams } from 'react-router-dom';
+import { Suspense, useEffect, useState } from 'react';
 import { NoticesCategoriesNav } from '../../components/NoticesCategoriesNav/NoticesCategoriesNav';
 import ModalUnauthorize from '../../components/ModalUnauthorize/ModalUnauthorize';
 import { NoticesCategoriesList } from '../../components/NoticesCategoriesList/NoticesCategoriesList';
@@ -21,33 +21,74 @@ import { setFavoriteNotice } from '../../redux/auth/operation';
 
 const NoticesPage = () => {
   const [petsData, setPetsData] = useState([]);
-  const navigate = useNavigate();
-  const [categoriesData, setCategoriesData] = useState('');
-  const [filtersData, setFiltersData] = useState({
-    age: 'any age',
-    gender: 'male',
-  });
-
+  const [petsDataWithAge, setPetsDataWithAge] = useState([]);
+  const [categoryData, setCategoryData] = useState('');
+  const [ageData, setAgeData] = useState('');
+  const [genderData, setGenderData] = useState('');
   const [notice, setNotice] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [isUnauthorizeModalOpen, setIsUnauthorizeModalOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
+
   const dispatch = useDispatch();
   const token = useSelector((state) => state.auth.token);
   const IS_LOGGED_IN = useSelector((state) => state.auth.isLoggedIn);
 
+  const navigate = useNavigate();
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const [isHover, setIsHover] = useState(false);
+
+  const showAddPetIcon = () => {
+    setIsHover(true);
+  };
+
+  const hideAddPetIcon = () => {
+    setIsHover(false);
+  };
+
   const handleCategoriesData = (data) => {
-    setCategoriesData(data);
+    setCategoryData(data);
   };
-  const handleFiltersData = (data) => {
-    setFiltersData(data);
+
+  const handleAgeData = (data) => {
+    setAgeData(data);
   };
+
+  const handleGenderData = (data) => {
+    setGenderData(data);
+  };
+
   const handleSearchQuery = (data) => {
     setSearchQuery(data);
   };
 
+  useEffect(() => {
+    if (categoryData) {
+      navigate(`/notices/${categoryData}`);
+    } else {
+      navigate(`/notices`);
+    }
+  }, [categoryData]);
+
+  const calcYearDifference = (oldDateString) => {
+    const oldDate = new Date(oldDateString);
+    const newDate = new Date();
+    const dateDifference = new Date(newDate - oldDate);
+    const diffYears = dateDifference.getFullYear() - 1970;
+    return diffYears;
+  };
+
+  const addPetAge = (items) => {
+    const itemsWithAge = items.map((item) => {
+      const petAge = calcYearDifference(item.birthDay);
+      const petAgeString = `${petAge} year${!(petAge === 1) ? 's' : ''}`;
+      return { ...item, age: petAgeString };
+    });
+    return itemsWithAge;
+  };
+
   const onAddToFavourite = (noticeId) => {
-    console.log(noticeId);
     if (!IS_LOGGED_IN) {
       //МОДАЛКА ПРО ЗАЛОГИНИТСЯ
     }
@@ -55,7 +96,6 @@ const NoticesPage = () => {
   };
 
   const onDelete = async (id) => {
-    console.log('onDeleteFromFavourite' + id);
     try {
       const response = await axios.delete(
         `${import.meta.env.VITE_BACKEND_BASE_URL}/api/notices/${id}`,
@@ -89,16 +129,18 @@ const NoticesPage = () => {
       try {
         let response;
 
-        if (categoriesData !== 'own' && categoriesData !== 'favorite') {
-          response = await axios.get(
-            `${import.meta.env.VITE_BACKEND_BASE_URL}/api/notices?${
-              categoriesData && 'category=' + categoriesData
-            }`,
-          );
+        if (categoryData !== 'own' && categoryData !== 'favorite') {
+          const request = `${
+            import.meta.env.VITE_BACKEND_BASE_URL
+          }/api/notices?${categoryData && 'category=' + categoryData}${
+            ageData && '&age=' + ageData
+          }${genderData && '&gender=' + genderData}`;
+
+          response = await axios.get(request);
           response = await response.data;
           response = await response.data;
           response = await response.docs;
-        } else if (categoriesData === 'favorite') {
+        } else if (categoryData === 'favorite') {
           response = await axios.get(
             `${import.meta.env.VITE_BACKEND_BASE_URL}/api/notices/favorite`,
             {
@@ -123,16 +165,20 @@ const NoticesPage = () => {
           response = await response.data;
           response = await response.docs;
         }
-
+        setSearchParams({
+          category: categoryData || 'any',
+          age: ageData || 'any',
+          gender: genderData || 'any',
+          search: 'search_by_nav_and_filters',
+        });
         setPetsData(response);
-        //console.log(response);
       } catch (error) {
         return null;
       }
       setIsLoaded(true);
     };
     getNotices();
-  }, [categoriesData, filtersData]);
+  }, [categoryData, ageData, genderData]);
 
   const handleAddPetClick = () => {
     if (!IS_LOGGED_IN) {
@@ -141,26 +187,34 @@ const NoticesPage = () => {
       navigate('/add-pet');
     }
   };
-  /*
 
-?age=${filtersData.age}&gender=${filtersData.gender}
-*/
+  useEffect(() => {
+    setPetsDataWithAge(addPetAge(petsData));
+  }, [petsData]);
 
   useEffect(() => {
     const getBySearch = async () => {
+      let response;
       try {
-        const response = await axios.get(
+        response = await axios.get(
           `${
             import.meta.env.VITE_BACKEND_BASE_URL
           }/api/notices/search/?search=${searchQuery}`,
         );
-
-        setPetsData(response.data.docs);
+        response = await response.data;
+        response = await response.docs;
       } catch (error) {
         return null;
       }
+      setPetsData(response);
       setIsLoaded(true);
     };
+    setSearchParams({
+      category: categoryData || 'any',
+      age: ageData || 'any',
+      gender: genderData || 'any',
+      search: searchQuery || 'default_notices',
+    });
     getBySearch();
   }, [searchQuery]);
   const toggleUnauthorizeModal = () => {
@@ -175,28 +229,39 @@ const NoticesPage = () => {
         <NoticesCategoriesNav
           isLoggedIn={IS_LOGGED_IN}
           onChange={handleCategoriesData}
+          category={categoryData}
         />
         <NoticePageContrtolsRight>
-          <NoticesFilters onChange={handleFiltersData} />
+          <NoticesFilters
+            onChangeAge={handleAgeData}
+            onChangeGender={handleGenderData}
+            age={ageData}
+            gender={genderData}
+          />
           <AddPetBtn type="button" onClick={handleAddPetClick}>
-            <AddPetLink>
+            <AddPetLink
+              onMouseOver={showAddPetIcon}
+              onMouseLeave={hideAddPetIcon}
+            >
               Add pet
               <svg width="24" height="24" viewBox="0 0 24 24" fill="#fff">
-                <use xlinkHref={`${icons}#plus-small-white`} />
+                <use
+                  xlinkHref={`${icons}#plus-small${isHover ? '-white' : ''}`}
+                />
               </svg>
             </AddPetLink>
           </AddPetBtn>
         </NoticePageContrtolsRight>
       </NoticePageContrtols>
-      There must be Notice List
-      <NoticesCategoriesList
-        petsData={petsData}
-        isLoggedIn={IS_LOGGED_IN}
-        onAddToFavourite={onAddToFavourite}
-        onDelete={onDelete}
-        onLearnMore={onLearnMore}
-      />
-      There must be Notice List
+      <Suspense fallback={<VortexLoader />}>
+        <NoticesCategoriesList
+          petsData={petsDataWithAge}
+          isLoggedIn={IS_LOGGED_IN}
+          onAddToFavourite={onAddToFavourite}
+          onDelete={onDelete}
+          onLearnMore={onLearnMore}
+        />
+      </Suspense>
       {isUnauthorizeModalOpen && !IS_LOGGED_IN && (
         <ModalUnauthorize toggleUnauthorizeModal={toggleUnauthorizeModal} />
       )}

@@ -10,12 +10,10 @@ import {
 import { AgeForm } from './AgeForm';
 import { GenderForm } from './GenderForm';
 
-const NoticesFilters = ({ onChange }) => {
-  const [isFiltersOpen, setIsFiltersOpen] = useState(false);
-  const [isByAgeOpen, setIsByAgeOpen] = useState(false);
-  const [isByGenderOpen, setIsByGenderOpen] = useState(false);
-  const [age, setAge] = useState('anyAge');
-  const [gender, setGender] = useState('');
+const NoticesFilters = ({ onChangeAge, onChangeGender, age, gender }) => {
+  const [isFilterOpen, setIsFilterOpen] = useState(false);
+  const [isAgeFilterOpen, setIsAgeFilterOpen] = useState(false);
+  const [isGenderFilterOpen, setIsGenderFilterOpen] = useState(false);
   const [isHover, setIsHover] = useState(false);
 
   const showFilterIcon = () => {
@@ -26,45 +24,41 @@ const NoticesFilters = ({ onChange }) => {
     setIsHover(false);
   };
 
-  const toggleFilters = () => {
-    if (isFiltersOpen) {
-      setIsFiltersOpen(false);
-    } else {
-      setIsFiltersOpen(true);
-    }
+  const openFilter = () => {
+    setIsFilterOpen(true);
   };
 
-  const toggleAgeFilter = () => {
-    if (isByAgeOpen) {
-      setIsByAgeOpen(false);
-    } else {
-      setIsByAgeOpen(true);
-    }
+  const closeFilter = () => {
+    setIsFilterOpen(false);
   };
 
-  const toggleGenderFilter = () => {
-    if (isByGenderOpen) {
-      setIsByGenderOpen(false);
-    } else {
-      setIsByGenderOpen(true);
-    }
+  const openAgeFilter = () => {
+    setIsAgeFilterOpen(true);
+  };
+
+  const closeAgeFilter = () => {
+    setIsAgeFilterOpen(false);
+  };
+
+  const openGenderFilter = () => {
+    setIsGenderFilterOpen(true);
+  };
+
+  const closeGenderFilter = () => {
+    setIsGenderFilterOpen(false);
   };
 
   const selectAge = (ageData) => {
-    setAge(ageData);
+    onChangeAge(ageData);
   };
 
   const selectGender = (genderData) => {
-    setGender(genderData);
+    onChangeGender(genderData);
   };
 
-  useEffect(() => {
-    onChange({ age, gender });
-  }, [age, gender]);
-
-  return !isFiltersOpen ? (
+  return !isFilterOpen ? (
     <FilterOpenButton
-      onClick={toggleFilters}
+      onClick={openFilter}
       onMouseOver={showFilterIcon}
       onMouseLeave={hideFilterIcon}
     >
@@ -80,21 +74,17 @@ const NoticesFilters = ({ onChange }) => {
     </FilterOpenButton>
   ) : (
     <FilterModal>
-      <FilterCloseButton onClick={toggleFilters}>
+      <FilterCloseButton onClick={closeFilter}>
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
           <use xlinkHref={`${icons}#chevron-up`} />
         </svg>
         Filters
       </FilterCloseButton>
       <FilterForms>
-        {isByAgeOpen ? (
-          <AgeForm
-            onClick={toggleAgeFilter}
-            onChange={selectAge}
-            initialValue={age}
-          />
+        {isAgeFilterOpen ? (
+          <AgeForm onClick={closeAgeFilter} onChange={selectAge} value={age} />
         ) : (
-          <FilterFormButton onClick={toggleAgeFilter}>
+          <FilterFormButton onClick={openAgeFilter}>
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
               <use xlinkHref={`${icons}#chevron-down`} />
             </svg>
@@ -102,14 +92,14 @@ const NoticesFilters = ({ onChange }) => {
           </FilterFormButton>
         )}
 
-        {isByGenderOpen ? (
+        {isGenderFilterOpen ? (
           <GenderForm
-            onClick={toggleGenderFilter}
+            onClick={closeGenderFilter}
             onChange={selectGender}
-            initialValue={gender}
+            value={gender}
           />
         ) : (
-          <FilterFormButton onClick={toggleGenderFilter}>
+          <FilterFormButton onClick={openGenderFilter}>
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
               <use xlinkHref={`${icons}#chevron-down`} />
             </svg>

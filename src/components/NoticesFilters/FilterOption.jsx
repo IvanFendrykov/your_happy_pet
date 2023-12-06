@@ -1,13 +1,17 @@
 import icons from '../../images/symbol-defs.svg';
-import { HiddenRadio, StyledFilterOption } from './NoticesFilters.styled';
+import { StyledFilterOption } from './NoticesFilters.styled';
 
-const FilterOption = ({ name, value, checked, children }) => {
+const FilterOption = ({ value, newValue, onClick, children }) => {
+  const handleClick = () => {
+    onClick(newValue);
+  };
+
   return (
-    <StyledFilterOption>
-      <HiddenRadio type="radio" name={name} value={value} />
-
+    <StyledFilterOption onClick={handleClick}>
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-        <use xlinkHref={`${icons}#${checked ? 'check-round' : 'round'}`} />
+        <use
+          xlinkHref={`${icons}#${newValue === value ? 'check-round' : 'round'}`}
+        />
       </svg>
       {children}
     </StyledFilterOption>

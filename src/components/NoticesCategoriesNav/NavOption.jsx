@@ -1,26 +1,15 @@
 import { NavLink } from 'react-router-dom';
-import {
-  HiddenRadio,
-  CheckedOption,
-  UnCheckedOption,
-} from './NoticesCategoriesNav.styled';
+import { CheckedOption, UnCheckedOption } from './NoticesCategoriesNav.styled';
 
-const NavOption = ({ name, value, checked, defaultChecked, children }) => {
-  return checked ? (
-    <CheckedOption>
-      <HiddenRadio
-        type="radio"
-        name={name}
-        value={value}
-        defaultChecked={defaultChecked}
-      />
-      {children}
-    </CheckedOption>
+const NavOption = ({ value, newValue, onClick, children }) => {
+  const handleClick = () => {
+    onClick(newValue);
+  };
+
+  return newValue === value ? (
+    <CheckedOption onClick={handleClick}>{children}</CheckedOption>
   ) : (
-    <UnCheckedOption>
-      <HiddenRadio type="radio" name={name} value={value} />
-      {children}
-    </UnCheckedOption>
+    <UnCheckedOption onClick={handleClick}>{children}</UnCheckedOption>
   );
 };
 

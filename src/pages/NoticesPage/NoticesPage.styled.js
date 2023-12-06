@@ -31,27 +31,44 @@ const NoticePageContrtolsRight = styled.div`
 `;
 
 const AddPetLink = styled(NavLink)`
-  height: 35px;
   text-decoration: none;
-  padding: 8px 20px;
+  height: 35px;
   display: flex;
+  width: 152px;
+  padding: 4px 10px;
   justify-content: center;
   align-items: center;
   gap: 8px;
-
   border-radius: 40px;
-  background: ${colors.blue};
 
-  color: #fef9f9;
+  border: 2px solid ${colors.blue};
+  background-color: #fff;
+
+  color: ${colors.blue};
   font-family: ${fonts.bold}, sans-serif;
-  font-size: ${fontSizes.m};
+  font-size: 16px;
   font-style: normal;
   font-weight: ${fontWeights.bold};
   line-height: normal;
   letter-spacing: 0.64px;
+
+  :hover,
+  :focus {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 40px;
+    background: linear-gradient(290deg, #419ef1 0%, #9bd0ff 107.89%);
+    color: #fef9f9;
+  }
 `;
 
 const AddPetBtn = styled.div`
   row-gap: 12px;
 `;
-export { Header, NoticePageContrtols, NoticePageContrtolsRight, AddPetLink, AddPetBtn };
+export {
+  Header,
+  NoticePageContrtols,
+  NoticePageContrtolsRight,
+  AddPetLink,
+  AddPetBtn,
+};
